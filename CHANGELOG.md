@@ -1,5 +1,13 @@
 # 更新日志
 
+## 0.9.1a — 2026-10-14 · Windows 源码克隆修订
+
+- 在隔离克隆中复现 Git core.autocrlf=true 改变 model-viewer 原始字节、造成固定 SHA 校验失败的问题。
+- 增加 .gitattributes，仅让 visual/vendor 下的第三方固定文件保留原字节；模型下载配方与应用核心代码保持不变。
+- 同步公开版版本，保留 v0.9.1 标签；补查 Windows 克隆、公开配置与启动器版本。未进行 GPU 推理验收。
+
+修改人：Unclecow。
+
 ## 0.9.1 — 2026-10-14 · 公开源码版
 
 - 以 BUIDL 2D3D 发布源码，应用内沿用 build something · 造点啥 品牌；基于本地 0.9.0a，原工作目录和历史交付包不变。

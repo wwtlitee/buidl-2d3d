@@ -1,9 +1,9 @@
 {
   "product": "BUIDL 2D3D",
   "applicationName": "build something · 造点啥",
-  "version": "0.9.1",
+  "version": "0.9.1a",
   "basedOn": "0.9.0a",
-  "publicationBuild": "public-source-20261014",
+  "publicationBuild": "public-source-20261014-crlf",
   "owner": "Unclecow",
   "license": "MIT for owned code; third-party terms retained",
   "versionedConfigs": [
@@ -46,7 +46,9 @@
     "trellis": "cd299e818d95c635b4086c920ed899d97cd79cf751298992321b6195077d4a11",
     "pixal3d": "8564ea52186f37dad357f3a20fe0ea15e6cb11ea55d300e60c33e68b63393bb8"
   },
-  "validation": {
+  "previousPublicVersion": "0.9.1",
+  "baseValidation": {
+    "version": "0.9.1",
     "status": "passed-with-explicit-skips",
     "pythonVersion": "3.14.2",
     "pythonSyntaxFiles": 79,
@@ -159,5 +161,48 @@
     "gpuInferenceExecuted": false,
     "modelDownloadExecuted": false,
     "secretScan": "Pattern and path review of public source and included archive; not an exhaustive security audit."
+  },
+  "validation": {
+    "status": "passed",
+    "revisionScope": "Preserve pinned third-party bytes on Windows Git checkouts; product metadata and screenshot synchronized.",
+    "targetedTests": {
+      "files": [
+        "tests/check-public-distribution.py",
+        "tests/check-portable-recipes.py"
+      ],
+      "passed": 12,
+      "runs": [
+        "source workspace",
+        "fresh core.autocrlf=true checkout"
+      ]
+    },
+    "windowsCheckout": {
+      "setting": "core.autocrlf=true",
+      "beforeVersion": "0.9.1",
+      "beforeViewerSha256": "553e9f3e90653bc29418e96e909156c3bfee5f43a0a03822bb32558c96572214",
+      "afterVersion": "0.9.1a",
+      "afterViewerSha256": "283b0672384614b4847636c306fc93fe4b1fcadc76d668b4e47f0ca76bcf033b",
+      "pinnedBytesPreserved": true
+    },
+    "nativeLauncher": {
+      "compiled": true,
+      "productVersion": "0.9.1a",
+      "fileVersion": "0.9.1.0",
+      "sha256": "f3ee3e7a425a0416580893a7cbde5f71de10296e38d1c5af34e0aadb7fc92eec",
+      "trackedInRepository": false
+    },
+    "ui": {
+      "browser": "isolated headless Chrome",
+      "viewport": "1440x1024",
+      "screenshot": "docs/images/workbench.jpg",
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "horizontalOverflow": false,
+      "personalData": "none; fresh local application data",
+      "decorativeArtIsInferenceEvidence": false
+    },
+    "gpuInferenceExecuted": false,
+    "modelDownloadExecuted": false,
+    "baseValidationNote": "118 passed and 7 explicitly skipped in the unchanged 0.9.1 baseline; listed separately, not claimed as a full rerun of this revision."
   }
 }

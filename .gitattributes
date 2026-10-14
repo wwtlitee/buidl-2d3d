@@ -1,0 +1,2 @@
+# Pinned upstream bytes must survive Windows core.autocrlf=true checkouts.
+visual/vendor/* -text

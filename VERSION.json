@@ -1,11 +1,11 @@
 {
   "product": "build something",
   "displayName": "造点啥",
-  "version": "0.9.1",
+  "version": "0.9.1a",
   "owner": "Unclecow",
   "status": "public-source-release",
-  "issue": "公开源码发布与第三方资源分发边界",
-  "build": "public-source-20261014",
+  "issue": "公开源码发行：保留 Windows 克隆后的第三方固定字节",
+  "build": "public-source-20261014-crlf",
   "basedOn": "0.9.0a",
   "repositoryName": "BUIDL 2D3D"
 }
