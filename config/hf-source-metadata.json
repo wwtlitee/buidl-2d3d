@@ -1,0 +1,365 @@
+[
+  {
+    "sha": "5b521936b01fbe1890f6f9baed0254ab6351c04a",
+    "gated": false,
+    "files": [
+      {
+        "type": "directory",
+        "oid": "caa98f4890595d9d5fd9dba302589a86b925706e",
+        "size": 0,
+        "path": "figures"
+      },
+      {
+        "type": "file",
+        "oid": "3217fd3833103daf6f13706bda7ffd0f686f0ef6",
+        "size": 1583,
+        "path": ".gitattributes"
+      },
+      {
+        "type": "file",
+        "oid": "e1bcca137e14a0aebb951187ffd3b2e71936aa7b",
+        "size": 2488,
+        "path": "README.md"
+      },
+      {
+        "type": "file",
+        "oid": "fa3e59a701f02679bd1dca02fbaf97306174d291",
+        "size": 987,
+        "path": "config.yaml"
+      },
+      {
+        "type": "file",
+        "oid": "1f8946428cd19618dc034420fbbd2eb87bd67614",
+        "size": 148042,
+        "lfs": {
+          "oid": "b2da16c42c2e03139e297d6930bcff7a99c595cc100b545861519793c662500f",
+          "size": 148042,
+          "pointerSize": 131
+        },
+        "xetHash": "fd4ee85bf019d1d4f80dd0c7b27ce878cba0a7bc674c71ad2b347e07091fd19c",
+        "path": "figures/input800.mp4"
+      },
+      {
+        "type": "file",
+        "oid": "16e69f7d4151efeca9e78fd267d98ecfc283f183",
+        "size": 2425685,
+        "lfs": {
+          "oid": "c63a5fe7afea93549cc412fab612a1c2e5a46844fa75c5ff4eee892b9d3bbc4e",
+          "size": 2425685,
+          "pointerSize": 132
+        },
+        "xetHash": "4bacb8e2b73ffbb0235ffe34984d91ea2ff8755b886a9e98d6068fd98062c32d",
+        "path": "figures/output_examples.mp4"
+      },
+      {
+        "type": "file",
+        "oid": "f78322668f0723c948059fe36edd9d1d815b7071",
+        "size": 1677246742,
+        "lfs": {
+          "oid": "429e2c6b22a0923967459de24d67f05962b235f79cde6b032aa7ed2ffcd970ee",
+          "size": 1677246742,
+          "pointerSize": 135
+        },
+        "xetHash": "8e2712941eac80536e90324361866f96b721a058a3b5839fb15679f5bfe371cb",
+        "path": "model.ckpt"
+      }
+    ],
+    "repo": "stabilityai/TripoSR"
+  },
+  {
+    "sha": "f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6",
+    "gated": false,
+    "files": [
+      {
+        "type": "directory",
+        "oid": "098437ef771ba7b8f4103bd8fa811968af318d1b",
+        "size": 0,
+        "path": "hunyuan3d-dit-v2-mini-fast"
+      },
+      {
+        "type": "directory",
+        "oid": "c211fc0ac2a9fdcea8edba4c787e7b9db41ccb33",
+        "size": 0,
+        "path": "hunyuan3d-dit-v2-mini-turbo"
+      },
+      {
+        "type": "directory",
+        "oid": "5c9e935e0692221f735bfd19a5ab52237824b04f",
+        "size": 0,
+        "path": "hunyuan3d-dit-v2-mini"
+      },
+      {
+        "type": "directory",
+        "oid": "f6fd5898bad199de63f25faf3f1e8ce1f748f836",
+        "size": 0,
+        "path": "hunyuan3d-vae-v2-mini-turbo"
+      },
+      {
+        "type": "directory",
+        "oid": "ad540742172d4c2a19188dad23798493ef8a9437",
+        "size": 0,
+        "path": "hunyuan3d-vae-v2-mini-withencoder"
+      },
+      {
+        "type": "directory",
+        "oid": "94daf34c7f08745186ebfd983c320575de7ae472",
+        "size": 0,
+        "path": "hunyuan3d-vae-v2-mini"
+      },
+      {
+        "type": "file",
+        "oid": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+        "size": 1519,
+        "path": ".gitattributes"
+      },
+      {
+        "type": "file",
+        "oid": "58e0779d576cb14caed1d443cf4d5785c2497fe1",
+        "size": 17828,
+        "path": "LICENSE"
+      },
+      {
+        "type": "file",
+        "oid": "0e623667e16ed2034540ca9ace4ebc8b33865baf",
+        "size": 32064,
+        "path": "NOTICE"
+      },
+      {
+        "type": "file",
+        "oid": "d7f5946d83c6752340e2c52a16b7fc40bcdca8d8",
+        "size": 4319,
+        "path": "README.md"
+      },
+      {
+        "type": "file",
+        "oid": "51910f2ab85038d984d1fd30ab965a063bf9c4d0",
+        "size": 38,
+        "path": "config.json"
+      },
+      {
+        "type": "file",
+        "oid": "e98270d5e8ed2b5ad0e3ae51e14c870299b05a6d",
+        "size": 1627,
+        "path": "hunyuan3d-dit-v2-mini-fast/config.yaml"
+      },
+      {
+        "type": "file",
+        "oid": "4dab0ff9ca975574509ca8b1306443fd17e0a657",
+        "size": 3822959288,
+        "lfs": {
+          "oid": "dbe1e37bf8659de365795fa969835847c78c64f5f43a66e70233f4f4973b58b8",
+          "size": 3822959288,
+          "pointerSize": 135
+        },
+        "xetHash": "31cb62de188fc3d1054b574357a53bf78bc7279669b52da21772134787aeb2a6",
+        "path": "hunyuan3d-dit-v2-mini-fast/model.fp16.ckpt"
+      },
+      {
+        "type": "file",
+        "oid": "eeef1b33d408929a0ff8272b1d6dec1aa01ca8f5",
+        "size": 3822584202,
+        "lfs": {
+          "oid": "2bc48c8168874bb3f3d9bb6699af40517e498d2da3400c9c54dc0f5779875ab3",
+          "size": 3822584202,
+          "pointerSize": 135
+        },
+        "xetHash": "d4108f2af8e2dc692fbd12be50a2349d816c3b20979e0f704caf582a707ee241",
+        "path": "hunyuan3d-dit-v2-mini-fast/model.fp16.safetensors"
+      },
+      {
+        "type": "file",
+        "oid": "70a77756aaa5429626f4106e2cd882ca494221ab",
+        "size": 1664,
+        "path": "hunyuan3d-dit-v2-mini-turbo/config.yaml"
+      },
+      {
+        "type": "file",
+        "oid": "e9873abc3c1d14ce49c94b017aaea62cfc627928",
+        "size": 3822959288,
+        "lfs": {
+          "oid": "9bc217e63c94b07d46b5b3ae3d4aac22455d388e947ae0b4ed15ac5192d1cd6a",
+          "size": 3822959288,
+          "pointerSize": 135
+        },
+        "xetHash": "07dd701bbc38e6a820d81ce199ba02693023363eb41a19a167a5798777492db5",
+        "path": "hunyuan3d-dit-v2-mini-turbo/model.fp16.ckpt"
+      },
+      {
+        "type": "file",
+        "oid": "3445e86837e8c3cc8b1c20653d2cd0fc1ced107f",
+        "size": 3822584202,
+        "lfs": {
+          "oid": "bdbcef30dd0149a281e17d5b5b1fdad1122c904e098a42f3100e04e03c247bc4",
+          "size": 3822584202,
+          "pointerSize": 135
+        },
+        "xetHash": "d55f23da80e8ec8f0e6a5c22913c9fdf8eddbbab066ea362066bd841af0864a4",
+        "path": "hunyuan3d-dit-v2-mini-turbo/model.fp16.safetensors"
+      },
+      {
+        "type": "file",
+        "oid": "9b5e721842d1bc751b3a54ee8adc8d59a2630367",
+        "size": 1628,
+        "path": "hunyuan3d-dit-v2-mini/config.yaml"
+      },
+      {
+        "type": "file",
+        "oid": "cb144115a4e8f2448b66f2cf84f0107fbee04bfb",
+        "size": 3820332336,
+        "lfs": {
+          "oid": "81831b8d8098d9122d9160887771abeed63268f120989a5a9eca49a261988e0d",
+          "size": 3820332336,
+          "pointerSize": 135
+        },
+        "xetHash": "d41b9b82b1f03e14e9a95ee2e03b7e039d40f059f00b844ff5b8de5505da0b47",
+        "path": "hunyuan3d-dit-v2-mini/model.fp16.ckpt"
+      },
+      {
+        "type": "file",
+        "oid": "2ed3a2bf741fd6574e85fe007ea7b63e7e22d97f",
+        "size": 3819958234,
+        "lfs": {
+          "oid": "3cc66f3bea33e4062b7dbc875ffe1d70c4888914aec3e91b60f94e9bd01b522b",
+          "size": 3819958234,
+          "pointerSize": 135
+        },
+        "xetHash": "e5d04846c8b192f340a77c49516af174ea0bb61dd6fcc3eee39ef65264aee681",
+        "path": "hunyuan3d-dit-v2-mini/model.fp16.safetensors"
+      },
+      {
+        "type": "file",
+        "oid": "e27bf69954e893d82127624b2b646d73ee610c08",
+        "size": 335,
+        "path": "hunyuan3d-vae-v2-mini-turbo/config.yaml"
+      },
+      {
+        "type": "file",
+        "oid": "6229175ca9ab2e2cdb016ed9bddcd681691ca41e",
+        "size": 407480196,
+        "lfs": {
+          "oid": "d622fb7de282165a4aae2b5b9d6517ab1542c35a0808c5c4a0ac9244ad213bbe",
+          "size": 407480196,
+          "pointerSize": 134
+        },
+        "xetHash": "dacb9cdd12bf7ad334e9941e864ba46c552ee9f0291018a6d3f89d9b13263698",
+        "path": "hunyuan3d-vae-v2-mini-turbo/model.fp16.ckpt"
+      },
+      {
+        "type": "file",
+        "oid": "1f4c3c9cd68b8a1f3db02172560adea19ab8b055",
+        "size": 407410402,
+        "lfs": {
+          "oid": "5dcaca67a8da9e7079fb7b55714a572d0651ac95983bb43099913feaf6738f94",
+          "size": 407410402,
+          "pointerSize": 134
+        },
+        "xetHash": "7bafdc46a3c42066cd109cc743206f8258c1db6b1f6e59c29cecebf3743283cf",
+        "path": "hunyuan3d-vae-v2-mini-turbo/model.fp16.safetensors"
+      },
+      {
+        "type": "file",
+        "oid": "738c8467554504b2bfc39771bbe5cbbbb7252ab2",
+        "size": 351,
+        "path": "hunyuan3d-vae-v2-mini-withencoder/config.yaml"
+      },
+      {
+        "type": "file",
+        "oid": "21f200ee31dcac97deb82f42ae24b2b1e30584a1",
+        "size": 655648152,
+        "lfs": {
+          "oid": "d1895606c20a05d6c6282cc8c142d30cb721864218d302cf4faa9e45096306ad",
+          "size": 655648152,
+          "pointerSize": 134
+        },
+        "xetHash": "8580c175d879f8be11a08dc463a8b1c795289d33a31c16db76c1c7e7b6dfeaa6",
+        "path": "hunyuan3d-vae-v2-mini-withencoder/model.fp16.ckpt"
+      },
+      {
+        "type": "file",
+        "oid": "fc7cc777910392ab985500bbeec4662afe80b704",
+        "size": 334,
+        "path": "hunyuan3d-vae-v2-mini/config.yaml"
+      },
+      {
+        "type": "file",
+        "oid": "84041abcf6cfd0493b0401398802387c19d4e2df",
+        "size": 428526216,
+        "lfs": {
+          "oid": "814cd7d5ca5d382d089f9354f9244a7afea643edad675cb66db5fc246aff169b",
+          "size": 428526216,
+          "pointerSize": 134
+        },
+        "xetHash": "6fc0a7511f18fac1dd28e3e521df95df09dd9aed5da5bb534f3d9e15882f4b3c",
+        "path": "hunyuan3d-vae-v2-mini/model.fp16.ckpt"
+      },
+      {
+        "type": "file",
+        "oid": "59f2ed3665830e211eb65e7ae600d324afb721af",
+        "size": 428455666,
+        "lfs": {
+          "oid": "64592fce41fe71505e533a24d7a7d573f1bfa2c62de974ce2af0490b65220913",
+          "size": 428455666,
+          "pointerSize": 134
+        },
+        "xetHash": "d853cf8c31bf9db4f675e3b6e2cace46e7cf10554ef07ab01137edafb0a2d021",
+        "path": "hunyuan3d-vae-v2-mini/model.fp16.safetensors"
+      }
+    ],
+    "repo": "tencent/Hunyuan3D-2mini"
+  },
+  {
+    "sha": "f0c9a8ffd62cb1bbc8a7a53c9f87a0be1b6be778",
+    "gated": "auto",
+    "files": [
+      {
+        "type": "file",
+        "oid": "707007e9288b1ce56b330e5f63621130665426b7",
+        "size": 1564,
+        "path": ".gitattributes"
+      },
+      {
+        "type": "file",
+        "oid": "b07f871a39b333819b9a986ac2dbb7f6fcb7a95e",
+        "size": 11726,
+        "path": "LICENSE.md"
+      },
+      {
+        "type": "file",
+        "oid": "95005aada2bb323518c3c64ee3d78d4f4f339dfb",
+        "size": 5430,
+        "path": "README.md"
+      },
+      {
+        "type": "file",
+        "oid": "4a44aec5e6af76975afcaedae7e888b96412c832",
+        "size": 2405,
+        "path": "config.yaml"
+      },
+      {
+        "type": "file",
+        "oid": "d4d83a9c711ace2e5adccf27c7c5e386725acfe2",
+        "size": 4024289892,
+        "lfs": {
+          "oid": "****************************************************************",
+          "size": 4024289892,
+          "pointerSize": 135
+        },
+        "xetHash": "****************************************************************",
+        "path": "model.safetensors"
+      },
+      {
+        "type": "file",
+        "oid": "b4ff1ee65d392b420c9a30dbc6450ca241131673",
+        "size": 2809667,
+        "lfs": {
+          "oid": "****************************************************************",
+          "size": 2809667,
+          "pointerSize": 132
+        },
+        "xetHash": "****************************************************************",
+        "path": "sf3d.gif"
+      }
+    ],
+    "repo": "stabilityai/stable-fast-3d"
+  }
+]

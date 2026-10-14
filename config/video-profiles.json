@@ -1,0 +1,20 @@
+{
+  "version": "0.7.0",
+  "author": "Unclecow",
+  "profiles": [
+    {
+      "id": "wangp-video",
+      "python": "3.11.14",
+      "environment": "video-lab/wangp/.venv",
+      "requirements": "config/deployment-requirements/wangp-video.txt",
+      "torchIndex": "https://download.pytorch.org/whl/cu130",
+      "verifyCommands": [
+        [
+          "-c",
+          "import torch,av,triton; assert torch.cuda.is_available(), \"CUDA unavailable\"; import importlib.metadata as m; assert m.version(\"torch\").startswith(\"2.10.0+cu130\"); assert m.version(\"av\")==\"16.1.0\"; print(\"WanGP CUDA13 imports checked; no model weights loaded\")"
+        ]
+      ]
+    }
+  ],
+  "productVersion": "0.9.1"
+}

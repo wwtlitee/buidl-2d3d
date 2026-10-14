@@ -1,0 +1,77 @@
+{
+  "version": "0.7.0",
+  "author": "Unclecow",
+  "profiles": [
+    {
+      "id": "sana-sprint-06",
+      "version": "0.7.0",
+      "python": "3.11.14",
+      "environment": "engines/sana-sprint-06/.venv",
+      "requirements": "config/deployment-requirements/sana-sprint.txt",
+      "torchIndex": "https://download.pytorch.org/whl/cu124",
+      "verifyCommands": [
+        [
+          "-c",
+          "import torch; from diffusers import SanaSprintPipeline,SanaSprintImg2ImgPipeline; assert torch.cuda.is_available(), \"CUDA unavailable\"; print(\"Sana Sprint pipelines/imports and CUDA checked; weights not loaded\")"
+        ]
+      ]
+    },
+    {
+      "id": "sana-sprint-16",
+      "version": "0.7.0",
+      "python": "3.11.14",
+      "environment": "engines/sana-sprint-16/.venv",
+      "requirements": "config/deployment-requirements/sana-sprint.txt",
+      "torchIndex": "https://download.pytorch.org/whl/cu124",
+      "verifyCommands": [
+        [
+          "-c",
+          "import torch; from diffusers import SanaSprintPipeline,SanaSprintImg2ImgPipeline; assert torch.cuda.is_available(), \"CUDA unavailable\"; print(\"Sana Sprint pipelines/imports and CUDA checked; weights not loaded\")"
+        ]
+      ]
+    },
+    {
+      "id": "hunyuan-shape-runtime-07",
+      "python": "3.11.14",
+      "environment": "model-lab/hunyuan-shape/.venv",
+      "requirements": "config/deployment-requirements/hunyuan-shape.txt",
+      "bundles": [
+        {
+          "path": "config/deployment-bundles/hunyuan-shape-0.7.0.zip",
+          "size": 170655,
+          "sha256": "dc6f7aef0972e8954fd12cbe52b7ae1e2b7b52c923ef582be12e60c02fce35e0"
+        }
+      ],
+      "verifyCommands": [
+        [
+          "-c",
+          "import torch,trimesh,diffusers; assert torch.cuda.is_available(); print(\"Shape runtime imports checked; no inference\")"
+        ]
+      ]
+    },
+    {
+      "id": "hunyuan-shape21-07",
+      "python": "3.11.14",
+      "environment": "model-lab/hunyuan-shape21/.venv",
+      "requirements": "config/deployment-requirements/hunyuan-shape.txt",
+      "bundles": [
+        {
+          "path": "config/deployment-bundles/hunyuan-shape-0.7.0.zip",
+          "size": 170655,
+          "sha256": "dc6f7aef0972e8954fd12cbe52b7ae1e2b7b52c923ef582be12e60c02fce35e0"
+        }
+      ],
+      "verifyCommands": [
+        [
+          "@root:scripts/providers/3d-run.py",
+          "--root",
+          "@root",
+          "--engine",
+          "hunyuan3d-21-shape",
+          "--check"
+        ]
+      ]
+    }
+  ],
+  "productVersion": "0.9.1"
+}

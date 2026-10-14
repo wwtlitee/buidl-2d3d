@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101112">
+  <meta name="description" content="build something · 造点啥：用文字和图片制作 3D 模型，从本机检测、模型安装到创作，一步步开始。">
+  <title>build something · 造点啥 · v0.9.1</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/texture.css">
+  <link rel="stylesheet" href="/setup.css">
+  <link rel="stylesheet" href="/studio.css">
+  <link rel="stylesheet" href="/studio-results.css">
+  <script type="module" src="/vendor/model-viewer.min.js"></script>
+  <script defer src="/app.js"></script>
+  <script defer src="/model-picker.js"></script>
+  <script defer src="/texture.js"></script>
+  <script defer src="/setup.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到工作区</a>
+  <aside class="sidebar" aria-label="造点啥导航">
+    <a class="brand" href="#home" aria-label="build something 造点啥首页">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7Zm0 0v10m9-5-9 5-9-5m9 5v10"/></svg></span>
+      <span class="brand-wordmark"><strong>造点啥<span class="brand-period">.</span></strong><small>BUILD SOMETHING</small></span>
+    </a>
+    <div class="nav-label">我的工作室</div>
+    <nav id="main-nav" class="navigation" aria-label="主导航">
+      <a href="#home" data-page="home" aria-current="page"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></svg></span><span>开始创作</span></a>
+      <a href="#results" data-page="results"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span><span>我的作品</span><span class="nav-count" id="result-count">0</span></a>
+      <a href="#queue" data-page="queue"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><span>任务进度</span><span class="nav-count" id="queue-count">0</span></a>
+      <a href="#setup" data-page="setup"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg></span><span>模型管理</span></a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="sidebar-help" href="#help" data-page="help"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.7a2.5 2.5 0 0 1 5 .3c0 1.8-2.5 2-2.5 4M12 16.5h.01"/></svg>使用指南</a>
+      <div class="machine"><span class="machine-dot" aria-hidden="true"></span><span id="machine-info">正在读取本机状态</span></div>
+      <div class="sidebar-meta"><span id="product-version">v0.9.1</span><span>Unclecow</span></div>
+    </div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="breadcrumb"><span>造点啥</span><span aria-hidden="true">/</span><strong id="page-crumb">开始创作</strong></div>
+      <div class="topbar-right"><a class="button small ghost" href="#help" data-page="help">帮助</a><span id="connection-status" class="connection connecting" role="status">连接中</span><button type="button" class="button small ghost" data-action="refresh" title="刷新本机状态">刷新</button></div>
+    </header>
+    <nav id="creation-nav" class="creation-nav" aria-label="创作工具">
+      <a class="creation-link" href="#home" data-page="home" aria-current="page">创作首页</a>
+      <a class="creation-link" href="#imagegen" data-page="imagegen">文字生图</a>
+      <a class="creation-link" href="#edit" data-page="edit">图片编辑</a>
+      <a class="creation-link" href="#workspace" data-page="workspace">图片变 3D</a>
+      <a class="creation-link" href="#multiview" data-page="multiview">补充视角</a>
+      <a class="creation-link" href="#texture" data-page="texture">模型上色</a>
+    </nav>
+    <main id="main" tabindex="-1">
+      <section id="home-page" class="page" aria-labelledby="home-title">
+        <div class="page-heading home-heading"><div><div class="eyebrow">CREATIVE WORKSPACE</div><h1 id="home-title">开始创作</h1><p>生成图片和 3D 模型，作品保存在本机。</p></div><span class="local-badge"><span aria-hidden="true">●</span> 本地创作</span></div>
+        <div class="goal-grid" aria-label="选择创作目标">
+          <a class="goal-entry" href="#imagegen" data-page="imagegen">
+            <span class="goal-cover cover-image" aria-hidden="true"><span class="goal-medium">IMAGE</span><span class="goal-disclosure">创作示意</span></span>
+            <span class="goal-footer"><span class="goal-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 3-3 6 6"/></svg></span><span class="goal-copy"><strong>生成图片</strong><span>用文字描绘你想要的画面</span></span><svg class="goal-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          </a>
+          <a class="goal-entry" href="#workspace" data-page="workspace">
+            <span class="goal-cover cover-model" aria-hidden="true"><span class="goal-medium">3D MODEL</span><span class="goal-disclosure">创作示意</span></span>
+            <span class="goal-footer"><span class="goal-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7Zm0 0v10m9-5-9 5-9-5m9 5v10"/></svg></span><span class="goal-copy"><strong>生成 3D</strong><span>把平面图片做成立体模型</span></span><svg class="goal-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          </a>
+        </div>
+        <section class="panel oneclick-panel" aria-labelledby="pipeline-heading">
+          <div class="panel-heading"><div><h2 id="pipeline-heading">从文字，一键生成 3D</h2><span class="count-label">先生成图片，再自动建模</span></div></div>
+          <div class="oneclick-content">
+            <label class="sr-only" for="pipeline-prompt">描述想生成的物体</label><textarea id="pipeline-prompt" rows="3" maxlength="3000" placeholder="描述你想做的物体，例如：一只橙色机械小牛，正面视角，白色背景。"></textarea>
+            <p class="field-hint">写清物体、颜色与风格。完整单体和简单背景更适合建模。</p>
+            <details class="pipeline-model-settings"><summary>模型方案 <span>查看推荐、选择模型与版本</span></summary><div class="pipeline-selection-grid"><div class="pipeline-image-choice"><label for="pipeline-image-engine">① 生成图片的模型</label><select id="pipeline-image-engine" disabled><option value="">正在读取生图模型…</option></select><details class="pipeline-advanced"><summary>调整生图版本 <span>默认版本即可开始</span></summary><label for="pipeline-weight-variant" class="pipeline-variant-label">生图版本</label><select id="pipeline-weight-variant" disabled><option value="">正在读取模型版本…</option></select></details></div><fieldset><legend>② 生成 3D 的模型 <span>可多选，对比效果</span></legend><div id="pipeline-engines" class="pipeline-engine-grid"><p class="field-hint">正在读取建模模型…</p></div></fieldset></div></details>
+            <div id="pipeline-readiness" class="readiness-banner compact" role="status" hidden></div>
+          </div>
+          <div class="pipeline-submit"><div><strong id="pipeline-summary">准备好模型，写下想法就能开始</strong><span>生成完成后，可预览、上色和导出。</span></div><button id="start-pipeline" type="button" class="button primary" data-action="start-pipeline" disabled>一键生成图片和 3D</button></div>
+        </section>
+        <div id="pipeline-jobs" class="pipeline-jobs" aria-live="polite"></div>
+        <div class="intent-grid" aria-label="其他开始方式"><a href="#imagegen" class="intent-card" data-page="imagegen"><span class="intent-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 3-3 6 6"/></svg></span><strong>只想先生成图片</strong><span>调整参数，挑好图片再建模</span></a><a href="#workspace" class="intent-card" data-page="workspace"><span class="intent-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7Zm0 0v10m9-5-9 5-9-5m9 5v10"/></svg></span><strong>已经有一张图片</strong><span>直接建模，也可补充其他角度</span></a><button type="button" class="intent-card" data-action="import-model"><span class="intent-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></svg></span><strong>已经有一个 3D 模型</strong><span>导入 GLB，继续上色或导出</span></button></div>
+      </section>
+      <section id="workspace-page" class="page" aria-labelledby="workspace-title" hidden>
+        <div class="page-heading"><div><div class="eyebrow">BUILD SOMETHING</div><h1 id="workspace-title">把图片，变成 3D 模型。</h1><p>一张图片，变成能旋转、能下载的 3D 模型。作品保存在你的电脑里。</p></div><span class="local-badge"><span aria-hidden="true">●</span> 本地创作</span></div>
+        <div id="workspace-readiness" class="readiness-banner" role="status" hidden></div>
+        <div class="intent-grid" aria-label="选择开始方式"><a href="#workspace" class="intent-card" data-intent="photo"><span class="intent-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7Zm0 0v10m9-5-9 5-9-5m9 5v10"/></svg></span><strong>我有一张图片</strong><span>拖进下方，生成 3D 模型</span></a><a href="#imagegen" class="intent-card" data-page="imagegen"><span class="intent-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 3-3 6 6"/></svg></span><strong>我有一个想法</strong><span>用文字先生成一张图片</span></a><button type="button" class="intent-card" data-action="import-model"><span class="intent-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></svg></span><strong>我有一个 3D 模型</strong><span>导入 GLB，预览、上色或导出</span></button></div>
+        <div class="workflow-steps" aria-label="操作步骤"><span><b>1</b> 放入图片</span><i aria-hidden="true">→</i><span><b>2</b> 选择建模工具</span><i aria-hidden="true">→</i><span><b>3</b> 生成并下载</span><a class="workflow-help" href="#help" data-page="help">第一次使用？看这里</a></div>
+        <div class="workspace-grid">
+          <section class="input-panel panel" aria-labelledby="images-heading">
+            <div class="panel-heading"><div><span class="section-index">01</span><h2 id="images-heading">物体与图片</h2><span id="object-count" class="count-label">1 个物体</span></div><button class="button small" type="button" data-action="add-object"><span aria-hidden="true">＋</span> 新增物体</button></div>
+            <div class="panel-intro">主图是正面或最能看清物体的一张图。辅助图补充其他角度，同组图片共同描述一个物体。每批最多 20 个物体。</div>
+            <div id="objects-list" class="objects-list"></div>
+            <div class="import-actions"><button class="button" type="button" data-action="import-mains">批量导入主图</button><button class="button ghost" type="button" data-action="sample" hidden>使用示例图片</button><span>PNG · JPEG · WebP</span></div>
+          </section>
+          <aside class="tools-panel panel" aria-labelledby="tools-heading">
+            <div class="panel-heading"><div><span class="section-index">02</span><h2 id="tools-heading">选择建模工具</h2><span class="count-label">已自动选推荐项</span></div></div>
+            <div class="panel-intro">第一次用，保持默认选择即可。也可多选，对比生成结果。<a href="#setup" data-page="setup" class="inline-link">安装更多工具 →</a></div>
+            <div id="engines-list" class="engines-list"><div class="empty small-empty"><span class="spinner" aria-hidden="true"></span><p>正在读取已安装工具…</p></div></div>
+            <div class="tool-footnote"><span aria-hidden="true">ⓘ</span><span>单图工具使用主图；多图工具使用主图与辅助图。任务自动排队，依次运行。</span></div>
+          </aside>
+        </div>
+        <div class="start-bar panel"><div class="batch-name-field"><label for="batch-name">本批名称 <span>可选</span></label><input id="batch-name" maxlength="100" placeholder="例如：我的模型对比" autocomplete="off"></div><div class="start-summary"><strong id="production-summary">准备好图片与工具，就可以开始</strong><span id="production-detail">每个物体会分别交给所选工具生产</span></div><button id="start-production" class="button primary start-button" type="button" data-action="start" disabled><span aria-hidden="true">▷</span> 开始生产</button></div>
+      </section>
+      <section id="imagegen-page" class="page" aria-labelledby="imagegen-title" hidden>
+        <div class="page-heading"><div><div class="eyebrow">LOCAL IMAGE GENERATION</div><h1 id="imagegen-title">描述画面，生成图片。</h1><p>用文字在本机生成图片，选作主图，再交给 3D 工具生产。</p></div><span class="local-badge"><span aria-hidden="true">●</span> 本地运行</span></div>
+        <div class="imagegen-grid">
+          <section class="panel prompt-panel" aria-labelledby="prompt-heading">
+            <div class="panel-heading"><div><span class="section-index">01</span><h2 id="prompt-heading">描述你想生成的图片</h2></div></div>
+            <div class="prompt-fields"><label for="image-prompt" class="sr-only">图片描述</label><textarea id="image-prompt" rows="6" maxlength="3000" placeholder="例如：一只橙色的机械小牛，完整单体，正面视角，清晰轮廓，白色背景，精细的三维模型风格。中文或英文都可以。"></textarea><p class="field-hint">准备做 3D 主图时，完整物体、清晰轮廓和简洁背景更方便使用。</p>
+              <div id="imagegen-readiness" class="readiness-banner compact" role="status" hidden></div>
+              <details id="image-advanced" class="advanced-options"><summary>高级设置 <span>尺寸、质量与随机种子</span></summary><p class="field-hint">保持默认即可。较大的图片和更多步数会增加生成时间；随机种子控制同一描述的变化。</p><div class="imagegen-settings"><label>宽度<select id="image-width"><option value="512">512 px</option><option value="768">768 px</option><option value="1024">1024 px</option></select></label><label>高度<select id="image-height"><option value="512">512 px</option><option value="768">768 px</option><option value="1024">1024 px</option></select></label><label>步数<input id="image-steps" type="number" min="1" max="100" value="20" inputmode="numeric"></label></div>
+              <div class="weight-variant-field"><label for="image-weight-variant">模型版本<select id="image-weight-variant" disabled><option value="">正在读取可用版本…</option></select></label><p id="image-weight-note" class="field-hint">默认版本够用；各版本的安装与实测状态分别显示。</p><div id="image-variant-installs" class="variant-install-links" hidden></div></div>
+              <div class="seed-settings"><label for="image-random-seed"><input id="image-random-seed" type="checkbox" checked> 每次随机种子</label><label class="seed-value-label" for="image-seed">指定种子<input id="image-seed" type="number" min="0" max="2147483647" step="1" value="42" inputmode="numeric" disabled></label></div></details>
+            </div>
+            <div class="imagegen-submit"><span id="imagegen-ready-note">正在读取本地生图工具…</span><button id="start-imagegen" class="button primary" data-action="start-imagegen" type="button" disabled>生成图片</button></div>
+          </section>
+          <aside class="panel" aria-labelledby="image-engines-heading"><div class="panel-heading"><div><span class="section-index">02</span><h2 id="image-engines-heading">生图工具</h2></div></div><div class="panel-intro">选择可用的本地模型。缺少模型时，按提示安装后回来继续。</div><div id="image-engines-list" class="engines-list"><div class="empty small-empty"><p>正在读取安装状态…</p></div></div><div class="tool-footnote"><span aria-hidden="true">ⓘ</span><span>生图和 3D 生产共用队列，系统会依次安排，无需手动管理。</span></div></aside>
+        </div>
+        <div class="imagegen-jobs-heading"><h2>生成记录</h2><span>图片完成后可一键放入 3D 准备区</span></div><div id="image-jobs-list" class="batches-list"></div>
+      </section>
+      <section id="edit-page" class="page" aria-label="生图与图片编辑" hidden></section>
+      <section id="multiview-page" class="page" aria-label="补充多个视角" hidden></section>
+      <section id="texture-page" class="page" aria-label="模型上色" hidden></section>
+      <section id="queue-page" class="page" aria-labelledby="queue-title" hidden>
+        <div class="page-heading"><div><div class="eyebrow">PRODUCTION QUEUE</div><h1 id="queue-title">任务进度</h1><p>查看正在做什么、进行到哪一步。完成后预览作品，失败后查看原因并重试。</p></div><a class="button" href="#workspace">＋ 新建生产</a></div>
+        <div class="section-toolbar"><div class="segmented" aria-label="队列筛选"><button type="button" class="active" data-action="queue-filter" data-filter="all" aria-pressed="true">全部</button><button type="button" data-action="queue-filter" data-filter="active" aria-pressed="false">进行中</button><button type="button" data-action="queue-filter" data-filter="finished" aria-pressed="false">已结束</button></div><span class="muted small-text">关闭应用会停止任务 · 已完成的作品保留</span></div>
+        <div id="batches-list" class="batches-list"></div>
+      </section>
+      <section id="results-page" class="page" aria-labelledby="results-title" hidden>
+        <div class="page-heading"><div><div class="eyebrow">YOUR ASSETS</div><h1 id="results-title">我的作品</h1><p>查看作品、旋转模型或下载文件。也可以导入已有 GLB，继续上色或导出。</p></div><div class="heading-actions"><button class="button" type="button" data-action="import-model">导入 GLB 模型</button><a class="button" href="#workspace">＋ 新建生产</a></div></div>
+        <div class="section-toolbar results-toolbar"><label class="search-field"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="result-search" type="search" placeholder="搜索物体、工具或批次" aria-label="搜索产物"></label><label class="filter-field"><span class="sr-only">筛选生产工具</span><select id="result-engine-filter"><option value="">全部工具</option></select></label></div>
+        <div id="results-list" class="results-list"></div>
+      </section>
+      <section id="setup-page" class="page" aria-labelledby="setup-title" hidden>
+        <div class="page-heading"><div><div class="eyebrow">MAKE YOUR COMPUTER READY</div><h1 id="setup-title">让电脑准备好创作。</h1><p>先检测电脑，再选需要的模型。安装过程会下载运行环境与模型，完成后回到创作。</p></div><button id="setup-refresh" type="button" class="button" data-setup-action="refresh">重新检测</button></div>
+        <ol class="setup-steps" aria-label="准备步骤"><li><b>1</b><span>检测电脑<small>显卡、内存与剩余空间</small></span></li><li><b>2</b><span>安装模型<small>查看大小与使用许可</small></span></li><li><b>3</b><span>开始创作<small>放入图片或输入想法</small></span></li></ol>
+        <div id="setup-feedback" class="readiness-banner" role="status" aria-live="polite" hidden></div>
+        <section class="panel setup-hardware-panel" aria-labelledby="hardware-title"><div class="panel-heading"><h2 id="hardware-title">你的电脑</h2><span id="setup-hardware-note" class="count-label">正在检测</span></div><div id="setup-hardware" class="setup-hardware"><p class="field-hint">正在读取显卡、内存与硬盘…</p></div><div id="setup-requirements" class="setup-requirements"></div></section>
+        <div class="section-toolbar setup-toolbar"><div><h2>选择你需要的能力</h2><p class="field-hint">按需下载安装。先从默认尺寸开始试用；安装完成不等于本机生成已通过。</p></div><div class="setup-catalog-filters"><label class="search-field"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="setup-search" type="search" placeholder="搜索模型或能力" aria-label="搜索模型或能力"></label><label class="filter-field"><span class="sr-only">筛选模型能力</span><select id="setup-filter"><option value="all">全部能力</option><option value="model">图片变 3D</option><option value="image">文字生成图片</option><option value="edit">图片编辑与图生图</option><option value="multiview">补充多个视角</option><option value="texture">模型上色</option></select></label></div></div>
+        <details class="panel setup-credentials"><summary>需要 Hugging Face 授权的模型</summary><p class="field-hint">先在模型官方页面申请访问并同意许可，再提供有读取权限的 Token。仅保存在本机授权存储中，不写入创作记录、页面存储或日志。</p><div class="setup-credential-form"><label for="setup-hf-token">读取 Token<input id="setup-hf-token" type="password" autocomplete="off" spellcheck="false" placeholder="hf_…" maxlength="512"></label><button class="button" type="button" data-setup-action="save-credentials">保存本机授权</button><button class="button ghost" type="button" data-setup-action="clear-credentials">清除授权</button></div><p id="setup-credential-status" class="field-hint" role="status">正在读取授权状态…</p><a href="https://huggingface.co/settings/tokens" class="inline-link" target="_blank" rel="noopener noreferrer">创建读取 Token ↗</a></details>
+        <div id="setup-models" class="setup-models"><div class="empty"><span class="spinner" aria-hidden="true"></span><p>正在读取模型目录…</p></div></div>
+        <section id="setup-jobs-section" class="setup-jobs-section" aria-labelledby="setup-jobs-title" hidden><h2 id="setup-jobs-title">安装进度</h2><p class="field-hint">安装期间保持应用打开。失败后可以重试，已下载文件会尽量复用。</p><div id="setup-jobs" class="setup-jobs"></div></section>
+        <div class="setup-next panel"><div><strong>准备完成后，试着造第一个作品。</strong><p>有图片就直接建模；只有想法，就先用文字生成图片。</p></div><div><a href="#workspace" data-page="workspace" class="button primary">图片变 3D</a><a href="#imagegen" data-page="imagegen" class="button">文字生成图片</a></div></div>
+      </section>
+      <section id="help-page" class="page" aria-labelledby="help-title" hidden>
+        <div class="page-heading"><div><div class="eyebrow">A LITTLE HELP TO GET STARTED</div><h1 id="help-title">从想法到作品，几步就好。</h1><p>不用先懂模型参数。选择想做的事，跟着步骤往下走。</p></div><a href="#setup" data-page="setup" class="button">检测与安装模型</a></div>
+        <div class="help-grid"><article class="panel help-card"><span class="help-number">01</span><h2>我有图片，想做 3D</h2><p>打开“图片变 3D”，拖入一张完整物体的照片，保留默认工具，点击“开始生产”。在队列看进度，完成后去“我的作品”旋转和下载。</p><a href="#workspace" data-page="workspace" class="inline-link">开始图片建模 →</a></article><article class="panel help-card"><span class="help-number">02</span><h2>我只有想法，没有图片</h2><p>打开首页，写清物体、颜色和风格，选择生图与建模模型，点击“一键生成图片和 3D”。应用会先生图再自动建模。想先挑图片，也可进入“文字生成图片”。</p><a href="#imagegen" data-page="imagegen" class="inline-link">用文字生成图片 →</a></article><article class="panel help-card"><span class="help-number">03</span><h2>我已有模型，想预览或上色</h2><p>先在首页或成品页导入本机 GLB。白色模型可在“模型上色”使用同一物体的参考图上色。上色会保存新结果，原模型保留。历史视频和带动作的模型仍可在“我的作品”预览、下载。</p><a href="#texture" data-page="texture" class="inline-link">给模型上色 →</a></article></div>
+        <section class="panel help-faq" aria-labelledby="faq-title"><h2 id="faq-title">第一次使用常见问题</h2><details open><summary>这台电脑还没安装模型，怎么办？</summary><p>去“模型管理”选一个推荐工具，确认下载大小及许可后点击“下载并安装”。工具会补齐运行环境、下载模型并校验文件。环境不达要求时按检测提醒处理；需要账号授权的模型先去官方页面申请。安装好一个对应工具就可以开始，不必全部安装。</p></details><details><summary>照片应该怎么拍？辅助图是什么？</summary><p>让一个完整物体清楚出现在画面中，尽量保持简单背景，别被其他物体遮挡。主图是最能看清物体的一张；辅助图是同一物体的左、背、右侧照片，可选。只有支持多图的工具会读取辅助图。</p></details><details><summary>模型安装和创作需要联网吗？</summary><p>首次安装需要联网下载开源运行环境和模型文件。安装完成后，生成在本机运行，不需要外部生图付费接口。下载体积较大，先查看磁盘空间；网络中断可查看安装记录并重试。</p></details><details><summary>点不动“开始生产”或“生成图片”？</summary><p>先看页面提示：图片建模需要主图和一个可用工具；文字生图需要描述、可用工具及已校验权重。缺模型时去“模型管理”安装。若连接中断，点击刷新或重新打开应用。</p></details><details><summary>生成很慢，或者失败了？</summary><p>本机一次运行一个生成任务，避免显卡内存冲突。排队时等当前任务结束；失败后在队列查看错误和日志，再重试。显存不足可减少图片尺寸或选择较轻的模型。提交超时先检查队列，避免重复提交。</p></details><details><summary>作品在哪？关闭窗口会丢吗？</summary><p>作品在“我的作品”，支持单文件、单任务或整批下载。源文件保存在项目的 outputs 目录，输入在 inputs 目录。关闭应用会停止正在运行的任务；已完成作品保留。重新打开后，未完成任务标为中断，当前支持的图片、3D 与上色任务可在队列重试。</p></details><details><summary>“已安装”和“已就绪”有什么区别？</summary><p>“已安装”表示本机已检测到运行环境与模型，可尝试生成；“已就绪”表示有本机成功生成记录。两者都不代表每个作品的效果已合格，仍需要你检查形状、背面和上色。</p></details><details><summary>想换一个生图版本，在哪里安装？</summary><p>默认版本就能开始。要比较其他版本，在生图页展开“高级设置”，点击所需版本的安装链接。下载并校验完成后，回到高级设置手动选择该版本；工具不会自动替你更换已选版本。</p></details></section>
+      </section>
+    </main>
+    <footer class="app-footer"><span>从一个想法开始，在自己的电脑里完成。</span><span>build something · 造点啥 <span id="footer-version">v0.9.1</span></span></footer>
+  </div>
+  <div id="notification" class="notification" role="status" aria-live="polite" hidden></div>
+  <div id="live-announcement" class="sr-only" role="status" aria-live="polite"></div>
+  <dialog id="setup-install-dialog" class="setup-install-dialog" aria-labelledby="setup-install-title"><div class="preview-heading"><h2 id="setup-install-title">安装模型</h2><button type="button" class="button icon-button ghost" data-setup-action="close-install" aria-label="关闭安装确认">×</button></div><div class="setup-install-body"><p id="setup-install-summary"></p><p id="setup-install-license" class="field-hint"></p><a id="setup-license-link" class="inline-link" target="_blank" rel="noopener noreferrer">查看模型许可 ↗</a><label class="setup-consent"><input id="setup-license-accept" type="checkbox"> 我已查看使用许可，同意下载模型及所需运行环境</label><p class="field-hint">下载与安装会写入本机项目目录，不会自动提交创作任务。</p><div class="setup-dialog-actions"><button class="button" type="button" data-setup-action="close-install">稍后安装</button><button id="setup-install-confirm" class="button primary" type="button" data-setup-action="confirm-install" disabled>下载并安装</button></div></div></dialog>
+  <dialog id="model-picker-dialog" class="model-picker-dialog" aria-labelledby="model-picker-title" aria-describedby="model-picker-description"><div class="preview-heading"><div><span class="eyebrow">CHOOSE A MODEL</span><h2 id="model-picker-title">看图选择模型</h2></div><button id="close-model-picker" class="button icon-button ghost" type="button" aria-label="关闭模型选择">×</button></div><div class="model-picker-body"><p id="model-picker-description" class="field-hint">选择可上色的静态模型。缩略图标注来源；建模与上色结果分别列出。</p><div class="model-picker-toolbar"><label class="search-field"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="model-picker-search" type="search" placeholder="搜索物体、工具或文件" aria-label="搜索可选择的模型" autofocus></label><label class="filter-field"><span class="sr-only">筛选模型阶段</span><select id="model-picker-stage"><option value="">全部阶段</option><option value="model">建模结果</option><option value="paint">已上色</option></select></label></div><p id="model-picker-count" class="field-hint" role="status" aria-live="polite"></p><div id="model-picker-list" class="model-picker-list"></div></div></dialog>
+  <dialog id="delete-result-dialog" class="delete-result-dialog" aria-labelledby="delete-result-title" aria-describedby="delete-result-description"><div class="preview-heading"><h2 id="delete-result-title">删除本次生成？</h2><button class="button icon-button ghost" type="button" data-action="close-delete-result" aria-label="关闭删除确认">×</button></div><div class="delete-result-body"><p id="delete-result-name"></p><p id="delete-result-description">删除本次生成及全部附带文件，其他工具结果不受影响。原始输入图片会保留，此操作无法撤销。</p><div class="delete-result-actions"><button class="button" type="button" data-action="close-delete-result">保留结果</button><button id="confirm-delete-result" class="button danger" type="button" data-action="confirm-delete-result">删除本次生成</button></div></div></dialog>
+  <dialog id="asset-dialog" class="asset-dialog" aria-labelledby="preview-title">
+    <div class="preview-heading"><div><span class="eyebrow">ASSET PREVIEW</span><h2 id="preview-title">产物预览</h2></div><button class="button icon-button ghost" type="button" data-action="close-preview" aria-label="关闭预览">×</button></div>
+    <div class="preview-body"><div class="preview-stage"><div id="preview-content"></div><div id="preview-message" class="preview-message" role="status"></div><div id="model-controls" class="model-controls" hidden><span>拖动旋转 · 滚轮缩放</span><label><input id="auto-rotate" type="checkbox"> 自动旋转</label><button class="button small" type="button" data-action="reset-camera">重置视角</button></div></div><aside class="preview-files"><h3>本次全部产物</h3><div id="preview-file-list"></div><a id="preview-download" class="button primary" download>下载当前文件</a></aside></div>
+  </dialog>
+  <dialog id="image-use-dialog" class="image-use-dialog" aria-labelledby="image-use-title"><div class="preview-heading"><div><span class="eyebrow">IMAGE TO 3D</span><h2 id="image-use-title">将生成图片加入 3D 准备区</h2></div><button class="button icon-button ghost" data-action="close-image-use" type="button" aria-label="关闭图片导入">×</button></div><div class="image-use-body"><img id="image-use-preview" alt="即将加入准备区的生成图片"><div class="image-use-fields"><label for="image-use-object">目标物体<select id="image-use-object"></select></label><label for="image-use-view">用作图片<select id="image-use-view"><option value="main">主图</option><option value="left">左侧辅助图</option><option value="back">背面辅助图</option><option value="right">右侧辅助图</option></select></label><p id="image-use-note" class="field-hint">新增一个物体，并将这张图片用作主图。</p><button id="confirm-image-use" class="button primary" type="button" data-action="confirm-image-use">加入准备区</button></div></div></dialog>
+  <input id="image-picker" type="file" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" hidden>
+  <input id="import-model-file" type="file" accept="model/gltf-binary,.glb" aria-label="导入 GLB 模型" hidden>
+</body>
+</html>

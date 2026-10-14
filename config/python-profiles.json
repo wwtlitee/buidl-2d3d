@@ -1,0 +1,154 @@
+{
+  "version": "0.5.0",
+  "author": "Unclecow",
+  "profiles": [
+    {
+      "id": "hunyuan3d",
+      "bundles": [
+        {
+          "path": "config/deployment-bundles/hunyuan3d-0.5.0.zip",
+          "size": 171980,
+          "sha256": "d98dcf5aa369dd2b8325e75299f63ab67f755d374cc7c393a929ca8d95c0ce60"
+        }
+      ],
+      "python": "3.11.14",
+      "environment": "engines/hunyuan3d/.venv",
+      "requirements": "config/deployment-requirements/hunyuan3d.txt"
+    },
+    {
+      "id": "triposr",
+      "bundles": [
+        {
+          "path": "config/deployment-bundles/triposr-0.5.0.zip",
+          "size": 56903,
+          "sha256": "a7a91c92d6cad8c5233993d4b2092c2335e7ea859493d60939a7644865574029"
+        }
+      ],
+      "python": "3.11.14",
+      "environment": "engines/triposr/.venv",
+      "requirements": "config/deployment-requirements/triposr.txt"
+    },
+    {
+      "id": "hunyuan3d-mv",
+      "bundles": [
+        {
+          "path": "config/deployment-bundles/hunyuan3d-mv-0.5.0.zip",
+          "size": 3859,
+          "sha256": "fce4011c5de2481773fba67f982c5fecd46239cb7d378ea21995a100c323dc07"
+        }
+      ],
+      "python": "3.11.14"
+    },
+    {
+      "id": "triposg",
+      "bundles": [
+        {
+          "path": "config/deployment-bundles/triposg-0.5.0.zip",
+          "size": 68398,
+          "sha256": "4c355b0ba03a746805e02ba54b951b2a02ab09b0a552dc46a64f909c574c026e"
+        }
+      ],
+      "python": "3.11.14",
+      "environment": "engines/triposg/.venv",
+      "requirements": "config/deployment-requirements/triposg.txt"
+    },
+    {
+      "id": "partcrafter",
+      "bundles": [
+        {
+          "path": "config/deployment-bundles/partcrafter-0.5.0.zip",
+          "size": 101710,
+          "sha256": "bb5a8283514ec49963aea7b02a03135e9c766170f0548ba9b9ce4a904d69e621"
+        }
+      ],
+      "python": "3.11.14",
+      "environment": "engines/partcrafter/.venv",
+      "requirements": "config/deployment-requirements/partcrafter.txt",
+      "wheelIndexes": [
+        "https://data.pyg.org/whl/torch-2.5.0+cu124.html"
+      ]
+    },
+    {
+      "id": "mia-rig",
+      "bundles": [
+        {
+          "path": "config/deployment-bundles/mia-rig-0.5.0.zip",
+          "size": 1047848,
+          "sha256": "e3f405abf88de44c2c852fc9f88c97f277828ba37ee4a5146ad37347e1c78c7f"
+        }
+      ],
+      "python": "3.11.14",
+      "environment": "animation-lab/mia/.venv",
+      "requirements": "config/deployment-requirements/mia-rig.txt",
+      "torchIndex": "https://download.pytorch.org/whl/cu121",
+      "wheelIndexes": [
+        "https://data.pyg.org/whl/torch-2.1.0+cu121.html"
+      ]
+    },
+    {
+      "id": "mia-motion",
+      "bundles": [
+        {
+          "path": "config/deployment-bundles/mia-motion-0.5.0.zip",
+          "size": 625,
+          "sha256": "6f163ac9c87127508ec524ee63154653dd92da6efbc702e0ac67c553876d7f87"
+        }
+      ],
+      "python": "3.11.14"
+    },
+    {
+      "id": "unirig",
+      "bundles": [
+        {
+          "path": "config/deployment-bundles/unirig-0.5.0.zip",
+          "size": 243945,
+          "sha256": "15233ddb970b196855d7a54dfbbcb354db6b9ef534d82874b47d91b679c63602"
+        }
+      ],
+      "python": "3.11.14",
+      "environment": "animation-lab/unirig/.venv",
+      "requirements": "config/deployment-requirements/unirig.txt",
+      "wheelIndexes": [
+        "https://data.pyg.org/whl/torch-2.5.0+cu124.html"
+      ]
+    },
+    {
+      "id": "riganything",
+      "bundles": [
+        {
+          "path": "config/deployment-bundles/riganything-0.5.0.zip",
+          "size": 55713,
+          "sha256": "4917e7895576b0594cfbe9f79dcd1f5d2bd90d31afcd6376bbec628aaa1d1522"
+        }
+      ],
+      "python": "3.11.14",
+      "environment": "animation-lab/riganything/.venv",
+      "requirements": "config/deployment-requirements/riganything.txt"
+    },
+    {
+      "id": "hunyuan-paint",
+      "bundles": [
+        {
+          "path": "config/deployment-bundles/hunyuan-paint-0.5.0.zip",
+          "size": 381387,
+          "sha256": "f464275207fd11985437bde1ba9315750bca0ba2baa147ca65c871eb03d99ff0"
+        }
+      ],
+      "python": "3.11.14",
+      "environment": "texture-lab/hunyuan-paint/.venv",
+      "requirements": "config/deployment-requirements/hunyuan-paint.txt"
+    },
+    {
+      "id": "basic-motion",
+      "bundles": [
+        {
+          "path": "config/deployment-bundles/basic-motion-0.5.0.zip",
+          "size": 491,
+          "sha256": "e6b58ce617ef50e0d848fff32fe3aeb9ab084c594b638f61755b2b0bf078bfdc"
+        }
+      ],
+      "python": "3.11.14"
+    }
+  ],
+  "productVersion": "0.9.1"
+}

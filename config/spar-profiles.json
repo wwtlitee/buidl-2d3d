@@ -1,0 +1,26 @@
+{
+  "version": "0.7.0",
+  "author": "Unclecow",
+  "profiles": [
+    {
+      "id": "spar3d",
+      "version": "0.7.0",
+      "python": "3.11.14",
+      "environment": "engines/spar3d/.venv",
+      "requirements": "config/deployment-requirements/spar3d.txt",
+      "torchIndex": "https://download.pytorch.org/whl/cu124",
+      "postCommands": [
+        [
+          "@root:scripts/providers/spar-setup.py"
+        ]
+      ],
+      "verifyCommands": [
+        [
+          "@root:scripts/providers/spar-run.py",
+          "--check"
+        ]
+      ]
+    }
+  ],
+  "productVersion": "0.9.1"
+}

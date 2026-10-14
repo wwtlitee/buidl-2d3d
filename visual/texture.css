@@ -1,0 +1,20 @@
+/* Multi-view texturing · v0.8.0a · Unclecow */
+.texture-layout { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(260px, .8fr); gap: 24px; align-items: start; }
+.texture-panel { background: var(--surface); border: 0; border-radius: 12px; padding: 28px; min-width: 0; }
+.texture-panel h2 { font-size: 21px; font-weight: 500; letter-spacing: -.4px; margin: 0 0 24px; }
+.texture-panel label { display: block; margin: 22px 0 10px; font-size: 14px; }
+.texture-panel > select:not(.sr-only) { width: 100%; }
+.texture-selected { display: flex; gap: 14px; align-items: center; margin: 16px 0; min-width: 0; }
+.texture-selected img { width: 96px; height: 96px; object-fit: contain; background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; }
+.texture-selected p { font-size: 14px; overflow-wrap: anywhere; color: var(--muted); }
+.texture-references { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }
+.texture-reference { border: 1px dashed var(--line-strong); background: transparent; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.texture-reference strong { font-size: 14px; font-weight: 500; }
+.texture-reference img, .texture-image-empty { width: 100%; height: 165px; object-fit: contain; border-radius: 6px; background: var(--canvas); }
+.texture-image-empty { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 14px; padding: 16px; text-align: center; }
+.texture-reference input { font-size: 12px; width: 100%; }
+.texture-summary p { font-size: 14px; line-height: 1.8; }
+#start-texturing { width: 100%; margin-top: 14px; }
+@media (max-width: 1000px) { .texture-layout { grid-template-columns: 1fr; } }
+@media (max-width: 700px) { .texture-panel { padding: 18px; } }
+@media (max-width: 480px) { .texture-references { grid-template-columns: 1fr; } }

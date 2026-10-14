@@ -1,0 +1,436 @@
+{
+  "sourceRevision": "4277e0018232bac82bb2c103caf0893cedb711be",
+  "modelRevision": "6de4033df6b53366f3c009d22f5ec434bb55e59f",
+  "baseRevision": "462165984030d82259a11f4367a4eed129e94a7b",
+  "vaeRevision": "207b116dae70ace3637169f1ddd2434b91b3a8cd",
+  "meshInitGitBlobSha1": "dd4bbdec18af019b5cb1ece22065c08d9ac8810b",
+  "files": [
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/LICENSE",
+      "size": 11357,
+      "gitBlobSha1": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/LICENSE",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/data/multiview.py",
+      "size": 20624,
+      "gitBlobSha1": "a8cde733c2b0d9ce441576b7098ad5c6669d3647",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/data/multiview.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/loaders/__init__.py",
+      "size": 47,
+      "gitBlobSha1": "f93ecab4e9cb397dc0050b42edce64daa84b74f0",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/loaders/__init__.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/loaders/custom_adapter.py",
+      "size": 3246,
+      "gitBlobSha1": "b9ac0b54f07b4f1fd5e60e299ee9b672c1ea605d",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/loaders/custom_adapter.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/models/attention_processor.py",
+      "size": 27497,
+      "gitBlobSha1": "55eebb86b2205a8344ca0239c2877f0df7cb1dcf",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/models/attention_processor.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/pipelines/pipeline_mvadapter_i2mv_sd.py",
+      "size": 33095,
+      "gitBlobSha1": "f8f63b6004fc2dd3968458208c56fe158c66adb5",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/pipelines/pipeline_mvadapter_i2mv_sd.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/pipelines/pipeline_mvadapter_i2mv_sdxl.py",
+      "size": 44176,
+      "gitBlobSha1": "79d1128425e2e24201630785a8358ed0121a3ef5",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/pipelines/pipeline_mvadapter_i2mv_sdxl.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/pipelines/pipeline_mvadapter_t2mv_sd.py",
+      "size": 27841,
+      "gitBlobSha1": "99de1e30de6ca5096f466a51757a00ed7b15aa92",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/pipelines/pipeline_mvadapter_t2mv_sd.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/pipelines/pipeline_mvadapter_t2mv_sdxl.py",
+      "size": 38411,
+      "gitBlobSha1": "cae6bc6c2ec88dd3675e03ab60fedc7f5661dbd3",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/pipelines/pipeline_mvadapter_t2mv_sdxl.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/pipelines/pipeline_texture.py",
+      "size": 16257,
+      "gitBlobSha1": "10147a7e923124a85d6692d2d8ecbcdec86e1cb1",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/pipelines/pipeline_texture.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/schedulers/scheduler_utils.py",
+      "size": 2526,
+      "gitBlobSha1": "d25a55eed58eb33c2932a4d8e7b8c424a7a7dcb5",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/schedulers/scheduler_utils.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/schedulers/scheduling_shift_snr.py",
+      "size": 4580,
+      "gitBlobSha1": "6da615031bd3a3239f88d184083b2746f2ffab42",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/schedulers/scheduling_shift_snr.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/systems/base.py",
+      "size": 9044,
+      "gitBlobSha1": "566e98048841a4ee7410d280623d5cdffd6d678b",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/systems/base.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/systems/mvadapter_image_sd.py",
+      "size": 17043,
+      "gitBlobSha1": "d24b90e72c5c9ab27b7fd5301f5fd482cb4ccaf5",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/systems/mvadapter_image_sd.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/systems/mvadapter_image_sdxl.py",
+      "size": 18847,
+      "gitBlobSha1": "e98e475d565afd3aab625b4d27700b2a96375e16",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/systems/mvadapter_image_sdxl.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/systems/mvadapter_text_sd.py",
+      "size": 15399,
+      "gitBlobSha1": "a208e550a7c241ca7b2ecea65b78903dfc239dac",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/systems/mvadapter_text_sd.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/systems/mvadapter_text_sdxl.py",
+      "size": 16872,
+      "gitBlobSha1": "74e32d56e660bcc53506a99563c150d604aec8f6",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/systems/mvadapter_text_sdxl.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/systems/utils.py",
+      "size": 5626,
+      "gitBlobSha1": "95599a40bbe2db32ff00ef01050f2837954afa3d",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/systems/utils.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/__init__.py",
+      "size": 195,
+      "gitBlobSha1": "8e4b96fb0a8393b7bcce7b6f40516a6a49fac1cc",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/__init__.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/base.py",
+      "size": 4126,
+      "gitBlobSha1": "f78adda249e57664ee2ee8b38b41caf5e80a780f",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/base.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/callbacks.py",
+      "size": 5079,
+      "gitBlobSha1": "50cb08a514b606ebb4ed6ecc0ed8c2f3d985f3e5",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/callbacks.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/config.py",
+      "size": 4689,
+      "gitBlobSha1": "17688355d17dc30b45d85263688f75c782b9dcb8",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/config.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/core.py",
+      "size": 609,
+      "gitBlobSha1": "7c26c6de3f3f3b3ffee6d0c691342de9f92ac69f",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/core.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/geometry.py",
+      "size": 9201,
+      "gitBlobSha1": "3ae9196ab36bc9a29b1b2a02a4c78b7e7257db48",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/geometry.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/logging.py",
+      "size": 9544,
+      "gitBlobSha1": "240dcbc6a2be41d80a244ed35b3fc196cc42880f",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/logging.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/mesh_utils/__init__.py",
+      "size": 542,
+      "gitBlobSha1": "dd4bbdec18af019b5cb1ece22065c08d9ac8810b",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/mesh_utils/__init__.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/mesh_utils/blend.py",
+      "size": 9512,
+      "gitBlobSha1": "8f190f84108c0e8b0132285bdf6519a8ffbe51ce",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/mesh_utils/blend.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/mesh_utils/camera.py",
+      "size": 7256,
+      "gitBlobSha1": "77d8bcf726c92fb231118222b3bb16e9f062f3d3",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/mesh_utils/camera.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/mesh_utils/cv_ops.py",
+      "size": 2785,
+      "gitBlobSha1": "961cabf9791c5410dad076211ad9e6de5ba92cc3",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/mesh_utils/cv_ops.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/mesh_utils/mesh.py",
+      "size": 18157,
+      "gitBlobSha1": "24dc320eb0d9260621f43e498fe561e360efe391",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/mesh_utils/mesh.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/mesh_utils/mesh_process.py",
+      "size": 11613,
+      "gitBlobSha1": "a556640ba1be78ca07f1bdbc7f74f69b03ab85b9",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/mesh_utils/mesh_process.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/mesh_utils/projection.py",
+      "size": 6924,
+      "gitBlobSha1": "0409b66e40e96cd37a57911e3bc6adb583fde087",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/mesh_utils/projection.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/mesh_utils/render.py",
+      "size": 15576,
+      "gitBlobSha1": "e6d76cf87ab56cc5ffd9dc6678a63426454061df",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/mesh_utils/render.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/mesh_utils/seg.py",
+      "size": 1067,
+      "gitBlobSha1": "f74c67e7e97908fe0d7368a8e5e7a37303f699b9",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/mesh_utils/seg.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/mesh_utils/smart_paint.py",
+      "size": 12859,
+      "gitBlobSha1": "21931ab0514d66fef455ca89f85c8023a47dc48d",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/mesh_utils/smart_paint.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/mesh_utils/utils.py",
+      "size": 4428,
+      "gitBlobSha1": "fcb965fde409e5743ed9723c63a4e950d6d772e1",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/mesh_utils/utils.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/mesh_utils/uv.py",
+      "size": 15000,
+      "gitBlobSha1": "2ee756a47f9a7944d3c619758b9570f721b3b0b2",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/mesh_utils/uv.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/mesh_utils/warp.py",
+      "size": 10030,
+      "gitBlobSha1": "021e158d82755fbd97b4ec05cb1daa61399f4b31",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/mesh_utils/warp.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/misc.py",
+      "size": 6277,
+      "gitBlobSha1": "e29a9b7865641628576d39c469ec7396bc6d9f68",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/misc.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/ops.py",
+      "size": 15475,
+      "gitBlobSha1": "8272799b06ebcc1231034908e085a04a123732d0",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/ops.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/saving.py",
+      "size": 19052,
+      "gitBlobSha1": "3282772e24a847317edfadcba94bf05d73a03cea",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/saving.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/src/mvadapter/utils/typing.py",
+      "size": 1093,
+      "gitBlobSha1": "d4bb88ebc931bf49462c973d89980c671ce64915",
+      "url": "https://raw.githubusercontent.com/huanngzh/MV-Adapter/4277e0018232bac82bb2c103caf0893cedb711be/mvadapter/utils/typing.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/model_index.json",
+      "size": 609,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/model_index.json",
+      "mirrors": [],
+      "gitBlobSha1": "6cc5138ddb67e9309c9b4e058e33e52087f1d215"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/scheduler/scheduler_config.json",
+      "size": 479,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/scheduler/scheduler_config.json",
+      "mirrors": [],
+      "gitBlobSha1": "e5bc8421e047838523be7acfb6720f167f7382f6"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/text_encoder/config.json",
+      "size": 565,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/text_encoder/config.json",
+      "mirrors": [],
+      "gitBlobSha1": "cde352ada4bb95fdad2fc503b8121257cef215a6"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/text_encoder/model.fp16.safetensors",
+      "size": 246144152,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/text_encoder/model.fp16.safetensors",
+      "mirrors": [],
+      "sha256": "660c6f5b1abae9dc498ac2d21e1347d2abdb0cf6c0c0c8576cd796491d9a6cdd"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/text_encoder_2/config.json",
+      "size": 575,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/text_encoder_2/config.json",
+      "mirrors": [],
+      "gitBlobSha1": "da1848b5ed17b676f021578838f12c4023b86379"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/text_encoder_2/model.fp16.safetensors",
+      "size": 1389382176,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/text_encoder_2/model.fp16.safetensors",
+      "mirrors": [],
+      "sha256": "ec310df2af79c318e24d20511b601a591ca8cd4f1fce1d8dff822a356bcdb1f4"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/unet/config.json",
+      "size": 1680,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/unet/config.json",
+      "mirrors": [],
+      "gitBlobSha1": "c8714c90f0e2409156da42781954416cb7df36af"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/unet/diffusion_pytorch_model.fp16.safetensors",
+      "size": 5135149760,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/unet/diffusion_pytorch_model.fp16.safetensors",
+      "mirrors": [],
+      "sha256": "83e012a805b84c7ca28e5646747c90a243c65c8ba4f070e2d7ddc9d74661e139"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/tokenizer/merges.txt",
+      "size": 524619,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/tokenizer/merges.txt",
+      "mirrors": [],
+      "gitBlobSha1": "76e821f1b6f0a9709293c3b6b51ed90980b3166b"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/tokenizer/special_tokens_map.json",
+      "size": 472,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/tokenizer/special_tokens_map.json",
+      "mirrors": [],
+      "gitBlobSha1": "2c2130b544c0c5a72d5d00da071ba130a9800fb2"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/tokenizer/tokenizer_config.json",
+      "size": 737,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/tokenizer/tokenizer_config.json",
+      "mirrors": [],
+      "gitBlobSha1": "2e8612a429492973fe60635b3f44a28b065cfac0"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/tokenizer/vocab.json",
+      "size": 1059962,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/tokenizer/vocab.json",
+      "mirrors": [],
+      "gitBlobSha1": "469be27c5c010538f845f518c4f5e8574c78f7c8"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/tokenizer_2/merges.txt",
+      "size": 524619,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/tokenizer_2/merges.txt",
+      "mirrors": [],
+      "gitBlobSha1": "76e821f1b6f0a9709293c3b6b51ed90980b3166b"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/tokenizer_2/special_tokens_map.json",
+      "size": 460,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/tokenizer_2/special_tokens_map.json",
+      "mirrors": [],
+      "gitBlobSha1": "ae0c5be6f35217e51c4c000fd325d8de0294e99c"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/tokenizer_2/tokenizer_config.json",
+      "size": 725,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/tokenizer_2/tokenizer_config.json",
+      "mirrors": [],
+      "gitBlobSha1": "a8438e020c4497a429240d6b89e0bf9a6e2ffa92"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/base/tokenizer_2/vocab.json",
+      "size": 1059962,
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/tokenizer_2/vocab.json",
+      "mirrors": [],
+      "gitBlobSha1": "469be27c5c010538f845f518c4f5e8574c78f7c8"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/vae/config.json",
+      "size": 631,
+      "url": "https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/207b116dae70ace3637169f1ddd2434b91b3a8cd/config.json",
+      "mirrors": [],
+      "gitBlobSha1": "a0fc2b4620b60f1e599418c4de1c3d5e45db875a"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/vae/diffusion_pytorch_model.safetensors",
+      "size": 334643238,
+      "url": "https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/207b116dae70ace3637169f1ddd2434b91b3a8cd/diffusion_pytorch_model.safetensors",
+      "mirrors": [],
+      "sha256": "1b909373b28f2137098b0fd9dbc6f97f8410854f31f84ddc9fa04b077b0ace2c"
+    },
+    {
+      "path": "engines/mvadapter-i2mv-sdxl/models/adapter/mvadapter_i2mv_sdxl.safetensors",
+      "size": 3602537816,
+      "url": "https://huggingface.co/huanngzh/mv-adapter/resolve/6de4033df6b53366f3c009d22f5ec434bb55e59f/mvadapter_i2mv_sdxl.safetensors",
+      "mirrors": [],
+      "sha256": "260e486d507247db30601d22de317e3f9c07f75a29912d43ed5c3a4aab4db4c9"
+    }
+  ]
+}

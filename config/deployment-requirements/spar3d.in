@@ -1,0 +1,19 @@
+# SPAR3D independent Python3.11/CUDA12.4. v0.7.0 / Unclecow.
+torch==2.5.1+cu124
+torchvision==0.20.1+cu124
+setuptools==69.5.1
+wheel==0.45.1
+einops==0.7.0
+jaxtyping==0.2.31
+omegaconf==2.3.0
+transformers==4.42.3
+loralib==0.1.2
+trimesh==4.4.1
+numpy==1.26.4
+huggingface-hub==0.23.4
+safetensors==0.4.5
+pillow==11.3.0
+ftfy==6.3.1
+regex==2024.11.6
+tqdm==4.67.1
+PyYAML==6.0.2

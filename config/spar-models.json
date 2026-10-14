@@ -1,0 +1,463 @@
+{
+  "version": "0.7.0",
+  "author": "Unclecow",
+  "models": [
+    {
+      "id": "spar-build-tools",
+      "engineId": "spar-build-tools",
+      "title": "SPAR 私有 CUDA12.4 / Windows SDK 构建组件",
+      "kind": "utility",
+      "version": "0.7.0",
+      "description": "仅下载官方编译工具和头文件；VS2022 C++ 是外部前置，先检测再下载，不自动安装或修改系统。",
+      "files": [
+        {
+          "path": "cache/setup/spar-toolchain/cuda_nvcc-windows-x86_64-12.4.131-archive.zip",
+          "url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_nvcc/windows-x86_64/cuda_nvcc-windows-x86_64-12.4.131-archive.zip",
+          "size": 63662970,
+          "sha256": "3b14cf8dd9dda4a3b1a9682270d46eef775f018e17650187a8a448a06111f2b8",
+          "extractTo": "runtime/toolchains/spar3d/cuda-12.4",
+          "stripPrefix": "cuda_nvcc-windows-x86_64-12.4.131-archive/"
+        },
+        {
+          "path": "cache/setup/spar-toolchain/cuda_cudart-windows-x86_64-12.4.127-archive.zip",
+          "url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_cudart/windows-x86_64/cuda_cudart-windows-x86_64-12.4.127-archive.zip",
+          "size": 2474721,
+          "sha256": "6a1c32e68ee1a95ca17334691ff9ad1ffe7f352c24a083d55e4c96b8063b2bcb",
+          "extractTo": "runtime/toolchains/spar3d/cuda-12.4",
+          "stripPrefix": "cuda_cudart-windows-x86_64-12.4.127-archive/"
+        },
+        {
+          "path": "cache/setup/spar-toolchain/cuda_cccl-windows-x86_64-12.4.127-archive.zip",
+          "url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_cccl/windows-x86_64/cuda_cccl-windows-x86_64-12.4.127-archive.zip",
+          "size": 3171223,
+          "sha256": "908742d8f3c6fdd6d1d6316a7b919b5c506474f9551f491aa7335cb4f50bffbd",
+          "extractTo": "runtime/toolchains/spar3d/cuda-12.4",
+          "stripPrefix": "cuda_cccl-windows-x86_64-12.4.127-archive/"
+        },
+        {
+          "path": "cache/setup/spar-toolchain/microsoft.windows.sdk.cpp.10.0.26100.1.nupkg",
+          "url": "https://api.nuget.org/v3-flatcontainer/microsoft.windows.sdk.cpp/10.0.26100.1/microsoft.windows.sdk.cpp.10.0.26100.1.nupkg",
+          "size": 155613545,
+          "sha256": "b4730a467a8f29145fc0136b2b3f626767e985f6aa6e32f1352953c38d6ff5d2",
+          "extractTo": "runtime/toolchains/spar3d/windows-sdk/microsoft.windows.sdk.cpp"
+        },
+        {
+          "path": "cache/setup/spar-toolchain/microsoft.windows.sdk.cpp.x64.10.0.26100.1.nupkg",
+          "url": "https://api.nuget.org/v3-flatcontainer/microsoft.windows.sdk.cpp.x64/10.0.26100.1/microsoft.windows.sdk.cpp.x64.10.0.26100.1.nupkg",
+          "size": 51584013,
+          "sha256": "7670843ddee568ca1e89b0feb36046ede6a3df5dbf5fa0106ec2eee9e8224e38",
+          "extractTo": "runtime/toolchains/spar3d/windows-sdk/microsoft.windows.sdk.cpp.x64"
+        }
+      ],
+      "required": [
+        {
+          "path": "runtime/toolchains/spar3d/cuda-12.4/bin/nvcc.exe"
+        },
+        {
+          "path": "runtime/toolchains/spar3d/cuda-12.4/lib/x64/cudart_static.lib"
+        },
+        {
+          "path": "runtime/toolchains/spar3d/windows-sdk/microsoft.windows.sdk.cpp/c/bin/10.0.26100.0/x64/rc.exe"
+        },
+        {
+          "path": "runtime/toolchains/spar3d/windows-sdk/microsoft.windows.sdk.cpp/c/Include/10.0.26100.0/ucrt/stddef.h"
+        }
+      ],
+      "sourceUrl": "https://developer.download.nvidia.com/compute/cuda/redist/redistrib_12.4.1.json",
+      "minimumVramMiB": 0,
+      "minimumRamGiB": 8,
+      "extractReserveBytes": 3221225472,
+      "prerequisites": [
+        {
+          "probe": "msvc",
+          "remedy": "请先安装 Visual Studio 2022 C++ Build Tools；程序不会自动安装系统组件。"
+        }
+      ],
+      "license": {
+        "label": "NVIDIA CUDA 与 Microsoft Windows SDK 官方许可",
+        "url": "https://developer.nvidia.com/cuda-toolkit",
+        "requiresAcceptance": true,
+        "notice": "仅在程序私有目录解压 CUDA/SDK；VS2022 C++ 工具链由用户维护。源码/模型许可另行适用。"
+      },
+      "validationStage": "researched",
+      "probes": [
+        {
+          "path": "runtime/toolchains/spar3d/cuda-12.4/bin/nvcc.exe",
+          "args": [
+            "--version"
+          ],
+          "requiredFlags": [
+            "release 12.4"
+          ],
+          "timeout": 30
+        }
+      ]
+    },
+    {
+      "id": "spar3d",
+      "engineId": "spar3d",
+      "title": "单图显色 UV 建模 · SPAR3D · Powered by Stability AI",
+      "kind": "model",
+      "version": "0.7.0",
+      "description": "官方单图点云条件建模与材质纹理烘焙；Windows 实验支持，安装会编译两个私有扩展，实际生成尚待本机验收。",
+      "recommended": false,
+      "mediaAdapter": false,
+      "appearance": "texture",
+      "capabilities": {
+        "modes": [
+          "model"
+        ],
+        "maxReferenceImages": 1,
+        "maxInputImages": 1,
+        "multiView": false,
+        "geometry": true,
+        "texturedOutput": true
+      },
+      "defaults": {
+        "textureResolution": 1024
+      },
+      "runtime": {
+        "type": "spar3d",
+        "family": "spar3d",
+        "python": "engines/spar3d/.venv/Scripts/python.exe",
+        "sourceDirectory": "engines/spar3d/src",
+        "modelDirectory": "engines/spar3d/models",
+        "nativeDirectory": "engines/spar3d/native",
+        "vendorDirectory": "engines/spar3d/vendor",
+        "jointMultiview": false,
+        "lowVramMode": true,
+        "revision": "fdc311b16809e6a8adc2f5a3407ebb3db1a95bd1",
+        "modelRevision": "5699918cb34f55cd7d828493d2725f3038313761"
+      },
+      "installable": true,
+      "authRequired": true,
+      "gated": true,
+      "gpuVerified": false,
+      "validationStage": "researched",
+      "minimumVramMiB": 7168,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 6442450944,
+      "sourceUrl": "https://github.com/Stability-AI/stable-point-aware-3d",
+      "files": [
+        {
+          "path": "cache/setup/spar3d-fdc311b16809e6a8adc2f5a3407ebb3db1a95bd1.zip",
+          "url": "https://codeload.github.com/Stability-AI/stable-point-aware-3d/zip/fdc311b16809e6a8adc2f5a3407ebb3db1a95bd1",
+          "size": 29852358,
+          "sha256": "ac67036ce30c702cd8c200c87eac976b02a8c127a43ae6cd8951be0ccf15eec3",
+          "extractTo": "engines/spar3d/src",
+          "stripPrefix": "stable-point-aware-3d-fdc311b16809e6a8adc2f5a3407ebb3db1a95bd1/"
+        },
+        {
+          "path": "engines/spar3d/models/LICENSE.md",
+          "url": "https://huggingface.co/stabilityai/stable-point-aware-3d/resolve/5699918cb34f55cd7d828493d2725f3038313761/LICENSE.md",
+          "size": 11716,
+          "authRequired": true,
+          "mirrors": [],
+          "gitBlobSha1": "a889fd6b2adf60bbbe8d687e011803892b828eab"
+        },
+        {
+          "path": "engines/spar3d/models/config.yaml",
+          "url": "https://huggingface.co/stabilityai/stable-point-aware-3d/resolve/5699918cb34f55cd7d828493d2725f3038313761/config.yaml",
+          "size": 3996,
+          "authRequired": true,
+          "mirrors": [],
+          "gitBlobSha1": "691b7b50f13599b03ea5eaaa5fdc01316c31bbf5"
+        },
+        {
+          "path": "engines/spar3d/models/model.safetensors",
+          "url": "https://huggingface.co/stabilityai/stable-point-aware-3d/resolve/5699918cb34f55cd7d828493d2725f3038313761/model.safetensors",
+          "size": 7326949440,
+          "authRequired": true,
+          "mirrors": [],
+          "sha256": "62673b63fd9dad425e74b213ffe8501262d9621d5174310ac33017747be31f58"
+        },
+        {
+          "path": "engines/spar3d/models/dinov2-large/config.json",
+          "url": "https://huggingface.co/facebook/dinov2-large/resolve/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/config.json",
+          "size": 549,
+          "mirrors": [],
+          "gitBlobSha1": "5def28dd2a0ecb2561a4649703f13c4dc595ee95"
+        },
+        {
+          "path": "engines/spar3d/models/dinov2-large/model.safetensors",
+          "url": "https://huggingface.co/facebook/dinov2-large/resolve/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/model.safetensors",
+          "size": 1217522888,
+          "mirrors": [],
+          "sha256": "399fba97a95f22c36834418bc69373364a99af3a1153da1c0fb31db567c92e23"
+        },
+        {
+          "path": "engines/spar3d/models/clip/ViT-L-14.pt",
+          "size": 932768134,
+          "sha256": "b8cca3fd41ae0c99ba7e8951adf17d267cdb84cd88be6f7c2e0eca1737a03836",
+          "url": "https://openaipublic.blob.core.windows.net/clip/models/b8cca3fd41ae0c99ba7e8951adf17d267cdb84cd88be6f7c2e0eca1737a03836/ViT-L-14.pt",
+          "mirrors": []
+        },
+        {
+          "path": "engines/spar3d/models/clip/ViT-L-14-336px.pt",
+          "size": 934088680,
+          "sha256": "3035c92b350959924f9f00213499208652fc7ea050643e8b385c2dac08641f02",
+          "url": "https://openaipublic.blob.core.windows.net/clip/models/3035c92b350959924f9f00213499208652fc7ea050643e8b385c2dac08641f02/ViT-L-14-336px.pt",
+          "mirrors": []
+        },
+        {
+          "path": "engines/spar3d/vendor/alpha_clip/__init__.py",
+          "size": 26,
+          "gitBlobSha1": "3d5b643bb3da8fde1fcadedb6919a36fb544cf97",
+          "url": "https://raw.githubusercontent.com/SunzeY/AlphaCLIP/ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff/alpha_clip/__init__.py",
+          "mirrors": []
+        },
+        {
+          "path": "engines/spar3d/vendor/alpha_clip/alpha_clip.py",
+          "size": 10394,
+          "gitBlobSha1": "57e7caefd7e925b4c3f0bd7096d101a8a32417aa",
+          "url": "https://raw.githubusercontent.com/SunzeY/AlphaCLIP/ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff/alpha_clip/alpha_clip.py",
+          "mirrors": []
+        },
+        {
+          "path": "engines/spar3d/vendor/alpha_clip/bpe_simple_vocab_16e6.txt.gz",
+          "size": 1356917,
+          "gitBlobSha1": "7b5088a527f720063f044eb928eee315f63b2fc0",
+          "url": "https://raw.githubusercontent.com/SunzeY/AlphaCLIP/ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff/alpha_clip/bpe_simple_vocab_16e6.txt.gz",
+          "mirrors": []
+        },
+        {
+          "path": "engines/spar3d/vendor/alpha_clip/model.py",
+          "size": 24560,
+          "gitBlobSha1": "3e4aaf0ccc32d84c88b63bd94a426123b05372c1",
+          "url": "https://raw.githubusercontent.com/SunzeY/AlphaCLIP/ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff/alpha_clip/model.py",
+          "mirrors": []
+        },
+        {
+          "path": "engines/spar3d/vendor/alpha_clip/simple_tokenizer.py",
+          "size": 4632,
+          "gitBlobSha1": "0a66286b7d5019c6e221932a813768038f839c91",
+          "url": "https://raw.githubusercontent.com/SunzeY/AlphaCLIP/ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff/alpha_clip/simple_tokenizer.py",
+          "mirrors": []
+        },
+        {
+          "path": "engines/spar3d/vendor/clip/__init__.py",
+          "size": 20,
+          "gitBlobSha1": "dcc5619538c0f7c782508bdbd9587259d805e0d9",
+          "url": "https://raw.githubusercontent.com/openai/CLIP/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/clip/__init__.py",
+          "mirrors": []
+        },
+        {
+          "path": "engines/spar3d/vendor/clip/bpe_simple_vocab_16e6.txt.gz",
+          "size": 1356917,
+          "gitBlobSha1": "7b5088a527f720063f044eb928eee315f63b2fc0",
+          "url": "https://raw.githubusercontent.com/openai/CLIP/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/clip/bpe_simple_vocab_16e6.txt.gz",
+          "mirrors": []
+        },
+        {
+          "path": "engines/spar3d/vendor/clip/clip.py",
+          "size": 9644,
+          "gitBlobSha1": "398a6282cc243e449430d91c2562491fc799929d",
+          "url": "https://raw.githubusercontent.com/openai/CLIP/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/clip/clip.py",
+          "mirrors": []
+        },
+        {
+          "path": "engines/spar3d/vendor/clip/model.py",
+          "size": 17374,
+          "gitBlobSha1": "232b7792eb97440642547bd462cf128df9243933",
+          "url": "https://raw.githubusercontent.com/openai/CLIP/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/clip/model.py",
+          "mirrors": []
+        },
+        {
+          "path": "engines/spar3d/vendor/clip/simple_tokenizer.py",
+          "size": 4632,
+          "gitBlobSha1": "0a66286b7d5019c6e221932a813768038f839c91",
+          "url": "https://raw.githubusercontent.com/openai/CLIP/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/clip/simple_tokenizer.py",
+          "mirrors": []
+        },
+        {
+          "path": "engines/spar3d/vendor/licenses/SunzeY-AlphaCLIP-LICENSE",
+          "url": "https://raw.githubusercontent.com/SunzeY/AlphaCLIP/ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff/LICENSE",
+          "size": 11360,
+          "gitBlobSha1": "284803df68c514bdd81477e9248b9a0b4e769533",
+          "mirrors": []
+        },
+        {
+          "path": "engines/spar3d/vendor/licenses/openai-CLIP-LICENSE",
+          "url": "https://raw.githubusercontent.com/openai/CLIP/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/LICENSE",
+          "size": 1064,
+          "gitBlobSha1": "4e97f0b45803b7c04ae89548934af4f257a97501",
+          "mirrors": []
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/spar3d/models/LICENSE.md",
+          "size": 11716
+        },
+        {
+          "path": "engines/spar3d/models/config.yaml",
+          "size": 3996
+        },
+        {
+          "path": "engines/spar3d/models/model.safetensors",
+          "size": 7326949440
+        },
+        {
+          "path": "engines/spar3d/models/dinov2-large/config.json",
+          "size": 549
+        },
+        {
+          "path": "engines/spar3d/models/dinov2-large/model.safetensors",
+          "size": 1217522888
+        },
+        {
+          "path": "engines/spar3d/models/clip/ViT-L-14.pt",
+          "size": 932768134
+        },
+        {
+          "path": "engines/spar3d/models/clip/ViT-L-14-336px.pt",
+          "size": 934088680
+        },
+        {
+          "path": "engines/spar3d/vendor/alpha_clip/__init__.py",
+          "size": 26
+        },
+        {
+          "path": "engines/spar3d/vendor/alpha_clip/alpha_clip.py",
+          "size": 10394
+        },
+        {
+          "path": "engines/spar3d/vendor/alpha_clip/bpe_simple_vocab_16e6.txt.gz",
+          "size": 1356917
+        },
+        {
+          "path": "engines/spar3d/vendor/alpha_clip/model.py",
+          "size": 24560
+        },
+        {
+          "path": "engines/spar3d/vendor/alpha_clip/simple_tokenizer.py",
+          "size": 4632
+        },
+        {
+          "path": "engines/spar3d/vendor/clip/__init__.py",
+          "size": 20
+        },
+        {
+          "path": "engines/spar3d/vendor/clip/bpe_simple_vocab_16e6.txt.gz",
+          "size": 1356917
+        },
+        {
+          "path": "engines/spar3d/vendor/clip/clip.py",
+          "size": 9644
+        },
+        {
+          "path": "engines/spar3d/vendor/clip/model.py",
+          "size": 17374
+        },
+        {
+          "path": "engines/spar3d/vendor/clip/simple_tokenizer.py",
+          "size": 4632
+        },
+        {
+          "path": "engines/spar3d/vendor/licenses/SunzeY-AlphaCLIP-LICENSE",
+          "size": 11360
+        },
+        {
+          "path": "engines/spar3d/vendor/licenses/openai-CLIP-LICENSE",
+          "size": 1064
+        },
+        {
+          "path": "engines/spar3d/src/spar3d/system.py"
+        },
+        {
+          "path": "engines/spar3d/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "engines/spar3d/native/texture_baker/_C.cp311-win_amd64.pyd"
+        },
+        {
+          "path": "engines/spar3d/native/uv_unwrapper/_C.cp311-win_amd64.pyd"
+        },
+        {
+          "path": "engines/spar3d/models/factory-config.json"
+        },
+        {
+          "path": "engines/spar3d/NOTICE.txt"
+        },
+        {
+          "path": "engines/spar3d/run.ps1"
+        }
+      ],
+      "dependencies": [
+        "spar-build-tools",
+        "image-preparation"
+      ],
+      "deploymentProfile": "spar3d",
+      "prerequisites": [
+        {
+          "probe": "msvc",
+          "remedy": "请先安装 Visual Studio 2022 C++ Build Tools；程序不会自动安装系统组件。"
+        }
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/spar-run.ps1",
+          "target": "engines/spar3d/run.ps1"
+        }
+      ],
+      "manifest": {
+        "version": "0.7.0",
+        "entrypoint": "run.ps1",
+        "kind": "model",
+        "appearance": "texture",
+        "runtime": {
+          "type": "spar3d",
+          "family": "spar3d",
+          "python": "engines/spar3d/.venv/Scripts/python.exe",
+          "sourceDirectory": "engines/spar3d/src",
+          "modelDirectory": "engines/spar3d/models",
+          "nativeDirectory": "engines/spar3d/native",
+          "vendorDirectory": "engines/spar3d/vendor",
+          "jointMultiview": false,
+          "lowVramMode": true,
+          "revision": "fdc311b16809e6a8adc2f5a3407ebb3db1a95bd1",
+          "modelRevision": "5699918cb34f55cd7d828493d2725f3038313761"
+        },
+        "capabilities": {
+          "modes": [
+            "model"
+          ],
+          "maxReferenceImages": 1,
+          "maxInputImages": 1,
+          "multiView": false,
+          "geometry": true,
+          "texturedOutput": true
+        },
+        "source": "https://github.com/Stability-AI/stable-point-aware-3d",
+        "multiView": false
+      },
+      "license": {
+        "label": "Stability AI Community / DINOv2 Apache-2.0 / AlphaCLIP与CLIP MIT",
+        "url": "https://huggingface.co/stabilityai/stable-point-aware-3d",
+        "requiresAcceptance": true,
+        "notice": "Powered by Stability AI。SPAR 权重与config需要先接受HF受限模型许可并提供读取令牌。固定Community许可要求商用登记，年收入超过100万美元需另行授权；再分发保留许可与Notice，展示Powered by Stability AI。具体适用以下载的LICENSE.md为准，辅助编码器及SDK适用各自许可。Windows为官方实验支持，本批未执行GPU生成。"
+      },
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12GB",
+        "lowVramMode": true,
+        "officialLowVramGiB": 7,
+        "measured": false
+      },
+      "remedy": "先配置官方HF授权并安装VS2022 C++；应用安装私有环境、固定辅助权重并编译扩展。安装后首次生成需验收。",
+      "probes": [
+        {
+          "path": "engines/spar3d/.venv/Scripts/python.exe",
+          "args": [
+            "@root:scripts/providers/spar-run.py",
+            "--check"
+          ],
+          "requiredFlags": [
+            "\"gpuInferenceExecuted\": false"
+          ],
+          "timeout": 180
+        }
+      ]
+    }
+  ],
+  "productVersion": "0.9.1"
+}

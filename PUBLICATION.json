@@ -1,0 +1,163 @@
+{
+  "product": "BUIDL 2D3D",
+  "applicationName": "build something · 造点啥",
+  "version": "0.9.1",
+  "basedOn": "0.9.0a",
+  "publicationBuild": "public-source-20261014",
+  "owner": "Unclecow",
+  "license": "MIT for owned code; third-party terms retained",
+  "versionedConfigs": [
+    "config/image-model-source.json",
+    "config/image-variants.json",
+    "config/image3d-models.json",
+    "config/image3d-profiles.json",
+    "config/multiview-model-source.json",
+    "config/multiview-models.json",
+    "config/multiview-profiles.json",
+    "config/python-models.json",
+    "config/python-profiles.json",
+    "config/setup-catalog.json",
+    "config/spar-models.json",
+    "config/spar-profiles.json",
+    "config/video-models.json",
+    "config/video-profiles.json"
+  ],
+  "excludedBundleModelIds": [
+    "basic-motion",
+    "hunyuan-paint",
+    "hunyuan-shape-runtime-07",
+    "hunyuan3d",
+    "hunyuan3d-21-shape",
+    "hunyuan3d-mini-turbo",
+    "hunyuan3d-mv",
+    "hunyuan3d-mv-turbo",
+    "mia-motion",
+    "mia-rig",
+    "partcrafter",
+    "riganything",
+    "triposg",
+    "unirig"
+  ],
+  "includedSourceBundles": [
+    "config/deployment-bundles/triposr-0.5.0.zip"
+  ],
+  "unchangedDefaultDownloadPinsSha256": {
+    "qwen-image-21": "a6937351628bc52c4f2c2077b00e47e4cc52a60e3e6f932341df46c21159a9f9",
+    "trellis": "cd299e818d95c635b4086c920ed899d97cd79cf751298992321b6195077d4a11",
+    "pixal3d": "8564ea52186f37dad357f3a20fe0ea15e6cb11ea55d300e60c33e68b63393bb8"
+  },
+  "validation": {
+    "status": "passed-with-explicit-skips",
+    "pythonVersion": "3.14.2",
+    "pythonSyntaxFiles": 79,
+    "powershellSyntaxFiles": 21,
+    "javascriptSyntaxFiles": 8,
+    "automatedTestsPassed": 118,
+    "automatedTestsSkipped": 7,
+    "testFiles": [
+      {
+        "file": "tests/check-public-distribution.py",
+        "exitCode": 0,
+        "tests": 7,
+        "skipped": 0
+      },
+      {
+        "file": "tests/check-portable-recipes.py",
+        "exitCode": 0,
+        "tests": 5,
+        "skipped": 0
+      },
+      {
+        "file": "tests/check-product-capabilities.py",
+        "exitCode": 0,
+        "tests": 10,
+        "skipped": 0
+      },
+      {
+        "file": "tests/check-native-install-templates.py",
+        "exitCode": 0,
+        "tests": 5,
+        "skipped": 0
+      },
+      {
+        "file": "tests/check-image-variant-adapter.py",
+        "exitCode": 0,
+        "tests": 7,
+        "skipped": 0
+      },
+      {
+        "file": "tests/check-hidden-generation.py",
+        "exitCode": 0,
+        "tests": 12,
+        "skipped": 6
+      },
+      {
+        "file": "tests/check-setup-boundaries.py",
+        "exitCode": 0,
+        "tests": 6,
+        "skipped": 0
+      },
+      {
+        "file": "tests/check-setup-http.py",
+        "exitCode": 0,
+        "tests": 7,
+        "skipped": 0
+      },
+      {
+        "file": "tests/check-web-factory.py",
+        "exitCode": 0,
+        "tests": 34,
+        "skipped": 0
+      },
+      {
+        "file": "tests/check-factory-cli.py",
+        "exitCode": 0,
+        "tests": 20,
+        "skipped": 0
+      },
+      {
+        "file": "tests/check-desktop-entrypoints.py",
+        "exitCode": 0,
+        "tests": 3,
+        "skipped": 1
+      },
+      {
+        "file": "tests/check-consumer-ui.py",
+        "exitCode": 0,
+        "tests": 3,
+        "skipped": 0
+      },
+      {
+        "file": "tests/check-model-import.py",
+        "exitCode": 0,
+        "tests": 6,
+        "skipped": 0
+      }
+    ],
+    "skipReasons": [
+      "Three visible pre-fix console controls require explicit opt-in.",
+      "Three deployed-adapter checks require an installed model environment; template checks passed.",
+      "One desktop archive check requires a separate release ZIP; launcher compilation and checkout entry checks passed."
+    ],
+    "nativeLauncher": {
+      "compiled": true,
+      "productVersion": "0.9.1",
+      "fileVersion": "0.9.1.0",
+      "sha256": "c5da6b11d383f34ee51b705ed36da615e3b4285dbf00146c8519ff45b40d5f43",
+      "trackedInRepository": false
+    },
+    "ui": {
+      "browser": "isolated headless Chrome",
+      "viewport": "1440x1024",
+      "screenshot": "docs/images/workbench.jpg",
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "horizontalOverflow": false,
+      "personalData": "none; fresh local application data",
+      "decorativeArtIsInferenceEvidence": false
+    },
+    "gpuInferenceExecuted": false,
+    "modelDownloadExecuted": false,
+    "secretScan": "Pattern and path review of public source and included archive; not an exhaustive security audit."
+  }
+}

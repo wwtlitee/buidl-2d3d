@@ -1,0 +1,2739 @@
+{
+  "version": "0.5.0",
+  "author": "Unclecow",
+  "models": [
+    {
+      "id": "hunyuan3d",
+      "engineId": "hunyuan3d",
+      "title": "单张图片 · Hunyuan3D mini",
+      "kind": "model",
+      "description": "生成几何模型。6 GB 显存来自官方单图配置建议；本工具的既有实测使用 12 GB 显卡。",
+      "recommended": false,
+      "minimumVramMiB": 6144,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 12884901888,
+      "sourceUrl": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2",
+      "files": [
+        {
+          "path": "engines/hunyuan3d/models/LICENSE",
+          "size": 17828,
+          "sha256": "e5e6e2041e18326d82cd105a1b9404e36db55263dd9d42d4989f917c2501b67b",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/LICENSE",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/LICENSE"
+          ]
+        },
+        {
+          "path": "engines/hunyuan3d/models/NOTICE",
+          "size": 32064,
+          "sha256": "7b7ace3714c188b7a27e20edbcceaaac836540bbb63759a37039e5624c8f6bbc",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/NOTICE",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/NOTICE"
+          ]
+        },
+        {
+          "path": "engines/hunyuan3d/models/config.json",
+          "size": 38,
+          "sha256": "5c9f5d68f9fb773c25de5a1ded6019319aed8039d3db7e01aa62b7cfcbfbb0d5",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/config.json"
+          ]
+        },
+        {
+          "path": "engines/hunyuan3d/models/hunyuan3d-dit-v2-mini/config.yaml",
+          "size": 1628,
+          "sha256": "cabcba7f6115752c8fe5b370e12bf714936f70377a8a80f151872f76c2d64609",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-dit-v2-mini/config.yaml",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-dit-v2-mini/config.yaml"
+          ]
+        },
+        {
+          "path": "engines/hunyuan3d/models/hunyuan3d-dit-v2-mini/model.fp16.safetensors",
+          "size": 3819958234,
+          "sha256": "3cc66f3bea33e4062b7dbc875ffe1d70c4888914aec3e91b60f94e9bd01b522b",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-dit-v2-mini/model.fp16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-dit-v2-mini/model.fp16.safetensors"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/hunyuan3d/models/LICENSE",
+          "size": 17828
+        },
+        {
+          "path": "engines/hunyuan3d/models/NOTICE",
+          "size": 32064
+        },
+        {
+          "path": "engines/hunyuan3d/models/config.json",
+          "size": 38
+        },
+        {
+          "path": "engines/hunyuan3d/models/hunyuan3d-dit-v2-mini/config.yaml",
+          "size": 1628
+        },
+        {
+          "path": "engines/hunyuan3d/models/hunyuan3d-dit-v2-mini/model.fp16.safetensors",
+          "size": 3819958234
+        },
+        {
+          "path": "engines/hunyuan3d/run.ps1"
+        },
+        {
+          "path": "engines/hunyuan3d/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "engines/hunyuan3d/src/api_server.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/blender_addon.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/docs/source/conf.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/gradio_app.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/__init__.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/rembg.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/__init__.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/models/__init__.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/models/autoencoders/__init__.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/models/autoencoders/attention_blocks.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/models/autoencoders/attention_processors.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/models/autoencoders/model.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/models/autoencoders/surface_extractors.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/models/autoencoders/volume_decoders.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/models/conditioner.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/models/denoisers/__init__.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/models/denoisers/hunyuan3ddit.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/models/denoisers/hunyuandit.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/models/denoisers/moe_layers.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/pipelines.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/postprocessors.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/preprocessors.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/schedulers.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/surface_loaders.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/shapegen/utils.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/__init__.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/custom_rasterizer/custom_rasterizer/__init__.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/custom_rasterizer/custom_rasterizer/io_glb.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/custom_rasterizer/custom_rasterizer/io_obj.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/custom_rasterizer/custom_rasterizer/render.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/custom_rasterizer/lib/custom_rasterizer_kernel/__init__.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/custom_rasterizer/setup.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/differentiable_renderer/__init__.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/differentiable_renderer/camera_utils.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/differentiable_renderer/mesh_processor.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/differentiable_renderer/mesh_render.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/differentiable_renderer/mesh_utils.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/differentiable_renderer/setup.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/hunyuanpaint/__init__.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/hunyuanpaint/pipeline.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/hunyuanpaint/unet/__init__.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/hunyuanpaint/unet/modules.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/pipelines.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/utils/__init__.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/utils/alignImg4Tex_utils.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/utils/counter_utils.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/utils/dehighlight_utils.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/utils/imagesuper_utils.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/utils/multiview_utils.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/utils/simplify_mesh_utils.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/texgen/utils/uv_warp_utils.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/hy3dgen/text2image.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/minimal_demo.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/minimal_vae_demo.py"
+        },
+        {
+          "path": "engines/hunyuan3d/src/setup.py"
+        }
+      ],
+      "manifest": {
+        "id": "hunyuan3d",
+        "title": "Hunyuan3D 2 mini",
+        "version": "f8db6309",
+        "source": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2",
+        "commit": "f8db63096c8282cb27354314d896feba5ba6ff8a",
+        "entrypoint": "run.ps1"
+      },
+      "deploymentProfile": "hunyuan3d",
+      "dependencies": [
+        "image-preparation"
+      ],
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://huggingface.co/tencent/Hunyuan3D-2mini",
+        "requiresAcceptance": true,
+        "notice": "安装会下载固定版本模型与独立 CUDA / Python 依赖。模型许可与依赖许可分别适用；先阅读官方说明。依赖下载另需约 3–6 GB，磁盘预留包含解压和环境空间。"
+      },
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。",
+      "probes": [
+        {
+          "path": "engines/hunyuan3d/.venv/Scripts/python.exe",
+          "args": [
+            "@root:engines/hunyuan3d/run.py",
+            "--check"
+          ],
+          "requiredFlags": [
+            "true"
+          ],
+          "timeout": 60
+        }
+      ],
+      "installable": false,
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included"
+    },
+    {
+      "id": "triposr",
+      "engineId": "triposr",
+      "title": "快速几何 · TripoSR",
+      "kind": "model",
+      "description": "生成几何模型。6 GB 显存来自官方单图配置建议；本工具的既有实测使用 12 GB 显卡。",
+      "recommended": false,
+      "minimumVramMiB": 6144,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 12884901888,
+      "sourceUrl": "https://github.com/VAST-AI-Research/TripoSR",
+      "files": [
+        {
+          "path": "engines/triposr/models/README.md",
+          "size": 2488,
+          "sha256": "5c12ef5b850c6ee2aa7454b1a264f6f8dfa95164384dbb1ab374acd917aa558b",
+          "url": "https://huggingface.co/stabilityai/TripoSR/resolve/5b521936b01fbe1890f6f9baed0254ab6351c04a/README.md",
+          "mirrors": [
+            "https://hf-mirror.com/stabilityai/TripoSR/resolve/5b521936b01fbe1890f6f9baed0254ab6351c04a/README.md"
+          ]
+        },
+        {
+          "path": "engines/triposr/models/config.yaml",
+          "size": 987,
+          "sha256": "74ca708ce086bf68e97709ea6b3d91f14717921c04691e84043f0eb8fcc68e62",
+          "url": "https://huggingface.co/stabilityai/TripoSR/resolve/5b521936b01fbe1890f6f9baed0254ab6351c04a/config.yaml",
+          "mirrors": [
+            "https://hf-mirror.com/stabilityai/TripoSR/resolve/5b521936b01fbe1890f6f9baed0254ab6351c04a/config.yaml"
+          ]
+        },
+        {
+          "path": "engines/triposr/models/model.ckpt",
+          "size": 1677246742,
+          "sha256": "429e2c6b22a0923967459de24d67f05962b235f79cde6b032aa7ed2ffcd970ee",
+          "url": "https://huggingface.co/stabilityai/TripoSR/resolve/5b521936b01fbe1890f6f9baed0254ab6351c04a/model.ckpt",
+          "mirrors": [
+            "https://hf-mirror.com/stabilityai/TripoSR/resolve/5b521936b01fbe1890f6f9baed0254ab6351c04a/model.ckpt"
+          ]
+        },
+        {
+          "path": "engines/triposr/models/dino/config.json",
+          "size": 454,
+          "sha256": "b87c0270b97db085fd82cf114a761fd0f62ae7914fbd407c752a2260646b689c",
+          "url": "https://huggingface.co/facebook/dino-vitb16/resolve/f205d5d8e640a89a2b8ef0369670dfc37cc07fc2/config.json"
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/triposr/models/README.md",
+          "size": 2488
+        },
+        {
+          "path": "engines/triposr/models/config.yaml",
+          "size": 987
+        },
+        {
+          "path": "engines/triposr/models/model.ckpt",
+          "size": 1677246742
+        },
+        {
+          "path": "engines/triposr/models/dino/config.json",
+          "size": 454,
+          "alternatives": [
+            "engines/triposr/cache/huggingface/hub/models--facebook--dino-vitb16/snapshots/f205d5d8e640a89a2b8ef0369670dfc37cc07fc2/config.json"
+          ]
+        },
+        {
+          "path": "engines/triposr/run.ps1"
+        },
+        {
+          "path": "engines/triposr/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "engines/triposr/src/gradio_app.py"
+        },
+        {
+          "path": "engines/triposr/src/run.py"
+        },
+        {
+          "path": "engines/triposr/src/tsr/bake_texture.py"
+        },
+        {
+          "path": "engines/triposr/src/tsr/models/isosurface.py"
+        },
+        {
+          "path": "engines/triposr/src/tsr/models/nerf_renderer.py"
+        },
+        {
+          "path": "engines/triposr/src/tsr/models/network_utils.py"
+        },
+        {
+          "path": "engines/triposr/src/tsr/models/tokenizers/image.py"
+        },
+        {
+          "path": "engines/triposr/src/tsr/models/tokenizers/triplane.py"
+        },
+        {
+          "path": "engines/triposr/src/tsr/models/transformer/attention.py"
+        },
+        {
+          "path": "engines/triposr/src/tsr/models/transformer/basic_transformer_block.py"
+        },
+        {
+          "path": "engines/triposr/src/tsr/models/transformer/transformer_1d.py"
+        },
+        {
+          "path": "engines/triposr/src/tsr/system.py"
+        },
+        {
+          "path": "engines/triposr/src/tsr/utils.py"
+        }
+      ],
+      "manifest": {
+        "id": "triposr",
+        "title": "TripoSR",
+        "version": "107cefdc",
+        "source": "https://github.com/VAST-AI-Research/TripoSR",
+        "commit": "107cefdc244c39106fa830359024f6a2f1c78871",
+        "entrypoint": "run.ps1"
+      },
+      "deploymentProfile": "triposr",
+      "dependencies": [
+        "image-preparation"
+      ],
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://huggingface.co/stabilityai/TripoSR",
+        "requiresAcceptance": true,
+        "notice": "安装会下载固定版本模型与独立 CUDA / Python 依赖。模型许可与依赖许可分别适用；先阅读官方说明。依赖下载另需约 3–6 GB，磁盘预留包含解压和环境空间。"
+      },
+      "remedy": "点击安装建立独立环境并校验组件。安装完成后首次实际生成仍需验收。",
+      "probes": [
+        {
+          "path": "engines/triposr/.venv/Scripts/python.exe",
+          "args": [
+            "@root:engines/triposr/run.py",
+            "--check"
+          ],
+          "requiredFlags": [
+            "true"
+          ],
+          "timeout": 60
+        }
+      ]
+    },
+    {
+      "id": "hunyuan3d-mv",
+      "engineId": "hunyuan3d-mv",
+      "title": "多角度图片 · Hunyuan3D",
+      "kind": "model",
+      "description": "Hunyuan3D 2 多视角",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 0,
+      "sourceUrl": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2",
+      "files": [
+        {
+          "path": "engines/hunyuan3d-mv/models/hunyuan3d-dit-v2-mv/model.fp16.safetensors",
+          "size": 4928151562,
+          "sha256": "d36f5881bcdc56726b73e517cd444c13c60732431622da7268145355c8d38e9c",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/hunyuan3d-dit-v2-mv/model.fp16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/hunyuan3d-dit-v2-mv/model.fp16.safetensors"
+          ]
+        },
+        {
+          "path": "engines/hunyuan3d-mv/models/NOTICE",
+          "size": 32064,
+          "sha256": "7b7ace3714c188b7a27e20edbcceaaac836540bbb63759a37039e5624c8f6bbc",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/NOTICE",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/NOTICE"
+          ]
+        },
+        {
+          "path": "engines/hunyuan3d-mv/models/LICENSE",
+          "size": 17828,
+          "sha256": "e5e6e2041e18326d82cd105a1b9404e36db55263dd9d42d4989f917c2501b67b",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/LICENSE",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/LICENSE"
+          ]
+        },
+        {
+          "path": "engines/hunyuan3d-mv/models/README.md",
+          "size": 4402,
+          "sha256": "53b682bae4301043f28dedef19264f2b791797d2c049febd230c42182a462cda",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/README.md",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/README.md"
+          ]
+        },
+        {
+          "path": "engines/hunyuan3d-mv/models/hunyuan3d-dit-v2-mv/config.yaml",
+          "size": 1608,
+          "sha256": "315fd5bf601d1d103130b9fda202f1bd28eda495e68ed1621bc823d5519c5e5b",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/hunyuan3d-dit-v2-mv/config.yaml",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/hunyuan3d-dit-v2-mv/config.yaml"
+          ]
+        },
+        {
+          "path": "engines/hunyuan3d-mv/models/config.json",
+          "size": 38,
+          "sha256": "5c9f5d68f9fb773c25de5a1ded6019319aed8039d3db7e01aa62b7cfcbfbb0d5",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/config.json"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/hunyuan3d-mv/models/hunyuan3d-dit-v2-mv/model.fp16.safetensors",
+          "size": 4928151562
+        },
+        {
+          "path": "engines/hunyuan3d-mv/models/NOTICE",
+          "size": 32064
+        },
+        {
+          "path": "engines/hunyuan3d-mv/models/LICENSE",
+          "size": 17828
+        },
+        {
+          "path": "engines/hunyuan3d-mv/models/README.md",
+          "size": 4402
+        },
+        {
+          "path": "engines/hunyuan3d-mv/models/hunyuan3d-dit-v2-mv/config.yaml",
+          "size": 1608
+        },
+        {
+          "path": "engines/hunyuan3d-mv/models/config.json",
+          "size": 38
+        },
+        {
+          "path": "engines/hunyuan3d-mv/run.ps1"
+        }
+      ],
+      "manifest": {
+        "id": "hunyuan3d-mv",
+        "title": "Hunyuan3D 2 多视角",
+        "version": "f8db6309",
+        "source": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2",
+        "commit": "f8db63096c8282cb27354314d896feba5ba6ff8a",
+        "entrypoint": "run.ps1",
+        "appearance": "geometry",
+        "capabilities": {
+          "multiView": true,
+          "views": [
+            "left",
+            "back",
+            "right"
+          ],
+          "maxViews": 4,
+          "mainView": "front"
+        },
+        "modelRevision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+        "modelSource": "config/multiview-model-source.json"
+      },
+      "deploymentProfile": "hunyuan3d-mv",
+      "dependencies": [
+        "hunyuan3d"
+      ],
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://huggingface.co/tencent/Hunyuan3D-2mv",
+        "requiresAcceptance": true,
+        "notice": "安装会下载固定版本模型与独立 CUDA / Python 依赖。模型许可与依赖许可分别适用；先阅读官方说明。依赖下载另需约 3–6 GB，磁盘预留包含解压和环境空间。"
+      },
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。",
+      "probes": [
+        {
+          "path": "engines/hunyuan3d/.venv/Scripts/python.exe",
+          "args": [
+            "@root:engines/hunyuan3d-mv/run.py",
+            "--check"
+          ],
+          "requiredFlags": [
+            "true"
+          ],
+          "timeout": 60
+        }
+      ],
+      "installable": false,
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included"
+    },
+    {
+      "id": "triposg",
+      "engineId": "triposg",
+      "title": "细节几何 · TripoSG",
+      "kind": "model",
+      "description": "从图片重建几何。8 GB 显存来自官方要求；本工具的既有实测使用 12 GB 显卡。",
+      "recommended": false,
+      "minimumVramMiB": 8192,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 12884901888,
+      "sourceUrl": "https://github.com/VAST-AI-Research/TripoSG",
+      "files": [
+        {
+          "path": "engines/triposg/models/TripoSG/README.md",
+          "size": 1465,
+          "sha256": "0f4c34a1a17acdbcff02c259d7f4f7b5df1b8956395c625c28da97930eb82ef3",
+          "url": "https://huggingface.co/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/README.md",
+          "mirrors": [
+            "https://hf-mirror.com/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/README.md"
+          ]
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/feature_extractor_dinov2/preprocessor_config.json",
+          "size": 436,
+          "sha256": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828",
+          "url": "https://huggingface.co/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/feature_extractor_dinov2/preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/feature_extractor_dinov2/preprocessor_config.json"
+          ]
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/image_encoder_dinov2/config.json",
+          "size": 1104,
+          "sha256": "8ed81b0d5ffd2c8b2cecd7dc1326d3eefa409bc9d525537b6b2a3c70a992fd02",
+          "url": "https://huggingface.co/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/image_encoder_dinov2/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/image_encoder_dinov2/config.json"
+          ]
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/image_encoder_dinov2/model.safetensors",
+          "size": 1217522888,
+          "sha256": "399fba97a95f22c36834418bc69373364a99af3a1153da1c0fb31db567c92e23",
+          "url": "https://huggingface.co/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/image_encoder_dinov2/model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/image_encoder_dinov2/model.safetensors"
+          ]
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/model_index.json",
+          "size": 525,
+          "sha256": "750af638d10fc67a5f43d19ef0a0d1d3d446174e24b73bddd0a49226016c80c2",
+          "url": "https://huggingface.co/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/model_index.json",
+          "mirrors": [
+            "https://hf-mirror.com/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/model_index.json"
+          ]
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/scheduler/scheduler_config.json",
+          "size": 158,
+          "sha256": "ea7c9b4d502dcaba97cd85291cfd7dbd3c6c82cbc4c775af5c6d9224864279c9",
+          "url": "https://huggingface.co/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/scheduler/scheduler_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/scheduler/scheduler_config.json"
+          ]
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/transformer/config.json",
+          "size": 191,
+          "sha256": "54ad779e68f9bc7303122cdf291f6db48dec7c67e41d28c05ac359daf914128a",
+          "url": "https://huggingface.co/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/transformer/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/transformer/config.json"
+          ]
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/transformer/diffusion_pytorch_model.safetensors",
+          "size": 5758280104,
+          "sha256": "9192b5923f7b605b394192809aa2ceb73bf0f4009674d8e3b999b45bb97d4bf2",
+          "url": "https://huggingface.co/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/transformer/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/transformer/diffusion_pytorch_model.safetensors"
+          ]
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/vae/config.json",
+          "size": 335,
+          "sha256": "2fb6ba9b364d42c9681879dca0f7edcb978f2db974a1ca4b15d28f9b15a5baed",
+          "url": "https://huggingface.co/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/vae/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/vae/config.json"
+          ]
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/vae/diffusion_pytorch_model.safetensors",
+          "size": 970685468,
+          "sha256": "a2e667c24927a5a35e5f19fcb4c75890e9399aa966b6db8131d7df733a750c8b",
+          "url": "https://huggingface.co/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/vae/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/VAST-AI/TripoSG/resolve/2c1c516d22d58db486a058d98d31bb6177344e06/vae/diffusion_pytorch_model.safetensors"
+          ]
+        },
+        {
+          "path": "engines/triposg/models/RMBG-1.4/README.md",
+          "size": 6395,
+          "sha256": "24e08231e4a1f467f69fd9a5f279c259544212dbeb581c710700f27effd07875",
+          "url": "https://huggingface.co/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/README.md",
+          "mirrors": [
+            "https://hf-mirror.com/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/README.md"
+          ]
+        },
+        {
+          "path": "engines/triposg/models/RMBG-1.4/config.json",
+          "size": 548,
+          "sha256": "d774e7d35151efb2479a83f132a57048334adf722e6e354309e30c56e3b35fbe",
+          "url": "https://huggingface.co/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/config.json"
+          ]
+        },
+        {
+          "path": "engines/triposg/models/RMBG-1.4/model.safetensors",
+          "size": 176381984,
+          "sha256": "46ef7fe46f2ae284d8f1aaa24bfa5fca5ef25a34e2c7caa890a0029eb100e87f",
+          "url": "https://huggingface.co/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/model.safetensors"
+          ]
+        },
+        {
+          "path": "engines/triposg/models/RMBG-1.4/preprocessor_config.json",
+          "size": 345,
+          "sha256": "6f9c2cfdb87edd9b83c1314629657d5b320a6a89f8481c872a36253132e33afa",
+          "url": "https://huggingface.co/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/preprocessor_config.json"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/triposg/models/TripoSG/README.md",
+          "size": 1465
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/feature_extractor_dinov2/preprocessor_config.json",
+          "size": 436
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/image_encoder_dinov2/config.json",
+          "size": 1104
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/image_encoder_dinov2/model.safetensors",
+          "size": 1217522888
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/model_index.json",
+          "size": 525
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/scheduler/scheduler_config.json",
+          "size": 158
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/transformer/config.json",
+          "size": 191
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/transformer/diffusion_pytorch_model.safetensors",
+          "size": 5758280104
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/vae/config.json",
+          "size": 335
+        },
+        {
+          "path": "engines/triposg/models/TripoSG/vae/diffusion_pytorch_model.safetensors",
+          "size": 970685468
+        },
+        {
+          "path": "engines/triposg/models/RMBG-1.4/README.md",
+          "size": 6395
+        },
+        {
+          "path": "engines/triposg/models/RMBG-1.4/config.json",
+          "size": 548
+        },
+        {
+          "path": "engines/triposg/models/RMBG-1.4/model.safetensors",
+          "size": 176381984
+        },
+        {
+          "path": "engines/triposg/models/RMBG-1.4/preprocessor_config.json",
+          "size": 345
+        },
+        {
+          "path": "engines/triposg/run.ps1"
+        },
+        {
+          "path": "engines/triposg/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "engines/triposg/src/scripts/briarmbg.py"
+        },
+        {
+          "path": "engines/triposg/src/scripts/image_process.py"
+        },
+        {
+          "path": "engines/triposg/src/scripts/inference_triposg.py"
+        },
+        {
+          "path": "engines/triposg/src/scripts/inference_triposg_scribble.py"
+        },
+        {
+          "path": "engines/triposg/src/scripts/inference_vae.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/inference_utils.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/models/attention_processor.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/models/autoencoders/__init__.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/models/autoencoders/autoencoder_kl_triposg.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/models/autoencoders/vae.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/models/embeddings.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/models/transformers/__init__.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/models/transformers/modeling_outputs.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/models/transformers/triposg_transformer.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/pipelines/pipeline_triposg.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/pipelines/pipeline_triposg_output.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/pipelines/pipeline_triposg_scribble.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/pipelines/pipeline_utils.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/schedulers/__init__.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/schedulers/scheduling_rectified_flow.py"
+        },
+        {
+          "path": "engines/triposg/src/triposg/utils/typing.py"
+        }
+      ],
+      "manifest": {
+        "id": "triposg",
+        "title": "TripoSG",
+        "version": "0.0.1",
+        "source": "https://github.com/VAST-AI-Research/TripoSG",
+        "commit": "fc5c40990181e2a756c4e0b1c2f4d6b5202faf8c",
+        "entrypoint": "run.ps1"
+      },
+      "deploymentProfile": "triposg",
+      "dependencies": [],
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://huggingface.co/VAST-AI/TripoSG",
+        "requiresAcceptance": true,
+        "notice": "安装会下载固定版本模型与独立 CUDA / Python 依赖。模型许可与依赖许可分别适用；先阅读官方说明。依赖下载另需约 3–6 GB，磁盘预留包含解压和环境空间。"
+      },
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。",
+      "probes": [
+        {
+          "path": "engines/triposg/.venv/Scripts/python.exe",
+          "args": [
+            "@root:engines/triposg/run.py",
+            "--check"
+          ],
+          "requiredFlags": [
+            "pass"
+          ],
+          "timeout": 60
+        }
+      ],
+      "installable": false,
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included"
+    },
+    {
+      "id": "partcrafter",
+      "engineId": "partcrafter",
+      "title": "分部件模型 · PartCrafter",
+      "kind": "model",
+      "description": "从图片重建几何。8 GB 显存来自官方要求；本工具的既有实测使用 12 GB 显卡。",
+      "recommended": false,
+      "minimumVramMiB": 8192,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 12884901888,
+      "sourceUrl": "https://github.com/wgsxm/PartCrafter",
+      "files": [
+        {
+          "path": "engines/partcrafter/models/PartCrafter/README.md",
+          "size": 687,
+          "sha256": "759873b025f71187d8e5a8bb15602d4692e59a366c17cf8ef3af7f058e57356c",
+          "url": "https://huggingface.co/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/README.md",
+          "mirrors": [
+            "https://hf-mirror.com/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/README.md"
+          ]
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/feature_extractor_dinov2/preprocessor_config.json",
+          "size": 436,
+          "sha256": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828",
+          "url": "https://huggingface.co/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/feature_extractor_dinov2/preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/feature_extractor_dinov2/preprocessor_config.json"
+          ]
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/image_encoder_dinov2/config.json",
+          "size": 1086,
+          "sha256": "25329e19f8c1dc678017cc5fb47428a25169e1d90238a3584cccc89fbabc8525",
+          "url": "https://huggingface.co/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/image_encoder_dinov2/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/image_encoder_dinov2/config.json"
+          ]
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/image_encoder_dinov2/model.safetensors",
+          "size": 608785376,
+          "sha256": "aa0b83921a3339259fb1ef684ce63c9d09b5a45f9998e0789a0ad4cba318b07b",
+          "url": "https://huggingface.co/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/image_encoder_dinov2/model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/image_encoder_dinov2/model.safetensors"
+          ]
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/model_index.json",
+          "size": 525,
+          "sha256": "c6956993e6a5fb84dfaac5e003d2fec9ad2565fa7a27a22910e9905ba2bad6f4",
+          "url": "https://huggingface.co/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/model_index.json",
+          "mirrors": [
+            "https://hf-mirror.com/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/model_index.json"
+          ]
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/scheduler/scheduler_config.json",
+          "size": 158,
+          "sha256": "83b4baea6a130db64b069df0e3e57417c2a1170a529c095d78f562ff89b31a7c",
+          "url": "https://huggingface.co/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/scheduler/scheduler_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/scheduler/scheduler_config.json"
+          ]
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/transformer/config.json",
+          "size": 476,
+          "sha256": "0c65b565d90ddcdeaaaff594b5c4622ca5d0e387b1dc583a2112d40c2f6f77dc",
+          "url": "https://huggingface.co/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/transformer/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/transformer/config.json"
+          ]
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/transformer/diffusion_pytorch_model.safetensors",
+          "size": 2879298752,
+          "sha256": "915aba1d29c626d960305a0d36a6edb7798288a19c6724388b005c2fa53bcbf8",
+          "url": "https://huggingface.co/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/transformer/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/transformer/diffusion_pytorch_model.safetensors"
+          ]
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/vae/config.json",
+          "size": 385,
+          "sha256": "c49fbf1e80542386d0bc14472061ee831c5edb558b973913a374325bbb9576dd",
+          "url": "https://huggingface.co/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/vae/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/vae/config.json"
+          ]
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/vae/diffusion_pytorch_model.safetensors",
+          "size": 485361378,
+          "sha256": "b43b006e5692223877427cdb568c2c1477f52a2d226db4d5eb354b4886c167a4",
+          "url": "https://huggingface.co/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/vae/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/wgsxm/PartCrafter/resolve/69a0ffc1dad5e48e7e5ed91c0609f2b1276eb31f/vae/diffusion_pytorch_model.safetensors"
+          ]
+        },
+        {
+          "path": "engines/partcrafter/models/RMBG-1.4/README.md",
+          "size": 6395,
+          "sha256": "24e08231e4a1f467f69fd9a5f279c259544212dbeb581c710700f27effd07875",
+          "url": "https://huggingface.co/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/README.md",
+          "mirrors": [
+            "https://hf-mirror.com/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/README.md"
+          ]
+        },
+        {
+          "path": "engines/partcrafter/models/RMBG-1.4/config.json",
+          "size": 548,
+          "sha256": "d774e7d35151efb2479a83f132a57048334adf722e6e354309e30c56e3b35fbe",
+          "url": "https://huggingface.co/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/config.json"
+          ]
+        },
+        {
+          "path": "engines/partcrafter/models/RMBG-1.4/model.safetensors",
+          "size": 176381984,
+          "sha256": "46ef7fe46f2ae284d8f1aaa24bfa5fca5ef25a34e2c7caa890a0029eb100e87f",
+          "url": "https://huggingface.co/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/model.safetensors"
+          ]
+        },
+        {
+          "path": "engines/partcrafter/models/RMBG-1.4/preprocessor_config.json",
+          "size": 345,
+          "sha256": "6f9c2cfdb87edd9b83c1314629657d5b320a6a89f8481c872a36253132e33afa",
+          "url": "https://huggingface.co/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/preprocessor_config.json"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/partcrafter/models/PartCrafter/README.md",
+          "size": 687
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/feature_extractor_dinov2/preprocessor_config.json",
+          "size": 436
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/image_encoder_dinov2/config.json",
+          "size": 1086
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/image_encoder_dinov2/model.safetensors",
+          "size": 608785376
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/model_index.json",
+          "size": 525
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/scheduler/scheduler_config.json",
+          "size": 158
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/transformer/config.json",
+          "size": 476
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/transformer/diffusion_pytorch_model.safetensors",
+          "size": 2879298752
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/vae/config.json",
+          "size": 385
+        },
+        {
+          "path": "engines/partcrafter/models/PartCrafter/vae/diffusion_pytorch_model.safetensors",
+          "size": 485361378
+        },
+        {
+          "path": "engines/partcrafter/models/RMBG-1.4/README.md",
+          "size": 6395
+        },
+        {
+          "path": "engines/partcrafter/models/RMBG-1.4/config.json",
+          "size": 548
+        },
+        {
+          "path": "engines/partcrafter/models/RMBG-1.4/model.safetensors",
+          "size": 176381984
+        },
+        {
+          "path": "engines/partcrafter/models/RMBG-1.4/preprocessor_config.json",
+          "size": 345
+        },
+        {
+          "path": "engines/partcrafter/run.ps1"
+        },
+        {
+          "path": "engines/partcrafter/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "engines/partcrafter/src/datasets/preprocess/calculate_iou.py"
+        },
+        {
+          "path": "engines/partcrafter/src/datasets/preprocess/mesh_to_point.py"
+        },
+        {
+          "path": "engines/partcrafter/src/datasets/preprocess/preprocess.py"
+        },
+        {
+          "path": "engines/partcrafter/src/datasets/preprocess/render.py"
+        },
+        {
+          "path": "engines/partcrafter/src/datasets/preprocess/rmbg.py"
+        },
+        {
+          "path": "engines/partcrafter/src/scripts/inference_partcrafter.py"
+        },
+        {
+          "path": "engines/partcrafter/src/scripts/inference_partcrafter_scene.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/datasets/__init__.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/datasets/objaverse_part.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/models/attention_processor.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/models/autoencoders/__init__.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/models/autoencoders/autoencoder_kl_triposg.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/models/autoencoders/vae.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/models/briarmbg.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/models/embeddings.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/models/transformers/__init__.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/models/transformers/modeling_outputs.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/models/transformers/partcrafter_transformer.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/pipelines/pipeline_partcrafter.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/pipelines/pipeline_partcrafter_output.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/pipelines/pipeline_utils.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/schedulers/__init__.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/schedulers/scheduling_rectified_flow.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/train_partcrafter.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/utils/data_utils.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/utils/image_utils.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/utils/inference_utils.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/utils/metric_utils.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/utils/providers/__init__.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/utils/providers/gemini_provider.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/utils/render_utils.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/utils/smoothing.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/utils/style_transfer_utils.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/utils/train_utils.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/utils/typing_utils.py"
+        },
+        {
+          "path": "engines/partcrafter/src/src/utils/vlm_utils.py"
+        }
+      ],
+      "manifest": {
+        "id": "partcrafter",
+        "title": "PartCrafter",
+        "version": "0.0.1",
+        "source": "https://github.com/wgsxm/PartCrafter",
+        "commit": "3d773bf02fad51c7ab31a5615573fec93b287b30",
+        "entrypoint": "run.ps1"
+      },
+      "deploymentProfile": "partcrafter",
+      "dependencies": [],
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://huggingface.co/wgsxm/PartCrafter",
+        "requiresAcceptance": true,
+        "notice": "安装会下载固定版本模型与独立 CUDA / Python 依赖。模型许可与依赖许可分别适用；先阅读官方说明。依赖下载另需约 3–6 GB，磁盘预留包含解压和环境空间。"
+      },
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。",
+      "probes": [
+        {
+          "path": "engines/partcrafter/.venv/Scripts/python.exe",
+          "args": [
+            "@root:engines/partcrafter/run.py",
+            "--check"
+          ],
+          "requiredFlags": [
+            "pass"
+          ],
+          "timeout": 60
+        }
+      ],
+      "installable": false,
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included"
+    },
+    {
+      "id": "mia-rig",
+      "engineId": "mia-rig",
+      "title": "人物绑骨 · MIA",
+      "kind": "rig",
+      "description": "MIA 人体自动绑骨",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 12884901888,
+      "sourceUrl": "https://github.com/jasongzy/Make-It-Animatable",
+      "files": [
+        {
+          "path": "animation-lab/mia/source/output/best/new/bw.pth",
+          "size": 424693698,
+          "sha256": "8ff6abc9ed78665513d2dcd7b2d7e8430f6c86335389120281be3bd999d27830",
+          "url": "https://huggingface.co/jasongzy/Make-It-Animatable/resolve/ca0daf6cb164f939e77bf32667513fc7558d5f98/output/best/new/bw.pth",
+          "mirrors": [
+            "https://hf-mirror.com/jasongzy/Make-It-Animatable/resolve/ca0daf6cb164f939e77bf32667513fc7558d5f98/output/best/new/bw.pth"
+          ]
+        },
+        {
+          "path": "animation-lab/mia/source/output/best/new/bw_normal.pth",
+          "size": 429008352,
+          "sha256": "d69d259863af77a06b6c4ee3d1fc2cb8566194fc8fc08cecbcb065bf9fa94818",
+          "url": "https://huggingface.co/jasongzy/Make-It-Animatable/resolve/ca0daf6cb164f939e77bf32667513fc7558d5f98/output/best/new/bw_normal.pth",
+          "mirrors": [
+            "https://hf-mirror.com/jasongzy/Make-It-Animatable/resolve/ca0daf6cb164f939e77bf32667513fc7558d5f98/output/best/new/bw_normal.pth"
+          ]
+        },
+        {
+          "path": "animation-lab/mia/source/output/best/new/joints.pth",
+          "size": 525833771,
+          "sha256": "595587abb2ef9977bc9e49f8221c326da473de8ff1cd8785eb55ac63acde2b8e",
+          "url": "https://huggingface.co/jasongzy/Make-It-Animatable/resolve/ca0daf6cb164f939e77bf32667513fc7558d5f98/output/best/new/joints.pth",
+          "mirrors": [
+            "https://hf-mirror.com/jasongzy/Make-It-Animatable/resolve/ca0daf6cb164f939e77bf32667513fc7558d5f98/output/best/new/joints.pth"
+          ]
+        },
+        {
+          "path": "animation-lab/mia/source/output/best/new/joints_coarse.pth",
+          "size": 424706373,
+          "sha256": "389e18f92a65e7925c1a940dfff22cc85e9ac4ead17ab4a65fd4ef5d6088b96b",
+          "url": "https://huggingface.co/jasongzy/Make-It-Animatable/resolve/ca0daf6cb164f939e77bf32667513fc7558d5f98/output/best/new/joints_coarse.pth",
+          "mirrors": [
+            "https://hf-mirror.com/jasongzy/Make-It-Animatable/resolve/ca0daf6cb164f939e77bf32667513fc7558d5f98/output/best/new/joints_coarse.pth"
+          ]
+        },
+        {
+          "path": "animation-lab/mia/source/output/best/new/pose.pth",
+          "size": 525848433,
+          "sha256": "4996440d7d90064516e134e748abacd3b96e17856a7d8a4a245bbeb205402b7e",
+          "url": "https://huggingface.co/jasongzy/Make-It-Animatable/resolve/ca0daf6cb164f939e77bf32667513fc7558d5f98/output/best/new/pose.pth",
+          "mirrors": [
+            "https://hf-mirror.com/jasongzy/Make-It-Animatable/resolve/ca0daf6cb164f939e77bf32667513fc7558d5f98/output/best/new/pose.pth"
+          ]
+        },
+        {
+          "path": "animation-lab/mia/source/data/Standard Run.fbx",
+          "size": 344000,
+          "sha256": "d1666a78831cd14368c19aadb023ea98670d5d69e1bc50d96149b95cba519533",
+          "url": "https://huggingface.co/jasongzy/Make-It-Animatable/resolve/ca0daf6cb164f939e77bf32667513fc7558d5f98/data/Standard%20Run.fbx",
+          "mirrors": [
+            "https://hf-mirror.com/jasongzy/Make-It-Animatable/resolve/ca0daf6cb164f939e77bf32667513fc7558d5f98/data/Standard%20Run.fbx"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "animation-lab/mia/source/output/best/new/bw.pth",
+          "size": 424693698
+        },
+        {
+          "path": "animation-lab/mia/source/output/best/new/bw_normal.pth",
+          "size": 429008352
+        },
+        {
+          "path": "animation-lab/mia/source/output/best/new/joints.pth",
+          "size": 525833771
+        },
+        {
+          "path": "animation-lab/mia/source/output/best/new/joints_coarse.pth",
+          "size": 424706373
+        },
+        {
+          "path": "animation-lab/mia/source/output/best/new/pose.pth",
+          "size": 525848433
+        },
+        {
+          "path": "animation-lab/mia/source/data/Standard Run.fbx",
+          "size": 344000
+        },
+        {
+          "path": "engines/mia-rig/run.ps1"
+        },
+        {
+          "path": "animation-lab/mia/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/auto_rig.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/auto_rig_datas.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/auto_rig_datas_export.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/auto_rig_ge.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/auto_rig_prefs.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/auto_rig_remap.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/auto_rig_reset.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/auto_rig_smart.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx/arp_fbx_init.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx/data_types.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx/encode_bin.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx/export_fbx_bin.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx/fbx2json.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx/fbx_utils.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx/fbx_utils_threading.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx/import_fbx.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx/json2fbx.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx/parse_fbx.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx_old/arp_fbx_init.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx_old/data_types.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx_old/encode_bin.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx_old/export_fbx_bin.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx_old/fbx2json.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx_old/fbx_utils.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx_old/import_fbx.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx_old/json2fbx.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/export_fbx_old/parse_fbx.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/animation.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/armature.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/bone_data.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/bone_edit.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/bone_pose.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/collections.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/constraints.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/context.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/drivers.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/export.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/maths_geo.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/mesh.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/modifiers.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/names_func.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/objects.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/properties.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/sys_print.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/types_convert.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/version.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/lib/version_arm_collec.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/mannequin_coords.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/mannequin_coords_tpose.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/picker.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/reset_all_controllers.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/rig_functions.py"
+        },
+        {
+          "path": "animation-lab/mia/source/util/auto_rig_pro/src/utils.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/__init__.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/common/__init__.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/common/compat.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/common/datatypes.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/common/linear_with_repeat.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/common/workaround/__init__.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/common/workaround/symeig3x3.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/common/workaround/utils.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/transforms/__init__.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/transforms/math.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/transforms/rotation_conversions.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/transforms/se3.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/transforms/so3.py"
+        },
+        {
+          "path": "animation-lab/mia/vendor/pytorch3d/transforms/transform3d.py"
+        }
+      ],
+      "manifest": {
+        "id": "mia-rig",
+        "title": "MIA 人体自动绑骨",
+        "kind": "rig",
+        "version": "0.3.0",
+        "entrypoint": "run.ps1",
+        "source": "https://github.com/jasongzy/Make-It-Animatable",
+        "provider": "animation-lab/mia"
+      },
+      "deploymentProfile": "mia-rig",
+      "dependencies": [],
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://huggingface.co/jasongzy/Make-It-Animatable",
+        "requiresAcceptance": true,
+        "notice": "安装会下载固定版本模型与独立 CUDA / Python 依赖。模型许可与依赖许可分别适用；先阅读官方说明。依赖下载另需约 3–6 GB，磁盘预留包含解压和环境空间。"
+      },
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。",
+      "probes": [
+        {
+          "path": "animation-lab/mia/.venv/Scripts/python.exe",
+          "args": [
+            "@root:animation-lab/mia/mia_cli.py",
+            "--check"
+          ],
+          "requiredFlags": [],
+          "timeout": 60
+        }
+      ],
+      "installable": false,
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included"
+    },
+    {
+      "id": "mia-motion",
+      "engineId": "mia-motion",
+      "title": "人物动作 · MIA",
+      "kind": "animation",
+      "description": "MIA 标准人体动作",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 0,
+      "sourceUrl": "https://github.com/jasongzy/Make-It-Animatable",
+      "files": [],
+      "required": [
+        {
+          "path": "engines/mia-motion/run.ps1"
+        }
+      ],
+      "manifest": {
+        "id": "mia-motion",
+        "title": "MIA 标准人体动作",
+        "kind": "animation",
+        "version": "0.3.0",
+        "entrypoint": "run.ps1",
+        "source": "https://github.com/jasongzy/Make-It-Animatable",
+        "providerVersion": "0.0.1a"
+      },
+      "deploymentProfile": "mia-motion",
+      "dependencies": [
+        "mia-rig"
+      ],
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://huggingface.co/jasongzy/Make-It-Animatable",
+        "requiresAcceptance": true,
+        "notice": "安装会下载固定版本模型与独立 CUDA / Python 依赖。模型许可与依赖许可分别适用；先阅读官方说明。依赖下载另需约 3–6 GB，磁盘预留包含解压和环境空间。"
+      },
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。",
+      "installable": false,
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included"
+    },
+    {
+      "id": "unirig",
+      "engineId": "unirig",
+      "title": "通用绑骨 · UniRig",
+      "kind": "rig",
+      "description": "UniRig 通用自动绑骨",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 12884901888,
+      "sourceUrl": "https://github.com/VAST-AI-Research/UniRig",
+      "files": [
+        {
+          "path": "animation-lab/unirig/models/skeleton/articulation-xl_quantization_256/model.ckpt",
+          "size": 1439617174,
+          "sha256": "d8cf9b42d56e7bc316d293597ecf8c4c39a8631cdd44a261ecf388242fabd0f4",
+          "url": "https://huggingface.co/VAST-AI/UniRig/resolve/36842e2b5947e9e60f89275b83208c8e74071c63/skeleton/articulation-xl_quantization_256/model.ckpt",
+          "mirrors": [
+            "https://hf-mirror.com/VAST-AI/UniRig/resolve/36842e2b5947e9e60f89275b83208c8e74071c63/skeleton/articulation-xl_quantization_256/model.ckpt"
+          ]
+        },
+        {
+          "path": "animation-lab/unirig/models/skin/articulation-xl/model.ckpt",
+          "size": 4375464854,
+          "sha256": "9d40cf42fb9d4c10d8b373d9f4f557c6fbbc5ebacae7ae6b3dce5a0d8a18bc33",
+          "url": "https://huggingface.co/VAST-AI/UniRig/resolve/36842e2b5947e9e60f89275b83208c8e74071c63/skin/articulation-xl/model.ckpt",
+          "mirrors": [
+            "https://hf-mirror.com/VAST-AI/UniRig/resolve/36842e2b5947e9e60f89275b83208c8e74071c63/skin/articulation-xl/model.ckpt"
+          ]
+        },
+        {
+          "path": "animation-lab/unirig/models/opt-350m/config.json",
+          "size": 644,
+          "sha256": "3ec75df0e166476e342cf95226ba775d8155449a7b1e430728b3ca26b425e4ab",
+          "url": "https://huggingface.co/facebook/opt-350m/resolve/08ab08cc4b72ff5593870b5d527cf4230323703c/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/facebook/opt-350m/resolve/08ab08cc4b72ff5593870b5d527cf4230323703c/config.json"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "animation-lab/unirig/models/skeleton/articulation-xl_quantization_256/model.ckpt",
+          "size": 1439617174
+        },
+        {
+          "path": "animation-lab/unirig/models/skin/articulation-xl/model.ckpt",
+          "size": 4375464854
+        },
+        {
+          "path": "animation-lab/unirig/models/opt-350m/config.json",
+          "size": 644
+        },
+        {
+          "path": "engines/unirig/run.ps1"
+        },
+        {
+          "path": "animation-lab/unirig/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/asset.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/augment.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/datapath.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/dataset.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/exporter.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/extract.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/log.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/order.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/raw_data.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/sampler.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/spec.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/tail.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/transform.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/utils.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/data/vertex_group.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/inference/download.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/inference/get_list.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/inference/merge.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/michelangelo/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/michelangelo/get_model.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/michelangelo/models/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/michelangelo/models/modules/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/michelangelo/models/modules/checkpoint.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/michelangelo/models/modules/embedder.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/michelangelo/models/modules/transformer_blocks.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/michelangelo/models/tsal/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/michelangelo/models/tsal/sal_perceiver.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/michelangelo/models/tsal/tsal_base.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/parse.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/parse_encoder.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/datasets/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/datasets/builder.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/datasets/dataset_render_16views.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/datasets/sampart3d_util.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/datasets/transform.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/datasets/utils.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/engines/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/engines/defaults.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/engines/eval.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/engines/hooks/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/engines/hooks/builder.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/engines/hooks/default.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/engines/hooks/evaluator.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/engines/hooks/misc.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/engines/launch.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/engines/train.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/models/PTv3Object.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/models/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/models/modules.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/models/utils/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/models/utils/checkpoint.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/models/utils/misc.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/models/utils/serialization/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/models/utils/serialization/default.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/models/utils/serialization/hilbert.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/models/utils/serialization/z_order.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/models/utils/structure.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/cache.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/comm.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/config.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/env.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/events.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/logger.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/misc.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/optimizer.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/path.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/registry.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/scheduler.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/timer.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/pointcept/utils/visualization.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/spec.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/unirig_ar.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/model/unirig_skin.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/system/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/system/ar.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/system/metrics.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/system/optimizer.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/system/parse.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/system/scheduler.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/system/skin.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/tokenizer/__init__.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/tokenizer/parse.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/tokenizer/spec.py"
+        },
+        {
+          "path": "animation-lab/unirig/source/src/tokenizer/tokenizer_part.py"
+        }
+      ],
+      "manifest": {
+        "id": "unirig",
+        "title": "UniRig 通用自动绑骨",
+        "kind": "rig",
+        "version": "0.3.0",
+        "entrypoint": "run.ps1",
+        "source": "https://github.com/VAST-AI-Research/UniRig",
+        "provider": "animation-lab/unirig",
+        "providerVersion": "0.0.1a"
+      },
+      "deploymentProfile": "unirig",
+      "dependencies": [],
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://huggingface.co/VAST-AI/UniRig",
+        "requiresAcceptance": true,
+        "notice": "安装会下载固定版本模型与独立 CUDA / Python 依赖。模型许可与依赖许可分别适用；先阅读官方说明。依赖下载另需约 3–6 GB，磁盘预留包含解压和环境空间。"
+      },
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。",
+      "probes": [
+        {
+          "path": "animation-lab/unirig/.venv/Scripts/python.exe",
+          "args": [
+            "-c",
+            "import torch,bpy,spconv; assert torch.cuda.is_available(); print(\"CUDA/imports checked\")"
+          ],
+          "requiredFlags": [
+            "checked"
+          ],
+          "timeout": 60
+        }
+      ],
+      "installable": false,
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included"
+    },
+    {
+      "id": "riganything",
+      "engineId": "riganything",
+      "title": "自由骨架 · RigAnything",
+      "kind": "rig",
+      "description": "RigAnything 通用自动绑骨",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 12884901888,
+      "sourceUrl": "https://github.com/Isabella98Liu/RigAnything",
+      "files": [
+        {
+          "path": "animation-lab/riganything/ckpt/riganything_ckpt.pt",
+          "size": 2344595770,
+          "sha256": "84c00971ed5c07f2906495bb4a23891058e7e1ee2afe687ada2011cd082a187a",
+          "url": "https://huggingface.co/Isabellaliu/RigAnything/resolve/30df7c0c390db1d5453c5af12da8d227c5025db6/riganything_ckpt.pt",
+          "mirrors": [
+            "https://hf-mirror.com/Isabellaliu/RigAnything/resolve/30df7c0c390db1d5453c5af12da8d227c5025db6/riganything_ckpt.pt"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "animation-lab/riganything/ckpt/riganything_ckpt.pt",
+          "size": 2344595770
+        },
+        {
+          "path": "engines/riganything/run.ps1"
+        },
+        {
+          "path": "animation-lab/riganything/.venv/Scripts/python.exe"
+        }
+      ],
+      "manifest": {
+        "id": "riganything",
+        "title": "RigAnything 通用自动绑骨",
+        "kind": "rig",
+        "version": "0.3.0",
+        "entrypoint": "run.ps1",
+        "source": "https://github.com/Isabella98Liu/RigAnything",
+        "provider": "animation-lab/riganything"
+      },
+      "deploymentProfile": "riganything",
+      "dependencies": [],
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://huggingface.co/Isabellaliu/RigAnything",
+        "requiresAcceptance": true,
+        "notice": "安装会下载固定版本模型与独立 CUDA / Python 依赖。模型许可与依赖许可分别适用；先阅读官方说明。依赖下载另需约 3–6 GB，磁盘预留包含解压和环境空间。"
+      },
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。",
+      "probes": [
+        {
+          "path": "animation-lab/riganything/.venv/Scripts/python.exe",
+          "args": [
+            "@root:animation-lab/riganything/runner.py",
+            "--check"
+          ],
+          "requiredFlags": [],
+          "timeout": 60
+        }
+      ],
+      "installable": false,
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included"
+    },
+    {
+      "id": "hunyuan-paint",
+      "engineId": "hunyuan-paint",
+      "title": "多图上色 · Hunyuan Paint",
+      "kind": "texture",
+      "description": "Hunyuan3D 多图上色",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 12884901888,
+      "sourceUrl": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2",
+      "files": [
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/.gitattributes",
+          "size": 1519,
+          "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/.gitattributes",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/.gitattributes"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/README.md",
+          "size": 1801,
+          "sha256": "cff91f78ba939df60b532e73238a05af0e89c84f6bfb70dfe6b711d911e53c59",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/README.md",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/README.md"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/feature_extractor/preprocessor_config.json",
+          "size": 342,
+          "sha256": "2a1da83b5e1032aaeef397552ddb408dca0d8cd1dc58f61bf6abf38d6f33a0a2",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/feature_extractor/preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/feature_extractor/preprocessor_config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/image_encoder/config.json",
+          "size": 672,
+          "sha256": "c3696fae6f7e5429e71d0474139c7c5f462fa222a25ef436e686429dd90f7eb8",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/image_encoder/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/image_encoder/config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/image_encoder/model.safetensors",
+          "size": 1264217240,
+          "sha256": "ae616c24393dd1854372b0639e5541666f7521cbe219669255e865cb7f89466a",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/image_encoder/model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/image_encoder/model.safetensors"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/image_encoder/preprocessor_config.json",
+          "size": 466,
+          "sha256": "205d45875859846dc1ca211b9a19f5db72f47e953b396954ee34d48d8e95c3c6",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/image_encoder/preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/image_encoder/preprocessor_config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/model_index.json",
+          "size": 620,
+          "sha256": "e694bfd55557d302ba1ce6818f2eace695fb3b2839c38f4de9e66b5106e85f53",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/model_index.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/model_index.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/scheduler/scheduler_config.json",
+          "size": 387,
+          "sha256": "9a6a7268e4d7c1bc5000450927070e338dc57a51f4530078627c88f5828e792d",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/scheduler/scheduler_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/scheduler/scheduler_config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/text_encoder/config.json",
+          "size": 613,
+          "sha256": "7e33bfc475f6cf76e69b28b101993ca834d1f22ff4d35caefde32d63d4f42fba",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/text_encoder/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/text_encoder/config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/text_encoder/pytorch_model.bin",
+          "size": 1361671895,
+          "sha256": "c3e254d7b61353497ea0be2c4013df4ea8f739ee88cffa0ba58cd085459ed565",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/text_encoder/pytorch_model.bin",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/text_encoder/pytorch_model.bin"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/tokenizer/merges.txt",
+          "size": 524619,
+          "sha256": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/tokenizer/merges.txt",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/tokenizer/merges.txt"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/tokenizer/special_tokens_map.json",
+          "size": 460,
+          "sha256": "f118ab3a983206e4f32583448de6bd6aae4ee21869135cef1f5848a753cdaab6",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/tokenizer/special_tokens_map.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/tokenizer/special_tokens_map.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/tokenizer/tokenizer_config.json",
+          "size": 807,
+          "sha256": "d562b18a0c6d32a168fce3d7a342fce64579ebacffb98fb71b0affc494fc32d8",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/tokenizer/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/tokenizer/tokenizer_config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/tokenizer/vocab.json",
+          "size": 1059962,
+          "sha256": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/tokenizer/vocab.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/tokenizer/vocab.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/unet/config.json",
+          "size": 911,
+          "sha256": "ce0c6d379e3b1d3e1f79338de70c80a1e36f17a6372439a8249b6fb0dfa1b608",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/unet/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/unet/config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/unet/diffusion_pytorch_model.safetensors",
+          "size": 3722161032,
+          "sha256": "d6acffa4a22f4da61d87f446bfa83e7ac245481c1535fbf25b200fe4462d0b22",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/unet/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/unet/diffusion_pytorch_model.safetensors"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/unet/modules.py",
+          "size": 26773,
+          "sha256": "abb1d1e5b1914dd48c5e6a9aba4dc302af6eb3823c937261fd0543c4ee39018a",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/unet/modules.py",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/unet/modules.py"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/vae/config.json",
+          "size": 553,
+          "sha256": "424117cb534ce03497c41305ed868980123917b2b6abba4bbaa615e968772903",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/vae/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/vae/config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/vae/diffusion_pytorch_model.bin",
+          "size": 334707217,
+          "sha256": "1b4889b6b1d4ce7ae320a02dedaeff1780ad77d415ea0d744b476155c6377ddc",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/vae/diffusion_pytorch_model.bin",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/vae/diffusion_pytorch_model.bin"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/feature_extractor/preprocessor_config.json",
+          "size": 466,
+          "sha256": "205d45875859846dc1ca211b9a19f5db72f47e953b396954ee34d48d8e95c3c6",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/feature_extractor/preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/feature_extractor/preprocessor_config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/model_index.json",
+          "size": 621,
+          "sha256": "13a10da7af47b30e4da0e76ab44902d8826457afaa431024f7033a369a2572c0",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/model_index.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/model_index.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/scheduler/scheduler_config.json",
+          "size": 533,
+          "sha256": "ba61cbc02207f4a6276fd7cd3a76b96ac12ed6d847aad48d65e54cd9be928b69",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/scheduler/scheduler_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/scheduler/scheduler_config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/text_encoder/config.json",
+          "size": 583,
+          "sha256": "55c23f6c5b5a2dc5aea935ad82eb6e13a9fa839cf3acd3608fac419a4efd893d",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/text_encoder/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/text_encoder/config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/text_encoder/model.safetensors",
+          "size": 680820392,
+          "sha256": "bc1827c465450322616f06dea41596eac7d493f4e95904dcb51f0fc745c4e13f",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/text_encoder/model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/text_encoder/model.safetensors"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/tokenizer/merges.txt",
+          "size": 524619,
+          "sha256": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/tokenizer/merges.txt",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/tokenizer/merges.txt"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/tokenizer/special_tokens_map.json",
+          "size": 574,
+          "sha256": "c2d0fb8b86ad86b1f46134d4a5f93fd1e688c932a78efc8d149087c33a53ad06",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/tokenizer/special_tokens_map.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/tokenizer/special_tokens_map.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/tokenizer/tokenizer_config.json",
+          "size": 855,
+          "sha256": "516314ccab66918d7cb647480ac27abd3520d14e1e5825aac99f50c851c16071",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/tokenizer/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/tokenizer/tokenizer_config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/tokenizer/vocab.json",
+          "size": 1059962,
+          "sha256": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/tokenizer/vocab.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/tokenizer/vocab.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/unet/config.json",
+          "size": 1835,
+          "sha256": "ba51cb0cff8c8404dd028dc9b55a4dc706114fca2e0feb6a844f54ae981d2d2a",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/unet/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/unet/config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/unet/diffusion_pytorch_model.safetensors",
+          "size": 3463772592,
+          "sha256": "0ce61d15a43d11ba19079ab8f24dfce78b876d3f5291470079ef64b17e08ca58",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/unet/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/unet/diffusion_pytorch_model.safetensors"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/vae/config.json",
+          "size": 787,
+          "sha256": "f4aa821fb7a627f93e17b83face435b9d38e34f45c37dae91925e2a6c81f497f",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/vae/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/vae/config.json"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/vae/diffusion_pytorch_model.safetensors",
+          "size": 167335342,
+          "sha256": "3e4c08995484ee61270175e9e7a072b66a6e4eeb5f0c266667fe1f45b90daf9a",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/vae/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-delight-v2-0/vae/diffusion_pytorch_model.safetensors"
+          ]
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/unet/diffusion_pytorch_model.bin",
+          "size": 7325432923,
+          "sha256": "24e7f1aea8a7c94cee627eb06f5265f19eeff4e19568636c5eaef050cc19ba3d",
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/unet/diffusion_pytorch_model.bin",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/unet/diffusion_pytorch_model.bin"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/.gitattributes",
+          "size": 1519
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/README.md",
+          "size": 1801
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/feature_extractor/preprocessor_config.json",
+          "size": 342
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/image_encoder/config.json",
+          "size": 672
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/image_encoder/model.safetensors",
+          "size": 1264217240
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/image_encoder/preprocessor_config.json",
+          "size": 466
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/model_index.json",
+          "size": 620
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/scheduler/scheduler_config.json",
+          "size": 387
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/text_encoder/config.json",
+          "size": 613
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/text_encoder/pytorch_model.bin",
+          "size": 1361671895
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/tokenizer/merges.txt",
+          "size": 524619
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/tokenizer/special_tokens_map.json",
+          "size": 460
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/tokenizer/tokenizer_config.json",
+          "size": 807
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/tokenizer/vocab.json",
+          "size": 1059962
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/unet/config.json",
+          "size": 911
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/unet/diffusion_pytorch_model.safetensors",
+          "size": 3722161032
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/unet/modules.py",
+          "size": 26773
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/vae/config.json",
+          "size": 553
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/vae/diffusion_pytorch_model.bin",
+          "size": 334707217
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/feature_extractor/preprocessor_config.json",
+          "size": 466
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/model_index.json",
+          "size": 621
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/scheduler/scheduler_config.json",
+          "size": 533
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/text_encoder/config.json",
+          "size": 583
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/text_encoder/model.safetensors",
+          "size": 680820392
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/tokenizer/merges.txt",
+          "size": 524619
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/tokenizer/special_tokens_map.json",
+          "size": 574
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/tokenizer/tokenizer_config.json",
+          "size": 855
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/tokenizer/vocab.json",
+          "size": 1059962
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/unet/config.json",
+          "size": 1835
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/unet/diffusion_pytorch_model.safetensors",
+          "size": 3463772592
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/vae/config.json",
+          "size": 787
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-delight-v2-0/vae/diffusion_pytorch_model.safetensors",
+          "size": 167335342
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/models/hunyuan3d-paint-v2-0-turbo/unet/diffusion_pytorch_model.bin",
+          "size": 7325432923
+        },
+        {
+          "path": "engines/hunyuan-paint/run.ps1"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/api_server.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/blender_addon.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/docs/source/conf.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/gradio_app.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/__init__.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/rembg.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/__init__.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/models/__init__.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/models/autoencoders/__init__.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/models/autoencoders/attention_blocks.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/models/autoencoders/attention_processors.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/models/autoencoders/model.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/models/autoencoders/surface_extractors.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/models/autoencoders/volume_decoders.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/models/conditioner.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/models/denoisers/__init__.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/models/denoisers/hunyuan3ddit.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/models/denoisers/hunyuandit.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/models/denoisers/moe_layers.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/pipelines.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/postprocessors.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/preprocessors.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/schedulers.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/surface_loaders.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/shapegen/utils.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/__init__.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/custom_rasterizer/custom_rasterizer/__init__.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/custom_rasterizer/custom_rasterizer/io_glb.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/custom_rasterizer/custom_rasterizer/io_obj.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/custom_rasterizer/custom_rasterizer/render.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/custom_rasterizer/custom_rasterizer_kernel.cp311-win_amd64.pyd"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/custom_rasterizer/lib/custom_rasterizer_kernel/__init__.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/custom_rasterizer/setup.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/differentiable_renderer/__init__.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/differentiable_renderer/camera_utils.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/differentiable_renderer/mesh_processor.cp311-win_amd64.pyd"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/differentiable_renderer/mesh_processor.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/differentiable_renderer/mesh_render.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/differentiable_renderer/mesh_utils.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/differentiable_renderer/setup.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/hunyuanpaint/__init__.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/hunyuanpaint/pipeline.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/hunyuanpaint/unet/__init__.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/hunyuanpaint/unet/modules.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/pipelines.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/utils/__init__.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/utils/alignImg4Tex_utils.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/utils/counter_utils.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/utils/dehighlight_utils.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/utils/imagesuper_utils.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/utils/multiview_utils.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/utils/simplify_mesh_utils.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/texgen/utils/uv_warp_utils.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/hy3dgen/text2image.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/minimal_demo.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/minimal_vae_demo.py"
+        },
+        {
+          "path": "texture-lab/hunyuan-paint/src/setup.py"
+        }
+      ],
+      "manifest": {
+        "id": "hunyuan-paint",
+        "title": "Hunyuan3D 多图上色",
+        "kind": "texture",
+        "version": "0.4.0",
+        "providerVersion": "0.0.1",
+        "entrypoint": "run.ps1",
+        "provider": "texture-lab/hunyuan-paint",
+        "source": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2",
+        "commit": "f8db63096c8282cb27354314d896feba5ba6ff8a",
+        "modelRevision": "9cd649ba6913f7a852e3286bad86bfa9a2d83dcf",
+        "appearance": "texture",
+        "capabilities": {
+          "multiView": true,
+          "maxViews": 4,
+          "mainView": "front",
+          "views": [
+            "left",
+            "back",
+            "right"
+          ]
+        }
+      },
+      "deploymentProfile": "hunyuan-paint",
+      "dependencies": [],
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://huggingface.co/tencent/Hunyuan3D-2",
+        "requiresAcceptance": true,
+        "notice": "安装会下载固定版本模型与独立 CUDA / Python 依赖。模型许可与依赖许可分别适用；先阅读官方说明。依赖下载另需约 3–6 GB，磁盘预留包含解压和环境空间。"
+      },
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。",
+      "probes": [
+        {
+          "path": "texture-lab/hunyuan-paint/.venv/Scripts/python.exe",
+          "args": [
+            "@root:texture-lab/hunyuan-paint/paint_cli.py",
+            "--check"
+          ],
+          "requiredFlags": [],
+          "timeout": 180
+        }
+      ],
+      "installable": false,
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included"
+    },
+    {
+      "id": "basic-motion",
+      "engineId": "basic-motion",
+      "title": "关节动作 · 内置",
+      "kind": "animation",
+      "description": "基本关节动作",
+      "recommended": false,
+      "minimumVramMiB": 0,
+      "minimumRamGiB": 4,
+      "extractReserveBytes": 0,
+      "sourceUrl": "https://github.com/KhronosGroup/glTF",
+      "files": [],
+      "required": [
+        {
+          "path": "engines/basic-motion/run.ps1"
+        }
+      ],
+      "manifest": {
+        "id": "basic-motion",
+        "title": "基本关节动作",
+        "version": "0.3.0",
+        "kind": "animation",
+        "entrypoint": "run.ps1",
+        "appearance": "texture",
+        "capabilities": {
+          "multiView": false
+        }
+      },
+      "deploymentProfile": "basic-motion",
+      "dependencies": [],
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://github.com/KhronosGroup/glTF",
+        "requiresAcceptance": true,
+        "notice": "安装会下载固定版本模型与独立 CUDA / Python 依赖。模型许可与依赖许可分别适用；先阅读官方说明。依赖下载另需约 3–6 GB，磁盘预留包含解压和环境空间。"
+      },
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。",
+      "installable": false,
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included"
+    }
+  ],
+  "productVersion": "0.9.1"
+}

@@ -1,0 +1,162 @@
+{
+  "sourceRevision": "fdc311b16809e6a8adc2f5a3407ebb3db1a95bd1",
+  "modelRevision": "5699918cb34f55cd7d828493d2725f3038313761",
+  "dinoRevision": "47b73eefe95e8d44ec3623f8890bd894b6ea2d6c",
+  "vendorRevisions": {
+    "SunzeY/AlphaCLIP": "ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff",
+    "openai/CLIP": "d05afc436d78f1c48dc0dbf8e5980a9d471f35f6"
+  },
+  "files": [
+    {
+      "path": "cache/setup/spar3d-fdc311b16809e6a8adc2f5a3407ebb3db1a95bd1.zip",
+      "url": "https://codeload.github.com/Stability-AI/stable-point-aware-3d/zip/fdc311b16809e6a8adc2f5a3407ebb3db1a95bd1",
+      "size": 29852358,
+      "sha256": "ac67036ce30c702cd8c200c87eac976b02a8c127a43ae6cd8951be0ccf15eec3",
+      "extractTo": "engines/spar3d/src",
+      "stripPrefix": "stable-point-aware-3d-fdc311b16809e6a8adc2f5a3407ebb3db1a95bd1/"
+    },
+    {
+      "path": "engines/spar3d/models/LICENSE.md",
+      "url": "https://huggingface.co/stabilityai/stable-point-aware-3d/resolve/5699918cb34f55cd7d828493d2725f3038313761/LICENSE.md",
+      "size": 11716,
+      "authRequired": true,
+      "mirrors": [],
+      "gitBlobSha1": "a889fd6b2adf60bbbe8d687e011803892b828eab"
+    },
+    {
+      "path": "engines/spar3d/models/config.yaml",
+      "url": "https://huggingface.co/stabilityai/stable-point-aware-3d/resolve/5699918cb34f55cd7d828493d2725f3038313761/config.yaml",
+      "size": 3996,
+      "authRequired": true,
+      "mirrors": [],
+      "gitBlobSha1": "691b7b50f13599b03ea5eaaa5fdc01316c31bbf5"
+    },
+    {
+      "path": "engines/spar3d/models/model.safetensors",
+      "url": "https://huggingface.co/stabilityai/stable-point-aware-3d/resolve/5699918cb34f55cd7d828493d2725f3038313761/model.safetensors",
+      "size": 7326949440,
+      "authRequired": true,
+      "mirrors": [],
+      "sha256": "62673b63fd9dad425e74b213ffe8501262d9621d5174310ac33017747be31f58"
+    },
+    {
+      "path": "engines/spar3d/models/dinov2-large/config.json",
+      "url": "https://huggingface.co/facebook/dinov2-large/resolve/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/config.json",
+      "size": 549,
+      "mirrors": [],
+      "gitBlobSha1": "5def28dd2a0ecb2561a4649703f13c4dc595ee95"
+    },
+    {
+      "path": "engines/spar3d/models/dinov2-large/model.safetensors",
+      "url": "https://huggingface.co/facebook/dinov2-large/resolve/47b73eefe95e8d44ec3623f8890bd894b6ea2d6c/model.safetensors",
+      "size": 1217522888,
+      "mirrors": [],
+      "sha256": "399fba97a95f22c36834418bc69373364a99af3a1153da1c0fb31db567c92e23"
+    },
+    {
+      "path": "engines/spar3d/models/clip/ViT-L-14.pt",
+      "size": 932768134,
+      "sha256": "b8cca3fd41ae0c99ba7e8951adf17d267cdb84cd88be6f7c2e0eca1737a03836",
+      "url": "https://openaipublic.blob.core.windows.net/clip/models/b8cca3fd41ae0c99ba7e8951adf17d267cdb84cd88be6f7c2e0eca1737a03836/ViT-L-14.pt",
+      "mirrors": []
+    },
+    {
+      "path": "engines/spar3d/models/clip/ViT-L-14-336px.pt",
+      "size": 934088680,
+      "sha256": "3035c92b350959924f9f00213499208652fc7ea050643e8b385c2dac08641f02",
+      "url": "https://openaipublic.blob.core.windows.net/clip/models/3035c92b350959924f9f00213499208652fc7ea050643e8b385c2dac08641f02/ViT-L-14-336px.pt",
+      "mirrors": []
+    },
+    {
+      "path": "engines/spar3d/vendor/alpha_clip/__init__.py",
+      "size": 26,
+      "gitBlobSha1": "3d5b643bb3da8fde1fcadedb6919a36fb544cf97",
+      "url": "https://raw.githubusercontent.com/SunzeY/AlphaCLIP/ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff/alpha_clip/__init__.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/spar3d/vendor/alpha_clip/alpha_clip.py",
+      "size": 10394,
+      "gitBlobSha1": "57e7caefd7e925b4c3f0bd7096d101a8a32417aa",
+      "url": "https://raw.githubusercontent.com/SunzeY/AlphaCLIP/ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff/alpha_clip/alpha_clip.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/spar3d/vendor/alpha_clip/bpe_simple_vocab_16e6.txt.gz",
+      "size": 1356917,
+      "gitBlobSha1": "7b5088a527f720063f044eb928eee315f63b2fc0",
+      "url": "https://raw.githubusercontent.com/SunzeY/AlphaCLIP/ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff/alpha_clip/bpe_simple_vocab_16e6.txt.gz",
+      "mirrors": []
+    },
+    {
+      "path": "engines/spar3d/vendor/alpha_clip/model.py",
+      "size": 24560,
+      "gitBlobSha1": "3e4aaf0ccc32d84c88b63bd94a426123b05372c1",
+      "url": "https://raw.githubusercontent.com/SunzeY/AlphaCLIP/ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff/alpha_clip/model.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/spar3d/vendor/alpha_clip/simple_tokenizer.py",
+      "size": 4632,
+      "gitBlobSha1": "0a66286b7d5019c6e221932a813768038f839c91",
+      "url": "https://raw.githubusercontent.com/SunzeY/AlphaCLIP/ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff/alpha_clip/simple_tokenizer.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/spar3d/vendor/clip/__init__.py",
+      "size": 20,
+      "gitBlobSha1": "dcc5619538c0f7c782508bdbd9587259d805e0d9",
+      "url": "https://raw.githubusercontent.com/openai/CLIP/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/clip/__init__.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/spar3d/vendor/clip/bpe_simple_vocab_16e6.txt.gz",
+      "size": 1356917,
+      "gitBlobSha1": "7b5088a527f720063f044eb928eee315f63b2fc0",
+      "url": "https://raw.githubusercontent.com/openai/CLIP/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/clip/bpe_simple_vocab_16e6.txt.gz",
+      "mirrors": []
+    },
+    {
+      "path": "engines/spar3d/vendor/clip/clip.py",
+      "size": 9644,
+      "gitBlobSha1": "398a6282cc243e449430d91c2562491fc799929d",
+      "url": "https://raw.githubusercontent.com/openai/CLIP/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/clip/clip.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/spar3d/vendor/clip/model.py",
+      "size": 17374,
+      "gitBlobSha1": "232b7792eb97440642547bd462cf128df9243933",
+      "url": "https://raw.githubusercontent.com/openai/CLIP/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/clip/model.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/spar3d/vendor/clip/simple_tokenizer.py",
+      "size": 4632,
+      "gitBlobSha1": "0a66286b7d5019c6e221932a813768038f839c91",
+      "url": "https://raw.githubusercontent.com/openai/CLIP/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/clip/simple_tokenizer.py",
+      "mirrors": []
+    },
+    {
+      "path": "engines/spar3d/vendor/licenses/SunzeY-AlphaCLIP-LICENSE",
+      "url": "https://raw.githubusercontent.com/SunzeY/AlphaCLIP/ef9262bc539728bf8ef2dfe9c402ae12bbfcd9ff/LICENSE",
+      "size": 11360,
+      "gitBlobSha1": "284803df68c514bdd81477e9248b9a0b4e769533",
+      "mirrors": []
+    },
+    {
+      "path": "engines/spar3d/vendor/licenses/openai-CLIP-LICENSE",
+      "url": "https://raw.githubusercontent.com/openai/CLIP/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/LICENSE",
+      "size": 1064,
+      "gitBlobSha1": "4e97f0b45803b7c04ae89548934af4f257a97501",
+      "mirrors": []
+    }
+  ],
+  "sourceHashes": {
+    "texture_baker/setup.py": "72ac1d1f0aa6ec506442350fca3d0ae4e3b3cca0a604f8ccf065df99173b99cb",
+    "uv_unwrapper/setup.py": "a1492ad0a61ea45033e29c81b9045d7a12b78454ad634c44a280f5be390d12eb",
+    "spar3d/models/tokenizers/image.py": "71871f8cca98054f3e831e8dcaeef1fd29c9a0240f9f54b24ad95b967da40b8b",
+    "spar3d/models/image_estimator/clip_based_estimator.py": "a894546e74dc042509630b9b92f5eb2f9e39de16559ca031db1d5c5924035f83",
+    "spar3d/utils.py": "ad32c62dfda710a4ec0a7cca3c11b27c3a61a949bbb317401f6d75c9c977adae"
+  }
+}

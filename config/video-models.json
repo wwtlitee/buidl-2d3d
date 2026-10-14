@@ -1,0 +1,4221 @@
+{
+  "version": "0.7.0",
+  "author": "Unclecow",
+  "verifiedAt": "2026-10-09",
+  "models": [
+    {
+      "id": "wangp-video-runtime",
+      "engineId": "wangp-video-runtime",
+      "title": "Uses WanGP · 视频共用运行器",
+      "kind": "utility",
+      "version": "0.7.0",
+      "description": "固定 WanGP 源码、FFmpeg 与独立 Python/CUDA 环境；安装期间准备全部组件，推理期间不联网。",
+      "sourceUrl": "https://github.com/deepbeepmeep/Wan2GP/tree/6479db36bdc2619a904a852bba9c2d78e1a83f82",
+      "files": [
+        {
+          "path": "cache/downloads/wangp-6479db36bdc2619a904a852bba9c2d78e1a83f82.zip",
+          "url": "https://codeload.github.com/deepbeepmeep/Wan2GP/zip/6479db36bdc2619a904a852bba9c2d78e1a83f82",
+          "size": 61784271,
+          "sha256": "019b10a0d83dae9e72cb66493b0443f0b6fbdc7a101c31b7e76a270170018df5",
+          "extractTo": "video-lab/wangp/src",
+          "stripPrefix": "Wan2GP-6479db36bdc2619a904a852bba9c2d78e1a83f82/"
+        },
+        {
+          "path": "cache/setup/ffmpeg-9.0.2-essentials_build.zip",
+          "url": "https://github.com/GyanD/codexffmpeg/releases/download/9.0.2/ffmpeg-9.0.2-essentials_build.zip",
+          "size": 114768076,
+          "sha256": "60f467265b1e312373dbcd92200c2618a74850f98d3d078e94296bb3fa2047ba",
+          "extractTo": "video-lab/wangp/src/ffmpeg_bins",
+          "stripPrefix": "ffmpeg-9.0.2-essentials_build/bin/"
+        }
+      ],
+      "required": [
+        {
+          "path": "video-lab/wangp/src/shared/api.py"
+        },
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "video-lab/wangp/src/ffmpeg_bins/ffmpeg.exe"
+        },
+        {
+          "path": "video-lab/wangp/src/ffmpeg_bins/ffprobe.exe"
+        },
+        {
+          "path": "video-lab/wangp/src/ffmpeg_bins/ffplay.exe"
+        }
+      ],
+      "minimumVramMiB": 0,
+      "minimumRamGiB": 8,
+      "extractReserveBytes": 12884901888,
+      "deploymentProfile": "wangp-video",
+      "license": {
+        "label": "WanGP Community 2.0 / FFmpeg GPL",
+        "url": "https://github.com/deepbeepmeep/Wan2GP/blob/6479db36bdc2619a904a852bba9c2d78e1a83f82/LICENSE.txt",
+        "requiresAcceptance": true,
+        "notice": "Uses WanGP。个人及企业内部免费使用按 Community 2.0；出售运行器、白牌、收费产品/API/SaaS 需要另行商业授权。FFmpeg 适用其 GPL 与分发许可，原始 ZIP 保留许可证。"
+      },
+      "validationStage": "researched",
+      "probes": [
+        {
+          "path": "video-lab/wangp/src/ffmpeg_bins/ffmpeg.exe",
+          "args": [
+            "-version"
+          ],
+          "requiredFlags": [
+            "ffmpeg version"
+          ],
+          "timeout": 30
+        }
+      ]
+    },
+    {
+      "id": "video-h3-fl2va",
+      "engineId": "video-h3-fl2va",
+      "title": "MiniMax H3 FL2VA Pruned 20B · 首尾帧与音视频 · Uses WanGP",
+      "kind": "video",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "本地实验视频配方；显存卸载使用 WanGP profile 5，速度、画质和峰值内存需自行短测。",
+      "recommended": false,
+      "installable": true,
+      "gpuVerified": false,
+      "minimumVramMiB": 6144,
+      "minimumRamGiB": 32,
+      "extractReserveBytes": 2147483648,
+      "sourceUrl": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+      "runtimeSourceUrl": "https://github.com/deepbeepmeep/Wan2GP",
+      "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+      "runtimeModelType": "minimax_h3_fl2va_pruned",
+      "precision": "INT8 weights / BF16 compute",
+      "defaults": {
+        "width": 640,
+        "height": 384,
+        "frames": 107,
+        "fps": 24,
+        "steps": 30,
+        "seed": 12345
+      },
+      "limits": {
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 17,
+          "offset": 5,
+          "min": 107,
+          "max": 192
+        },
+        "fps": [
+          24
+        ],
+        "maxSteps": 80
+      },
+      "capabilities": {
+        "modes": [
+          "txt2video",
+          "img2video"
+        ],
+        "maxReferenceImages": 2,
+        "endImage": true,
+        "referenceVideo": false,
+        "referenceAudio": false,
+        "audioOutput": true,
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 17,
+          "offset": 5,
+          "min": 107,
+          "max": 192
+        },
+        "fps": [
+          24
+        ],
+        "maxSteps": 80
+      },
+      "inputOnly": false,
+      "runtimeConfig": {
+        "transformer_quantization": "int8",
+        "transformer_dtype_policy": "bf16",
+        "text_encoder_quantization": "int8",
+        "generation_preview": "rgb",
+        "attention_mode": "sdpa",
+        "save_format": "mp4",
+        "profile": 5,
+        "video_profile": 5,
+        "compile": false
+      },
+      "settings": {
+        "prompt_enhancer": "",
+        "config": "gguf_q4_k_m,bf16",
+        "spatial_upsampling": "",
+        "temporal_upsampling": ""
+      },
+      "files": [
+        {
+          "path": "video-lab/wangp/models/MiniMax-H3-FL2VA-pruned_rank8_int8_convrot.safetensors",
+          "size": 21057674787,
+          "sha256": "30ff400f974b11a1ef13d216c5d9f6439a9c10322a3988b0374a39672ce286f0",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/MiniMax-H3-FL2VA-pruned_rank8_int8_convrot.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/MiniMax-H3-FL2VA-pruned_rank8_int8_convrot.safetensors"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/MiniMax-H3-video_vae_fp16.safetensors",
+          "size": 5207806512,
+          "sha256": "455010492bb59a9cc7b8f1ee23905b22a10079f89490adbf820a1728efcaea6b",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/MiniMax-H3-video_vae_fp16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/MiniMax-H3-video_vae_fp16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/MiniMax-H3-audio_vae_fp32.safetensors",
+          "size": 605429308,
+          "sha256": "37dddc2f3e6d5d5139d823d5ea283bbf304dadcb885b1ccda818aa13dade5ea2",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/MiniMax-H3-audio_vae_fp32.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/MiniMax-H3-audio_vae_fp32.safetensors"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/minimax_h3/minimax_h3_latent_upscaler_3d_bf16.safetensors",
+          "size": 690592992,
+          "sha256": "4f57821f5837f32f7142b67d815606dbd7550f194e5c769f7d6c3f83b146a5e6",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/minimax_h3/minimax_h3_latent_upscaler_3d_bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/minimax_h3/minimax_h3_latent_upscaler_3d_bf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/config.json",
+          "size": 1474,
+          "sha256": "d2dd0c60d01b9e195d9447c52da61c7302d28828524914c044d9c6e1b81d0427",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/config.json"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/tokenizer.json",
+          "size": 7032403,
+          "sha256": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/tokenizer.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/tokenizer.json"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/tokenizer_config.json",
+          "size": 11004,
+          "sha256": "0a05d1d0c5b7205132d3815dbb5c3e9912c926a00e0bbf32f67f7afaaa200542",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/preprocessor_config.json",
+          "size": 390,
+          "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/preprocessor_config.json"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/vocab.json",
+          "size": 2776833,
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/vocab.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/vocab.json"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/qwen3vl-32B-MiniMax-H3-Q4_K_M.gguf",
+          "size": 14576977888,
+          "sha256": "1bf75e038c5895b97b6ea16cc1e3d32076254b06ec3df10657650d86dc82279e",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/qwen3vl-32B-MiniMax-H3-Q4_K_M.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/qwen3vl-32B-MiniMax-H3-Q4_K_M.gguf"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        }
+      ],
+      "required": [
+        {
+          "path": "video-lab/wangp/models/MiniMax-H3-FL2VA-pruned_rank8_int8_convrot.safetensors",
+          "size": 21057674787,
+          "sha256": "30ff400f974b11a1ef13d216c5d9f6439a9c10322a3988b0374a39672ce286f0"
+        },
+        {
+          "path": "video-lab/wangp/models/MiniMax-H3-video_vae_fp16.safetensors",
+          "size": 5207806512,
+          "sha256": "455010492bb59a9cc7b8f1ee23905b22a10079f89490adbf820a1728efcaea6b"
+        },
+        {
+          "path": "video-lab/wangp/models/MiniMax-H3-audio_vae_fp32.safetensors",
+          "size": 605429308,
+          "sha256": "37dddc2f3e6d5d5139d823d5ea283bbf304dadcb885b1ccda818aa13dade5ea2"
+        },
+        {
+          "path": "video-lab/wangp/models/minimax_h3/minimax_h3_latent_upscaler_3d_bf16.safetensors",
+          "size": 690592992,
+          "sha256": "4f57821f5837f32f7142b67d815606dbd7550f194e5c769f7d6c3f83b146a5e6"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/config.json",
+          "size": 1474,
+          "sha256": "d2dd0c60d01b9e195d9447c52da61c7302d28828524914c044d9c6e1b81d0427"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/tokenizer.json",
+          "size": 7032403,
+          "sha256": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/tokenizer_config.json",
+          "size": 11004,
+          "sha256": "0a05d1d0c5b7205132d3815dbb5c3e9912c926a00e0bbf32f67f7afaaa200542"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/preprocessor_config.json",
+          "size": 390,
+          "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/vocab.json",
+          "size": 2776833,
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/qwen3vl-32B-MiniMax-H3-Q4_K_M.gguf",
+          "size": 14576977888,
+          "sha256": "1bf75e038c5895b97b6ea16cc1e3d32076254b06ec3df10657650d86dc82279e"
+        },
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "video-lab/wangp/src/shared/api.py"
+        },
+        {
+          "path": "engines/video-h3-fl2va/run.ps1"
+        }
+      ],
+      "dependencies": [
+        "wangp-video-runtime"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/video_wangp.ps1",
+          "target": "engines/video-h3-fl2va/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "WanGP Community 2.0 + 原模型许可",
+        "url": "https://github.com/deepbeepmeep/Wan2GP/blob/6479db36bdc2619a904a852bba9c2d78e1a83f82/LICENSE.txt",
+        "requiresAcceptance": true,
+        "notice": "使用 WanGP（Uses WanGP）。Community License 2.0 允许个人、本地、研究及符合许可的免费集成；禁止白牌、出售运行器、收费嵌入或收费 API/SaaS，相关用途需要作者另行授权。各模型仍分别适用原模型许可。当前是固定源配方，未完成这台 3060 的真实生成验收。 H3 大权重及 32B 文本编码器需要大量内存/磁盘，32 GB 电脑可能严重换页或失败；建议先试较轻模型。 H3 许可地域排除欧盟、英国、韩国和美国；商业产品界面必须展示 MiniMax H3，年收入超过 2000 万美元需额外书面授权；品牌使用范围按原许可。",
+        "modelUrl": "https://huggingface.co/MiniMaxAI/MiniMax-H3"
+      },
+      "remedy": "点击下载部署完整固定版本组件。安装校验只检查 CUDA、运行器与文件；首次生成结果需你验收。",
+      "runtime": {
+        "type": "wangp",
+        "environment": "video-lab/wangp/.venv",
+        "python": "video-lab/wangp/.venv/Scripts/python.exe"
+      },
+      "manifest": {
+        "id": "video-h3-fl2va",
+        "title": "MiniMax H3 FL2VA Pruned 20B · 首尾帧与音视频 · Uses WanGP",
+        "kind": "video",
+        "version": "0.7.0",
+        "providerVersion": "0.7.0",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "capabilities": {
+          "modes": [
+            "txt2video",
+            "img2video"
+          ],
+          "maxReferenceImages": 2,
+          "endImage": true,
+          "referenceVideo": false,
+          "referenceAudio": false,
+          "audioOutput": true,
+          "sizeMultiple": 32,
+          "maxPixels": 307200,
+          "frameRule": {
+            "multiple": 17,
+            "offset": 5,
+            "min": 107,
+            "max": 192
+          },
+          "fps": [
+            24
+          ],
+          "maxSteps": 80
+        },
+        "defaults": {
+          "width": 640,
+          "height": 384,
+          "frames": 107,
+          "fps": 24,
+          "steps": 30,
+          "seed": 12345
+        },
+        "runtime": {
+          "type": "wangp",
+          "environment": "video-lab/wangp/.venv",
+          "python": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        "source": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+        "runtimeSource": "https://github.com/deepbeepmeep/Wan2GP",
+        "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+        "verificationStatus": "recipe-verified-generation-unverified"
+      },
+      "validationStage": "researched",
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12GB",
+        "memoryProfile": 5,
+        "measured": false,
+        "defaultResolution": "640x384"
+      },
+      "probes": [
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe",
+          "args": [
+            "@root:scripts/providers/video_wangp.py",
+            "--engine",
+            "video-h3-fl2va",
+            "--check"
+          ],
+          "requiredFlags": [
+            "\"gpuInferenceExecuted\": false"
+          ],
+          "timeout": 240
+        }
+      ]
+    },
+    {
+      "id": "video-h3-ref2va",
+      "engineId": "video-h3-ref2va",
+      "title": "MiniMax H3 Ref2VA Pruned 20B · 多参考音视频 · Uses WanGP",
+      "kind": "video",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "本地实验视频配方；显存卸载使用 WanGP profile 5，速度、画质和峰值内存需自行短测。",
+      "recommended": false,
+      "installable": true,
+      "gpuVerified": false,
+      "minimumVramMiB": 6144,
+      "minimumRamGiB": 32,
+      "extractReserveBytes": 2147483648,
+      "sourceUrl": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+      "runtimeSourceUrl": "https://github.com/deepbeepmeep/Wan2GP",
+      "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+      "runtimeModelType": "minimax_h3_ref2va_pruned",
+      "precision": "INT8 weights / BF16 compute",
+      "defaults": {
+        "width": 640,
+        "height": 384,
+        "frames": 107,
+        "fps": 24,
+        "steps": 30,
+        "seed": 12345
+      },
+      "limits": {
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 17,
+          "offset": 5,
+          "min": 107,
+          "max": 192
+        },
+        "fps": [
+          24
+        ],
+        "maxSteps": 80
+      },
+      "capabilities": {
+        "modes": [
+          "txt2video",
+          "img2video",
+          "reference-video"
+        ],
+        "maxReferenceImages": 9,
+        "endImage": true,
+        "referenceVideo": true,
+        "referenceAudio": true,
+        "audioOutput": true,
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 17,
+          "offset": 5,
+          "min": 107,
+          "max": 192
+        },
+        "fps": [
+          24
+        ],
+        "maxSteps": 80,
+        "inputTypes": [
+          "image",
+          "video",
+          "audio"
+        ]
+      },
+      "inputOnly": false,
+      "runtimeConfig": {
+        "transformer_quantization": "int8",
+        "transformer_dtype_policy": "bf16",
+        "text_encoder_quantization": "int8",
+        "generation_preview": "rgb",
+        "attention_mode": "sdpa",
+        "save_format": "mp4",
+        "profile": 5,
+        "video_profile": 5,
+        "compile": false
+      },
+      "settings": {
+        "prompt_enhancer": "",
+        "config": "gguf_q4_k_m,bf16",
+        "spatial_upsampling": "",
+        "temporal_upsampling": ""
+      },
+      "files": [
+        {
+          "path": "video-lab/wangp/models/MiniMax-H3-Ref2VA-pruned_rank8_int8_convrot.safetensors",
+          "size": 21057674788,
+          "sha256": "e09db861c48d13560222948b4e38082bc21b1b7d4ddcaed9c865bf9c3233898c",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/MiniMax-H3-Ref2VA-pruned_rank8_int8_convrot.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/MiniMax-H3-Ref2VA-pruned_rank8_int8_convrot.safetensors"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/MiniMax-H3-video_vae_fp16.safetensors",
+          "size": 5207806512,
+          "sha256": "455010492bb59a9cc7b8f1ee23905b22a10079f89490adbf820a1728efcaea6b",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/MiniMax-H3-video_vae_fp16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/MiniMax-H3-video_vae_fp16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/MiniMax-H3-audio_vae_fp32.safetensors",
+          "size": 605429308,
+          "sha256": "37dddc2f3e6d5d5139d823d5ea283bbf304dadcb885b1ccda818aa13dade5ea2",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/MiniMax-H3-audio_vae_fp32.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/MiniMax-H3-audio_vae_fp32.safetensors"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/minimax_h3/minimax_h3_latent_upscaler_3d_bf16.safetensors",
+          "size": 690592992,
+          "sha256": "4f57821f5837f32f7142b67d815606dbd7550f194e5c769f7d6c3f83b146a5e6",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/minimax_h3/minimax_h3_latent_upscaler_3d_bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/minimax_h3/minimax_h3_latent_upscaler_3d_bf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/config.json",
+          "size": 1474,
+          "sha256": "d2dd0c60d01b9e195d9447c52da61c7302d28828524914c044d9c6e1b81d0427",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/config.json"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/tokenizer.json",
+          "size": 7032403,
+          "sha256": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/tokenizer.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/tokenizer.json"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/tokenizer_config.json",
+          "size": 11004,
+          "sha256": "0a05d1d0c5b7205132d3815dbb5c3e9912c926a00e0bbf32f67f7afaaa200542",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/preprocessor_config.json",
+          "size": 390,
+          "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/preprocessor_config.json"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/vocab.json",
+          "size": 2776833,
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/vocab.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/vocab.json"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/qwen3vl-32B-MiniMax-H3-Q4_K_M.gguf",
+          "size": 14576977888,
+          "sha256": "1bf75e038c5895b97b6ea16cc1e3d32076254b06ec3df10657650d86dc82279e",
+          "url": "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/qwen3vl-32B-MiniMax-H3-Q4_K_M.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/MiniMax-H3/resolve/adc81ccb71352192214d83d5fafb9487e860be39/Qwen3-VL-32B-Instruct/qwen3vl-32B-MiniMax-H3-Q4_K_M.gguf"
+          ],
+          "repo": "DeepBeepMeep/MiniMax-H3",
+          "revision": "adc81ccb71352192214d83d5fafb9487e860be39"
+        }
+      ],
+      "required": [
+        {
+          "path": "video-lab/wangp/models/MiniMax-H3-Ref2VA-pruned_rank8_int8_convrot.safetensors",
+          "size": 21057674788,
+          "sha256": "e09db861c48d13560222948b4e38082bc21b1b7d4ddcaed9c865bf9c3233898c"
+        },
+        {
+          "path": "video-lab/wangp/models/MiniMax-H3-video_vae_fp16.safetensors",
+          "size": 5207806512,
+          "sha256": "455010492bb59a9cc7b8f1ee23905b22a10079f89490adbf820a1728efcaea6b"
+        },
+        {
+          "path": "video-lab/wangp/models/MiniMax-H3-audio_vae_fp32.safetensors",
+          "size": 605429308,
+          "sha256": "37dddc2f3e6d5d5139d823d5ea283bbf304dadcb885b1ccda818aa13dade5ea2"
+        },
+        {
+          "path": "video-lab/wangp/models/minimax_h3/minimax_h3_latent_upscaler_3d_bf16.safetensors",
+          "size": 690592992,
+          "sha256": "4f57821f5837f32f7142b67d815606dbd7550f194e5c769f7d6c3f83b146a5e6"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/config.json",
+          "size": 1474,
+          "sha256": "d2dd0c60d01b9e195d9447c52da61c7302d28828524914c044d9c6e1b81d0427"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/tokenizer.json",
+          "size": 7032403,
+          "sha256": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/tokenizer_config.json",
+          "size": 11004,
+          "sha256": "0a05d1d0c5b7205132d3815dbb5c3e9912c926a00e0bbf32f67f7afaaa200542"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/preprocessor_config.json",
+          "size": 390,
+          "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/vocab.json",
+          "size": 2776833,
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen3-VL-32B-Instruct/qwen3vl-32B-MiniMax-H3-Q4_K_M.gguf",
+          "size": 14576977888,
+          "sha256": "1bf75e038c5895b97b6ea16cc1e3d32076254b06ec3df10657650d86dc82279e"
+        },
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "video-lab/wangp/src/shared/api.py"
+        },
+        {
+          "path": "engines/video-h3-ref2va/run.ps1"
+        }
+      ],
+      "dependencies": [
+        "wangp-video-runtime"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/video_wangp.ps1",
+          "target": "engines/video-h3-ref2va/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "WanGP Community 2.0 + 原模型许可",
+        "url": "https://github.com/deepbeepmeep/Wan2GP/blob/6479db36bdc2619a904a852bba9c2d78e1a83f82/LICENSE.txt",
+        "requiresAcceptance": true,
+        "notice": "使用 WanGP（Uses WanGP）。Community License 2.0 允许个人、本地、研究及符合许可的免费集成；禁止白牌、出售运行器、收费嵌入或收费 API/SaaS，相关用途需要作者另行授权。各模型仍分别适用原模型许可。当前是固定源配方，未完成这台 3060 的真实生成验收。 H3 大权重及 32B 文本编码器需要大量内存/磁盘，32 GB 电脑可能严重换页或失败；建议先试较轻模型。 H3 许可地域排除欧盟、英国、韩国和美国；商业产品界面必须展示 MiniMax H3，年收入超过 2000 万美元需额外书面授权；品牌使用范围按原许可。",
+        "modelUrl": "https://huggingface.co/MiniMaxAI/MiniMax-H3"
+      },
+      "remedy": "点击下载部署完整固定版本组件。安装校验只检查 CUDA、运行器与文件；首次生成结果需你验收。",
+      "runtime": {
+        "type": "wangp",
+        "environment": "video-lab/wangp/.venv",
+        "python": "video-lab/wangp/.venv/Scripts/python.exe"
+      },
+      "manifest": {
+        "id": "video-h3-ref2va",
+        "title": "MiniMax H3 Ref2VA Pruned 20B · 多参考音视频 · Uses WanGP",
+        "kind": "video",
+        "version": "0.7.0",
+        "providerVersion": "0.7.0",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "capabilities": {
+          "modes": [
+            "txt2video",
+            "img2video",
+            "reference-video"
+          ],
+          "maxReferenceImages": 9,
+          "endImage": true,
+          "referenceVideo": true,
+          "referenceAudio": true,
+          "audioOutput": true,
+          "sizeMultiple": 32,
+          "maxPixels": 307200,
+          "frameRule": {
+            "multiple": 17,
+            "offset": 5,
+            "min": 107,
+            "max": 192
+          },
+          "fps": [
+            24
+          ],
+          "maxSteps": 80,
+          "inputTypes": [
+            "image",
+            "video",
+            "audio"
+          ]
+        },
+        "defaults": {
+          "width": 640,
+          "height": 384,
+          "frames": 107,
+          "fps": 24,
+          "steps": 30,
+          "seed": 12345
+        },
+        "runtime": {
+          "type": "wangp",
+          "environment": "video-lab/wangp/.venv",
+          "python": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        "source": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+        "runtimeSource": "https://github.com/deepbeepmeep/Wan2GP",
+        "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+        "verificationStatus": "recipe-verified-generation-unverified"
+      },
+      "validationStage": "researched",
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12GB",
+        "memoryProfile": 5,
+        "measured": false,
+        "defaultResolution": "640x384"
+      },
+      "probes": [
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe",
+          "args": [
+            "@root:scripts/providers/video_wangp.py",
+            "--engine",
+            "video-h3-ref2va",
+            "--check"
+          ],
+          "requiredFlags": [
+            "\"gpuInferenceExecuted\": false"
+          ],
+          "timeout": 240
+        }
+      ]
+    },
+    {
+      "id": "video-ltx25-distilled",
+      "engineId": "video-ltx25-distilled",
+      "title": "LTX-2.5 · 8 步音视频 · Uses WanGP",
+      "kind": "video",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "本地实验视频配方；显存卸载使用 WanGP profile 5，速度、画质和峰值内存需自行短测。",
+      "recommended": false,
+      "installable": true,
+      "gpuVerified": false,
+      "minimumVramMiB": 8192,
+      "minimumRamGiB": 32,
+      "extractReserveBytes": 2147483648,
+      "sourceUrl": "https://huggingface.co/Lightricks/LTX-2.5",
+      "runtimeSourceUrl": "https://github.com/deepbeepmeep/Wan2GP",
+      "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+      "runtimeModelType": "ltx2_25_22B_distilled",
+      "precision": "INT8 weights / BF16 compute",
+      "defaults": {
+        "width": 640,
+        "height": 384,
+        "frames": 97,
+        "fps": 24,
+        "steps": 8,
+        "seed": 12345
+      },
+      "limits": {
+        "sizeMultiple": 64,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 8,
+          "offset": 1,
+          "min": 17,
+          "max": 129
+        },
+        "fps": [
+          24
+        ],
+        "maxSteps": 8,
+        "allowedSteps": [
+          8
+        ]
+      },
+      "capabilities": {
+        "modes": [
+          "txt2video",
+          "img2video"
+        ],
+        "maxReferenceImages": 2,
+        "endImage": true,
+        "referenceVideo": false,
+        "referenceAudio": false,
+        "audioOutput": true,
+        "sizeMultiple": 64,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 8,
+          "offset": 1,
+          "min": 17,
+          "max": 129
+        },
+        "fps": [
+          24
+        ],
+        "maxSteps": 8,
+        "allowedSteps": [
+          8
+        ]
+      },
+      "inputOnly": false,
+      "runtimeConfig": {
+        "transformer_quantization": "int8",
+        "transformer_dtype_policy": "bf16",
+        "text_encoder_quantization": "int8",
+        "generation_preview": "rgb",
+        "attention_mode": "sdpa",
+        "save_format": "mp4",
+        "profile": 5,
+        "video_profile": 5,
+        "compile": false
+      },
+      "settings": {
+        "prompt_enhancer": "",
+        "config": "",
+        "spatial_upsampling": "",
+        "temporal_upsampling": ""
+      },
+      "files": [
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b-distilled_diffusion_model_int8_convrot.safetensors",
+          "size": 19483116168,
+          "sha256": "b4bb89c54e025d834f0c6138dbf80c245e8196c27c8bff8dd47db4c03412c72f",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b-distilled_diffusion_model_int8_convrot.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b-distilled_diffusion_model_int8_convrot.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-spatial-upscaler-x2-1.0_bf16.safetensors",
+          "size": 995778752,
+          "sha256": "eb5a71fe4068ee87ccdb1c3aa635e547ca76bd2d30ae20ae889f2c325c0677e8",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-spatial-upscaler-x2-1.0_bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-spatial-upscaler-x2-1.0_bf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-temporal-upscaler-x2-1.0_bf16.safetensors",
+          "size": 261944000,
+          "sha256": "2bc3300f2b3c3c1834d72164fbf13a3b9fd73e5a741e8a2c3f4035f89a75c3fe",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-temporal-upscaler-x2-1.0_bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-temporal-upscaler-x2-1.0_bf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_video_vae_bf16.safetensors",
+          "size": 1452269922,
+          "sha256": "685b06ee3d9b2039647698fc4ea33175112462fc374e2777312c907897dfce8d",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_video_vae_bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_video_vae_bf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_diffusion_video_vae_bf16.safetensors",
+          "size": 1472223346,
+          "sha256": "847e14ca7f3355debca0cea4eaa24ac0fbcdf0061da054ac89ca638a869ddba3",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_diffusion_video_vae_bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_diffusion_video_vae_bf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_audio_vae_bf16.safetensors",
+          "size": 106546028,
+          "sha256": "43ed048b9a5aa7eac181cf1b5bf68382aa4fb9d98627575d01d9b187d3462028",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_audio_vae_bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_audio_vae_bf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_vocoder_bf16.safetensors",
+          "size": 258355696,
+          "sha256": "a865b27a492fea788dc35bed29b333103ca1fb9c280f4fd77976ad19a3b13435",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_vocoder_bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_vocoder_bf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_text_embedding_projection_bf16.safetensors",
+          "size": 2312126712,
+          "sha256": "06b7017692b2d0d42a863d609cf40e7672243eb3d13ae7a19650a7a8294ac494",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_text_embedding_projection_bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_text_embedding_projection_bf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_video_embeddings_connector_int8_convrot.safetensors",
+          "size": 1615737560,
+          "sha256": "9559f09ff6fb1b3dca10617722df7133838ea0fee6f1457c90e992447796d765",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_video_embeddings_connector_int8_convrot.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_video_embeddings_connector_int8_convrot.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_audio_embeddings_connector_int8_convrot.safetensors",
+          "size": 405254656,
+          "sha256": "80270afb795fdac363dcd8329e6b375f6ca93f6a3d74a25b2bb440d342095362",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_audio_embeddings_connector_int8_convrot.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/ltx-2.5-22b_audio_embeddings_connector_int8_convrot.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/gemma4-12b-ltx-v1/config.json",
+          "size": 2498,
+          "sha256": "82ec29063791629eac6a023c662f4edc2a811e479343ae79f21b8453357caeb0",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/gemma4-12b-ltx-v1/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/gemma4-12b-ltx-v1/config.json"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/gemma4-12b-ltx-v1/chat_template.jinja",
+          "size": 18683,
+          "sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/gemma4-12b-ltx-v1/chat_template.jinja",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/gemma4-12b-ltx-v1/chat_template.jinja"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/gemma4-12b-ltx-v1/tokenizer.json",
+          "size": 32169626,
+          "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/gemma4-12b-ltx-v1/tokenizer.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/gemma4-12b-ltx-v1/tokenizer.json"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/gemma4-12b-ltx-v1/tokenizer_config.json",
+          "size": 3736,
+          "sha256": "794a39f8330ce05020774c70c091225bc5f031b9cacf41fc20e52eb54b4b52d8",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/gemma4-12b-ltx-v1/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/gemma4-12b-ltx-v1/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        },
+        {
+          "path": "video-lab/wangp/models/gemma4-12b-ltx-v1/gemma4-12b-ltx-v1_int8_convrot.safetensors",
+          "size": 12923893224,
+          "sha256": "6a23b673266b65a318e26cad27fabd5c67609f4ecf51aa13996feb07d0060903",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/gemma4-12b-ltx-v1/gemma4-12b-ltx-v1_int8_convrot.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX-2/resolve/3a5be42565cab6b12a4ea88416e13afd76e51d26/gemma4-12b-ltx-v1/gemma4-12b-ltx-v1_int8_convrot.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX-2",
+          "revision": "3a5be42565cab6b12a4ea88416e13afd76e51d26"
+        }
+      ],
+      "required": [
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b-distilled_diffusion_model_int8_convrot.safetensors",
+          "size": 19483116168,
+          "sha256": "b4bb89c54e025d834f0c6138dbf80c245e8196c27c8bff8dd47db4c03412c72f"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-spatial-upscaler-x2-1.0_bf16.safetensors",
+          "size": 995778752,
+          "sha256": "eb5a71fe4068ee87ccdb1c3aa635e547ca76bd2d30ae20ae889f2c325c0677e8"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-temporal-upscaler-x2-1.0_bf16.safetensors",
+          "size": 261944000,
+          "sha256": "2bc3300f2b3c3c1834d72164fbf13a3b9fd73e5a741e8a2c3f4035f89a75c3fe"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_video_vae_bf16.safetensors",
+          "size": 1452269922,
+          "sha256": "685b06ee3d9b2039647698fc4ea33175112462fc374e2777312c907897dfce8d"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_diffusion_video_vae_bf16.safetensors",
+          "size": 1472223346,
+          "sha256": "847e14ca7f3355debca0cea4eaa24ac0fbcdf0061da054ac89ca638a869ddba3"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_audio_vae_bf16.safetensors",
+          "size": 106546028,
+          "sha256": "43ed048b9a5aa7eac181cf1b5bf68382aa4fb9d98627575d01d9b187d3462028"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_vocoder_bf16.safetensors",
+          "size": 258355696,
+          "sha256": "a865b27a492fea788dc35bed29b333103ca1fb9c280f4fd77976ad19a3b13435"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_text_embedding_projection_bf16.safetensors",
+          "size": 2312126712,
+          "sha256": "06b7017692b2d0d42a863d609cf40e7672243eb3d13ae7a19650a7a8294ac494"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_video_embeddings_connector_int8_convrot.safetensors",
+          "size": 1615737560,
+          "sha256": "9559f09ff6fb1b3dca10617722df7133838ea0fee6f1457c90e992447796d765"
+        },
+        {
+          "path": "video-lab/wangp/models/ltx-2.5-22b_audio_embeddings_connector_int8_convrot.safetensors",
+          "size": 405254656,
+          "sha256": "80270afb795fdac363dcd8329e6b375f6ca93f6a3d74a25b2bb440d342095362"
+        },
+        {
+          "path": "video-lab/wangp/models/gemma4-12b-ltx-v1/config.json",
+          "size": 2498,
+          "sha256": "82ec29063791629eac6a023c662f4edc2a811e479343ae79f21b8453357caeb0"
+        },
+        {
+          "path": "video-lab/wangp/models/gemma4-12b-ltx-v1/chat_template.jinja",
+          "size": 18683,
+          "sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4"
+        },
+        {
+          "path": "video-lab/wangp/models/gemma4-12b-ltx-v1/tokenizer.json",
+          "size": 32169626,
+          "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f"
+        },
+        {
+          "path": "video-lab/wangp/models/gemma4-12b-ltx-v1/tokenizer_config.json",
+          "size": 3736,
+          "sha256": "794a39f8330ce05020774c70c091225bc5f031b9cacf41fc20e52eb54b4b52d8"
+        },
+        {
+          "path": "video-lab/wangp/models/gemma4-12b-ltx-v1/gemma4-12b-ltx-v1_int8_convrot.safetensors",
+          "size": 12923893224,
+          "sha256": "6a23b673266b65a318e26cad27fabd5c67609f4ecf51aa13996feb07d0060903"
+        },
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "video-lab/wangp/src/shared/api.py"
+        },
+        {
+          "path": "engines/video-ltx25-distilled/run.ps1"
+        }
+      ],
+      "dependencies": [
+        "wangp-video-runtime"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/video_wangp.ps1",
+          "target": "engines/video-ltx25-distilled/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "WanGP Community 2.0 + 原模型许可",
+        "url": "https://github.com/deepbeepmeep/Wan2GP/blob/6479db36bdc2619a904a852bba9c2d78e1a83f82/LICENSE.txt",
+        "requiresAcceptance": true,
+        "notice": "使用 WanGP（Uses WanGP）。Community License 2.0 允许个人、本地、研究及符合许可的免费集成；禁止白牌、出售运行器、收费嵌入或收费 API/SaaS，相关用途需要作者另行授权。各模型仍分别适用原模型许可。当前是固定源配方，未完成这台 3060 的真实生成验收。",
+        "modelUrl": "https://huggingface.co/Lightricks/LTX-2.5"
+      },
+      "remedy": "点击下载部署完整固定版本组件。安装校验只检查 CUDA、运行器与文件；首次生成结果需你验收。",
+      "runtime": {
+        "type": "wangp",
+        "environment": "video-lab/wangp/.venv",
+        "python": "video-lab/wangp/.venv/Scripts/python.exe"
+      },
+      "manifest": {
+        "id": "video-ltx25-distilled",
+        "title": "LTX-2.5 · 8 步音视频 · Uses WanGP",
+        "kind": "video",
+        "version": "0.7.0",
+        "providerVersion": "0.7.0",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "capabilities": {
+          "modes": [
+            "txt2video",
+            "img2video"
+          ],
+          "maxReferenceImages": 2,
+          "endImage": true,
+          "referenceVideo": false,
+          "referenceAudio": false,
+          "audioOutput": true,
+          "sizeMultiple": 64,
+          "maxPixels": 307200,
+          "frameRule": {
+            "multiple": 8,
+            "offset": 1,
+            "min": 17,
+            "max": 129
+          },
+          "fps": [
+            24
+          ],
+          "maxSteps": 8,
+          "allowedSteps": [
+            8
+          ]
+        },
+        "defaults": {
+          "width": 640,
+          "height": 384,
+          "frames": 97,
+          "fps": 24,
+          "steps": 8,
+          "seed": 12345
+        },
+        "runtime": {
+          "type": "wangp",
+          "environment": "video-lab/wangp/.venv",
+          "python": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        "source": "https://huggingface.co/Lightricks/LTX-2.5",
+        "runtimeSource": "https://github.com/deepbeepmeep/Wan2GP",
+        "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+        "verificationStatus": "recipe-verified-generation-unverified"
+      },
+      "validationStage": "researched",
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12GB",
+        "memoryProfile": 5,
+        "measured": false,
+        "defaultResolution": "640x384"
+      },
+      "probes": [
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe",
+          "args": [
+            "@root:scripts/providers/video_wangp.py",
+            "--engine",
+            "video-ltx25-distilled",
+            "--check"
+          ],
+          "requiredFlags": [
+            "\"gpuInferenceExecuted\": false"
+          ],
+          "timeout": 240
+        }
+      ]
+    },
+    {
+      "id": "video-wan22-5b",
+      "engineId": "video-wan22-5b",
+      "title": "Wan2.2 · 5B 文生 / 图生视频 · Uses WanGP",
+      "kind": "video",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "本地实验视频配方；显存卸载使用 WanGP profile 5，速度、画质和峰值内存需自行短测。",
+      "recommended": false,
+      "installable": true,
+      "gpuVerified": false,
+      "minimumVramMiB": 8192,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 2147483648,
+      "sourceUrl": "https://github.com/Wan-Video/Wan2.2",
+      "runtimeSourceUrl": "https://github.com/deepbeepmeep/Wan2GP",
+      "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+      "runtimeModelType": "ti2v_2_2",
+      "precision": "INT8 weights / BF16 compute",
+      "defaults": {
+        "width": 640,
+        "height": 384,
+        "frames": 49,
+        "fps": 24,
+        "steps": 30,
+        "seed": 12345
+      },
+      "limits": {
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 4,
+          "offset": 1,
+          "min": 5,
+          "max": 121
+        },
+        "fps": [
+          24
+        ],
+        "maxSteps": 80
+      },
+      "capabilities": {
+        "modes": [
+          "txt2video",
+          "img2video"
+        ],
+        "maxReferenceImages": 1,
+        "endImage": false,
+        "referenceVideo": false,
+        "referenceAudio": false,
+        "audioOutput": false,
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 4,
+          "offset": 1,
+          "min": 5,
+          "max": 121
+        },
+        "fps": [
+          24
+        ],
+        "maxSteps": 80
+      },
+      "inputOnly": false,
+      "runtimeConfig": {
+        "transformer_quantization": "int8",
+        "transformer_dtype_policy": "bf16",
+        "text_encoder_quantization": "int8",
+        "generation_preview": "rgb",
+        "attention_mode": "sdpa",
+        "save_format": "mp4",
+        "profile": 5,
+        "video_profile": 5,
+        "compile": false
+      },
+      "settings": {
+        "prompt_enhancer": "",
+        "config": "",
+        "spatial_upsampling": "",
+        "temporal_upsampling": ""
+      },
+      "files": [
+        {
+          "path": "video-lab/wangp/models/wan2.2_text2video_5B_quanto_mbf16_int8.safetensors",
+          "size": 5231471198,
+          "sha256": "463076f7625d8c7fc8912011cf5d02db7f0a8ae666e1758cd835e5a8517ef0e0",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.2/resolve/cf8a5e27316cb4004227c31224050c6f266d9e54/wan2.2_text2video_5B_quanto_mbf16_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.2/resolve/cf8a5e27316cb4004227c31224050c6f266d9e54/wan2.2_text2video_5B_quanto_mbf16_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.2",
+          "revision": "cf8a5e27316cb4004227c31224050c6f266d9e54"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/special_tokens_map.json",
+          "size": 6623,
+          "sha256": "7b8a9f5040adb67b5805abdfd42c1f8d0f3d0e711f10726580eb3789cd0ad61d",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/special_tokens_map.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/special_tokens_map.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/spiece.model",
+          "size": 4548313,
+          "sha256": "e3909a67b780650b35cf529ac782ad2b6b26e6d1f849d3fbb6a872905f452458",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/spiece.model",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/spiece.model"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer.json",
+          "size": 16837417,
+          "sha256": "6e197b4d3dbd71da14b4eb255f4fa91c9c1f2068b20a2de2472967ca3d22602b",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer_config.json",
+          "size": 61728,
+          "sha256": "ed9a3a8b0faa71a70a32847e0435fe036e6e112d4df4edb7bb48a921e344dc05",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors",
+          "size": 6733337738,
+          "sha256": "5e4961851c78838931990549810ed51c9036081b2ad80bf464c4e2603c5f922c",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.2_VAE.safetensors",
+          "size": 2818780191,
+          "sha256": "bb6e5e515ca6af2cb2b7bbf8bfc790b8c306832c34e0a76193507c3739ebf54a",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.2/resolve/cf8a5e27316cb4004227c31224050c6f266d9e54/Wan2.2_VAE.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.2/resolve/cf8a5e27316cb4004227c31224050c6f266d9e54/Wan2.2_VAE.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.2",
+          "revision": "cf8a5e27316cb4004227c31224050c6f266d9e54"
+        }
+      ],
+      "required": [
+        {
+          "path": "video-lab/wangp/models/wan2.2_text2video_5B_quanto_mbf16_int8.safetensors",
+          "size": 5231471198,
+          "sha256": "463076f7625d8c7fc8912011cf5d02db7f0a8ae666e1758cd835e5a8517ef0e0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/special_tokens_map.json",
+          "size": 6623,
+          "sha256": "7b8a9f5040adb67b5805abdfd42c1f8d0f3d0e711f10726580eb3789cd0ad61d"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/spiece.model",
+          "size": 4548313,
+          "sha256": "e3909a67b780650b35cf529ac782ad2b6b26e6d1f849d3fbb6a872905f452458"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer.json",
+          "size": 16837417,
+          "sha256": "6e197b4d3dbd71da14b4eb255f4fa91c9c1f2068b20a2de2472967ca3d22602b"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer_config.json",
+          "size": 61728,
+          "sha256": "ed9a3a8b0faa71a70a32847e0435fe036e6e112d4df4edb7bb48a921e344dc05"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors",
+          "size": 6733337738,
+          "sha256": "5e4961851c78838931990549810ed51c9036081b2ad80bf464c4e2603c5f922c"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.2_VAE.safetensors",
+          "size": 2818780191,
+          "sha256": "bb6e5e515ca6af2cb2b7bbf8bfc790b8c306832c34e0a76193507c3739ebf54a"
+        },
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "video-lab/wangp/src/shared/api.py"
+        },
+        {
+          "path": "engines/video-wan22-5b/run.ps1"
+        }
+      ],
+      "dependencies": [
+        "wangp-video-runtime"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/video_wangp.ps1",
+          "target": "engines/video-wan22-5b/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "WanGP Community 2.0 + 原模型许可",
+        "url": "https://github.com/deepbeepmeep/Wan2GP/blob/6479db36bdc2619a904a852bba9c2d78e1a83f82/LICENSE.txt",
+        "requiresAcceptance": true,
+        "notice": "使用 WanGP（Uses WanGP）。Community License 2.0 允许个人、本地、研究及符合许可的免费集成；禁止白牌、出售运行器、收费嵌入或收费 API/SaaS，相关用途需要作者另行授权。各模型仍分别适用原模型许可。当前是固定源配方，未完成这台 3060 的真实生成验收。",
+        "modelUrl": "https://github.com/Wan-Video/Wan2.2"
+      },
+      "remedy": "点击下载部署完整固定版本组件。安装校验只检查 CUDA、运行器与文件；首次生成结果需你验收。",
+      "runtime": {
+        "type": "wangp",
+        "environment": "video-lab/wangp/.venv",
+        "python": "video-lab/wangp/.venv/Scripts/python.exe"
+      },
+      "manifest": {
+        "id": "video-wan22-5b",
+        "title": "Wan2.2 · 5B 文生 / 图生视频 · Uses WanGP",
+        "kind": "video",
+        "version": "0.7.0",
+        "providerVersion": "0.7.0",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "capabilities": {
+          "modes": [
+            "txt2video",
+            "img2video"
+          ],
+          "maxReferenceImages": 1,
+          "endImage": false,
+          "referenceVideo": false,
+          "referenceAudio": false,
+          "audioOutput": false,
+          "sizeMultiple": 32,
+          "maxPixels": 307200,
+          "frameRule": {
+            "multiple": 4,
+            "offset": 1,
+            "min": 5,
+            "max": 121
+          },
+          "fps": [
+            24
+          ],
+          "maxSteps": 80
+        },
+        "defaults": {
+          "width": 640,
+          "height": 384,
+          "frames": 49,
+          "fps": 24,
+          "steps": 30,
+          "seed": 12345
+        },
+        "runtime": {
+          "type": "wangp",
+          "environment": "video-lab/wangp/.venv",
+          "python": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        "source": "https://github.com/Wan-Video/Wan2.2",
+        "runtimeSource": "https://github.com/deepbeepmeep/Wan2GP",
+        "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+        "verificationStatus": "recipe-verified-generation-unverified"
+      },
+      "validationStage": "researched",
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12GB",
+        "memoryProfile": 5,
+        "measured": false,
+        "defaultResolution": "640x384"
+      },
+      "probes": [
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe",
+          "args": [
+            "@root:scripts/providers/video_wangp.py",
+            "--engine",
+            "video-wan22-5b",
+            "--check"
+          ],
+          "requiredFlags": [
+            "\"gpuInferenceExecuted\": false"
+          ],
+          "timeout": 240
+        }
+      ]
+    },
+    {
+      "id": "video-wan22-14b-t2v",
+      "engineId": "video-wan22-14b-t2v",
+      "title": "Wan2.2 · 14B 文字生视频 · Uses WanGP",
+      "kind": "video",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "本地实验视频配方；显存卸载使用 WanGP profile 5，速度、画质和峰值内存需自行短测。",
+      "recommended": false,
+      "installable": true,
+      "gpuVerified": false,
+      "minimumVramMiB": 8192,
+      "minimumRamGiB": 32,
+      "extractReserveBytes": 2147483648,
+      "sourceUrl": "https://github.com/Wan-Video/Wan2.2",
+      "runtimeSourceUrl": "https://github.com/deepbeepmeep/Wan2GP",
+      "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+      "runtimeModelType": "t2v_2_2",
+      "precision": "INT8 weights / BF16 compute",
+      "defaults": {
+        "width": 640,
+        "height": 384,
+        "frames": 49,
+        "fps": 16,
+        "steps": 30,
+        "seed": 12345
+      },
+      "limits": {
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 4,
+          "offset": 1,
+          "min": 5,
+          "max": 81
+        },
+        "fps": [
+          16
+        ],
+        "maxSteps": 80
+      },
+      "capabilities": {
+        "modes": [
+          "txt2video"
+        ],
+        "maxReferenceImages": 0,
+        "endImage": false,
+        "referenceVideo": false,
+        "referenceAudio": false,
+        "audioOutput": false,
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 4,
+          "offset": 1,
+          "min": 5,
+          "max": 81
+        },
+        "fps": [
+          16
+        ],
+        "maxSteps": 80
+      },
+      "inputOnly": false,
+      "runtimeConfig": {
+        "transformer_quantization": "int8",
+        "transformer_dtype_policy": "bf16",
+        "text_encoder_quantization": "int8",
+        "generation_preview": "rgb",
+        "attention_mode": "sdpa",
+        "save_format": "mp4",
+        "profile": 5,
+        "video_profile": 5,
+        "compile": false
+      },
+      "settings": {
+        "prompt_enhancer": "",
+        "config": "",
+        "spatial_upsampling": "",
+        "temporal_upsampling": ""
+      },
+      "files": [
+        {
+          "path": "video-lab/wangp/models/wan2.2_text2video_14B_high_quanto_mbf16_int8.safetensors",
+          "size": 14903022013,
+          "sha256": "84e863044fe98e8e380a9886e7fc762238c378e55f50b109bf6fd4dce78e3cd8",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.2/resolve/cf8a5e27316cb4004227c31224050c6f266d9e54/wan2.2_text2video_14B_high_quanto_mbf16_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.2/resolve/cf8a5e27316cb4004227c31224050c6f266d9e54/wan2.2_text2video_14B_high_quanto_mbf16_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.2",
+          "revision": "cf8a5e27316cb4004227c31224050c6f266d9e54"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/special_tokens_map.json",
+          "size": 6623,
+          "sha256": "7b8a9f5040adb67b5805abdfd42c1f8d0f3d0e711f10726580eb3789cd0ad61d",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/special_tokens_map.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/special_tokens_map.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/spiece.model",
+          "size": 4548313,
+          "sha256": "e3909a67b780650b35cf529ac782ad2b6b26e6d1f849d3fbb6a872905f452458",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/spiece.model",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/spiece.model"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer.json",
+          "size": 16837417,
+          "sha256": "6e197b4d3dbd71da14b4eb255f4fa91c9c1f2068b20a2de2472967ca3d22602b",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer_config.json",
+          "size": 61728,
+          "sha256": "ed9a3a8b0faa71a70a32847e0435fe036e6e112d4df4edb7bb48a921e344dc05",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors",
+          "size": 6733337738,
+          "sha256": "5e4961851c78838931990549810ed51c9036081b2ad80bf464c4e2603c5f922c",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/models_clip_open-clip-xlm-roberta-large-vit-huge-14-bf16.safetensors",
+          "size": 2386119506,
+          "sha256": "742b68fe1cade9e54863aee12aed5390a994269957bd0638799b141cbc236ad8",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/models_clip_open-clip-xlm-roberta-large-vit-huge-14-bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/models_clip_open-clip-xlm-roberta-large-vit-huge-14-bf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/sentencepiece.bpe.model",
+          "size": 5069051,
+          "sha256": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/sentencepiece.bpe.model",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/sentencepiece.bpe.model"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/special_tokens_map.json",
+          "size": 280,
+          "sha256": "06e405a36dfe4b9604f484f6a1e619af1a7f7d09e34a8555eb0b77b66318067f",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/special_tokens_map.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/special_tokens_map.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/tokenizer.json",
+          "size": 17082660,
+          "sha256": "62c24cdc13d4c9952d63718d6c9fa4c287974249e16b7ade6d5a85e7bbb75626",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/tokenizer.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/tokenizer.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/tokenizer_config.json",
+          "size": 418,
+          "sha256": "efb5c0d09722e5fe59a462cd2a9976ee216d55b037597d997cd3fe833216da15",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.1_VAE.safetensors",
+          "size": 507593157,
+          "sha256": "3ce0c02b9470532e7f63f3e2f8e83b0681fdeaa432e969c412482d2b3b78267b",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/Wan2.1_VAE.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/Wan2.1_VAE.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors",
+          "size": 507684560,
+          "sha256": "2413554bbec24215185662d009893cf4666b8e777efece2d895e03e1a6b63e06",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/wan2.2_text2video_14B_low_quanto_mbf16_int8.safetensors",
+          "size": 14903022013,
+          "sha256": "e2ab10059d3d2194db68c862858bf1f22b9347ca3ce0c1663ebcfa66c517d34c",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.2/resolve/cf8a5e27316cb4004227c31224050c6f266d9e54/wan2.2_text2video_14B_low_quanto_mbf16_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.2/resolve/cf8a5e27316cb4004227c31224050c6f266d9e54/wan2.2_text2video_14B_low_quanto_mbf16_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.2",
+          "revision": "cf8a5e27316cb4004227c31224050c6f266d9e54"
+        }
+      ],
+      "required": [
+        {
+          "path": "video-lab/wangp/models/wan2.2_text2video_14B_high_quanto_mbf16_int8.safetensors",
+          "size": 14903022013,
+          "sha256": "84e863044fe98e8e380a9886e7fc762238c378e55f50b109bf6fd4dce78e3cd8"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/special_tokens_map.json",
+          "size": 6623,
+          "sha256": "7b8a9f5040adb67b5805abdfd42c1f8d0f3d0e711f10726580eb3789cd0ad61d"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/spiece.model",
+          "size": 4548313,
+          "sha256": "e3909a67b780650b35cf529ac782ad2b6b26e6d1f849d3fbb6a872905f452458"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer.json",
+          "size": 16837417,
+          "sha256": "6e197b4d3dbd71da14b4eb255f4fa91c9c1f2068b20a2de2472967ca3d22602b"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer_config.json",
+          "size": 61728,
+          "sha256": "ed9a3a8b0faa71a70a32847e0435fe036e6e112d4df4edb7bb48a921e344dc05"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors",
+          "size": 6733337738,
+          "sha256": "5e4961851c78838931990549810ed51c9036081b2ad80bf464c4e2603c5f922c"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/models_clip_open-clip-xlm-roberta-large-vit-huge-14-bf16.safetensors",
+          "size": 2386119506,
+          "sha256": "742b68fe1cade9e54863aee12aed5390a994269957bd0638799b141cbc236ad8"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/sentencepiece.bpe.model",
+          "size": 5069051,
+          "sha256": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/special_tokens_map.json",
+          "size": 280,
+          "sha256": "06e405a36dfe4b9604f484f6a1e619af1a7f7d09e34a8555eb0b77b66318067f"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/tokenizer.json",
+          "size": 17082660,
+          "sha256": "62c24cdc13d4c9952d63718d6c9fa4c287974249e16b7ade6d5a85e7bbb75626"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/tokenizer_config.json",
+          "size": 418,
+          "sha256": "efb5c0d09722e5fe59a462cd2a9976ee216d55b037597d997cd3fe833216da15"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.1_VAE.safetensors",
+          "size": 507593157,
+          "sha256": "3ce0c02b9470532e7f63f3e2f8e83b0681fdeaa432e969c412482d2b3b78267b"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors",
+          "size": 507684560,
+          "sha256": "2413554bbec24215185662d009893cf4666b8e777efece2d895e03e1a6b63e06"
+        },
+        {
+          "path": "video-lab/wangp/models/wan2.2_text2video_14B_low_quanto_mbf16_int8.safetensors",
+          "size": 14903022013,
+          "sha256": "e2ab10059d3d2194db68c862858bf1f22b9347ca3ce0c1663ebcfa66c517d34c"
+        },
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "video-lab/wangp/src/shared/api.py"
+        },
+        {
+          "path": "engines/video-wan22-14b-t2v/run.ps1"
+        }
+      ],
+      "dependencies": [
+        "wangp-video-runtime"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/video_wangp.ps1",
+          "target": "engines/video-wan22-14b-t2v/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "WanGP Community 2.0 + 原模型许可",
+        "url": "https://github.com/deepbeepmeep/Wan2GP/blob/6479db36bdc2619a904a852bba9c2d78e1a83f82/LICENSE.txt",
+        "requiresAcceptance": true,
+        "notice": "使用 WanGP（Uses WanGP）。Community License 2.0 允许个人、本地、研究及符合许可的免费集成；禁止白牌、出售运行器、收费嵌入或收费 API/SaaS，相关用途需要作者另行授权。各模型仍分别适用原模型许可。当前是固定源配方，未完成这台 3060 的真实生成验收。",
+        "modelUrl": "https://github.com/Wan-Video/Wan2.2"
+      },
+      "remedy": "点击下载部署完整固定版本组件。安装校验只检查 CUDA、运行器与文件；首次生成结果需你验收。",
+      "runtime": {
+        "type": "wangp",
+        "environment": "video-lab/wangp/.venv",
+        "python": "video-lab/wangp/.venv/Scripts/python.exe"
+      },
+      "manifest": {
+        "id": "video-wan22-14b-t2v",
+        "title": "Wan2.2 · 14B 文字生视频 · Uses WanGP",
+        "kind": "video",
+        "version": "0.7.0",
+        "providerVersion": "0.7.0",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "capabilities": {
+          "modes": [
+            "txt2video"
+          ],
+          "maxReferenceImages": 0,
+          "endImage": false,
+          "referenceVideo": false,
+          "referenceAudio": false,
+          "audioOutput": false,
+          "sizeMultiple": 32,
+          "maxPixels": 307200,
+          "frameRule": {
+            "multiple": 4,
+            "offset": 1,
+            "min": 5,
+            "max": 81
+          },
+          "fps": [
+            16
+          ],
+          "maxSteps": 80
+        },
+        "defaults": {
+          "width": 640,
+          "height": 384,
+          "frames": 49,
+          "fps": 16,
+          "steps": 30,
+          "seed": 12345
+        },
+        "runtime": {
+          "type": "wangp",
+          "environment": "video-lab/wangp/.venv",
+          "python": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        "source": "https://github.com/Wan-Video/Wan2.2",
+        "runtimeSource": "https://github.com/deepbeepmeep/Wan2GP",
+        "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+        "verificationStatus": "recipe-verified-generation-unverified"
+      },
+      "validationStage": "researched",
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12GB",
+        "memoryProfile": 5,
+        "measured": false,
+        "defaultResolution": "640x384"
+      },
+      "probes": [
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe",
+          "args": [
+            "@root:scripts/providers/video_wangp.py",
+            "--engine",
+            "video-wan22-14b-t2v",
+            "--check"
+          ],
+          "requiredFlags": [
+            "\"gpuInferenceExecuted\": false"
+          ],
+          "timeout": 240
+        }
+      ]
+    },
+    {
+      "id": "video-wan22-14b-i2v",
+      "engineId": "video-wan22-14b-i2v",
+      "title": "Wan2.2 · 14B 图片生视频 · Uses WanGP",
+      "kind": "video",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "本地实验视频配方；显存卸载使用 WanGP profile 5，速度、画质和峰值内存需自行短测。",
+      "recommended": false,
+      "installable": true,
+      "gpuVerified": false,
+      "minimumVramMiB": 8192,
+      "minimumRamGiB": 32,
+      "extractReserveBytes": 2147483648,
+      "sourceUrl": "https://github.com/Wan-Video/Wan2.2",
+      "runtimeSourceUrl": "https://github.com/deepbeepmeep/Wan2GP",
+      "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+      "runtimeModelType": "i2v_2_2",
+      "precision": "INT8 weights / BF16 compute",
+      "defaults": {
+        "width": 640,
+        "height": 384,
+        "frames": 49,
+        "fps": 16,
+        "steps": 30,
+        "seed": 12345
+      },
+      "limits": {
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 4,
+          "offset": 1,
+          "min": 5,
+          "max": 81
+        },
+        "fps": [
+          16
+        ],
+        "maxSteps": 80
+      },
+      "capabilities": {
+        "modes": [
+          "img2video"
+        ],
+        "maxReferenceImages": 1,
+        "endImage": false,
+        "referenceVideo": false,
+        "referenceAudio": false,
+        "audioOutput": false,
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 4,
+          "offset": 1,
+          "min": 5,
+          "max": 81
+        },
+        "fps": [
+          16
+        ],
+        "maxSteps": 80
+      },
+      "inputOnly": true,
+      "runtimeConfig": {
+        "transformer_quantization": "int8",
+        "transformer_dtype_policy": "bf16",
+        "text_encoder_quantization": "int8",
+        "generation_preview": "rgb",
+        "attention_mode": "sdpa",
+        "save_format": "mp4",
+        "profile": 5,
+        "video_profile": 5,
+        "compile": false
+      },
+      "settings": {
+        "prompt_enhancer": "",
+        "config": "",
+        "spatial_upsampling": "",
+        "temporal_upsampling": ""
+      },
+      "files": [
+        {
+          "path": "video-lab/wangp/models/wan2.2_image2video_14B_high_quanto_mbf16_int8.safetensors",
+          "size": 14904660417,
+          "sha256": "7935658f6d01fc6d888c539aee81be0eca2713f009858e59d62442a864403040",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.2/resolve/cf8a5e27316cb4004227c31224050c6f266d9e54/wan2.2_image2video_14B_high_quanto_mbf16_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.2/resolve/cf8a5e27316cb4004227c31224050c6f266d9e54/wan2.2_image2video_14B_high_quanto_mbf16_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.2",
+          "revision": "cf8a5e27316cb4004227c31224050c6f266d9e54"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/special_tokens_map.json",
+          "size": 6623,
+          "sha256": "7b8a9f5040adb67b5805abdfd42c1f8d0f3d0e711f10726580eb3789cd0ad61d",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/special_tokens_map.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/special_tokens_map.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/spiece.model",
+          "size": 4548313,
+          "sha256": "e3909a67b780650b35cf529ac782ad2b6b26e6d1f849d3fbb6a872905f452458",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/spiece.model",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/spiece.model"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer.json",
+          "size": 16837417,
+          "sha256": "6e197b4d3dbd71da14b4eb255f4fa91c9c1f2068b20a2de2472967ca3d22602b",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer_config.json",
+          "size": 61728,
+          "sha256": "ed9a3a8b0faa71a70a32847e0435fe036e6e112d4df4edb7bb48a921e344dc05",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors",
+          "size": 6733337738,
+          "sha256": "5e4961851c78838931990549810ed51c9036081b2ad80bf464c4e2603c5f922c",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/models_clip_open-clip-xlm-roberta-large-vit-huge-14-bf16.safetensors",
+          "size": 2386119506,
+          "sha256": "742b68fe1cade9e54863aee12aed5390a994269957bd0638799b141cbc236ad8",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/models_clip_open-clip-xlm-roberta-large-vit-huge-14-bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/models_clip_open-clip-xlm-roberta-large-vit-huge-14-bf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/sentencepiece.bpe.model",
+          "size": 5069051,
+          "sha256": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/sentencepiece.bpe.model",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/sentencepiece.bpe.model"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/special_tokens_map.json",
+          "size": 280,
+          "sha256": "06e405a36dfe4b9604f484f6a1e619af1a7f7d09e34a8555eb0b77b66318067f",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/special_tokens_map.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/special_tokens_map.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/tokenizer.json",
+          "size": 17082660,
+          "sha256": "62c24cdc13d4c9952d63718d6c9fa4c287974249e16b7ade6d5a85e7bbb75626",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/tokenizer.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/tokenizer.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/tokenizer_config.json",
+          "size": 418,
+          "sha256": "efb5c0d09722e5fe59a462cd2a9976ee216d55b037597d997cd3fe833216da15",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.1_VAE.safetensors",
+          "size": 507593157,
+          "sha256": "3ce0c02b9470532e7f63f3e2f8e83b0681fdeaa432e969c412482d2b3b78267b",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/Wan2.1_VAE.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/Wan2.1_VAE.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors",
+          "size": 507684560,
+          "sha256": "2413554bbec24215185662d009893cf4666b8e777efece2d895e03e1a6b63e06",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/wan2.2_image2video_14B_low_quanto_mbf16_int8.safetensors",
+          "size": 14904660417,
+          "sha256": "05aac7cdbae3fb646899ce2bb3ed22926c1163e04cb0d7fa5d279837b61b1c03",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.2/resolve/cf8a5e27316cb4004227c31224050c6f266d9e54/wan2.2_image2video_14B_low_quanto_mbf16_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.2/resolve/cf8a5e27316cb4004227c31224050c6f266d9e54/wan2.2_image2video_14B_low_quanto_mbf16_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.2",
+          "revision": "cf8a5e27316cb4004227c31224050c6f266d9e54"
+        }
+      ],
+      "required": [
+        {
+          "path": "video-lab/wangp/models/wan2.2_image2video_14B_high_quanto_mbf16_int8.safetensors",
+          "size": 14904660417,
+          "sha256": "7935658f6d01fc6d888c539aee81be0eca2713f009858e59d62442a864403040"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/special_tokens_map.json",
+          "size": 6623,
+          "sha256": "7b8a9f5040adb67b5805abdfd42c1f8d0f3d0e711f10726580eb3789cd0ad61d"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/spiece.model",
+          "size": 4548313,
+          "sha256": "e3909a67b780650b35cf529ac782ad2b6b26e6d1f849d3fbb6a872905f452458"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer.json",
+          "size": 16837417,
+          "sha256": "6e197b4d3dbd71da14b4eb255f4fa91c9c1f2068b20a2de2472967ca3d22602b"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer_config.json",
+          "size": 61728,
+          "sha256": "ed9a3a8b0faa71a70a32847e0435fe036e6e112d4df4edb7bb48a921e344dc05"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors",
+          "size": 6733337738,
+          "sha256": "5e4961851c78838931990549810ed51c9036081b2ad80bf464c4e2603c5f922c"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/models_clip_open-clip-xlm-roberta-large-vit-huge-14-bf16.safetensors",
+          "size": 2386119506,
+          "sha256": "742b68fe1cade9e54863aee12aed5390a994269957bd0638799b141cbc236ad8"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/sentencepiece.bpe.model",
+          "size": 5069051,
+          "sha256": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/special_tokens_map.json",
+          "size": 280,
+          "sha256": "06e405a36dfe4b9604f484f6a1e619af1a7f7d09e34a8555eb0b77b66318067f"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/tokenizer.json",
+          "size": 17082660,
+          "sha256": "62c24cdc13d4c9952d63718d6c9fa4c287974249e16b7ade6d5a85e7bbb75626"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/tokenizer_config.json",
+          "size": 418,
+          "sha256": "efb5c0d09722e5fe59a462cd2a9976ee216d55b037597d997cd3fe833216da15"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.1_VAE.safetensors",
+          "size": 507593157,
+          "sha256": "3ce0c02b9470532e7f63f3e2f8e83b0681fdeaa432e969c412482d2b3b78267b"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors",
+          "size": 507684560,
+          "sha256": "2413554bbec24215185662d009893cf4666b8e777efece2d895e03e1a6b63e06"
+        },
+        {
+          "path": "video-lab/wangp/models/wan2.2_image2video_14B_low_quanto_mbf16_int8.safetensors",
+          "size": 14904660417,
+          "sha256": "05aac7cdbae3fb646899ce2bb3ed22926c1163e04cb0d7fa5d279837b61b1c03"
+        },
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "video-lab/wangp/src/shared/api.py"
+        },
+        {
+          "path": "engines/video-wan22-14b-i2v/run.ps1"
+        }
+      ],
+      "dependencies": [
+        "wangp-video-runtime"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/video_wangp.ps1",
+          "target": "engines/video-wan22-14b-i2v/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "WanGP Community 2.0 + 原模型许可",
+        "url": "https://github.com/deepbeepmeep/Wan2GP/blob/6479db36bdc2619a904a852bba9c2d78e1a83f82/LICENSE.txt",
+        "requiresAcceptance": true,
+        "notice": "使用 WanGP（Uses WanGP）。Community License 2.0 允许个人、本地、研究及符合许可的免费集成；禁止白牌、出售运行器、收费嵌入或收费 API/SaaS，相关用途需要作者另行授权。各模型仍分别适用原模型许可。当前是固定源配方，未完成这台 3060 的真实生成验收。",
+        "modelUrl": "https://github.com/Wan-Video/Wan2.2"
+      },
+      "remedy": "点击下载部署完整固定版本组件。安装校验只检查 CUDA、运行器与文件；首次生成结果需你验收。",
+      "runtime": {
+        "type": "wangp",
+        "environment": "video-lab/wangp/.venv",
+        "python": "video-lab/wangp/.venv/Scripts/python.exe"
+      },
+      "manifest": {
+        "id": "video-wan22-14b-i2v",
+        "title": "Wan2.2 · 14B 图片生视频 · Uses WanGP",
+        "kind": "video",
+        "version": "0.7.0",
+        "providerVersion": "0.7.0",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "capabilities": {
+          "modes": [
+            "img2video"
+          ],
+          "maxReferenceImages": 1,
+          "endImage": false,
+          "referenceVideo": false,
+          "referenceAudio": false,
+          "audioOutput": false,
+          "sizeMultiple": 32,
+          "maxPixels": 307200,
+          "frameRule": {
+            "multiple": 4,
+            "offset": 1,
+            "min": 5,
+            "max": 81
+          },
+          "fps": [
+            16
+          ],
+          "maxSteps": 80
+        },
+        "defaults": {
+          "width": 640,
+          "height": 384,
+          "frames": 49,
+          "fps": 16,
+          "steps": 30,
+          "seed": 12345
+        },
+        "runtime": {
+          "type": "wangp",
+          "environment": "video-lab/wangp/.venv",
+          "python": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        "source": "https://github.com/Wan-Video/Wan2.2",
+        "runtimeSource": "https://github.com/deepbeepmeep/Wan2GP",
+        "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+        "verificationStatus": "recipe-verified-generation-unverified"
+      },
+      "validationStage": "researched",
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12GB",
+        "memoryProfile": 5,
+        "measured": false,
+        "defaultResolution": "640x384"
+      },
+      "probes": [
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe",
+          "args": [
+            "@root:scripts/providers/video_wangp.py",
+            "--engine",
+            "video-wan22-14b-i2v",
+            "--check"
+          ],
+          "requiredFlags": [
+            "\"gpuInferenceExecuted\": false"
+          ],
+          "timeout": 240
+        }
+      ]
+    },
+    {
+      "id": "video-ltxv098",
+      "engineId": "video-ltxv098",
+      "title": "LTX Video 0.9.8 · 6 步短片 · Uses WanGP",
+      "kind": "video",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "本地实验视频配方；显存卸载使用 WanGP profile 5，速度、画质和峰值内存需自行短测。",
+      "recommended": false,
+      "installable": true,
+      "gpuVerified": false,
+      "minimumVramMiB": 8192,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 2147483648,
+      "sourceUrl": "https://github.com/Lightricks/LTX-Video",
+      "runtimeSourceUrl": "https://github.com/deepbeepmeep/Wan2GP",
+      "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+      "runtimeModelType": "ltxv_distilled",
+      "precision": "INT8 weights / BF16 compute",
+      "defaults": {
+        "width": 640,
+        "height": 384,
+        "frames": 97,
+        "fps": 30,
+        "steps": 6,
+        "seed": 12345
+      },
+      "limits": {
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 8,
+          "offset": 1,
+          "min": 17,
+          "max": 129
+        },
+        "fps": [
+          30
+        ],
+        "maxSteps": 6,
+        "allowedSteps": [
+          6
+        ]
+      },
+      "capabilities": {
+        "modes": [
+          "txt2video",
+          "img2video"
+        ],
+        "maxReferenceImages": 2,
+        "endImage": true,
+        "referenceVideo": false,
+        "referenceAudio": false,
+        "audioOutput": false,
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 8,
+          "offset": 1,
+          "min": 17,
+          "max": 129
+        },
+        "fps": [
+          30
+        ],
+        "maxSteps": 6,
+        "allowedSteps": [
+          6
+        ],
+        "supportsNegativePrompt": false
+      },
+      "inputOnly": false,
+      "runtimeConfig": {
+        "transformer_quantization": "int8",
+        "transformer_dtype_policy": "bf16",
+        "text_encoder_quantization": "int8",
+        "generation_preview": "rgb",
+        "attention_mode": "sdpa",
+        "save_format": "mp4",
+        "profile": 5,
+        "video_profile": 5,
+        "compile": false
+      },
+      "settings": {
+        "prompt_enhancer": "",
+        "config": "",
+        "spatial_upsampling": "",
+        "temporal_upsampling": ""
+      },
+      "files": [
+        {
+          "path": "video-lab/wangp/models/ltxv_0.9.8_13B_distilled_quanto_bf16_int8.safetensors",
+          "size": 13205738399,
+          "sha256": "8d329121bd11c422e90e715d1cecd77c05513a4ec104cd907360401e636e41ee",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/ltxv_0.9.8_13B_distilled_quanto_bf16_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/ltxv_0.9.8_13B_distilled_quanto_bf16_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX_Video",
+          "revision": "23e57ad380a1f8cbae25e57e293410ade87f0863"
+        },
+        {
+          "path": "video-lab/wangp/models/ltxv_0.9.7_VAE.safetensors",
+          "size": 2493859576,
+          "sha256": "a9cdab7e0c014c9eac1fbcc56666766dc530cf8a72a6bca112139a938d513ed6",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/ltxv_0.9.7_VAE.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/ltxv_0.9.7_VAE.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX_Video",
+          "revision": "23e57ad380a1f8cbae25e57e293410ade87f0863"
+        },
+        {
+          "path": "video-lab/wangp/models/ltxv_0.9.7_spatial_upscaler.safetensors",
+          "size": 505024432,
+          "sha256": "5b076031c6f860db9037a54f3bb819f10bfb5532ea26a6d30062292428a0c208",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/ltxv_0.9.7_spatial_upscaler.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/ltxv_0.9.7_spatial_upscaler.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX_Video",
+          "revision": "23e57ad380a1f8cbae25e57e293410ade87f0863"
+        },
+        {
+          "path": "video-lab/wangp/models/ltxv_scheduler.json",
+          "size": 190,
+          "sha256": "7ebf786d640dbb2b7b992298ec5ecbd9d4e1edb70e40f15ca37a62cb55f99f1d",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/ltxv_scheduler.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/ltxv_scheduler.json"
+          ],
+          "repo": "DeepBeepMeep/LTX_Video",
+          "revision": "23e57ad380a1f8cbae25e57e293410ade87f0863"
+        },
+        {
+          "path": "video-lab/wangp/models/T5_xxl_1.1/added_tokens.json",
+          "size": 2634,
+          "sha256": "4b1c1345a66fdd00264819c5adfc3142debfbd3b03767a04f95a39ac2277ca21",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/T5_xxl_1.1/added_tokens.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/T5_xxl_1.1/added_tokens.json"
+          ],
+          "repo": "DeepBeepMeep/LTX_Video",
+          "revision": "23e57ad380a1f8cbae25e57e293410ade87f0863"
+        },
+        {
+          "path": "video-lab/wangp/models/T5_xxl_1.1/special_tokens_map.json",
+          "size": 2201,
+          "sha256": "5c87151ef0f72a99d1f766a4c418bd2a1f90aaa30a8e22fe5eca9641daebb64f",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/T5_xxl_1.1/special_tokens_map.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/T5_xxl_1.1/special_tokens_map.json"
+          ],
+          "repo": "DeepBeepMeep/LTX_Video",
+          "revision": "23e57ad380a1f8cbae25e57e293410ade87f0863"
+        },
+        {
+          "path": "video-lab/wangp/models/T5_xxl_1.1/spiece.model",
+          "size": 791656,
+          "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/T5_xxl_1.1/spiece.model",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/T5_xxl_1.1/spiece.model"
+          ],
+          "repo": "DeepBeepMeep/LTX_Video",
+          "revision": "23e57ad380a1f8cbae25e57e293410ade87f0863"
+        },
+        {
+          "path": "video-lab/wangp/models/T5_xxl_1.1/tokenizer_config.json",
+          "size": 20509,
+          "sha256": "71730771351a8f0463bd2e545fbfaadc9dc01a7a222306ff4795cc48dfe168c0",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/T5_xxl_1.1/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/T5_xxl_1.1/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/LTX_Video",
+          "revision": "23e57ad380a1f8cbae25e57e293410ade87f0863"
+        },
+        {
+          "path": "video-lab/wangp/models/T5_xxl_1.1/T5_xxl_1.1_enc_quanto_bf16_int8.safetensors",
+          "size": 4896193821,
+          "sha256": "03b60a5957624accb83086771af4f7d48665d2d3c076ca0c626f31ec0fc52087",
+          "url": "https://huggingface.co/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/T5_xxl_1.1/T5_xxl_1.1_enc_quanto_bf16_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/LTX_Video/resolve/23e57ad380a1f8cbae25e57e293410ade87f0863/T5_xxl_1.1/T5_xxl_1.1_enc_quanto_bf16_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/LTX_Video",
+          "revision": "23e57ad380a1f8cbae25e57e293410ade87f0863"
+        }
+      ],
+      "required": [
+        {
+          "path": "video-lab/wangp/models/ltxv_0.9.8_13B_distilled_quanto_bf16_int8.safetensors",
+          "size": 13205738399,
+          "sha256": "8d329121bd11c422e90e715d1cecd77c05513a4ec104cd907360401e636e41ee"
+        },
+        {
+          "path": "video-lab/wangp/models/ltxv_0.9.7_VAE.safetensors",
+          "size": 2493859576,
+          "sha256": "a9cdab7e0c014c9eac1fbcc56666766dc530cf8a72a6bca112139a938d513ed6"
+        },
+        {
+          "path": "video-lab/wangp/models/ltxv_0.9.7_spatial_upscaler.safetensors",
+          "size": 505024432,
+          "sha256": "5b076031c6f860db9037a54f3bb819f10bfb5532ea26a6d30062292428a0c208"
+        },
+        {
+          "path": "video-lab/wangp/models/ltxv_scheduler.json",
+          "size": 190,
+          "sha256": "7ebf786d640dbb2b7b992298ec5ecbd9d4e1edb70e40f15ca37a62cb55f99f1d"
+        },
+        {
+          "path": "video-lab/wangp/models/T5_xxl_1.1/added_tokens.json",
+          "size": 2634,
+          "sha256": "4b1c1345a66fdd00264819c5adfc3142debfbd3b03767a04f95a39ac2277ca21"
+        },
+        {
+          "path": "video-lab/wangp/models/T5_xxl_1.1/special_tokens_map.json",
+          "size": 2201,
+          "sha256": "5c87151ef0f72a99d1f766a4c418bd2a1f90aaa30a8e22fe5eca9641daebb64f"
+        },
+        {
+          "path": "video-lab/wangp/models/T5_xxl_1.1/spiece.model",
+          "size": 791656,
+          "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86"
+        },
+        {
+          "path": "video-lab/wangp/models/T5_xxl_1.1/tokenizer_config.json",
+          "size": 20509,
+          "sha256": "71730771351a8f0463bd2e545fbfaadc9dc01a7a222306ff4795cc48dfe168c0"
+        },
+        {
+          "path": "video-lab/wangp/models/T5_xxl_1.1/T5_xxl_1.1_enc_quanto_bf16_int8.safetensors",
+          "size": 4896193821,
+          "sha256": "03b60a5957624accb83086771af4f7d48665d2d3c076ca0c626f31ec0fc52087"
+        },
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "video-lab/wangp/src/shared/api.py"
+        },
+        {
+          "path": "engines/video-ltxv098/run.ps1"
+        }
+      ],
+      "dependencies": [
+        "wangp-video-runtime"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/video_wangp.ps1",
+          "target": "engines/video-ltxv098/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "WanGP Community 2.0 + 原模型许可",
+        "url": "https://github.com/deepbeepmeep/Wan2GP/blob/6479db36bdc2619a904a852bba9c2d78e1a83f82/LICENSE.txt",
+        "requiresAcceptance": true,
+        "notice": "使用 WanGP（Uses WanGP）。Community License 2.0 允许个人、本地、研究及符合许可的免费集成；禁止白牌、出售运行器、收费嵌入或收费 API/SaaS，相关用途需要作者另行授权。各模型仍分别适用原模型许可。当前是固定源配方，未完成这台 3060 的真实生成验收。",
+        "modelUrl": "https://github.com/Lightricks/LTX-Video"
+      },
+      "remedy": "点击下载部署完整固定版本组件。安装校验只检查 CUDA、运行器与文件；首次生成结果需你验收。",
+      "runtime": {
+        "type": "wangp",
+        "environment": "video-lab/wangp/.venv",
+        "python": "video-lab/wangp/.venv/Scripts/python.exe"
+      },
+      "manifest": {
+        "id": "video-ltxv098",
+        "title": "LTX Video 0.9.8 · 6 步短片 · Uses WanGP",
+        "kind": "video",
+        "version": "0.7.0",
+        "providerVersion": "0.7.0",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "capabilities": {
+          "modes": [
+            "txt2video",
+            "img2video"
+          ],
+          "maxReferenceImages": 2,
+          "endImage": true,
+          "referenceVideo": false,
+          "referenceAudio": false,
+          "audioOutput": false,
+          "sizeMultiple": 32,
+          "maxPixels": 307200,
+          "frameRule": {
+            "multiple": 8,
+            "offset": 1,
+            "min": 17,
+            "max": 129
+          },
+          "fps": [
+            30
+          ],
+          "maxSteps": 6,
+          "allowedSteps": [
+            6
+          ],
+          "supportsNegativePrompt": false
+        },
+        "defaults": {
+          "width": 640,
+          "height": 384,
+          "frames": 97,
+          "fps": 30,
+          "steps": 6,
+          "seed": 12345
+        },
+        "runtime": {
+          "type": "wangp",
+          "environment": "video-lab/wangp/.venv",
+          "python": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        "source": "https://github.com/Lightricks/LTX-Video",
+        "runtimeSource": "https://github.com/deepbeepmeep/Wan2GP",
+        "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+        "verificationStatus": "recipe-verified-generation-unverified"
+      },
+      "validationStage": "researched",
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12GB",
+        "memoryProfile": 5,
+        "measured": false,
+        "defaultResolution": "640x384"
+      },
+      "probes": [
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe",
+          "args": [
+            "@root:scripts/providers/video_wangp.py",
+            "--engine",
+            "video-ltxv098",
+            "--check"
+          ],
+          "requiredFlags": [
+            "\"gpuInferenceExecuted\": false"
+          ],
+          "timeout": 240
+        }
+      ]
+    },
+    {
+      "id": "video-kandinsky5-lite",
+      "engineId": "video-kandinsky5-lite",
+      "title": "Kandinsky 5 Lite · 16 步视频 · Uses WanGP",
+      "kind": "video",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "本地实验视频配方；显存卸载使用 WanGP profile 5，速度、画质和峰值内存需自行短测。",
+      "recommended": false,
+      "installable": true,
+      "gpuVerified": false,
+      "minimumVramMiB": 8192,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 2147483648,
+      "sourceUrl": "https://github.com/kandinskylab/kandinsky-5",
+      "runtimeSourceUrl": "https://github.com/deepbeepmeep/Wan2GP",
+      "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+      "runtimeModelType": "k5_lite_t2v_5s_distil",
+      "precision": "BF16",
+      "defaults": {
+        "width": 640,
+        "height": 384,
+        "frames": 81,
+        "fps": 24,
+        "steps": 16,
+        "seed": 12345
+      },
+      "limits": {
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 4,
+          "offset": 1,
+          "min": 5,
+          "max": 121
+        },
+        "fps": [
+          24
+        ],
+        "maxSteps": 80
+      },
+      "capabilities": {
+        "modes": [
+          "txt2video"
+        ],
+        "maxReferenceImages": 0,
+        "endImage": false,
+        "referenceVideo": false,
+        "referenceAudio": false,
+        "audioOutput": false,
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 4,
+          "offset": 1,
+          "min": 5,
+          "max": 121
+        },
+        "fps": [
+          24
+        ],
+        "maxSteps": 80
+      },
+      "inputOnly": false,
+      "runtimeConfig": {
+        "transformer_quantization": "bf16",
+        "transformer_dtype_policy": "bf16",
+        "text_encoder_quantization": "int8",
+        "generation_preview": "rgb",
+        "attention_mode": "sdpa",
+        "save_format": "mp4",
+        "profile": 5,
+        "video_profile": 5,
+        "compile": false
+      },
+      "settings": {
+        "prompt_enhancer": "",
+        "config": "",
+        "spatial_upsampling": "",
+        "temporal_upsampling": ""
+      },
+      "files": [
+        {
+          "path": "video-lab/wangp/models/kandinsky5lite_t2v_distilled16steps_5s_bf16.safetensors",
+          "size": 4015514184,
+          "sha256": "9d255c4fb3990c0877e2e40156f91505be9f1f45e29e93b1bf8797255c192d6b",
+          "url": "https://huggingface.co/DeepBeepMeep/Kandinsky5/resolve/0e35790780e933518d35b33bb5e06dbe1c73ffc5/kandinsky5lite_t2v_distilled16steps_5s_bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Kandinsky5/resolve/0e35790780e933518d35b33bb5e06dbe1c73ffc5/kandinsky5lite_t2v_distilled16steps_5s_bf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Kandinsky5",
+          "revision": "0e35790780e933518d35b33bb5e06dbe1c73ffc5"
+        },
+        {
+          "path": "video-lab/wangp/models/qwen_vae.safetensors",
+          "size": 253806966,
+          "sha256": "0c8bc8b758c649abef9ea407b95408389a3b2f610d0d10fcb054fe171d0a8344",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/qwen_vae.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/qwen_vae.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/qwen_vae_config.json",
+          "size": 730,
+          "sha256": "e4e61b7553f930e9eabf8935f0a77e6d004cc3ee67a601a56ef03cc41ccada68",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/qwen_vae_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/qwen_vae_config.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/merges.txt",
+          "size": 1671853,
+          "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/merges.txt",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/merges.txt"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/tokenizer_config.json",
+          "size": 4686,
+          "sha256": "0a04a9d7d4a62b28482bdfe726c122756de85714fb64166ace92ae75b8f57614",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/config.json",
+          "size": 3217,
+          "sha256": "081d41bae4c75815afde340b5cee39d9c71febe3fc3146e0366a75a45da0c04b",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/config.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/vocab.json",
+          "size": 3383407,
+          "sha256": "87a257b04b17642a0688c98cd1df89c398bda4fee532d6f88b38a659ecb4ac8d",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/vocab.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/vocab.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/video_preprocessor_config.json",
+          "size": 904,
+          "sha256": "d4397fb8765d3fb56db022e5a14ce58dbcc144093c49ea1ab96787fb7951facb",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/video_preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/video_preprocessor_config.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/preprocessor_config.json",
+          "size": 788,
+          "sha256": "9ff8a240516e4ef986717597bb2c5fff3e4d4c0951d02b7dee949ceb369b5b03",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/preprocessor_config.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/chat_template.json",
+          "size": 1050,
+          "sha256": "ad60d90252ed0b0705ba14e2d0ad0fec0beac1ea955642b54059b36052d8bc96",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/chat_template.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/chat_template.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/Qwen2.5-VL-7B-Instruct_quanto_bf16_int8.safetensors",
+          "size": 9432992295,
+          "sha256": "18966ca6ba18261ec0465442580ad30510a758ecc0314871a0bbd30032716568",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/Qwen2.5-VL-7B-Instruct_quanto_bf16_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/Qwen2.5-VL-7B-Instruct_quanto_bf16_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/hunyuan_video_VAE_fp32.safetensors",
+          "size": 985943868,
+          "sha256": "7c68a6295f9034a88225fbafb1f3258291a08d57a1fdb938233fa57b1b8f4883",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/hunyuan_video_VAE_fp32.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/hunyuan_video_VAE_fp32.safetensors"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo",
+          "revision": "7995fc02c98c60e070d80b5cdd2d364735266b4d"
+        },
+        {
+          "path": "video-lab/wangp/models/hunyuan_video_VAE_config.json",
+          "size": 627,
+          "sha256": "dc143fdbbdabdea35db4a6003499045d841cc2e7386f66c0498136fb92a523a8",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/hunyuan_video_VAE_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/hunyuan_video_VAE_config.json"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo",
+          "revision": "7995fc02c98c60e070d80b5cdd2d364735266b4d"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/text_config.json",
+          "size": 1865,
+          "sha256": "0e6438a7306ade85a161a0078246bedffc1b787f6a9d86c48bd27556a2734040",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/text_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/text_config.json"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo",
+          "revision": "7995fc02c98c60e070d80b5cdd2d364735266b4d"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/merges.txt",
+          "size": 524619,
+          "sha256": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/merges.txt",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/merges.txt"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo",
+          "revision": "7995fc02c98c60e070d80b5cdd2d364735266b4d"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/model.safetensors",
+          "size": 1710540580,
+          "sha256": "a2bf730a0c7debf160f7a6b50b3aaf3703e7e88ac73de7a314903141db026dcb",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/model.safetensors"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo",
+          "revision": "7995fc02c98c60e070d80b5cdd2d364735266b4d"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/preprocessor_config.json",
+          "size": 316,
+          "sha256": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/preprocessor_config.json"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo",
+          "revision": "7995fc02c98c60e070d80b5cdd2d364735266b4d"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/special_tokens_map.json",
+          "size": 389,
+          "sha256": "f8c0d6c39aee3f8431078ef6646567b0aba7f2246e9c54b8b99d55c22b707cbf",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/special_tokens_map.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/special_tokens_map.json"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo",
+          "revision": "7995fc02c98c60e070d80b5cdd2d364735266b4d"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/tokenizer.json",
+          "size": 2224003,
+          "sha256": "a83e0809aa4c3af7208b2df632a7a69668c6d48775b3c3fe4e1b1199d1f8b8f4",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/tokenizer.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/tokenizer.json"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo",
+          "revision": "7995fc02c98c60e070d80b5cdd2d364735266b4d"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/tokenizer_config.json",
+          "size": 905,
+          "sha256": "deef455e52fa5e8151e339add0582e4235f066009601360999d3a9cda83b1129",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo",
+          "revision": "7995fc02c98c60e070d80b5cdd2d364735266b4d"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/vocab.json",
+          "size": 961143,
+          "sha256": "3f0c4f7d2086b61b38487075278ea9ed04edb53a03cbb045b86c27190fa8fb69",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/vocab.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo/resolve/7995fc02c98c60e070d80b5cdd2d364735266b4d/clip_vit_large_patch14/vocab.json"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo",
+          "revision": "7995fc02c98c60e070d80b5cdd2d364735266b4d"
+        }
+      ],
+      "required": [
+        {
+          "path": "video-lab/wangp/models/kandinsky5lite_t2v_distilled16steps_5s_bf16.safetensors",
+          "size": 4015514184,
+          "sha256": "9d255c4fb3990c0877e2e40156f91505be9f1f45e29e93b1bf8797255c192d6b"
+        },
+        {
+          "path": "video-lab/wangp/models/qwen_vae.safetensors",
+          "size": 253806966,
+          "sha256": "0c8bc8b758c649abef9ea407b95408389a3b2f610d0d10fcb054fe171d0a8344"
+        },
+        {
+          "path": "video-lab/wangp/models/qwen_vae_config.json",
+          "size": 730,
+          "sha256": "e4e61b7553f930e9eabf8935f0a77e6d004cc3ee67a601a56ef03cc41ccada68"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/merges.txt",
+          "size": 1671853,
+          "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/tokenizer_config.json",
+          "size": 4686,
+          "sha256": "0a04a9d7d4a62b28482bdfe726c122756de85714fb64166ace92ae75b8f57614"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/config.json",
+          "size": 3217,
+          "sha256": "081d41bae4c75815afde340b5cee39d9c71febe3fc3146e0366a75a45da0c04b"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/vocab.json",
+          "size": 3383407,
+          "sha256": "87a257b04b17642a0688c98cd1df89c398bda4fee532d6f88b38a659ecb4ac8d"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/video_preprocessor_config.json",
+          "size": 904,
+          "sha256": "d4397fb8765d3fb56db022e5a14ce58dbcc144093c49ea1ab96787fb7951facb"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/preprocessor_config.json",
+          "size": 788,
+          "sha256": "9ff8a240516e4ef986717597bb2c5fff3e4d4c0951d02b7dee949ceb369b5b03"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/chat_template.json",
+          "size": 1050,
+          "sha256": "ad60d90252ed0b0705ba14e2d0ad0fec0beac1ea955642b54059b36052d8bc96"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/Qwen2.5-VL-7B-Instruct_quanto_bf16_int8.safetensors",
+          "size": 9432992295,
+          "sha256": "18966ca6ba18261ec0465442580ad30510a758ecc0314871a0bbd30032716568"
+        },
+        {
+          "path": "video-lab/wangp/models/hunyuan_video_VAE_fp32.safetensors",
+          "size": 985943868,
+          "sha256": "7c68a6295f9034a88225fbafb1f3258291a08d57a1fdb938233fa57b1b8f4883"
+        },
+        {
+          "path": "video-lab/wangp/models/hunyuan_video_VAE_config.json",
+          "size": 627,
+          "sha256": "dc143fdbbdabdea35db4a6003499045d841cc2e7386f66c0498136fb92a523a8"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/text_config.json",
+          "size": 1865,
+          "sha256": "0e6438a7306ade85a161a0078246bedffc1b787f6a9d86c48bd27556a2734040"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/merges.txt",
+          "size": 524619,
+          "sha256": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/model.safetensors",
+          "size": 1710540580,
+          "sha256": "a2bf730a0c7debf160f7a6b50b3aaf3703e7e88ac73de7a314903141db026dcb"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/preprocessor_config.json",
+          "size": 316,
+          "sha256": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/special_tokens_map.json",
+          "size": 389,
+          "sha256": "f8c0d6c39aee3f8431078ef6646567b0aba7f2246e9c54b8b99d55c22b707cbf"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/tokenizer.json",
+          "size": 2224003,
+          "sha256": "a83e0809aa4c3af7208b2df632a7a69668c6d48775b3c3fe4e1b1199d1f8b8f4"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/tokenizer_config.json",
+          "size": 905,
+          "sha256": "deef455e52fa5e8151e339add0582e4235f066009601360999d3a9cda83b1129"
+        },
+        {
+          "path": "video-lab/wangp/models/clip_vit_large_patch14/vocab.json",
+          "size": 961143,
+          "sha256": "3f0c4f7d2086b61b38487075278ea9ed04edb53a03cbb045b86c27190fa8fb69"
+        },
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "video-lab/wangp/src/shared/api.py"
+        },
+        {
+          "path": "engines/video-kandinsky5-lite/run.ps1"
+        }
+      ],
+      "dependencies": [
+        "wangp-video-runtime"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/video_wangp.ps1",
+          "target": "engines/video-kandinsky5-lite/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "WanGP Community 2.0 + 原模型许可",
+        "url": "https://github.com/deepbeepmeep/Wan2GP/blob/6479db36bdc2619a904a852bba9c2d78e1a83f82/LICENSE.txt",
+        "requiresAcceptance": true,
+        "notice": "使用 WanGP（Uses WanGP）。Community License 2.0 允许个人、本地、研究及符合许可的免费集成；禁止白牌、出售运行器、收费嵌入或收费 API/SaaS，相关用途需要作者另行授权。各模型仍分别适用原模型许可。当前是固定源配方，未完成这台 3060 的真实生成验收。",
+        "modelUrl": "https://github.com/kandinskylab/kandinsky-5"
+      },
+      "remedy": "点击下载部署完整固定版本组件。安装校验只检查 CUDA、运行器与文件；首次生成结果需你验收。",
+      "runtime": {
+        "type": "wangp",
+        "environment": "video-lab/wangp/.venv",
+        "python": "video-lab/wangp/.venv/Scripts/python.exe"
+      },
+      "manifest": {
+        "id": "video-kandinsky5-lite",
+        "title": "Kandinsky 5 Lite · 16 步视频 · Uses WanGP",
+        "kind": "video",
+        "version": "0.7.0",
+        "providerVersion": "0.7.0",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "capabilities": {
+          "modes": [
+            "txt2video"
+          ],
+          "maxReferenceImages": 0,
+          "endImage": false,
+          "referenceVideo": false,
+          "referenceAudio": false,
+          "audioOutput": false,
+          "sizeMultiple": 32,
+          "maxPixels": 307200,
+          "frameRule": {
+            "multiple": 4,
+            "offset": 1,
+            "min": 5,
+            "max": 121
+          },
+          "fps": [
+            24
+          ],
+          "maxSteps": 80
+        },
+        "defaults": {
+          "width": 640,
+          "height": 384,
+          "frames": 81,
+          "fps": 24,
+          "steps": 16,
+          "seed": 12345
+        },
+        "runtime": {
+          "type": "wangp",
+          "environment": "video-lab/wangp/.venv",
+          "python": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        "source": "https://github.com/kandinskylab/kandinsky-5",
+        "runtimeSource": "https://github.com/deepbeepmeep/Wan2GP",
+        "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+        "verificationStatus": "recipe-verified-generation-unverified"
+      },
+      "validationStage": "researched",
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12GB",
+        "memoryProfile": 5,
+        "measured": false,
+        "defaultResolution": "640x384"
+      },
+      "probes": [
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe",
+          "args": [
+            "@root:scripts/providers/video_wangp.py",
+            "--engine",
+            "video-kandinsky5-lite",
+            "--check"
+          ],
+          "requiredFlags": [
+            "\"gpuInferenceExecuted\": false"
+          ],
+          "timeout": 240
+        }
+      ]
+    },
+    {
+      "id": "video-wan21-13b",
+      "engineId": "video-wan21-13b",
+      "title": "Wan2.1 · 1.3B 轻量视频 · Uses WanGP",
+      "kind": "video",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "本地实验视频配方；显存卸载使用 WanGP profile 5，速度、画质和峰值内存需自行短测。",
+      "recommended": true,
+      "installable": true,
+      "gpuVerified": false,
+      "minimumVramMiB": 8192,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 2147483648,
+      "sourceUrl": "https://github.com/Wan-Video/Wan2.1",
+      "runtimeSourceUrl": "https://github.com/deepbeepmeep/Wan2GP",
+      "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+      "runtimeModelType": "t2v_1.3B",
+      "precision": "BF16",
+      "defaults": {
+        "width": 640,
+        "height": 384,
+        "frames": 49,
+        "fps": 16,
+        "steps": 30,
+        "seed": 12345
+      },
+      "limits": {
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 4,
+          "offset": 1,
+          "min": 5,
+          "max": 81
+        },
+        "fps": [
+          16
+        ],
+        "maxSteps": 80
+      },
+      "capabilities": {
+        "modes": [
+          "txt2video"
+        ],
+        "maxReferenceImages": 0,
+        "endImage": false,
+        "referenceVideo": false,
+        "referenceAudio": false,
+        "audioOutput": false,
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 4,
+          "offset": 1,
+          "min": 5,
+          "max": 81
+        },
+        "fps": [
+          16
+        ],
+        "maxSteps": 80
+      },
+      "inputOnly": false,
+      "runtimeConfig": {
+        "transformer_quantization": "bf16",
+        "transformer_dtype_policy": "bf16",
+        "text_encoder_quantization": "int8",
+        "generation_preview": "rgb",
+        "attention_mode": "sdpa",
+        "save_format": "mp4",
+        "profile": 5,
+        "video_profile": 5,
+        "compile": false
+      },
+      "settings": {
+        "prompt_enhancer": "",
+        "config": "",
+        "spatial_upsampling": "",
+        "temporal_upsampling": ""
+      },
+      "files": [
+        {
+          "path": "video-lab/wangp/models/wan2.1_text2video_1.3B_mbf16.safetensors",
+          "size": 2872512608,
+          "sha256": "572aa1e665d968710edf68022a61501d3141e257c61540660cd473bedf45a023",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/wan2.1_text2video_1.3B_mbf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/wan2.1_text2video_1.3B_mbf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/special_tokens_map.json",
+          "size": 6623,
+          "sha256": "7b8a9f5040adb67b5805abdfd42c1f8d0f3d0e711f10726580eb3789cd0ad61d",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/special_tokens_map.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/special_tokens_map.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/spiece.model",
+          "size": 4548313,
+          "sha256": "e3909a67b780650b35cf529ac782ad2b6b26e6d1f849d3fbb6a872905f452458",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/spiece.model",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/spiece.model"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer.json",
+          "size": 16837417,
+          "sha256": "6e197b4d3dbd71da14b4eb255f4fa91c9c1f2068b20a2de2472967ca3d22602b",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer_config.json",
+          "size": 61728,
+          "sha256": "ed9a3a8b0faa71a70a32847e0435fe036e6e112d4df4edb7bb48a921e344dc05",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors",
+          "size": 6733337738,
+          "sha256": "5e4961851c78838931990549810ed51c9036081b2ad80bf464c4e2603c5f922c",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/models_clip_open-clip-xlm-roberta-large-vit-huge-14-bf16.safetensors",
+          "size": 2386119506,
+          "sha256": "742b68fe1cade9e54863aee12aed5390a994269957bd0638799b141cbc236ad8",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/models_clip_open-clip-xlm-roberta-large-vit-huge-14-bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/models_clip_open-clip-xlm-roberta-large-vit-huge-14-bf16.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/sentencepiece.bpe.model",
+          "size": 5069051,
+          "sha256": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/sentencepiece.bpe.model",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/sentencepiece.bpe.model"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/special_tokens_map.json",
+          "size": 280,
+          "sha256": "06e405a36dfe4b9604f484f6a1e619af1a7f7d09e34a8555eb0b77b66318067f",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/special_tokens_map.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/special_tokens_map.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/tokenizer.json",
+          "size": 17082660,
+          "sha256": "62c24cdc13d4c9952d63718d6c9fa4c287974249e16b7ade6d5a85e7bbb75626",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/tokenizer.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/tokenizer.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/tokenizer_config.json",
+          "size": 418,
+          "sha256": "efb5c0d09722e5fe59a462cd2a9976ee216d55b037597d997cd3fe833216da15",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/xlm-roberta-large/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.1_VAE.safetensors",
+          "size": 507593157,
+          "sha256": "3ce0c02b9470532e7f63f3e2f8e83b0681fdeaa432e969c412482d2b3b78267b",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/Wan2.1_VAE.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/Wan2.1_VAE.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors",
+          "size": 507684560,
+          "sha256": "2413554bbec24215185662d009893cf4666b8e777efece2d895e03e1a6b63e06",
+          "url": "https://huggingface.co/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Wan2.1/resolve/05bf8d2597cae81e19d398f21fd483c216dc56c0/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Wan2.1",
+          "revision": "05bf8d2597cae81e19d398f21fd483c216dc56c0"
+        }
+      ],
+      "required": [
+        {
+          "path": "video-lab/wangp/models/wan2.1_text2video_1.3B_mbf16.safetensors",
+          "size": 2872512608,
+          "sha256": "572aa1e665d968710edf68022a61501d3141e257c61540660cd473bedf45a023"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/special_tokens_map.json",
+          "size": 6623,
+          "sha256": "7b8a9f5040adb67b5805abdfd42c1f8d0f3d0e711f10726580eb3789cd0ad61d"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/spiece.model",
+          "size": 4548313,
+          "sha256": "e3909a67b780650b35cf529ac782ad2b6b26e6d1f849d3fbb6a872905f452458"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer.json",
+          "size": 16837417,
+          "sha256": "6e197b4d3dbd71da14b4eb255f4fa91c9c1f2068b20a2de2472967ca3d22602b"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/tokenizer_config.json",
+          "size": 61728,
+          "sha256": "ed9a3a8b0faa71a70a32847e0435fe036e6e112d4df4edb7bb48a921e344dc05"
+        },
+        {
+          "path": "video-lab/wangp/models/umt5-xxl/models_t5_umt5-xxl-enc-quanto_int8.safetensors",
+          "size": 6733337738,
+          "sha256": "5e4961851c78838931990549810ed51c9036081b2ad80bf464c4e2603c5f922c"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/models_clip_open-clip-xlm-roberta-large-vit-huge-14-bf16.safetensors",
+          "size": 2386119506,
+          "sha256": "742b68fe1cade9e54863aee12aed5390a994269957bd0638799b141cbc236ad8"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/sentencepiece.bpe.model",
+          "size": 5069051,
+          "sha256": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/special_tokens_map.json",
+          "size": 280,
+          "sha256": "06e405a36dfe4b9604f484f6a1e619af1a7f7d09e34a8555eb0b77b66318067f"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/tokenizer.json",
+          "size": 17082660,
+          "sha256": "62c24cdc13d4c9952d63718d6c9fa4c287974249e16b7ade6d5a85e7bbb75626"
+        },
+        {
+          "path": "video-lab/wangp/models/xlm-roberta-large/tokenizer_config.json",
+          "size": 418,
+          "sha256": "efb5c0d09722e5fe59a462cd2a9976ee216d55b037597d997cd3fe833216da15"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.1_VAE.safetensors",
+          "size": 507593157,
+          "sha256": "3ce0c02b9470532e7f63f3e2f8e83b0681fdeaa432e969c412482d2b3b78267b"
+        },
+        {
+          "path": "video-lab/wangp/models/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors",
+          "size": 507684560,
+          "sha256": "2413554bbec24215185662d009893cf4666b8e777efece2d895e03e1a6b63e06"
+        },
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "video-lab/wangp/src/shared/api.py"
+        },
+        {
+          "path": "engines/video-wan21-13b/run.ps1"
+        }
+      ],
+      "dependencies": [
+        "wangp-video-runtime"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/video_wangp.ps1",
+          "target": "engines/video-wan21-13b/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "WanGP Community 2.0 + 原模型许可",
+        "url": "https://github.com/deepbeepmeep/Wan2GP/blob/6479db36bdc2619a904a852bba9c2d78e1a83f82/LICENSE.txt",
+        "requiresAcceptance": true,
+        "notice": "使用 WanGP（Uses WanGP）。Community License 2.0 允许个人、本地、研究及符合许可的免费集成；禁止白牌、出售运行器、收费嵌入或收费 API/SaaS，相关用途需要作者另行授权。各模型仍分别适用原模型许可。当前是固定源配方，未完成这台 3060 的真实生成验收。",
+        "modelUrl": "https://github.com/Wan-Video/Wan2.1"
+      },
+      "remedy": "点击下载部署完整固定版本组件。安装校验只检查 CUDA、运行器与文件；首次生成结果需你验收。",
+      "runtime": {
+        "type": "wangp",
+        "environment": "video-lab/wangp/.venv",
+        "python": "video-lab/wangp/.venv/Scripts/python.exe"
+      },
+      "manifest": {
+        "id": "video-wan21-13b",
+        "title": "Wan2.1 · 1.3B 轻量视频 · Uses WanGP",
+        "kind": "video",
+        "version": "0.7.0",
+        "providerVersion": "0.7.0",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "capabilities": {
+          "modes": [
+            "txt2video"
+          ],
+          "maxReferenceImages": 0,
+          "endImage": false,
+          "referenceVideo": false,
+          "referenceAudio": false,
+          "audioOutput": false,
+          "sizeMultiple": 32,
+          "maxPixels": 307200,
+          "frameRule": {
+            "multiple": 4,
+            "offset": 1,
+            "min": 5,
+            "max": 81
+          },
+          "fps": [
+            16
+          ],
+          "maxSteps": 80
+        },
+        "defaults": {
+          "width": 640,
+          "height": 384,
+          "frames": 49,
+          "fps": 16,
+          "steps": 30,
+          "seed": 12345
+        },
+        "runtime": {
+          "type": "wangp",
+          "environment": "video-lab/wangp/.venv",
+          "python": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        "source": "https://github.com/Wan-Video/Wan2.1",
+        "runtimeSource": "https://github.com/deepbeepmeep/Wan2GP",
+        "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+        "verificationStatus": "recipe-verified-generation-unverified"
+      },
+      "validationStage": "researched",
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12GB",
+        "memoryProfile": 5,
+        "measured": false,
+        "defaultResolution": "640x384"
+      },
+      "probes": [
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe",
+          "args": [
+            "@root:scripts/providers/video_wangp.py",
+            "--engine",
+            "video-wan21-13b",
+            "--check"
+          ],
+          "requiredFlags": [
+            "\"gpuInferenceExecuted\": false"
+          ],
+          "timeout": 240
+        }
+      ]
+    },
+    {
+      "id": "video-hunyuan15-t2v",
+      "engineId": "video-hunyuan15-t2v",
+      "title": "HunyuanVideo 1.5 · 480p · Uses WanGP",
+      "kind": "video",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "本地实验视频配方；显存卸载使用 WanGP profile 5，速度、画质和峰值内存需自行短测。",
+      "recommended": false,
+      "installable": true,
+      "gpuVerified": false,
+      "minimumVramMiB": 8192,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 2147483648,
+      "sourceUrl": "https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5",
+      "runtimeSourceUrl": "https://github.com/deepbeepmeep/Wan2GP",
+      "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+      "runtimeModelType": "hunyuan_1_5_480_t2v",
+      "precision": "INT8 weights / BF16 compute",
+      "defaults": {
+        "width": 640,
+        "height": 384,
+        "frames": 49,
+        "fps": 24,
+        "steps": 30,
+        "seed": 12345
+      },
+      "limits": {
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 4,
+          "offset": 1,
+          "min": 5,
+          "max": 97
+        },
+        "fps": [
+          24
+        ],
+        "maxSteps": 80
+      },
+      "capabilities": {
+        "modes": [
+          "txt2video"
+        ],
+        "maxReferenceImages": 0,
+        "endImage": false,
+        "referenceVideo": false,
+        "referenceAudio": false,
+        "audioOutput": false,
+        "sizeMultiple": 32,
+        "maxPixels": 307200,
+        "frameRule": {
+          "multiple": 4,
+          "offset": 1,
+          "min": 5,
+          "max": 97
+        },
+        "fps": [
+          24
+        ],
+        "maxSteps": 80
+      },
+      "inputOnly": false,
+      "runtimeConfig": {
+        "transformer_quantization": "int8",
+        "transformer_dtype_policy": "bf16",
+        "text_encoder_quantization": "int8",
+        "generation_preview": "rgb",
+        "attention_mode": "sdpa",
+        "save_format": "mp4",
+        "profile": 5,
+        "video_profile": 5,
+        "compile": false
+      },
+      "settings": {
+        "prompt_enhancer": "",
+        "config": "",
+        "spatial_upsampling": "",
+        "temporal_upsampling": ""
+      },
+      "files": [
+        {
+          "path": "video-lab/wangp/models/hunyuan_video_1.5_480_quanto_bf16_int8.safetensors",
+          "size": 8503018313,
+          "sha256": "c99145c6f87c6c2358eac2492b33abee3ccfa83301a314ce255dc71ac34a2cf1",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/hunyuan_video_1.5_480_quanto_bf16_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/hunyuan_video_1.5_480_quanto_bf16_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo1.5",
+          "revision": "dfb27d624272a9de325ee6a49f6a0337ef3fcfaa"
+        },
+        {
+          "path": "video-lab/wangp/models/qwen_vae.safetensors",
+          "size": 253806966,
+          "sha256": "0c8bc8b758c649abef9ea407b95408389a3b2f610d0d10fcb054fe171d0a8344",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/qwen_vae.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/qwen_vae.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/qwen_vae_config.json",
+          "size": 730,
+          "sha256": "e4e61b7553f930e9eabf8935f0a77e6d004cc3ee67a601a56ef03cc41ccada68",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/qwen_vae_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/qwen_vae_config.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/merges.txt",
+          "size": 1671853,
+          "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/merges.txt",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/merges.txt"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/tokenizer_config.json",
+          "size": 4686,
+          "sha256": "0a04a9d7d4a62b28482bdfe726c122756de85714fb64166ace92ae75b8f57614",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/tokenizer_config.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/config.json",
+          "size": 3217,
+          "sha256": "081d41bae4c75815afde340b5cee39d9c71febe3fc3146e0366a75a45da0c04b",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/config.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/vocab.json",
+          "size": 3383407,
+          "sha256": "87a257b04b17642a0688c98cd1df89c398bda4fee532d6f88b38a659ecb4ac8d",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/vocab.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/vocab.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/video_preprocessor_config.json",
+          "size": 904,
+          "sha256": "d4397fb8765d3fb56db022e5a14ce58dbcc144093c49ea1ab96787fb7951facb",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/video_preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/video_preprocessor_config.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/preprocessor_config.json",
+          "size": 788,
+          "sha256": "9ff8a240516e4ef986717597bb2c5fff3e4d4c0951d02b7dee949ceb369b5b03",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/preprocessor_config.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/chat_template.json",
+          "size": 1050,
+          "sha256": "ad60d90252ed0b0705ba14e2d0ad0fec0beac1ea955642b54059b36052d8bc96",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/chat_template.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/chat_template.json"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/Qwen2.5-VL-7B-Instruct_quanto_bf16_int8.safetensors",
+          "size": 9432992295,
+          "sha256": "18966ca6ba18261ec0465442580ad30510a758ecc0314871a0bbd30032716568",
+          "url": "https://huggingface.co/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/Qwen2.5-VL-7B-Instruct_quanto_bf16_int8.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/Qwen_image/resolve/75c70695c563a235a5d14e37f110d499b3ecbd1c/Qwen2.5-VL-7B-Instruct/Qwen2.5-VL-7B-Instruct_quanto_bf16_int8.safetensors"
+          ],
+          "repo": "DeepBeepMeep/Qwen_image",
+          "revision": "75c70695c563a235a5d14e37f110d499b3ecbd1c"
+        },
+        {
+          "path": "video-lab/wangp/models/Glyph-SDXL-v2/color_idx.json",
+          "size": 2366,
+          "sha256": "d52364d14204f0fb658575ac92f094210b485aeb6579ac9814097a0e8c4eb513",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/Glyph-SDXL-v2/color_idx.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/Glyph-SDXL-v2/color_idx.json"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo1.5",
+          "revision": "dfb27d624272a9de325ee6a49f6a0337ef3fcfaa"
+        },
+        {
+          "path": "video-lab/wangp/models/Glyph-SDXL-v2/multilingual_10-lang_idx.json",
+          "size": 28098,
+          "sha256": "3753b9e132a4b4dac714e55ac90bd6f791874a83fa0f716b1f6f457a9c5a33a1",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/Glyph-SDXL-v2/multilingual_10-lang_idx.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/Glyph-SDXL-v2/multilingual_10-lang_idx.json"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo1.5",
+          "revision": "dfb27d624272a9de325ee6a49f6a0337ef3fcfaa"
+        },
+        {
+          "path": "video-lab/wangp/models/Glyph-SDXL-v2/byt5-small/config.json",
+          "size": 698,
+          "sha256": "7845fb21b320f3fa05392ce151143502cf08729c8c89732da3293615885d3e83",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/Glyph-SDXL-v2/byt5-small/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/Glyph-SDXL-v2/byt5-small/config.json"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo1.5",
+          "revision": "dfb27d624272a9de325ee6a49f6a0337ef3fcfaa"
+        },
+        {
+          "path": "video-lab/wangp/models/Glyph-SDXL-v2/byt5-small/model.safetensors",
+          "size": 1203095198,
+          "sha256": "effd42c558a0558b62c326e7f58b22f3b1499ca465246e45eb0f8e844f1f313e",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/Glyph-SDXL-v2/byt5-small/model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/Glyph-SDXL-v2/byt5-small/model.safetensors"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo1.5",
+          "revision": "dfb27d624272a9de325ee6a49f6a0337ef3fcfaa"
+        },
+        {
+          "path": "video-lab/wangp/models/Glyph-SDXL-v2/byt5-small/byt5_model.safetensors",
+          "size": 877273198,
+          "sha256": "7fb208af0f1497111418b4f254230639e49829a82413f3fc8fda2d24fa005273",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/Glyph-SDXL-v2/byt5-small/byt5_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/Glyph-SDXL-v2/byt5-small/byt5_model.safetensors"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo1.5",
+          "revision": "dfb27d624272a9de325ee6a49f6a0337ef3fcfaa"
+        },
+        {
+          "path": "video-lab/wangp/models/siglip_vision_model/model.safetensors",
+          "size": 856506120,
+          "sha256": "d769e3a32a6a9bac72d4d93b989e44491f71b50f02bfa14cd9187758d4a68ff1",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/siglip_vision_model/model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/siglip_vision_model/model.safetensors"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo1.5",
+          "revision": "dfb27d624272a9de325ee6a49f6a0337ef3fcfaa"
+        },
+        {
+          "path": "video-lab/wangp/models/siglip_vision_model/config.json",
+          "size": 419,
+          "sha256": "b626aa9623e88440ce20623debc3f0d85e4ee61f38846deca16738784b8ac4e2",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/siglip_vision_model/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/siglip_vision_model/config.json"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo1.5",
+          "revision": "dfb27d624272a9de325ee6a49f6a0337ef3fcfaa"
+        },
+        {
+          "path": "video-lab/wangp/models/siglip_vision_model/preprocessor_config.json",
+          "size": 394,
+          "sha256": "ec1f371074fb4867ea1c654e00bc5ea99d706f409aaebf8dc614d67c0735aff8",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/siglip_vision_model/preprocessor_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/siglip_vision_model/preprocessor_config.json"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo1.5",
+          "revision": "dfb27d624272a9de325ee6a49f6a0337ef3fcfaa"
+        },
+        {
+          "path": "video-lab/wangp/models/hunyuan_video_1_5_VAE_fp32.safetensors",
+          "size": 5042560980,
+          "sha256": "2609ed7033c052fdf164afcac71e8a7c82afccdbb001d673444a72f194fbb918",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/hunyuan_video_1_5_VAE_fp32.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/hunyuan_video_1_5_VAE_fp32.safetensors"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo1.5",
+          "revision": "dfb27d624272a9de325ee6a49f6a0337ef3fcfaa"
+        },
+        {
+          "path": "video-lab/wangp/models/hunyuan_video_1_5_VAE.json",
+          "size": 462,
+          "sha256": "899e63dae033b2fa14291cefbe6e1736741d816991456e96d4d497918dacf8af",
+          "url": "https://huggingface.co/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/hunyuan_video_1_5_VAE.json",
+          "mirrors": [
+            "https://hf-mirror.com/DeepBeepMeep/HunyuanVideo1.5/resolve/dfb27d624272a9de325ee6a49f6a0337ef3fcfaa/hunyuan_video_1_5_VAE.json"
+          ],
+          "repo": "DeepBeepMeep/HunyuanVideo1.5",
+          "revision": "dfb27d624272a9de325ee6a49f6a0337ef3fcfaa"
+        }
+      ],
+      "required": [
+        {
+          "path": "video-lab/wangp/models/hunyuan_video_1.5_480_quanto_bf16_int8.safetensors",
+          "size": 8503018313,
+          "sha256": "c99145c6f87c6c2358eac2492b33abee3ccfa83301a314ce255dc71ac34a2cf1"
+        },
+        {
+          "path": "video-lab/wangp/models/qwen_vae.safetensors",
+          "size": 253806966,
+          "sha256": "0c8bc8b758c649abef9ea407b95408389a3b2f610d0d10fcb054fe171d0a8344"
+        },
+        {
+          "path": "video-lab/wangp/models/qwen_vae_config.json",
+          "size": 730,
+          "sha256": "e4e61b7553f930e9eabf8935f0a77e6d004cc3ee67a601a56ef03cc41ccada68"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/merges.txt",
+          "size": 1671853,
+          "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/tokenizer_config.json",
+          "size": 4686,
+          "sha256": "0a04a9d7d4a62b28482bdfe726c122756de85714fb64166ace92ae75b8f57614"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/config.json",
+          "size": 3217,
+          "sha256": "081d41bae4c75815afde340b5cee39d9c71febe3fc3146e0366a75a45da0c04b"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/vocab.json",
+          "size": 3383407,
+          "sha256": "87a257b04b17642a0688c98cd1df89c398bda4fee532d6f88b38a659ecb4ac8d"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/video_preprocessor_config.json",
+          "size": 904,
+          "sha256": "d4397fb8765d3fb56db022e5a14ce58dbcc144093c49ea1ab96787fb7951facb"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/preprocessor_config.json",
+          "size": 788,
+          "sha256": "9ff8a240516e4ef986717597bb2c5fff3e4d4c0951d02b7dee949ceb369b5b03"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/chat_template.json",
+          "size": 1050,
+          "sha256": "ad60d90252ed0b0705ba14e2d0ad0fec0beac1ea955642b54059b36052d8bc96"
+        },
+        {
+          "path": "video-lab/wangp/models/Qwen2.5-VL-7B-Instruct/Qwen2.5-VL-7B-Instruct_quanto_bf16_int8.safetensors",
+          "size": 9432992295,
+          "sha256": "18966ca6ba18261ec0465442580ad30510a758ecc0314871a0bbd30032716568"
+        },
+        {
+          "path": "video-lab/wangp/models/Glyph-SDXL-v2/color_idx.json",
+          "size": 2366,
+          "sha256": "d52364d14204f0fb658575ac92f094210b485aeb6579ac9814097a0e8c4eb513"
+        },
+        {
+          "path": "video-lab/wangp/models/Glyph-SDXL-v2/multilingual_10-lang_idx.json",
+          "size": 28098,
+          "sha256": "3753b9e132a4b4dac714e55ac90bd6f791874a83fa0f716b1f6f457a9c5a33a1"
+        },
+        {
+          "path": "video-lab/wangp/models/Glyph-SDXL-v2/byt5-small/config.json",
+          "size": 698,
+          "sha256": "7845fb21b320f3fa05392ce151143502cf08729c8c89732da3293615885d3e83"
+        },
+        {
+          "path": "video-lab/wangp/models/Glyph-SDXL-v2/byt5-small/model.safetensors",
+          "size": 1203095198,
+          "sha256": "effd42c558a0558b62c326e7f58b22f3b1499ca465246e45eb0f8e844f1f313e"
+        },
+        {
+          "path": "video-lab/wangp/models/Glyph-SDXL-v2/byt5-small/byt5_model.safetensors",
+          "size": 877273198,
+          "sha256": "7fb208af0f1497111418b4f254230639e49829a82413f3fc8fda2d24fa005273"
+        },
+        {
+          "path": "video-lab/wangp/models/siglip_vision_model/model.safetensors",
+          "size": 856506120,
+          "sha256": "d769e3a32a6a9bac72d4d93b989e44491f71b50f02bfa14cd9187758d4a68ff1"
+        },
+        {
+          "path": "video-lab/wangp/models/siglip_vision_model/config.json",
+          "size": 419,
+          "sha256": "b626aa9623e88440ce20623debc3f0d85e4ee61f38846deca16738784b8ac4e2"
+        },
+        {
+          "path": "video-lab/wangp/models/siglip_vision_model/preprocessor_config.json",
+          "size": 394,
+          "sha256": "ec1f371074fb4867ea1c654e00bc5ea99d706f409aaebf8dc614d67c0735aff8"
+        },
+        {
+          "path": "video-lab/wangp/models/hunyuan_video_1_5_VAE_fp32.safetensors",
+          "size": 5042560980,
+          "sha256": "2609ed7033c052fdf164afcac71e8a7c82afccdbb001d673444a72f194fbb918"
+        },
+        {
+          "path": "video-lab/wangp/models/hunyuan_video_1_5_VAE.json",
+          "size": 462,
+          "sha256": "899e63dae033b2fa14291cefbe6e1736741d816991456e96d4d497918dacf8af"
+        },
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "video-lab/wangp/src/shared/api.py"
+        },
+        {
+          "path": "engines/video-hunyuan15-t2v/run.ps1"
+        }
+      ],
+      "dependencies": [
+        "wangp-video-runtime"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/video_wangp.ps1",
+          "target": "engines/video-hunyuan15-t2v/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "WanGP Community 2.0 + 原模型许可",
+        "url": "https://github.com/deepbeepmeep/Wan2GP/blob/6479db36bdc2619a904a852bba9c2d78e1a83f82/LICENSE.txt",
+        "requiresAcceptance": true,
+        "notice": "使用 WanGP（Uses WanGP）。Community License 2.0 允许个人、本地、研究及符合许可的免费集成；禁止白牌、出售运行器、收费嵌入或收费 API/SaaS，相关用途需要作者另行授权。各模型仍分别适用原模型许可。当前是固定源配方，未完成这台 3060 的真实生成验收。",
+        "modelUrl": "https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5"
+      },
+      "remedy": "点击下载部署完整固定版本组件。安装校验只检查 CUDA、运行器与文件；首次生成结果需你验收。",
+      "runtime": {
+        "type": "wangp",
+        "environment": "video-lab/wangp/.venv",
+        "python": "video-lab/wangp/.venv/Scripts/python.exe"
+      },
+      "manifest": {
+        "id": "video-hunyuan15-t2v",
+        "title": "HunyuanVideo 1.5 · 480p · Uses WanGP",
+        "kind": "video",
+        "version": "0.7.0",
+        "providerVersion": "0.7.0",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "capabilities": {
+          "modes": [
+            "txt2video"
+          ],
+          "maxReferenceImages": 0,
+          "endImage": false,
+          "referenceVideo": false,
+          "referenceAudio": false,
+          "audioOutput": false,
+          "sizeMultiple": 32,
+          "maxPixels": 307200,
+          "frameRule": {
+            "multiple": 4,
+            "offset": 1,
+            "min": 5,
+            "max": 97
+          },
+          "fps": [
+            24
+          ],
+          "maxSteps": 80
+        },
+        "defaults": {
+          "width": 640,
+          "height": 384,
+          "frames": 49,
+          "fps": 24,
+          "steps": 30,
+          "seed": 12345
+        },
+        "runtime": {
+          "type": "wangp",
+          "environment": "video-lab/wangp/.venv",
+          "python": "video-lab/wangp/.venv/Scripts/python.exe"
+        },
+        "source": "https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5",
+        "runtimeSource": "https://github.com/deepbeepmeep/Wan2GP",
+        "runtimeRevision": "6479db36bdc2619a904a852bba9c2d78e1a83f82",
+        "verificationStatus": "recipe-verified-generation-unverified"
+      },
+      "validationStage": "researched",
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12GB",
+        "memoryProfile": 5,
+        "measured": false,
+        "defaultResolution": "640x384"
+      },
+      "probes": [
+        {
+          "path": "video-lab/wangp/.venv/Scripts/python.exe",
+          "args": [
+            "@root:scripts/providers/video_wangp.py",
+            "--engine",
+            "video-hunyuan15-t2v",
+            "--check"
+          ],
+          "requiredFlags": [
+            "\"gpuInferenceExecuted\": false"
+          ],
+          "timeout": 240
+        }
+      ]
+    },
+    {
+      "id": "video-framepack",
+      "engineId": "video-framepack",
+      "title": "FramePack / F1 · 已发布，独立适配器待接入",
+      "kind": "video",
+      "version": "0.7.0",
+      "installable": false,
+      "availability": "unsupported",
+      "releaseStatus": "released",
+      "installStatus": "blocked",
+      "validationStage": "adapter-not-integrated",
+      "gpuVerified": false,
+      "files": [],
+      "required": [],
+      "sourceUrl": "https://github.com/lllyasviel/FramePack",
+      "capabilities": {
+        "modes": [
+          "img2video"
+        ],
+        "maxReferenceImages": 1
+      },
+      "description": "官方已发布的独立路线；当前固定 WanGP 运行器未接入对应完整安装和推理适配器。",
+      "remedy": "本模型已发布。本批尚未交付该模型的独立原生适配器、固定完整权重与 Windows 运行环境，当前不能安装；需要专项接入后启用。",
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://github.com/lllyasviel/FramePack",
+        "requiresAcceptance": true,
+        "notice": "独立模型/底模/编码器分别适用其官方许可。当前条目只说明接入边界，不代表已安装或验收。"
+      }
+    },
+    {
+      "id": "video-cogvideox15",
+      "engineId": "video-cogvideox15",
+      "title": "CogVideoX 1.5 · 已发布，独立适配器待接入",
+      "kind": "video",
+      "version": "0.7.0",
+      "installable": false,
+      "availability": "unsupported",
+      "releaseStatus": "released",
+      "installStatus": "blocked",
+      "validationStage": "adapter-not-integrated",
+      "gpuVerified": false,
+      "files": [],
+      "required": [],
+      "sourceUrl": "https://github.com/zai-org/CogVideo",
+      "capabilities": {
+        "modes": [
+          "txt2video"
+        ],
+        "maxReferenceImages": 0
+      },
+      "description": "官方已发布的独立路线；当前固定 WanGP 运行器未接入对应完整安装和推理适配器。",
+      "remedy": "本模型已发布。本批尚未交付该模型的独立原生适配器、固定完整权重与 Windows 运行环境，当前不能安装；需要专项接入后启用。",
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://github.com/zai-org/CogVideo",
+        "requiresAcceptance": true,
+        "notice": "独立模型/底模/编码器分别适用其官方许可。当前条目只说明接入边界，不代表已安装或验收。"
+      }
+    },
+    {
+      "id": "video-sana20-preview",
+      "engineId": "video-sana20-preview",
+      "title": "SANA-Video 2.0 四步 Preview · 已发布，独立适配器待接入",
+      "kind": "video",
+      "version": "0.7.0",
+      "installable": false,
+      "availability": "unsupported",
+      "releaseStatus": "released",
+      "installStatus": "blocked",
+      "validationStage": "adapter-not-integrated",
+      "gpuVerified": false,
+      "files": [],
+      "required": [],
+      "sourceUrl": "https://huggingface.co/Efficient-Large-Model/SANA-Video_2.0_5B_720p_4step",
+      "capabilities": {
+        "modes": [
+          "txt2video"
+        ],
+        "maxReferenceImages": 0
+      },
+      "description": "官方已发布的独立路线；当前固定 WanGP 运行器未接入对应完整安装和推理适配器。",
+      "remedy": "本模型已发布。本批尚未交付该模型的独立原生适配器、固定完整权重与 Windows 运行环境，当前不能安装；需要专项接入后启用。",
+      "license": {
+        "label": "官方模型与依赖许可",
+        "url": "https://huggingface.co/Efficient-Large-Model/SANA-Video_2.0_5B_720p_4step",
+        "requiresAcceptance": true,
+        "notice": "独立模型/底模/编码器分别适用其官方许可。当前条目只说明接入边界，不代表已安装或验收。"
+      }
+    }
+  ],
+  "productVersion": "0.9.1"
+}

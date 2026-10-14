@@ -1,0 +1,1045 @@
+{
+  "version": "0.5.0",
+  "author": "Unclecow",
+  "models": [
+    {
+      "id": "trellis",
+      "title": "照片变 3D · TRELLIS.2",
+      "kind": "model",
+      "description": "从一张照片生成带颜色与贴图的 3D 模型。适合第一次体验，默认 512 精度。",
+      "recommended": true,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 1400000000,
+      "sourceUrl": "https://github.com/pwilkin/trellis.cpp/releases/tag/v0.8.1",
+      "license": {
+        "label": "TRELLIS.2 模型及依赖许可",
+        "url": "https://huggingface.co/microsoft/TRELLIS.2-4B",
+        "requiresAcceptance": true,
+        "notice": "运行器、模型与视觉编码器分别适用各自许可，请阅读官方模型卡与依赖许可，按授权范围使用。"
+      },
+      "files": [
+        {
+          "path": "cache/setup/trellis-cuda-windows-x64.zip",
+          "size": 715040905,
+          "sha256": "d2ea7b57174d3bff438064faf0b5fbcc55c29c31e6bba5f41030936fa366ed48",
+          "url": "https://github.com/pwilkin/trellis.cpp/releases/download/v0.8.1/trellis-cuda-windows-x64.zip",
+          "mirrors": [],
+          "extractTo": "engines/trellis/runtime"
+        },
+        {
+          "path": "engines/trellis/models-q8/dinov3.gguf",
+          "size": 323657920,
+          "sha256": "0dd4ffd4b46a248f5b7d49c35275d68461fbf73f57ddb4c1fa8afb4f7bb45a0d",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/dinov3.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/dinov3.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/ss_flow.gguf",
+          "size": 1376059040,
+          "sha256": "ea6d8a42b20661a5c6a52e5ffbdc1df7aca9b212792193873b418c69f871422c",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/ss_flow.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/ss_flow.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/ss_dec.gguf",
+          "size": 147379392,
+          "sha256": "2790b5eecb261cc877d9bf175ce2bd6dd48cd65be8c042c5f5bc023dfca01cf7",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/ss_dec.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/ss_dec.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/shape_flow_512.gguf",
+          "size": 1376125952,
+          "sha256": "29b639f4ff22ded8f91b619376a835f64b9874b0ebcadb9ac6c305195bf5d1f9",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/shape_flow_512.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/shape_flow_512.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/shape_dec.gguf",
+          "size": 881361568,
+          "sha256": "0de7c7a675022dd8696d526a9279e5a50b2a35c8a79452f434a72dc53d40f169",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/shape_dec.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/shape_dec.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/tex_flow_512.gguf",
+          "size": 1376178176,
+          "sha256": "389a2cbdda59d53b21e5989650d9d36b7ac603266eaef06712cd07a9fc377210",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/tex_flow_512.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/tex_flow_512.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/tex_dec.gguf",
+          "size": 881344576,
+          "sha256": "88b4fced46455e02f316664d5c43584a311921dd9a1cdc1b7b7d981cca9214d4",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/tex_dec.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/tex_dec.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/shape_flow_1024.gguf",
+          "size": 1376125952,
+          "sha256": "997e9fc10ab95fda11c4cd1cbaf425101980ac36a2ef80e9c83e0b9c4bfc9680",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/shape_flow_1024.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/shape_flow_1024.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/tex_flow_1024.gguf",
+          "size": 1376178176,
+          "sha256": "cb2cb3aee74ba09c018f918ed8c146bc7e4f96335b61fa0d1fc1ff1a7811e6da",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/tex_flow_1024.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/tex_flow_1024.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/birefnet.gguf",
+          "size": 882749024,
+          "sha256": "10c5dd4dcac904cf81c9a16180eb66f167dd52ab55867f54a44567b0b2babbc1",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/birefnet.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/birefnet.gguf"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/trellis/models-q8/dinov3.gguf",
+          "size": 323657920
+        },
+        {
+          "path": "engines/trellis/models-q8/ss_flow.gguf",
+          "size": 1376059040
+        },
+        {
+          "path": "engines/trellis/models-q8/ss_dec.gguf",
+          "size": 147379392
+        },
+        {
+          "path": "engines/trellis/models-q8/shape_flow_512.gguf",
+          "size": 1376125952
+        },
+        {
+          "path": "engines/trellis/models-q8/shape_dec.gguf",
+          "size": 881361568
+        },
+        {
+          "path": "engines/trellis/models-q8/tex_flow_512.gguf",
+          "size": 1376178176
+        },
+        {
+          "path": "engines/trellis/models-q8/tex_dec.gguf",
+          "size": 881344576
+        },
+        {
+          "path": "engines/trellis/models-q8/shape_flow_1024.gguf",
+          "size": 1376125952
+        },
+        {
+          "path": "engines/trellis/models-q8/tex_flow_1024.gguf",
+          "size": 1376178176
+        },
+        {
+          "path": "engines/trellis/models-q8/birefnet.gguf",
+          "size": 882749024
+        },
+        {
+          "path": "engines/trellis/runtime/trellis-cli.exe"
+        },
+        {
+          "path": "engines/trellis/runtime/ggml-cuda.dll"
+        },
+        {
+          "path": "engines/trellis/runtime/cublas64_13.dll"
+        },
+        {
+          "path": "engines/trellis/runtime/cublasLt64_13.dll"
+        },
+        {
+          "path": "engines/trellis/runtime/cudart64_13.dll"
+        },
+        {
+          "path": "engines/trellis/run.ps1"
+        }
+      ],
+      "adapters": [
+        {
+          "source": "scripts/templates/trellis-run.ps1",
+          "target": "engines/trellis/run.ps1"
+        }
+      ],
+      "manifest": {
+        "version": "0.8.1",
+        "appearance": "texture",
+        "source": "https://github.com/pwilkin/trellis.cpp/releases/tag/v0.8.1",
+        "capabilities": {
+          "multiView": false
+        }
+      },
+      "probes": [
+        {
+          "path": "engines/trellis/runtime/trellis-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--models",
+            "--res"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "qwen-image-21",
+      "title": "文字生图 · Qwen Image 2.1",
+      "kind": "image",
+      "description": "输入中文描述在本机生成图片，然后一键用作 3D 的参考图。默认下载 Q4_K_M 完整组件。",
+      "recommended": true,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 1600000000,
+      "sourceUrl": "https://github.com/QwenLM/Qwen-Image-2.1",
+      "license": {
+        "label": "Qwen Research License（研究许可）",
+        "url": "https://github.com/QwenLM/Qwen-Image-2.1/blob/6627d87c6433151463ec4b48b8945a24fcf16a35/LICENSE",
+        "requiresAcceptance": true,
+        "notice": "Qwen Image 2.1 及专用 VAE 限研究或评估的非商业用途；商业使用需要另获商业授权。CUDA 运行组件另适用 NVIDIA 许可。"
+      },
+      "files": [
+        {
+          "path": "engines/qwen-image-21/runtime/archives/sd-master-3f8527a-bin-win-cuda12-x64.zip",
+          "size": 337915440,
+          "sha256": "217d6dead9abd3f827fc338268555cc179234e7e6330ef21ecb1c985e19d2dc7",
+          "url": "https://github.com/leejet/stable-diffusion.cpp/releases/download/master-929-3f8527a/sd-master-3f8527a-bin-win-cuda12-x64.zip",
+          "mirrors": [],
+          "extractTo": "engines/qwen-image-21/runtime/master-929-3f8527a"
+        },
+        {
+          "path": "engines/qwen-image-21/runtime/models/Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+          "size": 5027784800,
+          "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2",
+          "url": "https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct-GGUF/resolve/f982a07559d4a2f6c8744d840bf6fccab30eea96/Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/Qwen/Qwen3-VL-8B-Instruct-GGUF/resolve/f982a07559d4a2f6c8744d840bf6fccab30eea96/Qwen3VL-8B-Instruct-Q4_K_M.gguf"
+          ]
+        },
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen_image_2.1_vae_bf16.safetensors",
+          "size": 675509688,
+          "sha256": "bb21f7473051e1ac368515dd3f2e15cd44d7a11748ee8823e1ddca3e4876b7c9",
+          "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/cb504a4090723e43f17ad01cec0359490e2de613/vae/qwen_image_2.1_vae_bf16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Comfy-Org/Qwen-Image-2.1/resolve/cb504a4090723e43f17ad01cec0359490e2de613/vae/qwen_image_2.1_vae_bf16.safetensors"
+          ]
+        },
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q4_K_M.gguf",
+          "size": 4199565024,
+          "sha256": "631d532e7ca71e8d90a87c71d3699761a812039d22e3370e87498d87754660fe",
+          "url": "https://huggingface.co/unsloth/Qwen-Image-2.1-GGUF/resolve/2c31ccd392b367a6637841a143813320a02dff55/qwen-image-2.1-Q4_K_M.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/unsloth/Qwen-Image-2.1-GGUF/resolve/2c31ccd392b367a6637841a143813320a02dff55/qwen-image-2.1-Q4_K_M.gguf"
+          ]
+        },
+        {
+          "path": "cache/setup/nvidia_cublas_cu12-12.4.5.8-py3-none-win_amd64.whl",
+          "size": 396895858,
+          "sha256": "5a796786da89203a0657eda402bcdcec6180254a8ac22d72213abc42069522dc",
+          "url": "https://files.pythonhosted.org/packages/e2/2a/4f27ca96232e8b5269074a72e03b4e0d43aa68c9b965058b1684d07c6ff8/nvidia_cublas_cu12-12.4.5.8-py3-none-win_amd64.whl",
+          "extractTo": "runtime/cuda12",
+          "flattenDlls": true
+        },
+        {
+          "path": "cache/setup/nvidia_cuda_runtime_cu12-12.4.127-py3-none-win_amd64.whl",
+          "size": 878808,
+          "sha256": "09c2e35f48359752dfa822c09918211844a3d93c100a715d79b59591130c5e1e",
+          "url": "https://files.pythonhosted.org/packages/a8/8b/450e93fab75d85a69b50ea2d5fdd4ff44541e0138db16f9cd90123ef4de4/nvidia_cuda_runtime_cu12-12.4.127-py3-none-win_amd64.whl",
+          "extractTo": "runtime/cuda12",
+          "flattenDlls": true
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/qwen-image-21/runtime/models/Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+          "size": 5027784800
+        },
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen_image_2.1_vae_bf16.safetensors",
+          "size": 675509688
+        },
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q4_K_M.gguf",
+          "size": 4199565024
+        },
+        {
+          "path": "engines/qwen-image-21/runtime/master-929-3f8527a/sd-cli.exe"
+        },
+        {
+          "path": "engines/qwen-image-21/runtime/master-929-3f8527a/ggml-cuda.dll"
+        },
+        {
+          "path": "runtime/cuda12/cublas64_12.dll",
+          "alternatives": [
+            "engines/hunyuan3d/.venv/Lib/site-packages/torch/lib/cublas64_12.dll"
+          ]
+        },
+        {
+          "path": "runtime/cuda12/cublasLt64_12.dll",
+          "alternatives": [
+            "engines/hunyuan3d/.venv/Lib/site-packages/torch/lib/cublasLt64_12.dll"
+          ]
+        },
+        {
+          "path": "runtime/cuda12/cudart64_12.dll",
+          "alternatives": [
+            "engines/hunyuan3d/.venv/Lib/site-packages/torch/lib/cudart64_12.dll"
+          ]
+        },
+        {
+          "path": "engines/qwen-image-21/run.ps1"
+        },
+        {
+          "path": "engines/qwen-image-21/run.py"
+        }
+      ],
+      "adapters": [
+        {
+          "source": "scripts/templates/qwen-image-run.ps1",
+          "target": "engines/qwen-image-21/run.ps1"
+        },
+        {
+          "source": "scripts/templates/qwen-image-run.py",
+          "target": "engines/qwen-image-21/run.py"
+        }
+      ],
+      "manifest": {
+        "version": "master-929-3f8527a",
+        "source": "https://github.com/QwenLM/Qwen-Image-2.1",
+        "runtimeEntrypoint": "runtime/master-929-3f8527a/sd-cli.exe",
+        "capabilities": {
+          "textToImage": true,
+          "multiView": false
+        },
+        "variants": [
+          {
+            "id": "Q4_0",
+            "label": "Q4_0",
+            "bytes": 4197494816,
+            "path": "engines/qwen-image-21/runtime/models/qwen_image_2.1-Q4_0.gguf",
+            "pin": {
+              "repo": "leejet/Qwen-Image-2.1-GGUF",
+              "revision": "cc11433936a06e9765f7c0c0b1f0436cfd2b9856",
+              "size": 4197494816,
+              "sha256": "8d992dc95dcbf13196a4aca893697fb56a5c9263e19e7b40c898be2cf29e9147",
+              "filename": "qwen_image_2.1-Q4_0.gguf"
+            },
+            "status": "missing",
+            "verified": false,
+            "gpuVerified": false,
+            "legacy": false
+          },
+          {
+            "id": "Q4_K_M",
+            "label": "Q4_K_M",
+            "bytes": 4199565024,
+            "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q4_K_M.gguf",
+            "pin": {
+              "repo": "unsloth/Qwen-Image-2.1-GGUF",
+              "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+              "size": 4199565024,
+              "sha256": "631d532e7ca71e8d90a87c71d3699761a812039d22e3370e87498d87754660fe",
+              "filename": "qwen-image-2.1-Q4_K_M.gguf"
+            },
+            "status": "installed",
+            "verified": true,
+            "gpuVerified": false,
+            "legacy": false
+          },
+          {
+            "id": "Q5_K_M",
+            "label": "Q5_K_M",
+            "bytes": 5390223072,
+            "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q5_K_M.gguf",
+            "pin": {
+              "repo": "unsloth/Qwen-Image-2.1-GGUF",
+              "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+              "size": 5390223072,
+              "sha256": "4b53321654dd3bf0aa8dd6bb821fdcb1c9053ca735070e359a23cbb9f97268ce",
+              "filename": "qwen-image-2.1-Q5_K_M.gguf"
+            },
+            "status": "missing",
+            "verified": false,
+            "gpuVerified": false,
+            "legacy": false
+          },
+          {
+            "id": "Q6_K",
+            "label": "Q6_K",
+            "bytes": 6271551200,
+            "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q6_K.gguf",
+            "pin": {
+              "repo": "unsloth/Qwen-Image-2.1-GGUF",
+              "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+              "size": 6271551200,
+              "sha256": "2ead1ee665e8ebc5fec517d287a167f5c6a7e985acbf3b1b93143437a04616ac",
+              "filename": "qwen-image-2.1-Q6_K.gguf"
+            },
+            "status": "missing",
+            "verified": false,
+            "gpuVerified": false,
+            "legacy": false
+          }
+        ],
+        "defaultWeightVariant": "Q4_K_M"
+      },
+      "probes": [
+        {
+          "path": "engines/qwen-image-21/runtime/master-929-3f8527a/sd-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--backend",
+            "--params-backend",
+            "--diffusion-model",
+            "--llm",
+            "--vae"
+          ]
+        }
+      ],
+      "weightVariant": "Q4_K_M",
+      "variantDefinition": {
+        "id": "Q4_K_M",
+        "label": "Q4_K_M",
+        "bytes": 4199565024,
+        "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q4_K_M.gguf",
+        "pin": {
+          "repo": "unsloth/Qwen-Image-2.1-GGUF",
+          "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+          "size": 4199565024,
+          "sha256": "631d532e7ca71e8d90a87c71d3699761a812039d22e3370e87498d87754660fe",
+          "filename": "qwen-image-2.1-Q4_K_M.gguf"
+        },
+        "status": "installed",
+        "verified": true,
+        "gpuVerified": false,
+        "legacy": false
+      },
+      "variantSourceConfig": "config/image-variants.json"
+    },
+    {
+      "id": "pixal3d",
+      "title": "照片变 3D · Pixal3D",
+      "kind": "model",
+      "description": "生成更高精度的带贴图模型。下载量更大，适合已有体验后再安装。",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 1400000000,
+      "sourceUrl": "https://github.com/TencentARC/Pixal3D",
+      "license": {
+        "label": "Pixal3D 模型及依赖许可",
+        "url": "https://github.com/TencentARC/Pixal3D",
+        "requiresAcceptance": true,
+        "notice": "模型、运行器和依赖分别适用官方许可；下载前请核对用途与授权范围。"
+      },
+      "files": [
+        {
+          "path": "cache/setup/trellis-cuda-windows-x64.zip",
+          "size": 715040905,
+          "sha256": "d2ea7b57174d3bff438064faf0b5fbcc55c29c31e6bba5f41030936fa366ed48",
+          "url": "https://github.com/pwilkin/trellis.cpp/releases/download/v0.8.1/trellis-cuda-windows-x64.zip",
+          "mirrors": [],
+          "extractTo": "engines/trellis/runtime"
+        },
+        {
+          "path": "engines/trellis/models-q8/dinov3.gguf",
+          "size": 323657920,
+          "sha256": "0dd4ffd4b46a248f5b7d49c35275d68461fbf73f57ddb4c1fa8afb4f7bb45a0d",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/dinov3.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/dinov3.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/ss_flow.gguf",
+          "size": 1376059040,
+          "sha256": "ea6d8a42b20661a5c6a52e5ffbdc1df7aca9b212792193873b418c69f871422c",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/ss_flow.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/ss_flow.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/ss_dec.gguf",
+          "size": 147379392,
+          "sha256": "2790b5eecb261cc877d9bf175ce2bd6dd48cd65be8c042c5f5bc023dfca01cf7",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/ss_dec.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/ss_dec.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/shape_flow_512.gguf",
+          "size": 1376125952,
+          "sha256": "29b639f4ff22ded8f91b619376a835f64b9874b0ebcadb9ac6c305195bf5d1f9",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/shape_flow_512.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/shape_flow_512.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/shape_dec.gguf",
+          "size": 881361568,
+          "sha256": "0de7c7a675022dd8696d526a9279e5a50b2a35c8a79452f434a72dc53d40f169",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/shape_dec.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/shape_dec.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/tex_flow_512.gguf",
+          "size": 1376178176,
+          "sha256": "389a2cbdda59d53b21e5989650d9d36b7ac603266eaef06712cd07a9fc377210",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/tex_flow_512.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/tex_flow_512.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/tex_dec.gguf",
+          "size": 881344576,
+          "sha256": "88b4fced46455e02f316664d5c43584a311921dd9a1cdc1b7b7d981cca9214d4",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/tex_dec.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/tex_dec.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/shape_flow_1024.gguf",
+          "size": 1376125952,
+          "sha256": "997e9fc10ab95fda11c4cd1cbaf425101980ac36a2ef80e9c83e0b9c4bfc9680",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/shape_flow_1024.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/shape_flow_1024.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/tex_flow_1024.gguf",
+          "size": 1376178176,
+          "sha256": "cb2cb3aee74ba09c018f918ed8c146bc7e4f96335b61fa0d1fc1ff1a7811e6da",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/tex_flow_1024.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/tex_flow_1024.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/birefnet.gguf",
+          "size": 882749024,
+          "sha256": "10c5dd4dcac904cf81c9a16180eb66f167dd52ab55867f54a44567b0b2babbc1",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/birefnet.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/birefnet.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/pixal3d_ss_flow.gguf",
+          "size": 2681588992,
+          "sha256": "113e00d1548d512e625eb76437cafd7fa2d79101efb4438fdb8b174ec21e559c",
+          "url": "https://huggingface.co/vegax87/Pixal3D/resolve/51de7d1764f4b735c4e3aaea40e5ba60c18ca707/pixal3d_ss_flow.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/vegax87/Pixal3D/resolve/51de7d1764f4b735c4e3aaea40e5ba60c18ca707/pixal3d_ss_flow.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/pixal3d_shape_flow_512.gguf",
+          "size": 2775572064,
+          "sha256": "a4a99ba71e6065fa67b72fa903fbe7a7c1049eb6aee3c85df435d8795b846185",
+          "url": "https://huggingface.co/vegax87/Pixal3D/resolve/51de7d1764f4b735c4e3aaea40e5ba60c18ca707/pixal3d_shape_flow_512.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/vegax87/Pixal3D/resolve/51de7d1764f4b735c4e3aaea40e5ba60c18ca707/pixal3d_shape_flow_512.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/pixal3d_shape_flow_1024.gguf",
+          "size": 2775572064,
+          "sha256": "346ff60a28cc265cb38a6a9b8078ad214334ebe9848003028afe1c0b36468ede",
+          "url": "https://huggingface.co/vegax87/Pixal3D/resolve/51de7d1764f4b735c4e3aaea40e5ba60c18ca707/pixal3d_shape_flow_1024.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/vegax87/Pixal3D/resolve/51de7d1764f4b735c4e3aaea40e5ba60c18ca707/pixal3d_shape_flow_1024.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/pixal3d_tex_flow_1024.gguf",
+          "size": 2775670368,
+          "sha256": "f5e844e7627f93b0b1408cb498605cfccbe64a64cfb47f05d5a6d3dbbbb4f168",
+          "url": "https://huggingface.co/vegax87/Pixal3D/resolve/51de7d1764f4b735c4e3aaea40e5ba60c18ca707/pixal3d_tex_flow_1024.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/vegax87/Pixal3D/resolve/51de7d1764f4b735c4e3aaea40e5ba60c18ca707/pixal3d_tex_flow_1024.gguf"
+          ]
+        },
+        {
+          "path": "engines/trellis/models-q8/pixal3d_naf.gguf",
+          "size": 1334656,
+          "sha256": "f316aad461679060726df016e31f12a386c69785fc7d7da22278485f63541aa2",
+          "url": "https://huggingface.co/vegax87/Pixal3D/resolve/51de7d1764f4b735c4e3aaea40e5ba60c18ca707/pixal3d_naf.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/vegax87/Pixal3D/resolve/51de7d1764f4b735c4e3aaea40e5ba60c18ca707/pixal3d_naf.gguf"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/trellis/models-q8/dinov3.gguf",
+          "size": 323657920
+        },
+        {
+          "path": "engines/trellis/models-q8/ss_flow.gguf",
+          "size": 1376059040
+        },
+        {
+          "path": "engines/trellis/models-q8/ss_dec.gguf",
+          "size": 147379392
+        },
+        {
+          "path": "engines/trellis/models-q8/shape_flow_512.gguf",
+          "size": 1376125952
+        },
+        {
+          "path": "engines/trellis/models-q8/shape_dec.gguf",
+          "size": 881361568
+        },
+        {
+          "path": "engines/trellis/models-q8/tex_flow_512.gguf",
+          "size": 1376178176
+        },
+        {
+          "path": "engines/trellis/models-q8/tex_dec.gguf",
+          "size": 881344576
+        },
+        {
+          "path": "engines/trellis/models-q8/shape_flow_1024.gguf",
+          "size": 1376125952
+        },
+        {
+          "path": "engines/trellis/models-q8/tex_flow_1024.gguf",
+          "size": 1376178176
+        },
+        {
+          "path": "engines/trellis/models-q8/birefnet.gguf",
+          "size": 882749024
+        },
+        {
+          "path": "engines/trellis/runtime/trellis-cli.exe"
+        },
+        {
+          "path": "engines/trellis/runtime/ggml-cuda.dll"
+        },
+        {
+          "path": "engines/trellis/runtime/cublas64_13.dll"
+        },
+        {
+          "path": "engines/trellis/runtime/cublasLt64_13.dll"
+        },
+        {
+          "path": "engines/trellis/runtime/cudart64_13.dll"
+        },
+        {
+          "path": "engines/trellis/models-q8/pixal3d_ss_flow.gguf",
+          "size": 2681588992
+        },
+        {
+          "path": "engines/trellis/models-q8/pixal3d_shape_flow_512.gguf",
+          "size": 2775572064
+        },
+        {
+          "path": "engines/trellis/models-q8/pixal3d_shape_flow_1024.gguf",
+          "size": 2775572064
+        },
+        {
+          "path": "engines/trellis/models-q8/pixal3d_tex_flow_1024.gguf",
+          "size": 2775670368
+        },
+        {
+          "path": "engines/trellis/models-q8/pixal3d_naf.gguf",
+          "size": 1334656
+        },
+        {
+          "path": "engines/pixal3d/run.ps1"
+        }
+      ],
+      "adapters": [
+        {
+          "source": "scripts/templates/trellis-run.ps1",
+          "target": "engines/trellis/run.ps1"
+        },
+        {
+          "source": "scripts/templates/pixal3d-run.ps1",
+          "target": "engines/pixal3d/run.ps1"
+        }
+      ],
+      "manifest": {
+        "version": "trellis.cpp-0.8.1",
+        "appearance": "texture",
+        "source": "https://github.com/TencentARC/Pixal3D",
+        "capabilities": {
+          "multiView": false
+        }
+      },
+      "probes": [
+        {
+          "path": "engines/trellis/runtime/trellis-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--models",
+            "--res"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "qwen-image-21-q4-0",
+      "engineId": "qwen-image-21",
+      "weightVariant": "Q4_0",
+      "variantDefinition": {
+        "id": "Q4_0",
+        "label": "Q4_0",
+        "bytes": 4197494816,
+        "path": "engines/qwen-image-21/runtime/models/qwen_image_2.1-Q4_0.gguf",
+        "pin": {
+          "repo": "leejet/Qwen-Image-2.1-GGUF",
+          "revision": "cc11433936a06e9765f7c0c0b1f0436cfd2b9856",
+          "size": 4197494816,
+          "sha256": "8d992dc95dcbf13196a4aca893697fb56a5c9263e19e7b40c898be2cf29e9147",
+          "filename": "qwen_image_2.1-Q4_0.gguf"
+        },
+        "status": "installed",
+        "verified": true,
+        "gpuVerified": false,
+        "legacy": false
+      },
+      "variantSourceConfig": "config/image-variants.json",
+      "dependencies": [
+        "qwen-image-21"
+      ],
+      "title": "文生图量化版本 · Q4_0",
+      "kind": "image",
+      "description": "为文生图追加这一版本权重，保留已选版本与其他档位；共享组件只安装一次。",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "license": {
+        "label": "Qwen Research License（研究许可）",
+        "url": "https://github.com/QwenLM/Qwen-Image-2.1/blob/6627d87c6433151463ec4b48b8945a24fcf16a35/LICENSE",
+        "requiresAcceptance": true,
+        "notice": "Qwen Image 2.1 及专用 VAE 限研究或评估的非商业用途；商业使用需要另获商业授权。CUDA 运行组件另适用 NVIDIA 许可。"
+      },
+      "sourceUrl": "https://huggingface.co/leejet/Qwen-Image-2.1-GGUF",
+      "files": [
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen_image_2.1-Q4_0.gguf",
+          "size": 4197494816,
+          "sha256": "8d992dc95dcbf13196a4aca893697fb56a5c9263e19e7b40c898be2cf29e9147",
+          "url": "https://huggingface.co/leejet/Qwen-Image-2.1-GGUF/resolve/cc11433936a06e9765f7c0c0b1f0436cfd2b9856/qwen_image_2.1-Q4_0.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/leejet/Qwen-Image-2.1-GGUF/resolve/cc11433936a06e9765f7c0c0b1f0436cfd2b9856/qwen_image_2.1-Q4_0.gguf"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen_image_2.1-Q4_0.gguf",
+          "size": 4197494816
+        }
+      ]
+    },
+    {
+      "id": "qwen-image-21-q5-k-m",
+      "engineId": "qwen-image-21",
+      "weightVariant": "Q5_K_M",
+      "variantDefinition": {
+        "id": "Q5_K_M",
+        "label": "Q5_K_M",
+        "bytes": 5390223072,
+        "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q5_K_M.gguf",
+        "pin": {
+          "repo": "unsloth/Qwen-Image-2.1-GGUF",
+          "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+          "size": 5390223072,
+          "sha256": "4b53321654dd3bf0aa8dd6bb821fdcb1c9053ca735070e359a23cbb9f97268ce",
+          "filename": "qwen-image-2.1-Q5_K_M.gguf"
+        },
+        "status": "installed",
+        "verified": true,
+        "gpuVerified": false,
+        "legacy": false
+      },
+      "variantSourceConfig": "config/image-variants.json",
+      "dependencies": [
+        "qwen-image-21"
+      ],
+      "title": "文生图量化版本 · Q5_K_M",
+      "kind": "image",
+      "description": "为文生图追加这一版本权重，保留已选版本与其他档位；共享组件只安装一次。",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "license": {
+        "label": "Qwen Research License（研究许可）",
+        "url": "https://github.com/QwenLM/Qwen-Image-2.1/blob/6627d87c6433151463ec4b48b8945a24fcf16a35/LICENSE",
+        "requiresAcceptance": true,
+        "notice": "Qwen Image 2.1 及专用 VAE 限研究或评估的非商业用途；商业使用需要另获商业授权。CUDA 运行组件另适用 NVIDIA 许可。"
+      },
+      "sourceUrl": "https://huggingface.co/unsloth/Qwen-Image-2.1-GGUF",
+      "files": [
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q5_K_M.gguf",
+          "size": 5390223072,
+          "sha256": "4b53321654dd3bf0aa8dd6bb821fdcb1c9053ca735070e359a23cbb9f97268ce",
+          "url": "https://huggingface.co/unsloth/Qwen-Image-2.1-GGUF/resolve/2c31ccd392b367a6637841a143813320a02dff55/qwen-image-2.1-Q5_K_M.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/unsloth/Qwen-Image-2.1-GGUF/resolve/2c31ccd392b367a6637841a143813320a02dff55/qwen-image-2.1-Q5_K_M.gguf"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q5_K_M.gguf",
+          "size": 5390223072
+        }
+      ]
+    },
+    {
+      "id": "qwen-image-21-q6-k",
+      "engineId": "qwen-image-21",
+      "weightVariant": "Q6_K",
+      "variantDefinition": {
+        "id": "Q6_K",
+        "label": "Q6_K",
+        "bytes": 6271551200,
+        "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q6_K.gguf",
+        "pin": {
+          "repo": "unsloth/Qwen-Image-2.1-GGUF",
+          "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+          "size": 6271551200,
+          "sha256": "2ead1ee665e8ebc5fec517d287a167f5c6a7e985acbf3b1b93143437a04616ac",
+          "filename": "qwen-image-2.1-Q6_K.gguf"
+        },
+        "status": "installed",
+        "verified": true,
+        "gpuVerified": false,
+        "legacy": false
+      },
+      "variantSourceConfig": "config/image-variants.json",
+      "dependencies": [
+        "qwen-image-21"
+      ],
+      "title": "文生图量化版本 · Q6_K",
+      "kind": "image",
+      "description": "为文生图追加这一版本权重，保留已选版本与其他档位；共享组件只安装一次。",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "license": {
+        "label": "Qwen Research License（研究许可）",
+        "url": "https://github.com/QwenLM/Qwen-Image-2.1/blob/6627d87c6433151463ec4b48b8945a24fcf16a35/LICENSE",
+        "requiresAcceptance": true,
+        "notice": "Qwen Image 2.1 及专用 VAE 限研究或评估的非商业用途；商业使用需要另获商业授权。CUDA 运行组件另适用 NVIDIA 许可。"
+      },
+      "sourceUrl": "https://huggingface.co/unsloth/Qwen-Image-2.1-GGUF",
+      "files": [
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q6_K.gguf",
+          "size": 6271551200,
+          "sha256": "2ead1ee665e8ebc5fec517d287a167f5c6a7e985acbf3b1b93143437a04616ac",
+          "url": "https://huggingface.co/unsloth/Qwen-Image-2.1-GGUF/resolve/2c31ccd392b367a6637841a143813320a02dff55/qwen-image-2.1-Q6_K.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/unsloth/Qwen-Image-2.1-GGUF/resolve/2c31ccd392b367a6637841a143813320a02dff55/qwen-image-2.1-Q6_K.gguf"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q6_K.gguf",
+          "size": 6271551200
+        }
+      ]
+    },
+    {
+      "id": "qwen-image-21-q4-k",
+      "engineId": "qwen-image-21",
+      "weightVariant": "Q4_K",
+      "variantDefinition": {
+        "id": "Q4_K",
+        "label": "Q4_K（旧基线）",
+        "bytes": 4197494816,
+        "path": "engines/qwen-image-21/runtime/models/qwen_image_2.1-Q4_K.gguf",
+        "pin": {
+          "repo": "leejet/Qwen-Image-2.1-GGUF",
+          "revision": "cc11433936a06e9765f7c0c0b1f0436cfd2b9856",
+          "size": 4197494816,
+          "sha256": "29f9c83c249ff0292fb2943fceddfa2319b446601866c82a4f8be062abea72c2",
+          "filename": "qwen_image_2.1-Q4_K.gguf"
+        },
+        "status": "installed",
+        "verified": true,
+        "gpuVerified": false,
+        "legacy": true
+      },
+      "variantSourceConfig": "config/image-variants.json",
+      "dependencies": [
+        "qwen-image-21"
+      ],
+      "title": "文生图量化版本 · Q4_K（旧基线）",
+      "kind": "image",
+      "description": "为文生图追加这一版本权重，保留已选版本与其他档位；共享组件只安装一次。",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "license": {
+        "label": "Qwen Research License（研究许可）",
+        "url": "https://github.com/QwenLM/Qwen-Image-2.1/blob/6627d87c6433151463ec4b48b8945a24fcf16a35/LICENSE",
+        "requiresAcceptance": true,
+        "notice": "Qwen Image 2.1 及专用 VAE 限研究或评估的非商业用途；商业使用需要另获商业授权。CUDA 运行组件另适用 NVIDIA 许可。"
+      },
+      "sourceUrl": "https://huggingface.co/leejet/Qwen-Image-2.1-GGUF",
+      "files": [
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen_image_2.1-Q4_K.gguf",
+          "size": 4197494816,
+          "sha256": "29f9c83c249ff0292fb2943fceddfa2319b446601866c82a4f8be062abea72c2",
+          "url": "https://huggingface.co/leejet/Qwen-Image-2.1-GGUF/resolve/cc11433936a06e9765f7c0c0b1f0436cfd2b9856/qwen_image_2.1-Q4_K.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/leejet/Qwen-Image-2.1-GGUF/resolve/cc11433936a06e9765f7c0c0b1f0436cfd2b9856/qwen_image_2.1-Q4_K.gguf"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen_image_2.1-Q4_K.gguf",
+          "size": 4197494816
+        }
+      ]
+    },
+    {
+      "id": "sf3d",
+      "engineId": "sf3d",
+      "title": "照片变 3D · Stable Fast 3D",
+      "kind": "model",
+      "description": "官方权重需要 Hugging Face 账号获得访问授权，完成授权后按专用安装指南部署。",
+      "recommended": false,
+      "gated": true,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "sourceUrl": "https://huggingface.co/stabilityai/stable-fast-3d",
+      "license": {
+        "label": "Stability AI Community License",
+        "url": "https://huggingface.co/stabilityai/stable-fast-3d",
+        "requiresAcceptance": true,
+        "notice": "需要登录 Hugging Face 并接受官方模型页条款，等待账号获得权重访问权限。请核对官方许可对用途及商业使用的限制。"
+      },
+      "files": [],
+      "required": [],
+      "remedy": "先登录 Hugging Face，打开模型页面申请或接受授权；获得权限后按安装指南配置专用运行环境与权重。工具不会绕过授权或自动读取账号凭据。"
+    },
+    {
+      "id": "image-preparation",
+      "title": "参考图抠图组件",
+      "kind": "utility",
+      "supportOnly": true,
+      "description": "自动去除参考图背景；由需要抠图的 3D 模型自动安装。",
+      "recommended": false,
+      "minimumVramMiB": 6144,
+      "minimumRamGiB": 8,
+      "extractReserveBytes": 1400000000,
+      "files": [
+        {
+          "path": "cache/setup/trellis-cuda-windows-x64.zip",
+          "size": 715040905,
+          "sha256": "d2ea7b57174d3bff438064faf0b5fbcc55c29c31e6bba5f41030936fa366ed48",
+          "url": "https://github.com/pwilkin/trellis.cpp/releases/download/v0.8.1/trellis-cuda-windows-x64.zip",
+          "mirrors": [],
+          "extractTo": "engines/trellis/runtime"
+        },
+        {
+          "path": "engines/trellis/models-q8/birefnet.gguf",
+          "size": 882749024,
+          "sha256": "10c5dd4dcac904cf81c9a16180eb66f167dd52ab55867f54a44567b0b2babbc1",
+          "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/birefnet.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/q8/birefnet.gguf"
+          ]
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/trellis/models-q8/birefnet.gguf",
+          "size": 882749024
+        },
+        {
+          "path": "engines/trellis/runtime/trellis-cli.exe"
+        },
+        {
+          "path": "engines/trellis/runtime/ggml-cuda.dll"
+        },
+        {
+          "path": "engines/trellis/runtime/cublas64_13.dll"
+        },
+        {
+          "path": "engines/trellis/runtime/cublasLt64_13.dll"
+        },
+        {
+          "path": "engines/trellis/runtime/cudart64_13.dll"
+        }
+      ],
+      "license": {
+        "label": "TRELLIS.2 模型及依赖许可",
+        "url": "https://huggingface.co/microsoft/TRELLIS.2-4B",
+        "requiresAcceptance": true,
+        "notice": "运行器、模型与视觉编码器分别适用各自许可，请阅读官方模型卡与依赖许可，按授权范围使用。"
+      },
+      "sourceUrl": "https://github.com/pwilkin/trellis.cpp/releases/tag/v0.8.1",
+      "adapters": [
+        {
+          "source": "scripts/templates/image-preparation-run.ps1",
+          "target": "engines/image-preparation/run.ps1"
+        }
+      ],
+      "manifest": {
+        "version": "0.8.1",
+        "kind": "utility"
+      },
+      "probes": [
+        {
+          "path": "engines/trellis/runtime/trellis-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--models",
+            "--res"
+          ]
+        }
+      ]
+    }
+  ],
+  "productVersion": "0.9.1"
+}

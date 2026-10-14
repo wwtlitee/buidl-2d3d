@@ -1,0 +1,8 @@
+{
+  "factoryVersion": "0.9.1",
+  "package": "@google/model-viewer",
+  "version": "4.3.1",
+  "source": "https://registry.npmjs.org/@google/model-viewer/-/model-viewer-4.3.1.tgz",
+  "integrity": "sha512-GP+inXhAtY31E8rILVmByA6z8CZZjdlNajddppyI1/j1eIaSQiZcMRaUqTFe7+jv4mzRzwKIOiKBud0apiv+WQ==",
+  "sha256": "283b0672384614b4847636c306fc93fe4b1fcadc76d668b4e47f0ca76bcf033b"
+}

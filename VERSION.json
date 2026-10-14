@@ -1,0 +1,11 @@
+{
+  "product": "build something",
+  "displayName": "造点啥",
+  "version": "0.9.1",
+  "owner": "Unclecow",
+  "status": "public-source-release",
+  "issue": "公开源码发布与第三方资源分发边界",
+  "build": "public-source-20261014",
+  "basedOn": "0.9.0a",
+  "repositoryName": "BUIDL 2D3D"
+}

@@ -1,0 +1,3275 @@
+{
+  "version": "0.7.0",
+  "author": "Unclecow",
+  "models": [
+    {
+      "id": "sd-cpp-image-runtime-948",
+      "engineId": "sd-cpp-image-runtime-948",
+      "title": "原生图片共用运行器 · stable-diffusion.cpp 948",
+      "kind": "utility",
+      "version": "0.7.0",
+      "description": "独立目录中的固定 CUDA 12 运行器，复用已核验 CUDA DLL；保留既有 Qwen 929 运行器。",
+      "sourceUrl": "https://github.com/leejet/stable-diffusion.cpp/releases/tag/master-948-228c707",
+      "files": [
+        {
+          "path": "cache/setup/sd-master-948-228c707-win-cuda12-x64.zip",
+          "size": 337979057,
+          "sha256": "14e7a91053809b2c22a6259d5264d3696447828d2afaaa5a4280dbf41f472ba6",
+          "url": "https://github.com/leejet/stable-diffusion.cpp/releases/download/master-948-228c707/sd-master-228c707-bin-win-cuda12-x64.zip",
+          "mirrors": [],
+          "extractTo": "runtime/sd-cpp/master-948-228c707"
+        },
+        {
+          "path": "cache/setup/nvidia_cublas_cu12-12.4.5.8-py3-none-win_amd64.whl",
+          "size": 396895858,
+          "sha256": "5a796786da89203a0657eda402bcdcec6180254a8ac22d72213abc42069522dc",
+          "url": "https://files.pythonhosted.org/packages/e2/2a/4f27ca96232e8b5269074a72e03b4e0d43aa68c9b965058b1684d07c6ff8/nvidia_cublas_cu12-12.4.5.8-py3-none-win_amd64.whl",
+          "extractTo": "runtime/cuda12",
+          "flattenDlls": true
+        },
+        {
+          "path": "cache/setup/nvidia_cuda_runtime_cu12-12.4.127-py3-none-win_amd64.whl",
+          "size": 878808,
+          "sha256": "09c2e35f48359752dfa822c09918211844a3d93c100a715d79b59591130c5e1e",
+          "url": "https://files.pythonhosted.org/packages/a8/8b/450e93fab75d85a69b50ea2d5fdd4ff44541e0138db16f9cd90123ef4de4/nvidia_cuda_runtime_cu12-12.4.127-py3-none-win_amd64.whl",
+          "extractTo": "runtime/cuda12",
+          "flattenDlls": true
+        }
+      ],
+      "required": [
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe"
+        },
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/ggml-cuda.dll"
+        },
+        {
+          "path": "runtime/cuda12/cublas64_12.dll"
+        },
+        {
+          "path": "runtime/cuda12/cublasLt64_12.dll"
+        },
+        {
+          "path": "runtime/cuda12/cudart64_12.dll"
+        }
+      ],
+      "minimumVramMiB": 0,
+      "minimumRamGiB": 8,
+      "extractReserveBytes": 2147483648,
+      "license": {
+        "label": "stable-diffusion.cpp MIT / NVIDIA CUDA 运行库许可",
+        "url": "https://github.com/leejet/stable-diffusion.cpp/blob/228c707/LICENSE",
+        "notice": "运行器适用 MIT，CUDA 运行库适用 NVIDIA 许可；此项不包含模型授权。",
+        "requiresAcceptance": true
+      },
+      "validationStage": "researched",
+      "probes": [
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--backend",
+            "--params-backend",
+            "--llm_vision",
+            "--ip-adapter",
+            "--control-net"
+          ],
+          "timeout": 45
+        }
+      ]
+    },
+    {
+      "id": "z-image-turbo",
+      "engineId": "z-image-turbo",
+      "title": "快速文生图 · Z-Image Turbo Q4_K",
+      "kind": "image",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "8 步快速文字生成，固定 Q4_K 扩散权重和 Qwen3 文本编码器。",
+      "sourceUrl": "https://huggingface.co/leejet/Z-Image-Turbo-GGUF",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 2147483648,
+      "manifest": {
+        "version": "0.7.0",
+        "source": "https://huggingface.co/leejet/Z-Image-Turbo-GGUF",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "runtime": {
+          "type": "sd-cpp",
+          "family": "z-image",
+          "python": "runtime/core/.venv/Scripts/python.exe",
+          "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "release": "master-948-228c707",
+          "cudaDirectory": "runtime/cuda12",
+          "components": {
+            "diffusion": "engines/z-image-turbo/models/z_image_turbo-Q4_K.gguf",
+            "llm": "engines/z-image-turbo/models/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+            "vae": "engines/z-image-turbo/models/ae.safetensors"
+          },
+          "extraArgs": [
+            "--sampling-method",
+            "euler"
+          ],
+          "weightVariant": "Q4_K",
+          "revision": "c61c0e422dc8b541b7548cf33a4ef8302b0f8085",
+          "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+          "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+          "maxVramGiB": 9
+        },
+        "capabilities": {
+          "modes": [
+            "txt2img"
+          ],
+          "maxReferenceImages": 0,
+          "maxWidth": 1024,
+          "maxHeight": 1024,
+          "supportsTransparency": false,
+          "textToImage": true,
+          "imageEditing": false,
+          "imageToImage": false,
+          "inpainting": false,
+          "referenceConditioning": false
+        },
+        "appearance": {
+          "category": "image",
+          "badge": "Q4_K"
+        }
+      },
+      "appearance": {
+        "category": "image",
+        "badge": "Q4_K"
+      },
+      "capabilities": {
+        "modes": [
+          "txt2img"
+        ],
+        "maxReferenceImages": 0,
+        "maxWidth": 1024,
+        "maxHeight": 1024,
+        "supportsTransparency": false,
+        "textToImage": true,
+        "imageEditing": false,
+        "imageToImage": false,
+        "inpainting": false,
+        "referenceConditioning": false
+      },
+      "defaults": {
+        "width": 512,
+        "height": 512,
+        "steps": 8,
+        "cfgScale": 1,
+        "seed": 20261009
+      },
+      "runtime": {
+        "type": "sd-cpp",
+        "family": "z-image",
+        "python": "runtime/core/.venv/Scripts/python.exe",
+        "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+        "release": "master-948-228c707",
+        "cudaDirectory": "runtime/cuda12",
+        "components": {
+          "diffusion": "engines/z-image-turbo/models/z_image_turbo-Q4_K.gguf",
+          "llm": "engines/z-image-turbo/models/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+          "vae": "engines/z-image-turbo/models/ae.safetensors"
+        },
+        "extraArgs": [
+          "--sampling-method",
+          "euler"
+        ],
+        "weightVariant": "Q4_K",
+        "revision": "c61c0e422dc8b541b7548cf33a4ef8302b0f8085",
+        "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+        "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+        "maxVramGiB": 9
+      },
+      "files": [
+        {
+          "path": "engines/z-image-turbo/models/z_image_turbo-Q4_K.gguf",
+          "size": 3864250304,
+          "url": "https://huggingface.co/leejet/Z-Image-Turbo-GGUF/resolve/c61c0e422dc8b541b7548cf33a4ef8302b0f8085/z_image_turbo-Q4_K.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/leejet/Z-Image-Turbo-GGUF/resolve/c61c0e422dc8b541b7548cf33a4ef8302b0f8085/z_image_turbo-Q4_K.gguf"
+          ],
+          "sourceRepo": "leejet/Z-Image-Turbo-GGUF",
+          "sourceRevision": "c61c0e422dc8b541b7548cf33a4ef8302b0f8085",
+          "sha256": "14b375ab4f226bc5378f68f37e899ef3c2242b8541e61e2bc1aff40976086fbd"
+        },
+        {
+          "path": "engines/z-image-turbo/models/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+          "size": 2497281120,
+          "url": "https://huggingface.co/unsloth/Qwen3-4B-Instruct-2507-GGUF/resolve/a06e946bb6b655725eafa393f4a9745d460374c9/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/unsloth/Qwen3-4B-Instruct-2507-GGUF/resolve/a06e946bb6b655725eafa393f4a9745d460374c9/Qwen3-4B-Instruct-2507-Q4_K_M.gguf"
+          ],
+          "sourceRepo": "unsloth/Qwen3-4B-Instruct-2507-GGUF",
+          "sourceRevision": "a06e946bb6b655725eafa393f4a9745d460374c9",
+          "sha256": "3605803b982cb64aead44f6c1b2ae36e3acdb41d8e46c8a94c6533bc4c67e597"
+        },
+        {
+          "path": "engines/z-image-turbo/models/ae.safetensors",
+          "size": 335304388,
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/6fc90a3b1b653e935a0d175e260736de25b84df5/split_files/vae/ae.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Comfy-Org/z_image_turbo/resolve/6fc90a3b1b653e935a0d175e260736de25b84df5/split_files/vae/ae.safetensors"
+          ],
+          "sourceRepo": "Comfy-Org/z_image_turbo",
+          "sourceRevision": "6fc90a3b1b653e935a0d175e260736de25b84df5",
+          "sha256": "afc8e28272cd15db3919bacdb6918ce9c1ed22e96cb12c4d5ed0fba823529e38"
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/z-image-turbo/models/z_image_turbo-Q4_K.gguf",
+          "size": 3864250304
+        },
+        {
+          "path": "engines/z-image-turbo/models/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+          "size": 2497281120
+        },
+        {
+          "path": "engines/z-image-turbo/models/ae.safetensors",
+          "size": 335304388
+        },
+        {
+          "path": "engines/z-image-turbo/run.ps1"
+        },
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe"
+        },
+        {
+          "path": "runtime/core/.venv/Scripts/python.exe"
+        }
+      ],
+      "dependencies": [
+        "sd-cpp-image-runtime-948"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/image-run.ps1",
+          "target": "engines/z-image-turbo/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "apache-2.0",
+        "url": "https://huggingface.co/leejet/Z-Image-Turbo-GGUF",
+        "notice": "模型与文本编码器、VAE、参考控制组件分别适用来源许可；安装前阅读对应模型卡。",
+        "requiresAcceptance": true
+      },
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12 GB",
+        "defaultResolution": "512x512",
+        "memoryPolicy": "CUDA 执行扩散与 VAE，文本编码及权重置于主机内存；VAE 分块。",
+        "measured": false,
+        "minimumRamGiB": 16
+      },
+      "validationStage": "researched",
+      "gpuVerified": false,
+      "remedy": "在应用内安装固定配方；安装检测只核对组件与 CLI 参数，实际 CUDA 生成需首次任务验证。",
+      "probes": [
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--backend",
+            "--params-backend",
+            "--width",
+            "--height"
+          ],
+          "timeout": 45
+        }
+      ]
+    },
+    {
+      "id": "flux2-klein-4b",
+      "engineId": "flux2-klein-4b",
+      "title": "快速生图与多图编辑 · FLUX.2 klein 4B Q4_0",
+      "kind": "image",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "4 步文字生成与参考图编辑；多参考图按选择顺序提交。",
+      "sourceUrl": "https://huggingface.co/leejet/FLUX.2-klein-4B-GGUF",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 2147483648,
+      "manifest": {
+        "version": "0.7.0",
+        "source": "https://huggingface.co/leejet/FLUX.2-klein-4B-GGUF",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "runtime": {
+          "type": "sd-cpp",
+          "family": "klein",
+          "python": "runtime/core/.venv/Scripts/python.exe",
+          "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "release": "master-948-228c707",
+          "cudaDirectory": "runtime/cuda12",
+          "components": {
+            "diffusion": "engines/flux2-klein-4b/models/flux-2-klein-4b-Q4_0.gguf",
+            "llm": "engines/flux2-klein-4b/models/Qwen3-4B-Q4_K_M.gguf",
+            "vae": "engines/flux2-klein-4b/models/full_encoder_small_decoder.safetensors"
+          },
+          "extraArgs": [
+            "--sampling-method",
+            "euler"
+          ],
+          "weightVariant": "Q4_0",
+          "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+          "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+          "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+          "maxVramGiB": 9
+        },
+        "capabilities": {
+          "modes": [
+            "txt2img",
+            "edit"
+          ],
+          "maxReferenceImages": 3,
+          "maxWidth": 1024,
+          "maxHeight": 1024,
+          "supportsTransparency": false,
+          "textToImage": true,
+          "imageEditing": true,
+          "imageToImage": false,
+          "inpainting": false,
+          "referenceConditioning": false
+        },
+        "appearance": {
+          "category": "image",
+          "badge": "Q4_0"
+        }
+      },
+      "appearance": {
+        "category": "image",
+        "badge": "Q4_0"
+      },
+      "capabilities": {
+        "modes": [
+          "txt2img",
+          "edit"
+        ],
+        "maxReferenceImages": 3,
+        "maxWidth": 1024,
+        "maxHeight": 1024,
+        "supportsTransparency": false,
+        "textToImage": true,
+        "imageEditing": true,
+        "imageToImage": false,
+        "inpainting": false,
+        "referenceConditioning": false
+      },
+      "defaults": {
+        "width": 512,
+        "height": 512,
+        "steps": 4,
+        "cfgScale": 1,
+        "seed": 20261009
+      },
+      "runtime": {
+        "type": "sd-cpp",
+        "family": "klein",
+        "python": "runtime/core/.venv/Scripts/python.exe",
+        "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+        "release": "master-948-228c707",
+        "cudaDirectory": "runtime/cuda12",
+        "components": {
+          "diffusion": "engines/flux2-klein-4b/models/flux-2-klein-4b-Q4_0.gguf",
+          "llm": "engines/flux2-klein-4b/models/Qwen3-4B-Q4_K_M.gguf",
+          "vae": "engines/flux2-klein-4b/models/full_encoder_small_decoder.safetensors"
+        },
+        "extraArgs": [
+          "--sampling-method",
+          "euler"
+        ],
+        "weightVariant": "Q4_0",
+        "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+        "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+        "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+        "maxVramGiB": 9
+      },
+      "files": [
+        {
+          "path": "engines/flux2-klein-4b/models/flux-2-klein-4b-Q4_0.gguf",
+          "size": 2460378560,
+          "url": "https://huggingface.co/leejet/FLUX.2-klein-4B-GGUF/resolve/3b1f5a9dc3abb32238b053aeb3d823c30afdacbd/flux-2-klein-4b-Q4_0.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/leejet/FLUX.2-klein-4B-GGUF/resolve/3b1f5a9dc3abb32238b053aeb3d823c30afdacbd/flux-2-klein-4b-Q4_0.gguf"
+          ],
+          "sourceRepo": "leejet/FLUX.2-klein-4B-GGUF",
+          "sourceRevision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+          "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+        },
+        {
+          "path": "engines/flux2-klein-4b/models/Qwen3-4B-Q4_K_M.gguf",
+          "size": 2497281312,
+          "url": "https://huggingface.co/unsloth/Qwen3-4B-GGUF/resolve/22c9fc8a8c7700b76a1789366280a6a5a1ad1120/Qwen3-4B-Q4_K_M.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/unsloth/Qwen3-4B-GGUF/resolve/22c9fc8a8c7700b76a1789366280a6a5a1ad1120/Qwen3-4B-Q4_K_M.gguf"
+          ],
+          "sourceRepo": "unsloth/Qwen3-4B-GGUF",
+          "sourceRevision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+          "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+        },
+        {
+          "path": "engines/flux2-klein-4b/models/full_encoder_small_decoder.safetensors",
+          "size": 249519092,
+          "url": "https://huggingface.co/black-forest-labs/FLUX.2-small-decoder/resolve/a3efc24f613ef42d9428af62fdbd6f5fd8856c4a/full_encoder_small_decoder.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/black-forest-labs/FLUX.2-small-decoder/resolve/a3efc24f613ef42d9428af62fdbd6f5fd8856c4a/full_encoder_small_decoder.safetensors"
+          ],
+          "sourceRepo": "black-forest-labs/FLUX.2-small-decoder",
+          "sourceRevision": "a3efc24f613ef42d9428af62fdbd6f5fd8856c4a",
+          "sha256": "ea4273f02d1fafbf8e1d1c2cf6018ed8748652eb0bf34f2dd91171f16f15ab62"
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/flux2-klein-4b/models/flux-2-klein-4b-Q4_0.gguf",
+          "size": 2460378560
+        },
+        {
+          "path": "engines/flux2-klein-4b/models/Qwen3-4B-Q4_K_M.gguf",
+          "size": 2497281312
+        },
+        {
+          "path": "engines/flux2-klein-4b/models/full_encoder_small_decoder.safetensors",
+          "size": 249519092
+        },
+        {
+          "path": "engines/flux2-klein-4b/run.ps1"
+        },
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe"
+        },
+        {
+          "path": "runtime/core/.venv/Scripts/python.exe"
+        }
+      ],
+      "dependencies": [
+        "sd-cpp-image-runtime-948"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/image-run.ps1",
+          "target": "engines/flux2-klein-4b/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "apache-2.0",
+        "url": "https://huggingface.co/leejet/FLUX.2-klein-4B-GGUF",
+        "notice": "模型与文本编码器、VAE、参考控制组件分别适用来源许可；安装前阅读对应模型卡。",
+        "requiresAcceptance": true
+      },
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12 GB",
+        "defaultResolution": "512x512",
+        "memoryPolicy": "CUDA 执行扩散与 VAE，文本编码及权重置于主机内存；VAE 分块。",
+        "measured": false,
+        "minimumRamGiB": 16
+      },
+      "validationStage": "researched",
+      "gpuVerified": false,
+      "remedy": "在应用内安装固定配方；安装检测只核对组件与 CLI 参数，实际 CUDA 生成需首次任务验证。",
+      "probes": [
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--backend",
+            "--params-backend",
+            "--width",
+            "--height"
+          ],
+          "timeout": 45
+        }
+      ]
+    },
+    {
+      "id": "qwen-image-21-edit",
+      "engineId": "qwen-image-21-edit",
+      "title": "Qwen Image 2.1 · 多图编辑与透明 PNG",
+      "kind": "image",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "复用已接入的 Qwen 2.1 权重，增加独立视觉投影器以支持多图编辑和透明背景提示。",
+      "sourceUrl": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 32,
+      "extractReserveBytes": 2147483648,
+      "manifest": {
+        "version": "0.7.0",
+        "source": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "runtime": {
+          "type": "sd-cpp",
+          "family": "qwen21",
+          "python": "runtime/core/.venv/Scripts/python.exe",
+          "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "release": "master-948-228c707",
+          "cudaDirectory": "runtime/cuda12",
+          "components": {
+            "llmVision": "engines/qwen-image-21-edit/models/mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+            "diffusion": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q4_K_M.gguf",
+            "llm": "engines/qwen-image-21/runtime/models/Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+            "vae": "engines/qwen-image-21/runtime/models/qwen_image_2.1_vae_bf16.safetensors"
+          },
+          "extraArgs": [
+            "--sampling-method",
+            "euler"
+          ],
+          "weightVariant": "Q4_K_M",
+          "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+          "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+          "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+          "maxVramGiB": 9,
+          "visionRevision": "f982a07559d4a2f6c8744d840bf6fccab30eea96"
+        },
+        "capabilities": {
+          "modes": [
+            "txt2img",
+            "edit"
+          ],
+          "maxReferenceImages": 3,
+          "maxWidth": 1024,
+          "maxHeight": 1024,
+          "supportsTransparency": true,
+          "textToImage": true,
+          "imageEditing": true,
+          "imageToImage": false,
+          "inpainting": false,
+          "referenceConditioning": false
+        },
+        "appearance": {
+          "category": "image",
+          "badge": "Q4_K_M"
+        }
+      },
+      "appearance": {
+        "category": "image",
+        "badge": "Q4_K_M"
+      },
+      "capabilities": {
+        "modes": [
+          "txt2img",
+          "edit"
+        ],
+        "maxReferenceImages": 3,
+        "maxWidth": 1024,
+        "maxHeight": 1024,
+        "supportsTransparency": true,
+        "textToImage": true,
+        "imageEditing": true,
+        "imageToImage": false,
+        "inpainting": false,
+        "referenceConditioning": false
+      },
+      "defaults": {
+        "width": 512,
+        "height": 512,
+        "steps": 20,
+        "cfgScale": 6,
+        "seed": 20261009
+      },
+      "runtime": {
+        "type": "sd-cpp",
+        "family": "qwen21",
+        "python": "runtime/core/.venv/Scripts/python.exe",
+        "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+        "release": "master-948-228c707",
+        "cudaDirectory": "runtime/cuda12",
+        "components": {
+          "llmVision": "engines/qwen-image-21-edit/models/mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+          "diffusion": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q4_K_M.gguf",
+          "llm": "engines/qwen-image-21/runtime/models/Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+          "vae": "engines/qwen-image-21/runtime/models/qwen_image_2.1_vae_bf16.safetensors"
+        },
+        "extraArgs": [
+          "--sampling-method",
+          "euler"
+        ],
+        "weightVariant": "Q4_K_M",
+        "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+        "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+        "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+        "maxVramGiB": 9,
+        "visionRevision": "f982a07559d4a2f6c8744d840bf6fccab30eea96"
+      },
+      "files": [
+        {
+          "path": "engines/qwen-image-21-edit/models/mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+          "size": 1159029824,
+          "url": "https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct-GGUF/resolve/f982a07559d4a2f6c8744d840bf6fccab30eea96/mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/Qwen/Qwen3-VL-8B-Instruct-GGUF/resolve/f982a07559d4a2f6c8744d840bf6fccab30eea96/mmproj-Qwen3VL-8B-Instruct-F16.gguf"
+          ],
+          "sourceRepo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+          "sourceRevision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+          "sha256": "ca524100ebf825c9a870db1c580d03879e0da0ab2541697e2458e64891cf9d38"
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/qwen-image-21-edit/models/mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+          "size": 1159029824
+        },
+        {
+          "path": "engines/qwen-image-21-edit/run.ps1"
+        },
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe"
+        },
+        {
+          "path": "runtime/core/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q4_K_M.gguf"
+        },
+        {
+          "path": "engines/qwen-image-21/runtime/models/Qwen3VL-8B-Instruct-Q4_K_M.gguf"
+        },
+        {
+          "path": "engines/qwen-image-21/runtime/models/qwen_image_2.1_vae_bf16.safetensors"
+        }
+      ],
+      "dependencies": [
+        "sd-cpp-image-runtime-948",
+        "qwen-image-21"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/image-run.ps1",
+          "target": "engines/qwen-image-21-edit/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "Qwen Image 2.1 / Qwen3 VL 官方模型许可",
+        "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1",
+        "notice": "模型与文本编码器、VAE、参考控制组件分别适用来源许可；安装前阅读对应模型卡。",
+        "requiresAcceptance": true
+      },
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12 GB",
+        "defaultResolution": "512x512",
+        "memoryPolicy": "CUDA 执行扩散与 VAE，文本编码及权重置于主机内存；VAE 分块。",
+        "measured": false,
+        "minimumRamGiB": 32
+      },
+      "validationStage": "researched",
+      "gpuVerified": false,
+      "remedy": "在应用内安装固定配方；安装检测只核对组件与 CLI 参数，实际 CUDA 生成需首次任务验证。",
+      "probes": [
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--backend",
+            "--params-backend",
+            "--width",
+            "--height",
+            "--llm_vision",
+            "--ref-image"
+          ],
+          "timeout": 45
+        }
+      ]
+    },
+    {
+      "id": "qwen-image-edit-2511",
+      "engineId": "qwen-image-edit-2511",
+      "title": "多图编辑 · Qwen Image Edit 2511 Q4_K_M",
+      "kind": "image",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "固定 2511 编辑模型，启用官方要求的零条件时间参数；主机内存预留 32 GB。",
+      "sourceUrl": "https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 32,
+      "extractReserveBytes": 2147483648,
+      "manifest": {
+        "version": "0.7.0",
+        "source": "https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "runtime": {
+          "type": "sd-cpp",
+          "family": "qwen2511",
+          "python": "runtime/core/.venv/Scripts/python.exe",
+          "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "release": "master-948-228c707",
+          "cudaDirectory": "runtime/cuda12",
+          "components": {
+            "diffusion": "engines/qwen-image-edit-2511/models/qwen-image-edit-2511-Q4_K_M.gguf",
+            "llm": "engines/qwen-image-edit-2511/models/Qwen2.5-VL-7B-Instruct.Q4_K_M.gguf",
+            "llmVision": "engines/qwen-image-edit-2511/models/Qwen2.5-VL-7B-Instruct.mmproj-Q8_0.gguf",
+            "vae": "engines/qwen-image-edit-2511/models/qwen_image_vae.safetensors"
+          },
+          "extraArgs": [
+            "--sampling-method",
+            "euler",
+            "--flow-shift",
+            "3",
+            "--model-args",
+            "qwen_image_zero_cond_t=true"
+          ],
+          "weightVariant": "Q4_K_M",
+          "revision": "0d33d9692b4b26212297240d87b0d4719aa4fd06",
+          "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+          "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+          "maxVramGiB": 9
+        },
+        "capabilities": {
+          "modes": [
+            "edit"
+          ],
+          "maxReferenceImages": 3,
+          "maxWidth": 1024,
+          "maxHeight": 1024,
+          "supportsTransparency": false,
+          "textToImage": false,
+          "imageEditing": true,
+          "imageToImage": false,
+          "inpainting": false,
+          "referenceConditioning": false
+        },
+        "appearance": {
+          "category": "image",
+          "badge": "Q4_K_M"
+        }
+      },
+      "appearance": {
+        "category": "image",
+        "badge": "Q4_K_M"
+      },
+      "capabilities": {
+        "modes": [
+          "edit"
+        ],
+        "maxReferenceImages": 3,
+        "maxWidth": 1024,
+        "maxHeight": 1024,
+        "supportsTransparency": false,
+        "textToImage": false,
+        "imageEditing": true,
+        "imageToImage": false,
+        "inpainting": false,
+        "referenceConditioning": false
+      },
+      "defaults": {
+        "width": 512,
+        "height": 512,
+        "steps": 20,
+        "cfgScale": 2.5,
+        "seed": 20261009
+      },
+      "runtime": {
+        "type": "sd-cpp",
+        "family": "qwen2511",
+        "python": "runtime/core/.venv/Scripts/python.exe",
+        "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+        "release": "master-948-228c707",
+        "cudaDirectory": "runtime/cuda12",
+        "components": {
+          "diffusion": "engines/qwen-image-edit-2511/models/qwen-image-edit-2511-Q4_K_M.gguf",
+          "llm": "engines/qwen-image-edit-2511/models/Qwen2.5-VL-7B-Instruct.Q4_K_M.gguf",
+          "llmVision": "engines/qwen-image-edit-2511/models/Qwen2.5-VL-7B-Instruct.mmproj-Q8_0.gguf",
+          "vae": "engines/qwen-image-edit-2511/models/qwen_image_vae.safetensors"
+        },
+        "extraArgs": [
+          "--sampling-method",
+          "euler",
+          "--flow-shift",
+          "3",
+          "--model-args",
+          "qwen_image_zero_cond_t=true"
+        ],
+        "weightVariant": "Q4_K_M",
+        "revision": "0d33d9692b4b26212297240d87b0d4719aa4fd06",
+        "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+        "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+        "maxVramGiB": 9
+      },
+      "files": [
+        {
+          "path": "engines/qwen-image-edit-2511/models/qwen-image-edit-2511-Q4_K_M.gguf",
+          "size": 13244758624,
+          "url": "https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF/resolve/0d33d9692b4b26212297240d87b0d4719aa4fd06/qwen-image-edit-2511-Q4_K_M.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/unsloth/Qwen-Image-Edit-2511-GGUF/resolve/0d33d9692b4b26212297240d87b0d4719aa4fd06/qwen-image-edit-2511-Q4_K_M.gguf"
+          ],
+          "sourceRepo": "unsloth/Qwen-Image-Edit-2511-GGUF",
+          "sourceRevision": "0d33d9692b4b26212297240d87b0d4719aa4fd06",
+          "sha256": "8677bac90627adbbc11efab87b1870e701c4eb3689ee865a3de8ab81b705a723"
+        },
+        {
+          "path": "engines/qwen-image-edit-2511/models/Qwen2.5-VL-7B-Instruct.Q4_K_M.gguf",
+          "size": 4683072512,
+          "url": "https://huggingface.co/mradermacher/Qwen2.5-VL-7B-Instruct-GGUF/resolve/cfa2baa09946b211c107e6e104948987a64dd2c1/Qwen2.5-VL-7B-Instruct.Q4_K_M.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/mradermacher/Qwen2.5-VL-7B-Instruct-GGUF/resolve/cfa2baa09946b211c107e6e104948987a64dd2c1/Qwen2.5-VL-7B-Instruct.Q4_K_M.gguf"
+          ],
+          "sourceRepo": "mradermacher/Qwen2.5-VL-7B-Instruct-GGUF",
+          "sourceRevision": "cfa2baa09946b211c107e6e104948987a64dd2c1",
+          "sha256": "0f00a930ba3108b6861ddadf74d8ebbd82e257c63eba728e62c3e8970f5eed94"
+        },
+        {
+          "path": "engines/qwen-image-edit-2511/models/Qwen2.5-VL-7B-Instruct.mmproj-Q8_0.gguf",
+          "size": 853119712,
+          "url": "https://huggingface.co/mradermacher/Qwen2.5-VL-7B-Instruct-GGUF/resolve/cfa2baa09946b211c107e6e104948987a64dd2c1/Qwen2.5-VL-7B-Instruct.mmproj-Q8_0.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/mradermacher/Qwen2.5-VL-7B-Instruct-GGUF/resolve/cfa2baa09946b211c107e6e104948987a64dd2c1/Qwen2.5-VL-7B-Instruct.mmproj-Q8_0.gguf"
+          ],
+          "sourceRepo": "mradermacher/Qwen2.5-VL-7B-Instruct-GGUF",
+          "sourceRevision": "cfa2baa09946b211c107e6e104948987a64dd2c1",
+          "sha256": "2185ca0adf339f96845318c7b666f5d242f86bbace5657a89cb834785d0cea57"
+        },
+        {
+          "path": "engines/qwen-image-edit-2511/models/qwen_image_vae.safetensors",
+          "size": 253806246,
+          "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/1f12b17be14c89b026c51a91d67c32f84bb047bc/split_files/vae/qwen_image_vae.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Comfy-Org/Qwen-Image_ComfyUI/resolve/1f12b17be14c89b026c51a91d67c32f84bb047bc/split_files/vae/qwen_image_vae.safetensors"
+          ],
+          "sourceRepo": "Comfy-Org/Qwen-Image_ComfyUI",
+          "sourceRevision": "1f12b17be14c89b026c51a91d67c32f84bb047bc",
+          "sha256": "a70580f0213e67967ee9c95f05bb400e8fb08307e017a924bf3441223e023d1f"
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/qwen-image-edit-2511/models/qwen-image-edit-2511-Q4_K_M.gguf",
+          "size": 13244758624
+        },
+        {
+          "path": "engines/qwen-image-edit-2511/models/Qwen2.5-VL-7B-Instruct.Q4_K_M.gguf",
+          "size": 4683072512
+        },
+        {
+          "path": "engines/qwen-image-edit-2511/models/Qwen2.5-VL-7B-Instruct.mmproj-Q8_0.gguf",
+          "size": 853119712
+        },
+        {
+          "path": "engines/qwen-image-edit-2511/models/qwen_image_vae.safetensors",
+          "size": 253806246
+        },
+        {
+          "path": "engines/qwen-image-edit-2511/run.ps1"
+        },
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe"
+        },
+        {
+          "path": "runtime/core/.venv/Scripts/python.exe"
+        }
+      ],
+      "dependencies": [
+        "sd-cpp-image-runtime-948"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/image-run.ps1",
+          "target": "engines/qwen-image-edit-2511/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "apache-2.0",
+        "url": "https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF",
+        "notice": "模型与文本编码器、VAE、参考控制组件分别适用来源许可；安装前阅读对应模型卡。",
+        "requiresAcceptance": true
+      },
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12 GB",
+        "defaultResolution": "512x512",
+        "memoryPolicy": "CUDA 执行扩散与 VAE，文本编码及权重置于主机内存；VAE 分块。",
+        "measured": false,
+        "minimumRamGiB": 32
+      },
+      "validationStage": "researched",
+      "gpuVerified": false,
+      "remedy": "在应用内安装固定配方；安装检测只核对组件与 CLI 参数，实际 CUDA 生成需首次任务验证。",
+      "probes": [
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--backend",
+            "--params-backend",
+            "--width",
+            "--height",
+            "--llm_vision",
+            "--ref-image"
+          ],
+          "timeout": 45
+        }
+      ]
+    },
+    {
+      "id": "sdxl-base",
+      "engineId": "sdxl-base",
+      "title": "经典生图与局部重绘 · SDXL 1.0",
+      "kind": "image",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "完整 SDXL checkpoint 使用 --model；支持原图重绘和蒙版局部修改。",
+      "sourceUrl": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 2147483648,
+      "manifest": {
+        "version": "0.7.0",
+        "source": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "runtime": {
+          "type": "sd-cpp",
+          "family": "sdxl",
+          "python": "runtime/core/.venv/Scripts/python.exe",
+          "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "release": "master-948-228c707",
+          "cudaDirectory": "runtime/cuda12",
+          "components": {
+            "model": "engines/sdxl-base/models/sd_xl_base_1.0.safetensors",
+            "vae": "engines/sdxl-base/models/sdxl.vae.safetensors"
+          },
+          "extraArgs": [
+            "--sampling-method",
+            "dpm++2m",
+            "--scheduler",
+            "karras"
+          ],
+          "weightVariant": "FP16",
+          "revision": "462165984030d82259a11f4367a4eed129e94a7b",
+          "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+          "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+          "maxVramGiB": 9
+        },
+        "capabilities": {
+          "modes": [
+            "txt2img",
+            "img2img",
+            "inpaint"
+          ],
+          "maxReferenceImages": 1,
+          "maxWidth": 1024,
+          "maxHeight": 1024,
+          "supportsTransparency": false,
+          "textToImage": true,
+          "imageEditing": false,
+          "imageToImage": true,
+          "inpainting": true,
+          "referenceConditioning": false
+        },
+        "appearance": {
+          "category": "image",
+          "badge": "FP16"
+        }
+      },
+      "appearance": {
+        "category": "image",
+        "badge": "FP16"
+      },
+      "capabilities": {
+        "modes": [
+          "txt2img",
+          "img2img",
+          "inpaint"
+        ],
+        "maxReferenceImages": 1,
+        "maxWidth": 1024,
+        "maxHeight": 1024,
+        "supportsTransparency": false,
+        "textToImage": true,
+        "imageEditing": false,
+        "imageToImage": true,
+        "inpainting": true,
+        "referenceConditioning": false
+      },
+      "defaults": {
+        "width": 512,
+        "height": 512,
+        "steps": 25,
+        "cfgScale": 6,
+        "seed": 20261009
+      },
+      "runtime": {
+        "type": "sd-cpp",
+        "family": "sdxl",
+        "python": "runtime/core/.venv/Scripts/python.exe",
+        "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+        "release": "master-948-228c707",
+        "cudaDirectory": "runtime/cuda12",
+        "components": {
+          "model": "engines/sdxl-base/models/sd_xl_base_1.0.safetensors",
+          "vae": "engines/sdxl-base/models/sdxl.vae.safetensors"
+        },
+        "extraArgs": [
+          "--sampling-method",
+          "dpm++2m",
+          "--scheduler",
+          "karras"
+        ],
+        "weightVariant": "FP16",
+        "revision": "462165984030d82259a11f4367a4eed129e94a7b",
+        "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+        "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+        "maxVramGiB": 9
+      },
+      "files": [
+        {
+          "path": "engines/sdxl-base/models/sd_xl_base_1.0.safetensors",
+          "size": 6938078334,
+          "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/sd_xl_base_1.0.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/stabilityai/stable-diffusion-xl-base-1.0/resolve/462165984030d82259a11f4367a4eed129e94a7b/sd_xl_base_1.0.safetensors"
+          ],
+          "sourceRepo": "stabilityai/stable-diffusion-xl-base-1.0",
+          "sourceRevision": "462165984030d82259a11f4367a4eed129e94a7b",
+          "sha256": "31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b"
+        },
+        {
+          "path": "engines/sdxl-base/models/sdxl.vae.safetensors",
+          "size": 334641162,
+          "url": "https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/207b116dae70ace3637169f1ddd2434b91b3a8cd/sdxl.vae.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/madebyollin/sdxl-vae-fp16-fix/resolve/207b116dae70ace3637169f1ddd2434b91b3a8cd/sdxl.vae.safetensors"
+          ],
+          "sourceRepo": "madebyollin/sdxl-vae-fp16-fix",
+          "sourceRevision": "207b116dae70ace3637169f1ddd2434b91b3a8cd",
+          "sha256": "235745af8d86bf4a4c1b5b4f529868b37019a10f7c0b2e79ad0abca3a22bc6e1"
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/sdxl-base/models/sd_xl_base_1.0.safetensors",
+          "size": 6938078334
+        },
+        {
+          "path": "engines/sdxl-base/models/sdxl.vae.safetensors",
+          "size": 334641162
+        },
+        {
+          "path": "engines/sdxl-base/run.ps1"
+        },
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe"
+        },
+        {
+          "path": "runtime/core/.venv/Scripts/python.exe"
+        }
+      ],
+      "dependencies": [
+        "sd-cpp-image-runtime-948"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/image-run.ps1",
+          "target": "engines/sdxl-base/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "openrail++",
+        "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+        "notice": "模型与文本编码器、VAE、参考控制组件分别适用来源许可；安装前阅读对应模型卡。",
+        "requiresAcceptance": true
+      },
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12 GB",
+        "defaultResolution": "512x512",
+        "memoryPolicy": "CUDA 执行扩散与 VAE，文本编码及权重置于主机内存；VAE 分块。",
+        "measured": false,
+        "minimumRamGiB": 16
+      },
+      "validationStage": "researched",
+      "gpuVerified": false,
+      "remedy": "在应用内安装固定配方；安装检测只核对组件与 CLI 参数，实际 CUDA 生成需首次任务验证。",
+      "probes": [
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--backend",
+            "--params-backend",
+            "--width",
+            "--height"
+          ],
+          "timeout": 45
+        }
+      ]
+    },
+    {
+      "id": "sdxl-reference-control",
+      "engineId": "sdxl-reference-control",
+      "title": "SDXL · 外观参考与轮廓控制",
+      "kind": "image",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "复用 SDXL 底模，IP-Adapter Plus 保持外观，Canny ControlNet 约束轮廓；控制图应为已提取的边缘。",
+      "sourceUrl": "https://huggingface.co/h94/IP-Adapter",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 32,
+      "extractReserveBytes": 2147483648,
+      "manifest": {
+        "version": "0.7.0",
+        "source": "https://huggingface.co/h94/IP-Adapter",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "runtime": {
+          "type": "sd-cpp",
+          "family": "sdxl",
+          "python": "runtime/core/.venv/Scripts/python.exe",
+          "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "release": "master-948-228c707",
+          "cudaDirectory": "runtime/cuda12",
+          "components": {
+            "clipVision": "engines/sdxl-reference-control/models/model.safetensors",
+            "ipAdapter": "engines/sdxl-reference-control/models/ip-adapter-plus_sdxl_vit-h.safetensors",
+            "controlNet": "engines/sdxl-reference-control/models/diffusion_pytorch_model.safetensors",
+            "model": "engines/sdxl-base/models/sd_xl_base_1.0.safetensors",
+            "vae": "engines/sdxl-base/models/sdxl.vae.safetensors"
+          },
+          "extraArgs": [
+            "--sampling-method",
+            "dpm++2m",
+            "--scheduler",
+            "karras"
+          ],
+          "weightVariant": "official",
+          "revision": "018e402774aeeddd60609b4ecdb7e298259dc729",
+          "backend": "diffusion=cuda0,te=cpu,vae=cuda0,controlnet=cuda0",
+          "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu,controlnet=cpu",
+          "maxVramGiB": 9
+        },
+        "capabilities": {
+          "modes": [
+            "txt2img",
+            "img2img",
+            "inpaint",
+            "control"
+          ],
+          "maxReferenceImages": 1,
+          "maxWidth": 1024,
+          "maxHeight": 1024,
+          "supportsTransparency": false,
+          "textToImage": true,
+          "imageEditing": false,
+          "imageToImage": true,
+          "inpainting": true,
+          "referenceConditioning": true
+        },
+        "appearance": {
+          "category": "image",
+          "badge": "sdxl"
+        }
+      },
+      "appearance": {
+        "category": "image",
+        "badge": "sdxl"
+      },
+      "capabilities": {
+        "modes": [
+          "txt2img",
+          "img2img",
+          "inpaint",
+          "control"
+        ],
+        "maxReferenceImages": 1,
+        "maxWidth": 1024,
+        "maxHeight": 1024,
+        "supportsTransparency": false,
+        "textToImage": true,
+        "imageEditing": false,
+        "imageToImage": true,
+        "inpainting": true,
+        "referenceConditioning": true
+      },
+      "defaults": {
+        "width": 512,
+        "height": 512,
+        "steps": 25,
+        "cfgScale": 6,
+        "seed": 20261009
+      },
+      "runtime": {
+        "type": "sd-cpp",
+        "family": "sdxl",
+        "python": "runtime/core/.venv/Scripts/python.exe",
+        "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+        "release": "master-948-228c707",
+        "cudaDirectory": "runtime/cuda12",
+        "components": {
+          "clipVision": "engines/sdxl-reference-control/models/model.safetensors",
+          "ipAdapter": "engines/sdxl-reference-control/models/ip-adapter-plus_sdxl_vit-h.safetensors",
+          "controlNet": "engines/sdxl-reference-control/models/diffusion_pytorch_model.safetensors",
+          "model": "engines/sdxl-base/models/sd_xl_base_1.0.safetensors",
+          "vae": "engines/sdxl-base/models/sdxl.vae.safetensors"
+        },
+        "extraArgs": [
+          "--sampling-method",
+          "dpm++2m",
+          "--scheduler",
+          "karras"
+        ],
+        "weightVariant": "official",
+        "revision": "018e402774aeeddd60609b4ecdb7e298259dc729",
+        "backend": "diffusion=cuda0,te=cpu,vae=cuda0,controlnet=cuda0",
+        "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu,controlnet=cpu",
+        "maxVramGiB": 9
+      },
+      "files": [
+        {
+          "path": "engines/sdxl-reference-control/models/model.safetensors",
+          "size": 2528373448,
+          "url": "https://huggingface.co/h94/IP-Adapter/resolve/018e402774aeeddd60609b4ecdb7e298259dc729/models/image_encoder/model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/h94/IP-Adapter/resolve/018e402774aeeddd60609b4ecdb7e298259dc729/models/image_encoder/model.safetensors"
+          ],
+          "sourceRepo": "h94/IP-Adapter",
+          "sourceRevision": "018e402774aeeddd60609b4ecdb7e298259dc729",
+          "sha256": "6ca9667da1ca9e0b0f75e46bb030f7e011f44f86cbfb8d5a36590fcd7507b030"
+        },
+        {
+          "path": "engines/sdxl-reference-control/models/ip-adapter-plus_sdxl_vit-h.safetensors",
+          "size": 847517512,
+          "url": "https://huggingface.co/h94/IP-Adapter/resolve/018e402774aeeddd60609b4ecdb7e298259dc729/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/h94/IP-Adapter/resolve/018e402774aeeddd60609b4ecdb7e298259dc729/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors"
+          ],
+          "sourceRepo": "h94/IP-Adapter",
+          "sourceRevision": "018e402774aeeddd60609b4ecdb7e298259dc729",
+          "sha256": "3f5062b8400c94b7159665b21ba5c62acdcd7682262743d7f2aefedef00e6581"
+        },
+        {
+          "path": "engines/sdxl-reference-control/models/diffusion_pytorch_model.safetensors",
+          "size": 2502139104,
+          "url": "https://huggingface.co/xinsir/controlnet-canny-sdxl-1.0/resolve/1271357eda52d54b857c650cacb5b51144643ccb/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/xinsir/controlnet-canny-sdxl-1.0/resolve/1271357eda52d54b857c650cacb5b51144643ccb/diffusion_pytorch_model.safetensors"
+          ],
+          "sourceRepo": "xinsir/controlnet-canny-sdxl-1.0",
+          "sourceRevision": "1271357eda52d54b857c650cacb5b51144643ccb",
+          "sha256": "bf47cd757ceaf2572c53321329ef819ea38c09a6e3783588387913cd94dff47c"
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/sdxl-reference-control/models/model.safetensors",
+          "size": 2528373448
+        },
+        {
+          "path": "engines/sdxl-reference-control/models/ip-adapter-plus_sdxl_vit-h.safetensors",
+          "size": 847517512
+        },
+        {
+          "path": "engines/sdxl-reference-control/models/diffusion_pytorch_model.safetensors",
+          "size": 2502139104
+        },
+        {
+          "path": "engines/sdxl-reference-control/run.ps1"
+        },
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe"
+        },
+        {
+          "path": "runtime/core/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "engines/sdxl-base/models/sd_xl_base_1.0.safetensors",
+          "size": 6938078334
+        },
+        {
+          "path": "engines/sdxl-base/models/sdxl.vae.safetensors",
+          "size": 334641162
+        }
+      ],
+      "dependencies": [
+        "sd-cpp-image-runtime-948",
+        "sdxl-base"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/image-run.ps1",
+          "target": "engines/sdxl-reference-control/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "apache-2.0",
+        "url": "https://huggingface.co/h94/IP-Adapter",
+        "notice": "模型与文本编码器、VAE、参考控制组件分别适用来源许可；安装前阅读对应模型卡。",
+        "requiresAcceptance": true
+      },
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12 GB",
+        "defaultResolution": "512x512",
+        "memoryPolicy": "CUDA 执行扩散与 VAE，文本编码及权重置于主机内存；VAE 分块。",
+        "measured": false,
+        "minimumRamGiB": 32
+      },
+      "validationStage": "researched",
+      "gpuVerified": false,
+      "remedy": "在应用内安装固定配方；安装检测只核对组件与 CLI 参数，实际 CUDA 生成需首次任务验证。",
+      "probes": [
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--backend",
+            "--params-backend",
+            "--width",
+            "--height",
+            "--clip_vision",
+            "--ip-adapter",
+            "--control-net",
+            "--control-image",
+            "--mask"
+          ],
+          "timeout": 45
+        }
+      ]
+    },
+    {
+      "id": "sd35-medium",
+      "engineId": "sd35-medium",
+      "title": "通用文字生图 · Stable Diffusion 3.5 Medium",
+      "kind": "image",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "固定官方 Medium checkpoint，T5 使用明确 Q4_K_M 档位；官方许可需先接受并提供 HF 读取令牌。",
+      "sourceUrl": "https://huggingface.co/stabilityai/stable-diffusion-3.5-medium",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 32,
+      "extractReserveBytes": 2147483648,
+      "manifest": {
+        "version": "0.7.0",
+        "source": "https://huggingface.co/stabilityai/stable-diffusion-3.5-medium",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "runtime": {
+          "type": "sd-cpp",
+          "family": "sd35",
+          "python": "runtime/core/.venv/Scripts/python.exe",
+          "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "release": "master-948-228c707",
+          "cudaDirectory": "runtime/cuda12",
+          "components": {
+            "model": "engines/sd35-medium/models/sd3.5_medium.safetensors",
+            "clipL": "engines/sd35-medium/models/clip_l.safetensors",
+            "clipG": "engines/sd35-medium/models/clip_g.safetensors",
+            "t5": "engines/sd35-medium/models/t5-v1_1-xxl-encoder-Q4_K_M.gguf"
+          },
+          "extraArgs": [
+            "--sampling-method",
+            "euler"
+          ],
+          "weightVariant": "FP16+T5-Q4_K_M",
+          "revision": "b940f670f0eda2d07fbb75229e779da1ad11eb80",
+          "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+          "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+          "maxVramGiB": 9
+        },
+        "capabilities": {
+          "modes": [
+            "txt2img"
+          ],
+          "maxReferenceImages": 0,
+          "maxWidth": 1024,
+          "maxHeight": 1024,
+          "supportsTransparency": false,
+          "textToImage": true,
+          "imageEditing": false,
+          "imageToImage": false,
+          "inpainting": false,
+          "referenceConditioning": false
+        },
+        "appearance": {
+          "category": "image",
+          "badge": "FP16+T5-Q4_K_M"
+        }
+      },
+      "appearance": {
+        "category": "image",
+        "badge": "FP16+T5-Q4_K_M"
+      },
+      "capabilities": {
+        "modes": [
+          "txt2img"
+        ],
+        "maxReferenceImages": 0,
+        "maxWidth": 1024,
+        "maxHeight": 1024,
+        "supportsTransparency": false,
+        "textToImage": true,
+        "imageEditing": false,
+        "imageToImage": false,
+        "inpainting": false,
+        "referenceConditioning": false
+      },
+      "defaults": {
+        "width": 512,
+        "height": 512,
+        "steps": 28,
+        "cfgScale": 4.5,
+        "seed": 20261009
+      },
+      "runtime": {
+        "type": "sd-cpp",
+        "family": "sd35",
+        "python": "runtime/core/.venv/Scripts/python.exe",
+        "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+        "release": "master-948-228c707",
+        "cudaDirectory": "runtime/cuda12",
+        "components": {
+          "model": "engines/sd35-medium/models/sd3.5_medium.safetensors",
+          "clipL": "engines/sd35-medium/models/clip_l.safetensors",
+          "clipG": "engines/sd35-medium/models/clip_g.safetensors",
+          "t5": "engines/sd35-medium/models/t5-v1_1-xxl-encoder-Q4_K_M.gguf"
+        },
+        "extraArgs": [
+          "--sampling-method",
+          "euler"
+        ],
+        "weightVariant": "FP16+T5-Q4_K_M",
+        "revision": "b940f670f0eda2d07fbb75229e779da1ad11eb80",
+        "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+        "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+        "maxVramGiB": 9
+      },
+      "files": [
+        {
+          "path": "engines/sd35-medium/models/sd3.5_medium.safetensors",
+          "size": 5107104286,
+          "url": "https://huggingface.co/stabilityai/stable-diffusion-3.5-medium/resolve/b940f670f0eda2d07fbb75229e779da1ad11eb80/sd3.5_medium.safetensors",
+          "mirrors": [],
+          "sourceRepo": "stabilityai/stable-diffusion-3.5-medium",
+          "sourceRevision": "b940f670f0eda2d07fbb75229e779da1ad11eb80",
+          "sha256": "11fe06e22364b823dfeedc275912336b932b32a293a0b2f35ffac071990cc4de",
+          "authRequired": true
+        },
+        {
+          "path": "engines/sd35-medium/models/clip_l.safetensors",
+          "size": 246144152,
+          "url": "https://huggingface.co/Comfy-Org/stable-diffusion-3.5-fp8/resolve/934251d1e6168bcb45a069abc5bd5cdd5f8fea00/text_encoders/clip_l.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Comfy-Org/stable-diffusion-3.5-fp8/resolve/934251d1e6168bcb45a069abc5bd5cdd5f8fea00/text_encoders/clip_l.safetensors"
+          ],
+          "sourceRepo": "Comfy-Org/stable-diffusion-3.5-fp8",
+          "sourceRevision": "934251d1e6168bcb45a069abc5bd5cdd5f8fea00",
+          "sha256": "660c6f5b1abae9dc498ac2d21e1347d2abdb0cf6c0c0c8576cd796491d9a6cdd"
+        },
+        {
+          "path": "engines/sd35-medium/models/clip_g.safetensors",
+          "size": 1389382176,
+          "url": "https://huggingface.co/Comfy-Org/stable-diffusion-3.5-fp8/resolve/934251d1e6168bcb45a069abc5bd5cdd5f8fea00/text_encoders/clip_g.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Comfy-Org/stable-diffusion-3.5-fp8/resolve/934251d1e6168bcb45a069abc5bd5cdd5f8fea00/text_encoders/clip_g.safetensors"
+          ],
+          "sourceRepo": "Comfy-Org/stable-diffusion-3.5-fp8",
+          "sourceRevision": "934251d1e6168bcb45a069abc5bd5cdd5f8fea00",
+          "sha256": "ec310df2af79c318e24d20511b601a591ca8cd4f1fce1d8dff822a356bcdb1f4"
+        },
+        {
+          "path": "engines/sd35-medium/models/t5-v1_1-xxl-encoder-Q4_K_M.gguf",
+          "size": 2896123072,
+          "url": "https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/005a6ea51a7d0b84d677b3e633bb52a8c85a83d9/t5-v1_1-xxl-encoder-Q4_K_M.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/city96/t5-v1_1-xxl-encoder-gguf/resolve/005a6ea51a7d0b84d677b3e633bb52a8c85a83d9/t5-v1_1-xxl-encoder-Q4_K_M.gguf"
+          ],
+          "sourceRepo": "city96/t5-v1_1-xxl-encoder-gguf",
+          "sourceRevision": "005a6ea51a7d0b84d677b3e633bb52a8c85a83d9",
+          "sha256": "6be2b0b7e2de7cf2919340c88cb802a103a997ce46c53131cec91958c1db1af4"
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/sd35-medium/models/sd3.5_medium.safetensors",
+          "size": 5107104286
+        },
+        {
+          "path": "engines/sd35-medium/models/clip_l.safetensors",
+          "size": 246144152
+        },
+        {
+          "path": "engines/sd35-medium/models/clip_g.safetensors",
+          "size": 1389382176
+        },
+        {
+          "path": "engines/sd35-medium/models/t5-v1_1-xxl-encoder-Q4_K_M.gguf",
+          "size": 2896123072
+        },
+        {
+          "path": "engines/sd35-medium/run.ps1"
+        },
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe"
+        },
+        {
+          "path": "runtime/core/.venv/Scripts/python.exe"
+        }
+      ],
+      "dependencies": [
+        "sd-cpp-image-runtime-948"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/image-run.ps1",
+          "target": "engines/sd35-medium/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "other",
+        "url": "https://huggingface.co/stabilityai/stable-diffusion-3.5-medium",
+        "notice": "模型与文本编码器、VAE、参考控制组件分别适用来源许可；安装前阅读对应模型卡。",
+        "requiresAcceptance": true
+      },
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12 GB",
+        "defaultResolution": "512x512",
+        "memoryPolicy": "CUDA 执行扩散与 VAE，文本编码及权重置于主机内存；VAE 分块。",
+        "measured": false,
+        "minimumRamGiB": 32
+      },
+      "validationStage": "researched",
+      "gpuVerified": false,
+      "remedy": "在应用内安装固定配方；安装检测只核对组件与 CLI 参数，实际 CUDA 生成需首次任务验证。",
+      "probes": [
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--backend",
+            "--params-backend",
+            "--width",
+            "--height"
+          ],
+          "timeout": 45
+        }
+      ],
+      "authRequired": true
+    },
+    {
+      "id": "flux1-schnell",
+      "engineId": "flux1-schnell",
+      "title": "4 步文生图 · FLUX.1 schnell Q4_0",
+      "kind": "image",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "固定 schnell Q4_0 与 Q4_K_M T5，4 步文字生成；不自动替换为 dev。",
+      "sourceUrl": "https://huggingface.co/leejet/FLUX.1-schnell-gguf",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 32,
+      "extractReserveBytes": 2147483648,
+      "manifest": {
+        "version": "0.7.0",
+        "source": "https://huggingface.co/leejet/FLUX.1-schnell-gguf",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "runtime": {
+          "type": "sd-cpp",
+          "family": "flux1",
+          "python": "runtime/core/.venv/Scripts/python.exe",
+          "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "release": "master-948-228c707",
+          "cudaDirectory": "runtime/cuda12",
+          "components": {
+            "diffusion": "engines/flux1-schnell/models/flux1-schnell-q4_0.gguf",
+            "clipL": "engines/flux1-schnell/models/clip_l.safetensors",
+            "t5": "engines/flux1-schnell/models/t5-v1_1-xxl-encoder-Q4_K_M.gguf",
+            "vae": "engines/flux1-schnell/models/ae.safetensors"
+          },
+          "extraArgs": [
+            "--sampling-method",
+            "euler"
+          ],
+          "weightVariant": "Q4_0",
+          "revision": "c7f665ddaf9f197ff493f41fc211f5480f5f19ac",
+          "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+          "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+          "maxVramGiB": 9
+        },
+        "capabilities": {
+          "modes": [
+            "txt2img"
+          ],
+          "maxReferenceImages": 0,
+          "maxWidth": 1024,
+          "maxHeight": 1024,
+          "supportsTransparency": false,
+          "textToImage": true,
+          "imageEditing": false,
+          "imageToImage": false,
+          "inpainting": false,
+          "referenceConditioning": false
+        },
+        "appearance": {
+          "category": "image",
+          "badge": "Q4_0"
+        }
+      },
+      "appearance": {
+        "category": "image",
+        "badge": "Q4_0"
+      },
+      "capabilities": {
+        "modes": [
+          "txt2img"
+        ],
+        "maxReferenceImages": 0,
+        "maxWidth": 1024,
+        "maxHeight": 1024,
+        "supportsTransparency": false,
+        "textToImage": true,
+        "imageEditing": false,
+        "imageToImage": false,
+        "inpainting": false,
+        "referenceConditioning": false
+      },
+      "defaults": {
+        "width": 512,
+        "height": 512,
+        "steps": 4,
+        "cfgScale": 1,
+        "seed": 20261009
+      },
+      "runtime": {
+        "type": "sd-cpp",
+        "family": "flux1",
+        "python": "runtime/core/.venv/Scripts/python.exe",
+        "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+        "release": "master-948-228c707",
+        "cudaDirectory": "runtime/cuda12",
+        "components": {
+          "diffusion": "engines/flux1-schnell/models/flux1-schnell-q4_0.gguf",
+          "clipL": "engines/flux1-schnell/models/clip_l.safetensors",
+          "t5": "engines/flux1-schnell/models/t5-v1_1-xxl-encoder-Q4_K_M.gguf",
+          "vae": "engines/flux1-schnell/models/ae.safetensors"
+        },
+        "extraArgs": [
+          "--sampling-method",
+          "euler"
+        ],
+        "weightVariant": "Q4_0",
+        "revision": "c7f665ddaf9f197ff493f41fc211f5480f5f19ac",
+        "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+        "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+        "maxVramGiB": 9
+      },
+      "files": [
+        {
+          "path": "engines/flux1-schnell/models/flux1-schnell-q4_0.gguf",
+          "size": 6884606880,
+          "url": "https://huggingface.co/leejet/FLUX.1-schnell-gguf/resolve/c7f665ddaf9f197ff493f41fc211f5480f5f19ac/flux1-schnell-q4_0.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/leejet/FLUX.1-schnell-gguf/resolve/c7f665ddaf9f197ff493f41fc211f5480f5f19ac/flux1-schnell-q4_0.gguf"
+          ],
+          "sourceRepo": "leejet/FLUX.1-schnell-gguf",
+          "sourceRevision": "c7f665ddaf9f197ff493f41fc211f5480f5f19ac",
+          "sha256": "4f30741d2bfc786c92934ce925fcb0a43df3441e76504b797c3d5d5f0878fa6f"
+        },
+        {
+          "path": "engines/flux1-schnell/models/clip_l.safetensors",
+          "size": 246144152,
+          "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/6af2a98e3f615bdfa612fbd85da93d1ed5f69ef5/clip_l.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/comfyanonymous/flux_text_encoders/resolve/6af2a98e3f615bdfa612fbd85da93d1ed5f69ef5/clip_l.safetensors"
+          ],
+          "sourceRepo": "comfyanonymous/flux_text_encoders",
+          "sourceRevision": "6af2a98e3f615bdfa612fbd85da93d1ed5f69ef5",
+          "sha256": "660c6f5b1abae9dc498ac2d21e1347d2abdb0cf6c0c0c8576cd796491d9a6cdd"
+        },
+        {
+          "path": "engines/flux1-schnell/models/t5-v1_1-xxl-encoder-Q4_K_M.gguf",
+          "size": 2896123072,
+          "url": "https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/005a6ea51a7d0b84d677b3e633bb52a8c85a83d9/t5-v1_1-xxl-encoder-Q4_K_M.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/city96/t5-v1_1-xxl-encoder-gguf/resolve/005a6ea51a7d0b84d677b3e633bb52a8c85a83d9/t5-v1_1-xxl-encoder-Q4_K_M.gguf"
+          ],
+          "sourceRepo": "city96/t5-v1_1-xxl-encoder-gguf",
+          "sourceRevision": "005a6ea51a7d0b84d677b3e633bb52a8c85a83d9",
+          "sha256": "6be2b0b7e2de7cf2919340c88cb802a103a997ce46c53131cec91958c1db1af4"
+        },
+        {
+          "path": "engines/flux1-schnell/models/ae.safetensors",
+          "size": 335304388,
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/6fc90a3b1b653e935a0d175e260736de25b84df5/split_files/vae/ae.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Comfy-Org/z_image_turbo/resolve/6fc90a3b1b653e935a0d175e260736de25b84df5/split_files/vae/ae.safetensors"
+          ],
+          "sourceRepo": "Comfy-Org/z_image_turbo",
+          "sourceRevision": "6fc90a3b1b653e935a0d175e260736de25b84df5",
+          "sha256": "afc8e28272cd15db3919bacdb6918ce9c1ed22e96cb12c4d5ed0fba823529e38"
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/flux1-schnell/models/flux1-schnell-q4_0.gguf",
+          "size": 6884606880
+        },
+        {
+          "path": "engines/flux1-schnell/models/clip_l.safetensors",
+          "size": 246144152
+        },
+        {
+          "path": "engines/flux1-schnell/models/t5-v1_1-xxl-encoder-Q4_K_M.gguf",
+          "size": 2896123072
+        },
+        {
+          "path": "engines/flux1-schnell/models/ae.safetensors",
+          "size": 335304388
+        },
+        {
+          "path": "engines/flux1-schnell/run.ps1"
+        },
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe"
+        },
+        {
+          "path": "runtime/core/.venv/Scripts/python.exe"
+        }
+      ],
+      "dependencies": [
+        "sd-cpp-image-runtime-948"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/image-run.ps1",
+          "target": "engines/flux1-schnell/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "apache-2.0",
+        "url": "https://huggingface.co/leejet/FLUX.1-schnell-gguf",
+        "notice": "模型与文本编码器、VAE、参考控制组件分别适用来源许可；安装前阅读对应模型卡。",
+        "requiresAcceptance": true
+      },
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12 GB",
+        "defaultResolution": "512x512",
+        "memoryPolicy": "CUDA 执行扩散与 VAE，文本编码及权重置于主机内存；VAE 分块。",
+        "measured": false,
+        "minimumRamGiB": 32
+      },
+      "validationStage": "researched",
+      "gpuVerified": false,
+      "remedy": "在应用内安装固定配方；安装检测只核对组件与 CLI 参数，实际 CUDA 生成需首次任务验证。",
+      "probes": [
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--backend",
+            "--params-backend",
+            "--width",
+            "--height"
+          ],
+          "timeout": 45
+        }
+      ]
+    },
+    {
+      "id": "pixart-sigma",
+      "engineId": "pixart-sigma",
+      "title": "轻量文字生图 · PixArt Sigma XL-2",
+      "kind": "image",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "固定 Sigma XL-2 diffusion transformer、配套 VAE 与 Q4_K_M T5；保留官方 1024 模型身份。",
+      "sourceUrl": "https://huggingface.co/PixArt-alpha/PixArt-Sigma-XL-2-1024-MS",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 2147483648,
+      "manifest": {
+        "version": "0.7.0",
+        "source": "https://huggingface.co/PixArt-alpha/PixArt-Sigma-XL-2-1024-MS",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "runtime": {
+          "type": "sd-cpp",
+          "family": "pixart",
+          "python": "runtime/core/.venv/Scripts/python.exe",
+          "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "release": "master-948-228c707",
+          "cudaDirectory": "runtime/cuda12",
+          "components": {
+            "diffusion": "engines/pixart-sigma/models/diffusion.safetensors",
+            "t5": "engines/pixart-sigma/models/t5-v1_1-xxl-encoder-Q4_K_M.gguf",
+            "vae": "engines/pixart-sigma/models/vae.safetensors"
+          },
+          "extraArgs": [
+            "--sampling-method",
+            "euler"
+          ],
+          "weightVariant": "FP32+T5-Q4_K_M",
+          "revision": "e102b3591cc82e97071b8b4cb90d834d0c487207",
+          "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+          "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+          "maxVramGiB": 9
+        },
+        "capabilities": {
+          "modes": [
+            "txt2img"
+          ],
+          "maxReferenceImages": 0,
+          "maxWidth": 1024,
+          "maxHeight": 1024,
+          "supportsTransparency": false,
+          "textToImage": true,
+          "imageEditing": false,
+          "imageToImage": false,
+          "inpainting": false,
+          "referenceConditioning": false
+        },
+        "appearance": {
+          "category": "image",
+          "badge": "FP32+T5-Q4_K_M"
+        }
+      },
+      "appearance": {
+        "category": "image",
+        "badge": "FP32+T5-Q4_K_M"
+      },
+      "capabilities": {
+        "modes": [
+          "txt2img"
+        ],
+        "maxReferenceImages": 0,
+        "maxWidth": 1024,
+        "maxHeight": 1024,
+        "supportsTransparency": false,
+        "textToImage": true,
+        "imageEditing": false,
+        "imageToImage": false,
+        "inpainting": false,
+        "referenceConditioning": false
+      },
+      "defaults": {
+        "width": 512,
+        "height": 512,
+        "steps": 20,
+        "cfgScale": 4.5,
+        "seed": 20261009
+      },
+      "runtime": {
+        "type": "sd-cpp",
+        "family": "pixart",
+        "python": "runtime/core/.venv/Scripts/python.exe",
+        "executable": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+        "release": "master-948-228c707",
+        "cudaDirectory": "runtime/cuda12",
+        "components": {
+          "diffusion": "engines/pixart-sigma/models/diffusion.safetensors",
+          "t5": "engines/pixart-sigma/models/t5-v1_1-xxl-encoder-Q4_K_M.gguf",
+          "vae": "engines/pixart-sigma/models/vae.safetensors"
+        },
+        "extraArgs": [
+          "--sampling-method",
+          "euler"
+        ],
+        "weightVariant": "FP32+T5-Q4_K_M",
+        "revision": "e102b3591cc82e97071b8b4cb90d834d0c487207",
+        "backend": "diffusion=cuda0,te=cpu,vae=cuda0",
+        "paramsBackend": "diffusion=cpu,te=cpu,vae=cpu",
+        "maxVramGiB": 9
+      },
+      "files": [
+        {
+          "path": "engines/pixart-sigma/models/diffusion.safetensors",
+          "size": 2443492488,
+          "url": "https://huggingface.co/PixArt-alpha/PixArt-Sigma-XL-2-1024-MS/resolve/e102b3591cc82e97071b8b4cb90d834d0c487207/transformer/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/PixArt-alpha/PixArt-Sigma-XL-2-1024-MS/resolve/e102b3591cc82e97071b8b4cb90d834d0c487207/transformer/diffusion_pytorch_model.safetensors"
+          ],
+          "sourceRepo": "PixArt-alpha/PixArt-Sigma-XL-2-1024-MS",
+          "sourceRevision": "e102b3591cc82e97071b8b4cb90d834d0c487207",
+          "sha256": "2fa4dee9229c02b03163f57bdb8e80c7a5ee364b7161796abe9c05e8dd13f239"
+        },
+        {
+          "path": "engines/pixart-sigma/models/t5-v1_1-xxl-encoder-Q4_K_M.gguf",
+          "size": 2896123072,
+          "url": "https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/005a6ea51a7d0b84d677b3e633bb52a8c85a83d9/t5-v1_1-xxl-encoder-Q4_K_M.gguf",
+          "mirrors": [
+            "https://hf-mirror.com/city96/t5-v1_1-xxl-encoder-gguf/resolve/005a6ea51a7d0b84d677b3e633bb52a8c85a83d9/t5-v1_1-xxl-encoder-Q4_K_M.gguf"
+          ],
+          "sourceRepo": "city96/t5-v1_1-xxl-encoder-gguf",
+          "sourceRevision": "005a6ea51a7d0b84d677b3e633bb52a8c85a83d9",
+          "sha256": "6be2b0b7e2de7cf2919340c88cb802a103a997ce46c53131cec91958c1db1af4"
+        },
+        {
+          "path": "engines/pixart-sigma/models/vae.safetensors",
+          "size": 334643238,
+          "url": "https://huggingface.co/PixArt-alpha/PixArt-Sigma-XL-2-1024-MS/resolve/e102b3591cc82e97071b8b4cb90d834d0c487207/vae/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/PixArt-alpha/PixArt-Sigma-XL-2-1024-MS/resolve/e102b3591cc82e97071b8b4cb90d834d0c487207/vae/diffusion_pytorch_model.safetensors"
+          ],
+          "sourceRepo": "PixArt-alpha/PixArt-Sigma-XL-2-1024-MS",
+          "sourceRevision": "e102b3591cc82e97071b8b4cb90d834d0c487207",
+          "sha256": "1b909373b28f2137098b0fd9dbc6f97f8410854f31f84ddc9fa04b077b0ace2c"
+        }
+      ],
+      "required": [
+        {
+          "path": "engines/pixart-sigma/models/diffusion.safetensors",
+          "size": 2443492488
+        },
+        {
+          "path": "engines/pixart-sigma/models/t5-v1_1-xxl-encoder-Q4_K_M.gguf",
+          "size": 2896123072
+        },
+        {
+          "path": "engines/pixart-sigma/models/vae.safetensors",
+          "size": 334643238
+        },
+        {
+          "path": "engines/pixart-sigma/run.ps1"
+        },
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe"
+        },
+        {
+          "path": "runtime/core/.venv/Scripts/python.exe"
+        }
+      ],
+      "dependencies": [
+        "sd-cpp-image-runtime-948"
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/image-run.ps1",
+          "target": "engines/pixart-sigma/run.ps1"
+        }
+      ],
+      "license": {
+        "label": "openrail++",
+        "url": "https://huggingface.co/PixArt-alpha/PixArt-Sigma-XL-2-1024-MS",
+        "notice": "模型与文本编码器、VAE、参考控制组件分别适用来源许可；安装前阅读对应模型卡。",
+        "requiresAcceptance": true
+      },
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12 GB",
+        "defaultResolution": "512x512",
+        "memoryPolicy": "CUDA 执行扩散与 VAE，文本编码及权重置于主机内存；VAE 分块。",
+        "measured": false,
+        "minimumRamGiB": 16
+      },
+      "validationStage": "researched",
+      "gpuVerified": false,
+      "remedy": "在应用内安装固定配方；安装检测只核对组件与 CLI 参数，实际 CUDA 生成需首次任务验证。",
+      "probes": [
+        {
+          "path": "runtime/sd-cpp/master-948-228c707/sd-cli.exe",
+          "args": [
+            "--help"
+          ],
+          "requiredFlags": [
+            "--backend",
+            "--params-backend",
+            "--width",
+            "--height"
+          ],
+          "timeout": 45
+        }
+      ]
+    },
+    {
+      "id": "sana-sprint-06",
+      "engineId": "sana-sprint-06",
+      "title": "2 步生图与重绘 · Sana Sprint 0.6B",
+      "kind": "image",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "固定 Diffusers 原生管线，2 步生成与图生图；关闭内部尺寸分桶，按顶层请求生成。",
+      "sourceUrl": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 10737418240,
+      "files": [
+        {
+          "path": "engines/sana-sprint-06/models/LICENSE",
+          "size": 11358,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/LICENSE",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/LICENSE"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "gitBlobSha1": "d645695673349e3947e8e5ae42332d0ac3164cd7"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/model_index.json",
+          "size": 392,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/model_index.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/model_index.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "gitBlobSha1": "795d41a9eaf524bb0d84fbac6a325609d4f737d1"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/scheduler/scheduler_config.json",
+          "size": 160,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/scheduler/scheduler_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/scheduler/scheduler_config.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "gitBlobSha1": "6d3081b117d2ea1c4db209edf5914a80c9ed754e"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/text_encoder/config.json",
+          "size": 890,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/text_encoder/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/text_encoder/config.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "gitBlobSha1": "b9834570dc12b608f336a00e3f81658d17a85b6c"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/text_encoder/model-00001-of-00002.safetensors",
+          "size": 4988024144,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/text_encoder/model-00001-of-00002.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/text_encoder/model-00001-of-00002.safetensors"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "sha256": "e909230aabafad02d097c7dc02f2ae062b4e6b0593477c1f07679d277e09ce71"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/text_encoder/model-00002-of-00002.safetensors",
+          "size": 240691624,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/text_encoder/model-00002-of-00002.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/text_encoder/model-00002-of-00002.safetensors"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "sha256": "48e14f6b7a917e54cabc4ff2047ac2bfe0dae663e771eed3a8acf4ea27dcac18"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/text_encoder/model.safetensors.index.json",
+          "size": 22495,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/text_encoder/model.safetensors.index.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/text_encoder/model.safetensors.index.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "gitBlobSha1": "36d550130eb056ee9c28e438c0e3d1b28fddab84"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/tokenizer/special_tokens_map.json",
+          "size": 636,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/tokenizer/special_tokens_map.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/tokenizer/special_tokens_map.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "gitBlobSha1": "8d6368f7e735fbe4781bf6e956b7c6ad0586df80"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/tokenizer/tokenizer.json",
+          "size": 34362873,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/tokenizer/tokenizer.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/tokenizer/tokenizer.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "sha256": "5f7eee611703c5ce5d1eee32d9cdcfe465647b8aff0c1dfb3bed7ad7dbb05060"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/tokenizer/tokenizer.model",
+          "size": 4241003,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/tokenizer/tokenizer.model",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/tokenizer/tokenizer.model"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "sha256": "61a7b147390c64585d6c3543dd6fc636906c9af3865a5548f27f31aee1d4c8e2"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/tokenizer/tokenizer_config.json",
+          "size": 46996,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/tokenizer/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/tokenizer/tokenizer_config.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "gitBlobSha1": "36ba12877e7efaba5252f7b17ab337a59d953563"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/transformer/config.json",
+          "size": 648,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/transformer/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/transformer/config.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "gitBlobSha1": "e0d55e9165c1992b9c98e16afeb397548e705f57"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/transformer/diffusion_pytorch_model.safetensors",
+          "size": 1187078584,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/transformer/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/transformer/diffusion_pytorch_model.safetensors"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "sha256": "9069dd697395b96a59d1f74837461f7aeb3d95e55b67fa85c9f31c9106b65e87"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/vae/config.json",
+          "size": 1280,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/vae/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/vae/config.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "gitBlobSha1": "e265030c18bc640fa24267beb2a92c3a187cba5b"
+        },
+        {
+          "path": "engines/sana-sprint-06/models/vae/diffusion_pytorch_model.safetensors",
+          "size": 1249044836,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/vae/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers/resolve/aa76e7f4f4928f378716b6716a2130fba3caf5b1/vae/diffusion_pytorch_model.safetensors"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+          "sourceRevision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "sha256": "dfd991d1b54ffabf22745c5885589d8f2a7bc59930d95d92bd741c4fc64454bb"
+        }
+      ],
+      "manifest": {
+        "version": "0.7.0",
+        "source": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "runtime": {
+          "type": "diffusers",
+          "family": "sana-sprint",
+          "python": "engines/sana-sprint-06/.venv/Scripts/python.exe",
+          "modelDirectory": "engines/sana-sprint-06/models",
+          "weightVariant": "0.6B-BF16",
+          "revision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+          "useResolutionBinning": false,
+          "diffusersVersion": "0.35.1"
+        },
+        "capabilities": {
+          "modes": [
+            "txt2img",
+            "img2img"
+          ],
+          "maxReferenceImages": 1,
+          "maxWidth": 1024,
+          "maxHeight": 1024,
+          "supportsTransparency": false,
+          "supportsNegativePrompt": false,
+          "textToImage": true,
+          "imageToImage": true
+        },
+        "appearance": {
+          "category": "image",
+          "badge": "0.6B"
+        }
+      },
+      "appearance": {
+        "category": "image",
+        "badge": "0.6B"
+      },
+      "capabilities": {
+        "modes": [
+          "txt2img",
+          "img2img"
+        ],
+        "maxReferenceImages": 1,
+        "maxWidth": 1024,
+        "maxHeight": 1024,
+        "supportsTransparency": false,
+        "supportsNegativePrompt": false,
+        "textToImage": true,
+        "imageToImage": true
+      },
+      "runtime": {
+        "type": "diffusers",
+        "family": "sana-sprint",
+        "python": "engines/sana-sprint-06/.venv/Scripts/python.exe",
+        "modelDirectory": "engines/sana-sprint-06/models",
+        "weightVariant": "0.6B-BF16",
+        "revision": "aa76e7f4f4928f378716b6716a2130fba3caf5b1",
+        "useResolutionBinning": false,
+        "diffusersVersion": "0.35.1"
+      },
+      "defaults": {
+        "width": 512,
+        "height": 512,
+        "steps": 2,
+        "cfgScale": 4.5,
+        "seed": 20261009
+      },
+      "adapters": [
+        {
+          "source": "scripts/providers/image-run.ps1",
+          "target": "engines/sana-sprint-06/run.ps1"
+        }
+      ],
+      "dependencies": [],
+      "deploymentProfile": "sana-sprint-06",
+      "required": [
+        {
+          "path": "engines/sana-sprint-06/models/LICENSE",
+          "size": 11358
+        },
+        {
+          "path": "engines/sana-sprint-06/models/model_index.json",
+          "size": 392
+        },
+        {
+          "path": "engines/sana-sprint-06/models/scheduler/scheduler_config.json",
+          "size": 160
+        },
+        {
+          "path": "engines/sana-sprint-06/models/text_encoder/config.json",
+          "size": 890
+        },
+        {
+          "path": "engines/sana-sprint-06/models/text_encoder/model-00001-of-00002.safetensors",
+          "size": 4988024144
+        },
+        {
+          "path": "engines/sana-sprint-06/models/text_encoder/model-00002-of-00002.safetensors",
+          "size": 240691624
+        },
+        {
+          "path": "engines/sana-sprint-06/models/text_encoder/model.safetensors.index.json",
+          "size": 22495
+        },
+        {
+          "path": "engines/sana-sprint-06/models/tokenizer/special_tokens_map.json",
+          "size": 636
+        },
+        {
+          "path": "engines/sana-sprint-06/models/tokenizer/tokenizer.json",
+          "size": 34362873
+        },
+        {
+          "path": "engines/sana-sprint-06/models/tokenizer/tokenizer.model",
+          "size": 4241003
+        },
+        {
+          "path": "engines/sana-sprint-06/models/tokenizer/tokenizer_config.json",
+          "size": 46996
+        },
+        {
+          "path": "engines/sana-sprint-06/models/transformer/config.json",
+          "size": 648
+        },
+        {
+          "path": "engines/sana-sprint-06/models/transformer/diffusion_pytorch_model.safetensors",
+          "size": 1187078584
+        },
+        {
+          "path": "engines/sana-sprint-06/models/vae/config.json",
+          "size": 1280
+        },
+        {
+          "path": "engines/sana-sprint-06/models/vae/diffusion_pytorch_model.safetensors",
+          "size": 1249044836
+        },
+        {
+          "path": "engines/sana-sprint-06/run.ps1"
+        },
+        {
+          "path": "engines/sana-sprint-06/.venv/Scripts/python.exe"
+        }
+      ],
+      "license": {
+        "label": "Apache-2.0 / Gemma 文本编码器许可",
+        "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_0.6B_1024px_diffusers",
+        "notice": "Sana Sprint 适用 Apache-2.0；随模型发布的 Gemma 文本编码器同时适用 Gemma 使用条款。请阅读来源模型卡和 Google Gemma 条款。",
+        "requiresAcceptance": true
+      },
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12 GB",
+        "defaultResolution": "512x512",
+        "memoryPolicy": "CUDA 执行，模型逐模块移入 GPU，VAE 分块。",
+        "measured": false
+      },
+      "validationStage": "researched",
+      "gpuVerified": false,
+      "remedy": "应用内安装固定权重与独立 Python 3.11 环境；首次 GPU 生成结果仍需验收。"
+    },
+    {
+      "id": "sana-sprint-16",
+      "engineId": "sana-sprint-16",
+      "title": "2 步生图与重绘 · Sana Sprint 1.6B",
+      "kind": "image",
+      "version": "0.7.0",
+      "mediaAdapter": true,
+      "description": "固定 Diffusers 原生管线，2 步生成与图生图；关闭内部尺寸分桶，按顶层请求生成。",
+      "sourceUrl": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+      "recommended": false,
+      "minimumVramMiB": 12288,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 10737418240,
+      "files": [
+        {
+          "path": "engines/sana-sprint-16/models/LICENSE",
+          "size": 11358,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/LICENSE",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/LICENSE"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "gitBlobSha1": "d645695673349e3947e8e5ae42332d0ac3164cd7"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/model_index.json",
+          "size": 392,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/model_index.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/model_index.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "gitBlobSha1": "795d41a9eaf524bb0d84fbac6a325609d4f737d1"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/scheduler/scheduler_config.json",
+          "size": 160,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/scheduler/scheduler_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/scheduler/scheduler_config.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "gitBlobSha1": "6d3081b117d2ea1c4db209edf5914a80c9ed754e"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/text_encoder/config.json",
+          "size": 890,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/text_encoder/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/text_encoder/config.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "gitBlobSha1": "b9834570dc12b608f336a00e3f81658d17a85b6c"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/text_encoder/model-00001-of-00002.safetensors",
+          "size": 4988024144,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/text_encoder/model-00001-of-00002.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/text_encoder/model-00001-of-00002.safetensors"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "sha256": "e909230aabafad02d097c7dc02f2ae062b4e6b0593477c1f07679d277e09ce71"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/text_encoder/model-00002-of-00002.safetensors",
+          "size": 240691624,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/text_encoder/model-00002-of-00002.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/text_encoder/model-00002-of-00002.safetensors"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "sha256": "48e14f6b7a917e54cabc4ff2047ac2bfe0dae663e771eed3a8acf4ea27dcac18"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/text_encoder/model.safetensors.index.json",
+          "size": 22495,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/text_encoder/model.safetensors.index.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/text_encoder/model.safetensors.index.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "gitBlobSha1": "36d550130eb056ee9c28e438c0e3d1b28fddab84"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/tokenizer/special_tokens_map.json",
+          "size": 636,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/tokenizer/special_tokens_map.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/tokenizer/special_tokens_map.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "gitBlobSha1": "8d6368f7e735fbe4781bf6e956b7c6ad0586df80"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/tokenizer/tokenizer.json",
+          "size": 34362873,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/tokenizer/tokenizer.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/tokenizer/tokenizer.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "sha256": "5f7eee611703c5ce5d1eee32d9cdcfe465647b8aff0c1dfb3bed7ad7dbb05060"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/tokenizer/tokenizer.model",
+          "size": 4241003,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/tokenizer/tokenizer.model",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/tokenizer/tokenizer.model"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "sha256": "61a7b147390c64585d6c3543dd6fc636906c9af3865a5548f27f31aee1d4c8e2"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/tokenizer/tokenizer_config.json",
+          "size": 46996,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/tokenizer/tokenizer_config.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/tokenizer/tokenizer_config.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "gitBlobSha1": "36ba12877e7efaba5252f7b17ab337a59d953563"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/transformer/config.json",
+          "size": 624,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/transformer/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/transformer/config.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "gitBlobSha1": "fb69cb8e561b37527dff0ab0c3327a3b4699fa93"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/transformer/diffusion_pytorch_model.safetensors",
+          "size": 3220530536,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/transformer/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/transformer/diffusion_pytorch_model.safetensors"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "sha256": "effac51c73537487ac1505993f0e7fbd292c310b23aae96f2c3e53131e876f2d"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/vae/config.json",
+          "size": 1280,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/vae/config.json",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/vae/config.json"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "gitBlobSha1": "e265030c18bc640fa24267beb2a92c3a187cba5b"
+        },
+        {
+          "path": "engines/sana-sprint-16/models/vae/diffusion_pytorch_model.safetensors",
+          "size": 1249044836,
+          "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/vae/diffusion_pytorch_model.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers/resolve/19683c58b7ea290e55cedd8950ae1d86ada7ef96/vae/diffusion_pytorch_model.safetensors"
+          ],
+          "sourceRepo": "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+          "sourceRevision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "sha256": "dfd991d1b54ffabf22745c5885589d8f2a7bc59930d95d92bd741c4fc64454bb"
+        }
+      ],
+      "manifest": {
+        "version": "0.7.0",
+        "source": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+        "entrypoint": "run.ps1",
+        "mediaAdapter": true,
+        "runtime": {
+          "type": "diffusers",
+          "family": "sana-sprint",
+          "python": "engines/sana-sprint-16/.venv/Scripts/python.exe",
+          "modelDirectory": "engines/sana-sprint-16/models",
+          "weightVariant": "1.6B-BF16",
+          "revision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+          "useResolutionBinning": false,
+          "diffusersVersion": "0.35.1"
+        },
+        "capabilities": {
+          "modes": [
+            "txt2img",
+            "img2img"
+          ],
+          "maxReferenceImages": 1,
+          "maxWidth": 1024,
+          "maxHeight": 1024,
+          "supportsTransparency": false,
+          "supportsNegativePrompt": false,
+          "textToImage": true,
+          "imageToImage": true
+        },
+        "appearance": {
+          "category": "image",
+          "badge": "1.6B"
+        }
+      },
+      "appearance": {
+        "category": "image",
+        "badge": "1.6B"
+      },
+      "capabilities": {
+        "modes": [
+          "txt2img",
+          "img2img"
+        ],
+        "maxReferenceImages": 1,
+        "maxWidth": 1024,
+        "maxHeight": 1024,
+        "supportsTransparency": false,
+        "supportsNegativePrompt": false,
+        "textToImage": true,
+        "imageToImage": true
+      },
+      "runtime": {
+        "type": "diffusers",
+        "family": "sana-sprint",
+        "python": "engines/sana-sprint-16/.venv/Scripts/python.exe",
+        "modelDirectory": "engines/sana-sprint-16/models",
+        "weightVariant": "1.6B-BF16",
+        "revision": "19683c58b7ea290e55cedd8950ae1d86ada7ef96",
+        "useResolutionBinning": false,
+        "diffusersVersion": "0.35.1"
+      },
+      "defaults": {
+        "width": 512,
+        "height": 512,
+        "steps": 2,
+        "cfgScale": 4.5,
+        "seed": 20261009
+      },
+      "adapters": [
+        {
+          "source": "scripts/providers/image-run.ps1",
+          "target": "engines/sana-sprint-16/run.ps1"
+        }
+      ],
+      "dependencies": [],
+      "deploymentProfile": "sana-sprint-16",
+      "required": [
+        {
+          "path": "engines/sana-sprint-16/models/LICENSE",
+          "size": 11358
+        },
+        {
+          "path": "engines/sana-sprint-16/models/model_index.json",
+          "size": 392
+        },
+        {
+          "path": "engines/sana-sprint-16/models/scheduler/scheduler_config.json",
+          "size": 160
+        },
+        {
+          "path": "engines/sana-sprint-16/models/text_encoder/config.json",
+          "size": 890
+        },
+        {
+          "path": "engines/sana-sprint-16/models/text_encoder/model-00001-of-00002.safetensors",
+          "size": 4988024144
+        },
+        {
+          "path": "engines/sana-sprint-16/models/text_encoder/model-00002-of-00002.safetensors",
+          "size": 240691624
+        },
+        {
+          "path": "engines/sana-sprint-16/models/text_encoder/model.safetensors.index.json",
+          "size": 22495
+        },
+        {
+          "path": "engines/sana-sprint-16/models/tokenizer/special_tokens_map.json",
+          "size": 636
+        },
+        {
+          "path": "engines/sana-sprint-16/models/tokenizer/tokenizer.json",
+          "size": 34362873
+        },
+        {
+          "path": "engines/sana-sprint-16/models/tokenizer/tokenizer.model",
+          "size": 4241003
+        },
+        {
+          "path": "engines/sana-sprint-16/models/tokenizer/tokenizer_config.json",
+          "size": 46996
+        },
+        {
+          "path": "engines/sana-sprint-16/models/transformer/config.json",
+          "size": 624
+        },
+        {
+          "path": "engines/sana-sprint-16/models/transformer/diffusion_pytorch_model.safetensors",
+          "size": 3220530536
+        },
+        {
+          "path": "engines/sana-sprint-16/models/vae/config.json",
+          "size": 1280
+        },
+        {
+          "path": "engines/sana-sprint-16/models/vae/diffusion_pytorch_model.safetensors",
+          "size": 1249044836
+        },
+        {
+          "path": "engines/sana-sprint-16/run.ps1"
+        },
+        {
+          "path": "engines/sana-sprint-16/.venv/Scripts/python.exe"
+        }
+      ],
+      "license": {
+        "label": "Apache-2.0 / Gemma 文本编码器许可",
+        "url": "https://huggingface.co/Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers",
+        "notice": "Sana Sprint 适用 Apache-2.0；随模型发布的 Gemma 文本编码器同时适用 Gemma 使用条款。请阅读来源模型卡和 Google Gemma 条款。",
+        "requiresAcceptance": true
+      },
+      "resourceProfile": {
+        "targetGpu": "RTX 3060 12 GB",
+        "defaultResolution": "512x512",
+        "memoryPolicy": "CUDA 执行，模型逐模块移入 GPU，VAE 分块。",
+        "measured": false
+      },
+      "validationStage": "researched",
+      "gpuVerified": false,
+      "remedy": "应用内安装固定权重与独立 Python 3.11 环境；首次 GPU 生成结果仍需验收。"
+    },
+    {
+      "id": "hunyuan-shape-runtime-07",
+      "title": "Hunyuan几何共用环境 · 独立目录",
+      "kind": "utility",
+      "supportOnly": true,
+      "deploymentProfile": "hunyuan-shape-runtime-07",
+      "files": [],
+      "required": [
+        {
+          "path": "model-lab/hunyuan-shape/.venv/Scripts/python.exe"
+        },
+        {
+          "path": "model-lab/hunyuan-shape/src/hy3dgen/shapegen/pipelines.py"
+        }
+      ],
+      "sourceUrl": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2/tree/f8db63096c8282cb27354314d896feba5ba6ff8a",
+      "license": {
+        "label": "Tencent Hunyuan3D Community License",
+        "url": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2/blob/f8db63096c8282cb27354314d896feba5ba6ff8a/LICENSE",
+        "requiresAcceptance": true,
+        "notice": "固定源代码及依赖各有许可；独立环境保留原有Hunyuan组件。"
+      },
+      "validationStage": "researched",
+      "installable": false,
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included",
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。"
+    },
+    {
+      "id": "hunyuan3d-mini-turbo",
+      "engineId": "hunyuan3d-mini-turbo",
+      "title": "Hunyuan3D Mini Turbo · 单图白模",
+      "kind": "model",
+      "version": "0.7.0",
+      "appearance": "geometry",
+      "installable": false,
+      "recommended": false,
+      "description": "一张图生成白模，另行上色；FlashVDM加速档。",
+      "sourceUrl": "https://huggingface.co/tencent/Hunyuan3D-2mini",
+      "dependencies": [
+        "hunyuan-shape-runtime-07",
+        "image-preparation"
+      ],
+      "minimumVramMiB": 6144,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 1073741824,
+      "files": [
+        {
+          "path": "model-lab/hunyuan3d-mini-turbo/models/hunyuan3d-dit-v2-mini-turbo/config.yaml",
+          "size": 1664,
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-dit-v2-mini-turbo/config.yaml",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-dit-v2-mini-turbo/config.yaml"
+          ],
+          "gitBlobSha1": "70a77756aaa5429626f4106e2cd882ca494221ab"
+        },
+        {
+          "path": "model-lab/hunyuan3d-mini-turbo/models/hunyuan3d-dit-v2-mini-turbo/model.fp16.safetensors",
+          "size": 3822584202,
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-dit-v2-mini-turbo/model.fp16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-dit-v2-mini-turbo/model.fp16.safetensors"
+          ],
+          "sha256": "bdbcef30dd0149a281e17d5b5b1fdad1122c904e098a42f3100e04e03c247bc4"
+        },
+        {
+          "path": "model-lab/hunyuan3d-mini-turbo/models/hunyuan3d-vae-v2-mini-turbo/config.yaml",
+          "size": 335,
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-vae-v2-mini-turbo/config.yaml",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-vae-v2-mini-turbo/config.yaml"
+          ],
+          "gitBlobSha1": "e27bf69954e893d82127624b2b646d73ee610c08"
+        },
+        {
+          "path": "model-lab/hunyuan3d-mini-turbo/models/hunyuan3d-vae-v2-mini-turbo/model.fp16.safetensors",
+          "size": 407410402,
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-vae-v2-mini-turbo/model.fp16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mini/resolve/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-vae-v2-mini-turbo/model.fp16.safetensors"
+          ],
+          "sha256": "5dcaca67a8da9e7079fb7b55714a572d0651ac95983bb43099913feaf6738f94"
+        }
+      ],
+      "required": [
+        {
+          "path": "model-lab/hunyuan3d-mini-turbo/models/hunyuan3d-dit-v2-mini-turbo/config.yaml",
+          "size": 1664
+        },
+        {
+          "path": "model-lab/hunyuan3d-mini-turbo/models/hunyuan3d-dit-v2-mini-turbo/model.fp16.safetensors",
+          "size": 3822584202
+        },
+        {
+          "path": "model-lab/hunyuan3d-mini-turbo/models/hunyuan3d-vae-v2-mini-turbo/config.yaml",
+          "size": 335
+        },
+        {
+          "path": "model-lab/hunyuan3d-mini-turbo/models/hunyuan3d-vae-v2-mini-turbo/model.fp16.safetensors",
+          "size": 407410402
+        },
+        {
+          "path": "engines/hunyuan3d-mini-turbo/run.ps1"
+        }
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/3d-run.ps1",
+          "target": "engines/hunyuan3d-mini-turbo/run.ps1"
+        }
+      ],
+      "runtime": {
+        "family": "hunyuan2",
+        "sourceDirectory": "model-lab/hunyuan-shape/src",
+        "python": "model-lab/hunyuan-shape/.venv/Scripts/python.exe",
+        "modelDirectory": "model-lab/hunyuan3d-mini-turbo/models",
+        "subfolder": "hunyuan3d-dit-v2-mini-turbo",
+        "jointMultiview": false,
+        "flashVDM": true,
+        "useSafetensors": true,
+        "turboVae": {
+          "directory": "model-lab/hunyuan3d-mini-turbo/models",
+          "subfolder": "hunyuan3d-vae-v2-mini-turbo"
+        },
+        "revision": "f8db63096c8282cb27354314d896feba5ba6ff8a"
+      },
+      "capabilities": {
+        "multiView": false,
+        "views": [],
+        "maxReferenceImages": 1
+      },
+      "defaults": {
+        "steps": 5,
+        "resolution": 256,
+        "cfgScale": 1.01
+      },
+      "license": {
+        "label": "Tencent Hunyuan3D Community License",
+        "url": "https://huggingface.co/tencent/Hunyuan3D-2mini/blob/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/LICENSE",
+        "requiresAcceptance": true,
+        "notice": "遵守对应腾讯模型及代码许可，白模不包含PBR贴图。"
+      },
+      "resourceProfile": {
+        "tier": "experimental",
+        "label": "12 GB可试 · 加速档待实测",
+        "minVramGiB": 6,
+        "minRamGiB": 16,
+        "note": "少步采样不代表相同画质，实际速度需本机验证。"
+      },
+      "validationStage": "researched",
+      "probes": [
+        {
+          "path": "model-lab/hunyuan-shape/.venv/Scripts/python.exe",
+          "args": [
+            "@root:scripts/providers/3d-run.py",
+            "--root",
+            "@root",
+            "--engine",
+            "hunyuan3d-mini-turbo",
+            "--check"
+          ],
+          "timeout": 90
+        }
+      ],
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included",
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。"
+    },
+    {
+      "id": "hunyuan3d-mv-turbo",
+      "engineId": "hunyuan3d-mv-turbo",
+      "title": "Hunyuan3D 多视角 Turbo · 白模",
+      "kind": "model",
+      "version": "0.7.0",
+      "appearance": "geometry",
+      "installable": false,
+      "recommended": false,
+      "description": "多角度联合生成一个白模，另行上色；FlashVDM加速档。",
+      "sourceUrl": "https://huggingface.co/tencent/Hunyuan3D-2mv",
+      "dependencies": [
+        "hunyuan-shape-runtime-07",
+        "image-preparation"
+      ],
+      "minimumVramMiB": 6144,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 1073741824,
+      "files": [
+        {
+          "path": "model-lab/hunyuan3d-mv-turbo/models/hunyuan3d-dit-v2-mv-turbo/config.yaml",
+          "size": 1667,
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/hunyuan3d-dit-v2-mv-turbo/config.yaml",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/hunyuan3d-dit-v2-mv-turbo/config.yaml"
+          ],
+          "gitBlobSha1": "9d36691622a301b7962d11107e6e032ee411315d"
+        },
+        {
+          "path": "model-lab/hunyuan3d-mv-turbo/models/hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors",
+          "size": 4930777530,
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2mv/resolve/3a761b539b29fe4ff64714813aa9560fd66f5de0/hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors"
+          ],
+          "sha256": "172d7a989b99f66af760da0080d8c6f6350c72609536cf0c55b87a4afa574e45"
+        },
+        {
+          "path": "model-lab/hunyuan3d-mv-turbo/models/hunyuan3d-vae-v2-0-turbo/config.yaml",
+          "size": 336,
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-vae-v2-0-turbo/config.yaml",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-vae-v2-0-turbo/config.yaml"
+          ],
+          "gitBlobSha1": "d4bf4d5ee1874c8e828a5296ff5e44d4fcb5b349"
+        },
+        {
+          "path": "model-lab/hunyuan3d-mv-turbo/models/hunyuan3d-vae-v2-0-turbo/model.fp16.safetensors",
+          "size": 407410402,
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-vae-v2-0-turbo/model.fp16.safetensors",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2/resolve/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-vae-v2-0-turbo/model.fp16.safetensors"
+          ],
+          "sha256": "66b7af697118db2de00c22f63a385c75f9049709739281971837af9e4ce31cb4"
+        }
+      ],
+      "required": [
+        {
+          "path": "model-lab/hunyuan3d-mv-turbo/models/hunyuan3d-dit-v2-mv-turbo/config.yaml",
+          "size": 1667
+        },
+        {
+          "path": "model-lab/hunyuan3d-mv-turbo/models/hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors",
+          "size": 4930777530
+        },
+        {
+          "path": "model-lab/hunyuan3d-mv-turbo/models/hunyuan3d-vae-v2-0-turbo/config.yaml",
+          "size": 336
+        },
+        {
+          "path": "model-lab/hunyuan3d-mv-turbo/models/hunyuan3d-vae-v2-0-turbo/model.fp16.safetensors",
+          "size": 407410402
+        },
+        {
+          "path": "engines/hunyuan3d-mv-turbo/run.ps1"
+        }
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/3d-run.ps1",
+          "target": "engines/hunyuan3d-mv-turbo/run.ps1"
+        }
+      ],
+      "runtime": {
+        "family": "hunyuan2",
+        "sourceDirectory": "model-lab/hunyuan-shape/src",
+        "python": "model-lab/hunyuan-shape/.venv/Scripts/python.exe",
+        "modelDirectory": "model-lab/hunyuan3d-mv-turbo/models",
+        "subfolder": "hunyuan3d-dit-v2-mv-turbo",
+        "jointMultiview": true,
+        "flashVDM": true,
+        "useSafetensors": true,
+        "turboVae": {
+          "directory": "model-lab/hunyuan3d-mv-turbo/models",
+          "subfolder": "hunyuan3d-vae-v2-0-turbo"
+        },
+        "revision": "f8db63096c8282cb27354314d896feba5ba6ff8a"
+      },
+      "capabilities": {
+        "multiView": true,
+        "views": [
+          "left",
+          "back",
+          "right"
+        ],
+        "maxReferenceImages": 4
+      },
+      "defaults": {
+        "steps": 5,
+        "resolution": 256,
+        "cfgScale": 1.01
+      },
+      "license": {
+        "label": "Tencent Hunyuan3D Community License",
+        "url": "https://huggingface.co/tencent/Hunyuan3D-2mv/blob/3a761b539b29fe4ff64714813aa9560fd66f5de0/LICENSE",
+        "requiresAcceptance": true,
+        "notice": "遵守对应腾讯模型及代码许可，白模不包含PBR贴图。"
+      },
+      "resourceProfile": {
+        "tier": "experimental",
+        "label": "12 GB可试 · 加速档待实测",
+        "minVramGiB": 6,
+        "minRamGiB": 16,
+        "note": "少步采样不代表相同画质，实际速度需本机验证。"
+      },
+      "validationStage": "researched",
+      "probes": [
+        {
+          "path": "model-lab/hunyuan-shape/.venv/Scripts/python.exe",
+          "args": [
+            "@root:scripts/providers/3d-run.py",
+            "--root",
+            "@root",
+            "--engine",
+            "hunyuan3d-mv-turbo",
+            "--check"
+          ],
+          "timeout": 90
+        }
+      ],
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included",
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。"
+    },
+    {
+      "id": "hunyuan3d-21-shape",
+      "engineId": "hunyuan3d-21-shape",
+      "title": "Hunyuan3D 2.1 · 仅几何白模",
+      "kind": "model",
+      "version": "0.7.0",
+      "appearance": "geometry",
+      "installable": false,
+      "description": "一张图生成白模；此项仅安装几何，未包含21GB显存的Paint2.1。",
+      "sourceUrl": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1",
+      "dependencies": [
+        "image-preparation"
+      ],
+      "deploymentProfile": "hunyuan-shape21-07",
+      "minimumVramMiB": 10240,
+      "minimumRamGiB": 16,
+      "extractReserveBytes": 3221225472,
+      "files": [
+        {
+          "path": "cache/setup/hunyuan21-source-82920d64.zip",
+          "size": 155825200,
+          "sha256": "1c560ba93e2471305276f36170a7e3c3857f39b14313790533dbc06ab01ed2a3",
+          "url": "https://codeload.github.com/Tencent-Hunyuan/Hunyuan3D-2.1/zip/82920d643c0dc2f7bfd7255f45f62d386edfe60c",
+          "extractTo": "model-lab/hunyuan-shape21/src",
+          "stripPrefix": "Hunyuan3D-2.1-82920d643c0dc2f7bfd7255f45f62d386edfe60c/"
+        },
+        {
+          "path": "model-lab/hunyuan-shape21/models/hunyuan3d-dit-v2-1/config.yaml",
+          "size": 2078,
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2.1/resolve/0b94677654c57bb9a6b6845cd7b704ccf551d327/hunyuan3d-dit-v2-1/config.yaml",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2.1/resolve/0b94677654c57bb9a6b6845cd7b704ccf551d327/hunyuan3d-dit-v2-1/config.yaml"
+          ],
+          "gitBlobSha1": "695b7d5c6ba96a7f1f849430da23b21c682d8116"
+        },
+        {
+          "path": "model-lab/hunyuan-shape21/models/hunyuan3d-dit-v2-1/model.fp16.ckpt",
+          "size": 7366389768,
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2.1/resolve/0b94677654c57bb9a6b6845cd7b704ccf551d327/hunyuan3d-dit-v2-1/model.fp16.ckpt",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2.1/resolve/0b94677654c57bb9a6b6845cd7b704ccf551d327/hunyuan3d-dit-v2-1/model.fp16.ckpt"
+          ],
+          "sha256": "6b519fc7242f78e9b5f47ea4d55668fe3d944a2d27332f4ca68d29a6ff603f5e"
+        },
+        {
+          "path": "model-lab/hunyuan-shape21/models/hunyuan3d-vae-v2-1/config.yaml",
+          "size": 409,
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2.1/resolve/0b94677654c57bb9a6b6845cd7b704ccf551d327/hunyuan3d-vae-v2-1/config.yaml",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2.1/resolve/0b94677654c57bb9a6b6845cd7b704ccf551d327/hunyuan3d-vae-v2-1/config.yaml"
+          ],
+          "gitBlobSha1": "2421cf01f208851258a045d3d85ac4a01f93b6ed"
+        },
+        {
+          "path": "model-lab/hunyuan-shape21/models/hunyuan3d-vae-v2-1/model.fp16.ckpt",
+          "size": 655648152,
+          "url": "https://huggingface.co/tencent/Hunyuan3D-2.1/resolve/0b94677654c57bb9a6b6845cd7b704ccf551d327/hunyuan3d-vae-v2-1/model.fp16.ckpt",
+          "mirrors": [
+            "https://hf-mirror.com/tencent/Hunyuan3D-2.1/resolve/0b94677654c57bb9a6b6845cd7b704ccf551d327/hunyuan3d-vae-v2-1/model.fp16.ckpt"
+          ],
+          "sha256": "5cbe97f25e6e7abd4bccc80ab07524ec0c86d24118486a9ba49bb5dfb070288a"
+        }
+      ],
+      "required": [
+        {
+          "path": "model-lab/hunyuan-shape21/models/hunyuan3d-dit-v2-1/config.yaml",
+          "size": 2078
+        },
+        {
+          "path": "model-lab/hunyuan-shape21/models/hunyuan3d-dit-v2-1/model.fp16.ckpt",
+          "size": 7366389768
+        },
+        {
+          "path": "model-lab/hunyuan-shape21/models/hunyuan3d-vae-v2-1/config.yaml",
+          "size": 409
+        },
+        {
+          "path": "model-lab/hunyuan-shape21/models/hunyuan3d-vae-v2-1/model.fp16.ckpt",
+          "size": 655648152
+        },
+        {
+          "path": "engines/hunyuan3d-21-shape/run.ps1"
+        },
+        {
+          "path": "model-lab/hunyuan-shape21/.venv/Scripts/python.exe"
+        }
+      ],
+      "adapters": [
+        {
+          "source": "scripts/providers/3d-run.ps1",
+          "target": "engines/hunyuan3d-21-shape/run.ps1"
+        }
+      ],
+      "runtime": {
+        "family": "hunyuan21",
+        "sourceDirectory": "model-lab/hunyuan-shape21/src",
+        "python": "model-lab/hunyuan-shape21/.venv/Scripts/python.exe",
+        "modelDirectory": "model-lab/hunyuan-shape21/models",
+        "subfolder": "hunyuan3d-dit-v2-1",
+        "jointMultiview": false,
+        "useSafetensors": false,
+        "revision": "82920d643c0dc2f7bfd7255f45f62d386edfe60c"
+      },
+      "capabilities": {
+        "multiView": false,
+        "views": [],
+        "maxReferenceImages": 1
+      },
+      "defaults": {
+        "steps": 30,
+        "resolution": 256,
+        "cfgScale": 5.5
+      },
+      "license": {
+        "label": "Tencent Hunyuan3D 2.1 Community License",
+        "url": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1/blob/82920d643c0dc2f7bfd7255f45f62d386edfe60c/LICENSE",
+        "notice": "模型和源码许可需分别遵守；完整彩色PBR需要更高配置，不包含在此几何配方。",
+        "requiresAcceptance": true
+      },
+      "resourceProfile": {
+        "tier": "experimental",
+        "label": "12 GB可试 · 仅白模",
+        "minVramGiB": 10,
+        "minRamGiB": 16,
+        "note": "官方10GB为几何模块，完整模型+贴图约29GB。"
+      },
+      "validationStage": "researched",
+      "installStatus": "blocked",
+      "publicDistribution": "source-bundle-not-included",
+      "remedy": "公开版未分发此路线依赖的第三方源码包，暂不提供一键安装。请查阅官方许可与来源；可改选 TRELLIS、Pixal3D 或 TripoSR。"
+    },
+    {
+      "id": "hunyuan-omni-info",
+      "title": "Hunyuan3D Omni · 形状约束",
+      "kind": "model",
+      "installable": false,
+      "releaseStatus": "available",
+      "installStatus": "blocked",
+      "description": "图+点云/骨架等生成白模；专用输入与Windows适配尚未接入。",
+      "remedy": "图+点云/骨架等生成白模；专用输入与Windows适配尚未接入。",
+      "sourceUrl": "https://github.com/Tencent-Hunyuan/Hunyuan3D-Omni",
+      "files": [],
+      "required": [],
+      "validationStage": "researched"
+    },
+    {
+      "id": "mv-adapter-info",
+      "title": "MV-Adapter · 网格条件上色（待接入）",
+      "kind": "model",
+      "installable": false,
+      "releaseStatus": "available",
+      "installStatus": "blocked",
+      "description": "单图联合六视角已单独接入；此项记录尚未接入的网格条件上色管线，不能安装或作为上色效果承诺。",
+      "remedy": "已发布；本批尚未接入多视角/mesh条件管线，不能作为可执行安装项。",
+      "sourceUrl": "https://github.com/huanngzh/MV-Adapter",
+      "files": [],
+      "required": [],
+      "validationStage": "researched"
+    },
+    {
+      "id": "hi3dgen-info",
+      "title": "Hi3DGen · 法线增强几何",
+      "kind": "model",
+      "installable": false,
+      "releaseStatus": "available",
+      "installStatus": "blocked",
+      "description": "已发布；spconv/xformers专用环境及12GB路径尚未适配。",
+      "remedy": "已发布；spconv/xformers专用环境及12GB路径尚未适配。",
+      "sourceUrl": "https://github.com/bytedance/Hi3DGen",
+      "files": [],
+      "required": [],
+      "validationStage": "researched"
+    },
+    {
+      "id": "triposf-info",
+      "title": "TripoSF · mesh/点云重建",
+      "kind": "model",
+      "installable": false,
+      "releaseStatus": "available",
+      "installStatus": "blocked",
+      "description": "这是已有mesh/点云的重建，不是单张图直接生模型；输入管线尚未接入。",
+      "remedy": "这是已有mesh/点云的重建，不是单张图直接生模型；输入管线尚未接入。",
+      "sourceUrl": "https://github.com/VAST-AI-Research/TripoSF",
+      "files": [],
+      "required": [],
+      "validationStage": "researched"
+    },
+    {
+      "id": "sam3d-objects-info",
+      "title": "SAM 3D Objects · 高配置",
+      "kind": "model",
+      "installable": false,
+      "releaseStatus": "available",
+      "installStatus": "blocked",
+      "description": "官方Linux与至少32GB显存，当前Windows12GB不提供安装配方。",
+      "remedy": "官方Linux与至少32GB显存，当前Windows12GB不提供安装配方。",
+      "sourceUrl": "https://github.com/facebookresearch/sam-3d-objects",
+      "files": [],
+      "required": [],
+      "validationStage": "researched"
+    },
+    {
+      "id": "direct3d-info",
+      "title": "Direct3D-S2 · 高配置",
+      "kind": "model",
+      "installable": false,
+      "releaseStatus": "available",
+      "installStatus": "blocked",
+      "description": "推荐1024档需约24GB；作者不推荐10GB的512档。本批未接入。",
+      "remedy": "推荐1024档需约24GB；作者不推荐10GB的512档。本批未接入。",
+      "sourceUrl": "https://github.com/DreamTechAI/Direct3D-S2",
+      "files": [],
+      "required": [],
+      "validationStage": "researched"
+    },
+    {
+      "id": "step1x3d-info",
+      "title": "Step1X-3D · 高配置",
+      "kind": "model",
+      "installable": false,
+      "releaseStatus": "available",
+      "installStatus": "blocked",
+      "description": "全流程约27–29GB显存，当前12GB不提供全流程配方。",
+      "remedy": "全流程约27–29GB显存，当前12GB不提供全流程配方。",
+      "sourceUrl": "https://github.com/stepfun-ai/Step1X-3D",
+      "files": [],
+      "required": [],
+      "validationStage": "researched"
+    },
+    {
+      "id": "hunyuan-buffalo-info",
+      "title": "Hunyuan3D Buffalo · 跟踪",
+      "kind": "model",
+      "installable": false,
+      "releaseStatus": "unreleased",
+      "installStatus": "blocked",
+      "description": "项目/论文已发布，尚未找到完整本地权重与推理代码。",
+      "remedy": "项目/论文已发布，尚未找到完整本地权重与推理代码。",
+      "sourceUrl": "https://github.com/Tencent-Hunyuan/Hunyuan3D-Buffalo1.0",
+      "files": [],
+      "required": [],
+      "validationStage": "researched"
+    },
+    {
+      "id": "hunyuan3d-cloud-info",
+      "title": "Hunyuan3D 3.0/3.1 · 云API",
+      "kind": "model",
+      "installable": false,
+      "releaseStatus": "cloud-only",
+      "installStatus": "blocked",
+      "description": "只有云API路线，不能在本机下载这些模型权重。",
+      "remedy": "只有云API路线，不能在本机下载这些模型权重。",
+      "sourceUrl": "https://intl.cloud.tencent.com/zh/document/api/1284/75540",
+      "files": [],
+      "required": [],
+      "validationStage": "researched"
+    },
+    {
+      "id": "tripo-cloud-info",
+      "title": "Tripo H3.1/P1/P2 · 云API",
+      "kind": "model",
+      "installable": false,
+      "releaseStatus": "cloud-only",
+      "installStatus": "blocked",
+      "description": "开源SDK不等于本地生成模型权重，本条仅资料入口。",
+      "remedy": "开源SDK不等于本地生成模型权重，本条仅资料入口。",
+      "sourceUrl": "https://github.com/VAST-AI-Research/tripo-js-sdk",
+      "files": [],
+      "required": [],
+      "validationStage": "researched"
+    },
+    {
+      "id": "rodin-cloud-info",
+      "title": "Rodin · 云API",
+      "kind": "model",
+      "installable": false,
+      "releaseStatus": "cloud-only",
+      "installStatus": "blocked",
+      "description": "未找到相应官方本地权重；本条仅资料入口。",
+      "remedy": "未找到相应官方本地权重；本条仅资料入口。",
+      "sourceUrl": "https://docs.hyper3d.ai/en",
+      "files": [],
+      "required": [],
+      "validationStage": "researched"
+    }
+  ],
+  "productVersion": "0.9.1"
+}

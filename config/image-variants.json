@@ -1,0 +1,258 @@
+{
+  "version": "0.2.0",
+  "author": "Unclecow",
+  "engineId": "qwen-image-21",
+  "defaultWeightVariant": "Q4_K_M",
+  "baselineSourceConfig": "config/image-model-source.json",
+  "sharedComponents": "Existing pinned runtime, Qwen3-VL text encoder and dedicated VAE",
+  "files": [
+    {
+      "id": "Q4_0",
+      "label": "Q4_0",
+      "role": "diffusion",
+      "repo": "leejet/Qwen-Image-2.1-GGUF",
+      "revision": "cc11433936a06e9765f7c0c0b1f0436cfd2b9856",
+      "name": "qwen_image_2.1-Q4_0.gguf",
+      "size": 4197494816,
+      "sha256": "8d992dc95dcbf13196a4aca893697fb56a5c9263e19e7b40c898be2cf29e9147",
+      "relative": "runtime/models/qwen_image_2.1-Q4_0.gguf"
+    },
+    {
+      "id": "Q4_K_M",
+      "label": "Q4_K_M",
+      "role": "diffusion",
+      "repo": "unsloth/Qwen-Image-2.1-GGUF",
+      "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+      "name": "qwen-image-2.1-Q4_K_M.gguf",
+      "size": 4199565024,
+      "sha256": "631d532e7ca71e8d90a87c71d3699761a812039d22e3370e87498d87754660fe",
+      "relative": "runtime/models/qwen-image-2.1-Q4_K_M.gguf"
+    },
+    {
+      "id": "Q5_K_M",
+      "label": "Q5_K_M",
+      "role": "diffusion",
+      "repo": "unsloth/Qwen-Image-2.1-GGUF",
+      "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+      "name": "qwen-image-2.1-Q5_K_M.gguf",
+      "size": 5390223072,
+      "sha256": "4b53321654dd3bf0aa8dd6bb821fdcb1c9053ca735070e359a23cbb9f97268ce",
+      "relative": "runtime/models/qwen-image-2.1-Q5_K_M.gguf"
+    },
+    {
+      "id": "Q6_K",
+      "label": "Q6_K",
+      "role": "diffusion",
+      "repo": "unsloth/Qwen-Image-2.1-GGUF",
+      "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+      "name": "qwen-image-2.1-Q6_K.gguf",
+      "size": 6271551200,
+      "sha256": "2ead1ee665e8ebc5fec517d287a167f5c6a7e985acbf3b1b93143437a04616ac",
+      "relative": "runtime/models/qwen-image-2.1-Q6_K.gguf"
+    }
+  ],
+  "variants": [
+    {
+      "id": "Q4_0",
+      "label": "Q4_0",
+      "bytes": 4197494816,
+      "status": "missing",
+      "verified": false,
+      "gpuVerified": false,
+      "legacy": false,
+      "sourceConfig": "config/image-variants.json",
+      "path": "engines/qwen-image-21/runtime/models/qwen_image_2.1-Q4_0.gguf",
+      "pin": {
+        "repo": "leejet/Qwen-Image-2.1-GGUF",
+        "revision": "cc11433936a06e9765f7c0c0b1f0436cfd2b9856",
+        "filename": "qwen_image_2.1-Q4_0.gguf",
+        "size": 4197494816,
+        "sha256": "8d992dc95dcbf13196a4aca893697fb56a5c9263e19e7b40c898be2cf29e9147"
+      }
+    },
+    {
+      "id": "Q4_K_M",
+      "label": "Q4_K_M",
+      "bytes": 4199565024,
+      "status": "missing",
+      "verified": false,
+      "gpuVerified": false,
+      "legacy": false,
+      "sourceConfig": "config/image-variants.json",
+      "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q4_K_M.gguf",
+      "pin": {
+        "repo": "unsloth/Qwen-Image-2.1-GGUF",
+        "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+        "filename": "qwen-image-2.1-Q4_K_M.gguf",
+        "size": 4199565024,
+        "sha256": "631d532e7ca71e8d90a87c71d3699761a812039d22e3370e87498d87754660fe"
+      }
+    },
+    {
+      "id": "Q5_K_M",
+      "label": "Q5_K_M",
+      "bytes": 5390223072,
+      "status": "missing",
+      "verified": false,
+      "gpuVerified": false,
+      "legacy": false,
+      "sourceConfig": "config/image-variants.json",
+      "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q5_K_M.gguf",
+      "pin": {
+        "repo": "unsloth/Qwen-Image-2.1-GGUF",
+        "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+        "filename": "qwen-image-2.1-Q5_K_M.gguf",
+        "size": 5390223072,
+        "sha256": "4b53321654dd3bf0aa8dd6bb821fdcb1c9053ca735070e359a23cbb9f97268ce"
+      }
+    },
+    {
+      "id": "Q6_K",
+      "label": "Q6_K",
+      "bytes": 6271551200,
+      "status": "missing",
+      "verified": false,
+      "gpuVerified": false,
+      "legacy": false,
+      "sourceConfig": "config/image-variants.json",
+      "path": "engines/qwen-image-21/runtime/models/qwen-image-2.1-Q6_K.gguf",
+      "pin": {
+        "repo": "unsloth/Qwen-Image-2.1-GGUF",
+        "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+        "filename": "qwen-image-2.1-Q6_K.gguf",
+        "size": 6271551200,
+        "sha256": "2ead1ee665e8ebc5fec517d287a167f5c6a7e985acbf3b1b93143437a04616ac"
+      }
+    },
+    {
+      "id": "Q4_K",
+      "label": "Q4_K（旧基线）",
+      "bytes": 4197494816,
+      "status": "missing",
+      "verified": false,
+      "gpuVerified": false,
+      "legacy": true,
+      "sourceConfig": "config/image-model-source.json",
+      "path": "engines/qwen-image-21/runtime/models/qwen_image_2.1-Q4_K.gguf",
+      "pin": {
+        "repo": "leejet/Qwen-Image-2.1-GGUF",
+        "revision": "cc11433936a06e9765f7c0c0b1f0436cfd2b9856",
+        "filename": "qwen_image_2.1-Q4_K.gguf",
+        "size": 4197494816,
+        "sha256": "29f9c83c249ff0292fb2943fceddfa2319b446601866c82a4f8be062abea72c2"
+      }
+    }
+  ],
+  "repositories": [
+    {
+      "repo": "leejet/Qwen-Image-2.1-GGUF",
+      "revision": "cc11433936a06e9765f7c0c0b1f0436cfd2b9856",
+      "metadataUrl": "https://huggingface.co/api/models/leejet/Qwen-Image-2.1-GGUF/revision/cc11433936a06e9765f7c0c0b1f0436cfd2b9856?blobs=true",
+      "private": false,
+      "gated": false,
+      "baseModel": [
+        "Qwen/Qwen-Image-2.1"
+      ],
+      "modelCard": {
+        "language": [
+          "en",
+          "zh"
+        ],
+        "base_model": [
+          "Qwen/Qwen-Image-2.1"
+        ],
+        "tags": [
+          "gguf",
+          "text-to-image",
+          "stable-diffusion.cpp"
+        ]
+      },
+      "files": [
+        {
+          "rfilename": "qwen_image_2.1-Q4_0.gguf",
+          "blobId": "1f9b8031630e661af82c8b099d190f7c883929f6",
+          "size": 4197494816,
+          "lfs": {
+            "sha256": "8d992dc95dcbf13196a4aca893697fb56a5c9263e19e7b40c898be2cf29e9147",
+            "size": 4197494816,
+            "pointerSize": 135
+          }
+        }
+      ]
+    },
+    {
+      "repo": "unsloth/Qwen-Image-2.1-GGUF",
+      "revision": "2c31ccd392b367a6637841a143813320a02dff55",
+      "metadataUrl": "https://huggingface.co/api/models/unsloth/Qwen-Image-2.1-GGUF/revision/2c31ccd392b367a6637841a143813320a02dff55?blobs=true",
+      "private": false,
+      "gated": false,
+      "baseModel": "Qwen/Qwen-Image-2.1",
+      "modelCard": {
+        "base_model": "Qwen/Qwen-Image-2.1",
+        "base_model_relation": "quantized",
+        "license": "other",
+        "license_name": "qwen-research",
+        "license_link": "https://huggingface.co/Qwen/Qwen-Image-2.1/blob/main/LICENSE",
+        "language": [
+          "en",
+          "zh"
+        ],
+        "pipeline_tag": "text-to-image",
+        "tags": [
+          "gguf",
+          "quantized",
+          "unsloth",
+          "qwen",
+          "image-generation"
+        ],
+        "widget": [
+          {
+            "text": "Photorealistic editorial photograph of a woman barista making a latte in a modern, minimalist café on a sunny tropical morning.",
+            "output": {
+              "url": "https://huggingface.co/unsloth/Qwen-Image-2.1-GGUF/resolve/main/assets/cafe.png"
+            }
+          },
+          {
+            "text": "A lone astronaut crossing a dark, frozen lake beneath enormous rings stretching across an alien sky. Fine cracks visible under the translucent ice, distant mountains, soft blue twilight, cinematic scale, photorealistic detail.",
+            "output": {
+              "url": "https://huggingface.co/unsloth/Qwen-Image-2.1-GGUF/resolve/main/assets/spaces.png"
+            }
+          }
+        ]
+      },
+      "files": [
+        {
+          "rfilename": "qwen-image-2.1-Q4_K_M.gguf",
+          "blobId": "cfc9bb3f45d5146a92b79af60bea5939fe733b22",
+          "size": 4199565024,
+          "lfs": {
+            "sha256": "631d532e7ca71e8d90a87c71d3699761a812039d22e3370e87498d87754660fe",
+            "size": 4199565024,
+            "pointerSize": 135
+          }
+        },
+        {
+          "rfilename": "qwen-image-2.1-Q5_K_M.gguf",
+          "blobId": "470160867ba215ce1dcf3754cf48895ea02cd99c",
+          "size": 5390223072,
+          "lfs": {
+            "sha256": "4b53321654dd3bf0aa8dd6bb821fdcb1c9053ca735070e359a23cbb9f97268ce",
+            "size": 5390223072,
+            "pointerSize": 135
+          }
+        },
+        {
+          "rfilename": "qwen-image-2.1-Q6_K.gguf",
+          "blobId": "218350cae2bac54c4cbe6ba70f2a424efe1d9c1e",
+          "size": 6271551200,
+          "lfs": {
+            "sha256": "2ead1ee665e8ebc5fec517d287a167f5c6a7e985acbf3b1b93143437a04616ac",
+            "size": 6271551200,
+            "pointerSize": 135
+          }
+        }
+      ]
+    }
+  ],
+  "productVersion": "0.9.1"
+}

@@ -1,0 +1,26 @@
+{
+  "version": "0.7.0",
+  "author": "Unclecow",
+  "profiles": [
+    {
+      "id": "mvadapter-i2mv-sdxl",
+      "version": "0.7.0",
+      "python": "3.11.14",
+      "environment": "engines/mvadapter-i2mv-sdxl/.venv",
+      "requirements": "config/deployment-requirements/multiview.txt",
+      "torchIndex": "https://download.pytorch.org/whl/cu124",
+      "postCommands": [
+        [
+          "@root:scripts/providers/multiview-setup.py"
+        ]
+      ],
+      "verifyCommands": [
+        [
+          "@root:scripts/providers/multiview-run.py",
+          "--check"
+        ]
+      ]
+    }
+  ],
+  "productVersion": "0.9.1"
+}

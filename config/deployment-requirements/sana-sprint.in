@@ -1,0 +1,11 @@
+# Sana Sprint isolated Python 3.11/CUDA 12.4 environment. v0.7.0 / Unclecow.
+torch==2.6.0+cu124
+torchvision==0.21.0+cu124
+diffusers==0.35.1
+transformers==4.55.4
+accelerate==1.10.1
+safetensors==0.6.2
+sentencepiece==0.2.1
+protobuf==6.32.0
+pillow==11.3.0
+numpy==2.2.6

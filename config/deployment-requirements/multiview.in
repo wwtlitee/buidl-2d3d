@@ -1,0 +1,15 @@
+# Pure image-to-multiview private Windows environment. v0.7.0 / Unclecow.
+torch==2.5.1+cu124
+torchvision==0.20.1+cu124
+diffusers==0.30.3
+transformers==4.44.2
+accelerate==0.34.2
+peft==0.13.2
+huggingface-hub==0.25.2
+safetensors==0.4.5
+numpy==1.26.4
+pillow==11.3.0
+trimesh==4.4.1
+einops==0.8.0
+sentencepiece==0.2.0
+setuptools==69.5.1

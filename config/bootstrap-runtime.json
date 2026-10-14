@@ -1,0 +1,20 @@
+{
+  "version": "0.6.0",
+  "python": "3.11.14",
+  "uv": {
+    "version": "0.10.0",
+    "url": "https://github.com/astral-sh/uv/releases/download/0.10.0/uv-x86_64-pc-windows-msvc.zip",
+    "size": 21758991,
+    "sha256": "4037b444541f695cd2eb93188a9346de3e334af562381411deade0a31c7bf898"
+  },
+  "webview2": {
+    "url": "https://go.microsoft.com/fwlink/p/?LinkId=2124703",
+    "documentationUrl": "https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/distribution"
+  },
+  "powershell": {
+    "version": "7.5.4",
+    "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.5.4/PowerShell-7.5.4-win-x64.zip",
+    "size": 115200099,
+    "sha256": "b40d192ae95ba6ccc4cc362ff4e1b18ca6fb5055bebbcd3920684e12701fa8f6"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "version": "0.1.0",
+  "author": "Unclecow",
+  "engineId": "qwen-image-21",
+  "kind": "image",
+  "runtimeRelease": "master-929-3f8527a",
+  "runtimeCommit": "3f8527a46c54ecf4cb4ed6003da8e8982283c73c",
+  "files": [
+    {
+      "role": "runtime",
+      "name": "sd-master-3f8527a-bin-win-cuda12-x64.zip",
+      "size": 337915440,
+      "sha256": "217d6dead9abd3f827fc338268555cc179234e7e6330ef21ecb1c985e19d2dc7",
+      "relative": "runtime/archives/sd-master-3f8527a-bin-win-cuda12-x64.zip",
+      "url": "https://github.com/leejet/stable-diffusion.cpp/releases/download/master-929-3f8527a/sd-master-3f8527a-bin-win-cuda12-x64.zip"
+    },
+    {
+      "role": "diffusion",
+      "repo": "leejet/Qwen-Image-2.1-GGUF",
+      "revision": "cc11433936a06e9765f7c0c0b1f0436cfd2b9856",
+      "name": "qwen_image_2.1-Q4_K.gguf",
+      "size": 4197494816,
+      "sha256": "29f9c83c249ff0292fb2943fceddfa2319b446601866c82a4f8be062abea72c2",
+      "relative": "runtime/models/qwen_image_2.1-Q4_K.gguf"
+    },
+    {
+      "role": "textEncoder",
+      "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+      "name": "Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+      "size": 5027784800,
+      "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2",
+      "relative": "runtime/models/Qwen3VL-8B-Instruct-Q4_K_M.gguf"
+    },
+    {
+      "role": "vae",
+      "repo": "Comfy-Org/Qwen-Image-2.1",
+      "revision": "cb504a4090723e43f17ad01cec0359490e2de613",
+      "name": "vae/qwen_image_2.1_vae_bf16.safetensors",
+      "size": 675509688,
+      "sha256": "bb21f7473051e1ac368515dd3f2e15cd44d7a11748ee8823e1ddca3e4876b7c9",
+      "relative": "runtime/models/qwen_image_2.1_vae_bf16.safetensors"
+    }
+  ],
+  "repositories": [
+    {
+      "repo": "leejet/Qwen-Image-2.1-GGUF",
+      "revision": "cc11433936a06e9765f7c0c0b1f0436cfd2b9856",
+      "metadataUrl": "https://huggingface.co/api/models/leejet/Qwen-Image-2.1-GGUF/revision/cc11433936a06e9765f7c0c0b1f0436cfd2b9856?blobs=true",
+      "private": false,
+      "gated": false,
+      "file": {
+        "rfilename": "qwen_image_2.1-Q4_K.gguf",
+        "blobId": "1b90f3d2bad06863c9afc33ea78784217d3e2494",
+        "size": 4197494816,
+        "lfs": {
+          "sha256": "29f9c83c249ff0292fb2943fceddfa2319b446601866c82a4f8be062abea72c2",
+          "size": 4197494816,
+          "pointerSize": 135
+        }
+      }
+    },
+    {
+      "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+      "metadataUrl": "https://huggingface.co/api/models/Qwen/Qwen3-VL-8B-Instruct-GGUF/revision/f982a07559d4a2f6c8744d840bf6fccab30eea96?blobs=true",
+      "private": false,
+      "gated": false,
+      "file": {
+        "rfilename": "Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+        "blobId": "0e94647721771d0e3bb11c308edd35940cc6d99e",
+        "size": 5027784800,
+        "lfs": {
+          "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2",
+          "size": 5027784800,
+          "pointerSize": 135
+        }
+      }
+    },
+    {
+      "repo": "Comfy-Org/Qwen-Image-2.1",
+      "revision": "cb504a4090723e43f17ad01cec0359490e2de613",
+      "metadataUrl": "https://huggingface.co/api/models/Comfy-Org/Qwen-Image-2.1/revision/cb504a4090723e43f17ad01cec0359490e2de613?blobs=true",
+      "private": false,
+      "gated": false,
+      "file": {
+        "rfilename": "vae/qwen_image_2.1_vae_bf16.safetensors",
+        "blobId": "20f289c83f9207ca23f61c008a51ee44d68f0504",
+        "size": 675509688,
+        "lfs": {
+          "sha256": "bb21f7473051e1ac368515dd3f2e15cd44d7a11748ee8823e1ddca3e4876b7c9",
+          "size": 675509688,
+          "pointerSize": 134
+        }
+      }
+    }
+  ],
+  "runtimeAsset": {
+    "id": 593525187,
+    "name": "sd-master-3f8527a-bin-win-cuda12-x64.zip",
+    "size": 337915440,
+    "digest": "sha256:217d6dead9abd3f827fc338268555cc179234e7e6330ef21ecb1c985e19d2dc7",
+    "browser_download_url": "https://github.com/leejet/stable-diffusion.cpp/releases/download/master-929-3f8527a/sd-master-3f8527a-bin-win-cuda12-x64.zip"
+  },
+  "status": "not-installed",
+  "gpuVerified": false,
+  "runtimeTransportMirrors": [
+    "https://gh-proxy.com/https://github.com/leejet/stable-diffusion.cpp/releases/download/master-929-3f8527a/sd-master-3f8527a-bin-win-cuda12-x64.zip",
+    "https://ghfast.top/https://github.com/leejet/stable-diffusion.cpp/releases/download/master-929-3f8527a/sd-master-3f8527a-bin-win-cuda12-x64.zip"
+  ],
+  "runtimeTransportPolicy": "Same official release bytes only; final official SHA256 is mandatory",
+  "cli": {
+    "executable": "runtime/master-929-3f8527a/sd-cli.exe",
+    "requiredFlags": [
+      "--diffusion-model",
+      "--llm",
+      "--vae",
+      "--backend",
+      "--params-backend",
+      "--fa",
+      "--max-vram",
+      "--vae-tiling",
+      "--width",
+      "--height",
+      "--steps",
+      "--seed",
+      "--cfg-scale",
+      "--sampling-method",
+      "--output",
+      "--prompt",
+      "--verbose"
+    ]
+  },
+  "productVersion": "0.9.1"
+}
