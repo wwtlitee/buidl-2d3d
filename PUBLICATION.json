@@ -1,9 +1,9 @@
 {
   "product": "BUIDL 2D3D",
   "applicationName": "build something · 造点啥",
-  "version": "0.9.1a",
+  "version": "0.9.1b",
   "basedOn": "0.9.0a",
-  "publicationBuild": "public-source-20261014-crlf",
+  "publicationBuild": "public-source-launcher-20261014",
   "owner": "Unclecow",
   "license": "MIT for owned code; third-party terms retained",
   "versionedConfigs": [
@@ -46,7 +46,7 @@
     "trellis": "cd299e818d95c635b4086c920ed899d97cd79cf751298992321b6195077d4a11",
     "pixal3d": "8564ea52186f37dad357f3a20fe0ea15e6cb11ea55d300e60c33e68b63393bb8"
   },
-  "previousPublicVersion": "0.9.1",
+  "previousPublicVersion": "0.9.1a",
   "baseValidation": {
     "version": "0.9.1",
     "status": "passed-with-explicit-skips",
@@ -163,6 +163,61 @@
     "secretScan": "Pattern and path review of public source and included archive; not an exhaustive security audit."
   },
   "validation": {
+    "status": "passed-with-explicit-scope",
+    "revisionScope": "Add a double-click source launcher and publish a complete source ZIP; application runtime and model recipes are unchanged.",
+    "targetedTests": {
+      "passed": 20,
+      "skipped": 0,
+      "files": [
+        {
+          "file": "tests/check-public-distribution.py",
+          "passed": 7
+        },
+        {
+          "file": "tests/check-portable-recipes.py",
+          "passed": 5
+        },
+        {
+          "file": "tests/check-source-launcher.py",
+          "passed": 5
+        },
+        {
+          "file": "tests/check-desktop-entrypoints.py",
+          "passed": 3
+        }
+      ],
+      "archiveTestScope": "Source ZIP fixture before packaging; the final release ZIP is separately checked before upload."
+    },
+    "sourceLauncher": {
+      "host": "Windows PowerShell 5.1",
+      "vbsEntryExecuted": true,
+      "lineEndingsTested": "LF",
+      "pathCharactersTested": [
+        "Chinese",
+        "space",
+        "apostrophe"
+      ],
+      "firstCompile": true,
+      "verifiedReuse": true,
+      "concurrentCompileSerialized": true,
+      "binarySourceAndVersionInvalidation": true,
+      "persistentFailureLogs": true,
+      "guiSubsystem": 2,
+      "prepareOnly": true
+    },
+    "syntax": {
+      "windowsPowerShellParseErrors": 0,
+      "newEntryEncoding": "ASCII, no BOM",
+      "newPythonSyntax": "passed"
+    },
+    "applicationGuiOpened": false,
+    "freshMachineOnlineBootstrapExecuted": false,
+    "gpuInferenceExecuted": false,
+    "modelDownloadExecuted": false,
+    "baseValidationNote": "Historical 0.9.1 and 0.9.1a checks are listed separately and were not all rerun for this revision."
+  },
+  "previousRevisionValidation": {
+    "version": "0.9.1a",
     "status": "passed",
     "revisionScope": "Preserve pinned third-party bytes on Windows Git checkouts; product metadata and screenshot synchronized.",
     "targetedTests": {
@@ -204,5 +259,13 @@
     "gpuInferenceExecuted": false,
     "modelDownloadExecuted": false,
     "baseValidationNote": "118 passed and 7 explicitly skipped in the unchanged 0.9.1 baseline; listed separately, not claimed as a full rerun of this revision."
+  },
+  "distribution": {
+    "mode": "source-with-double-click-bootstrap",
+    "entry": "启动造点啥.vbs",
+    "compiledExecutableIncluded": false,
+    "compileLocation": "user machine on first launch",
+    "releaseArchive": "BUIDL-2D3D-0.9.1b-Windows-x64.zip",
+    "requiresManualCommand": false
   }
 }

@@ -4,7 +4,11 @@
 
 **先出图，再建模。把脑海里的东西，造出来。**
 
-本地 AI 创作工作台 · Windows x64 · NVIDIA CUDA · `v0.9.1a`
+本地 AI 创作工作台 · Windows x64 · NVIDIA CUDA · `v0.9.1b`
+
+### [下载 Windows 一键启动源码包](https://github.com/wwtlitee/buidl-2d3d/releases/latest)
+
+下载 **`BUIDL-2D3D-0.9.1b-Windows-x64.zip`** → **完整解压** → 双击 **`启动造点啥.vbs`**
 
 [开始使用](#开始使用) · [能做什么](#能做什么) · [模型与硬件](#模型与硬件) · [许可说明](#许可说明)
 
@@ -40,21 +44,17 @@
 
 ## 开始使用
 
-### 1. 获取源码并生成启动器
+### 1. 下载、完整解压、双击打开
 
-在 **Windows PowerShell** 中运行：
+1. 打开 **[最新发布页](https://github.com/wwtlitee/buidl-2d3d/releases/latest)**，在 **Assets** 中下载 **`BUIDL-2D3D-0.9.1b-Windows-x64.zip`**。
+2. 将压缩包**全部解压**到一个可写文件夹。
+3. 在解压后的文件夹中双击 **`启动造点啥.vbs`**，等待首次准备完成。
 
-```powershell
-git clone https://github.com/wwtlitee/buidl-2d3d.git
-cd buidl-2d3d
-powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-desktop-launcher.ps1
-```
+这是完整源码包，仓库与发布包均不附带预编译 EXE。双击脚本会在后台自动从源码生成本机启动器，或复用已经生成的启动器，再打开应用；无需你手动运行命令或编译。请让 `启动造点啥.vbs` 与 `scripts`、`config`、`visual` 等文件夹保持在一起，不要从压缩包内直接运行或只复制启动脚本。
 
-也可以通过 GitHub 的 **Code → Download ZIP** 下载，完整解压后在项目目录运行最后一行命令。
+推荐从上方 Releases 下载命名清晰的完整源码包。通过 GitHub **Code → Download ZIP** 或发布页 **Source code** 下载，也可以在完整解压后双击同一个 `启动造点啥.vbs`。已有本机生成的 `造点啥.exe` 仍可留在完整项目目录中双击使用。需要修改或手动构建时，请看后面的[开发者：从源码运行](#开发者从源码运行)。
 
-构建脚本使用 Windows 自带的 .NET Framework 4 C# 编译器，生成目录中的 **`造点啥.exe`**。请把它留在项目目录内，再双击启动。若系统缺少 .NET Framework 4，请先通过 Windows 官方组件安装方式补齐。
-
-仓库不附带 EXE、模型权重或现成 Python 环境。启动器会按需准备项目私有的 Python 和 PowerShell；缺少 WebView2 时，由微软官方安装器为当前 Windows 用户补齐。不要求你先手动配置 Python 或 Node.js，也不修改全局 Python / PATH。首次启动需要等待依赖下载；安装进度与失败原因会保留在本机日志中。
+**首次启动与安装模型需要联网。** 源码包不预装模型权重或完整 Python 环境；启动器会按需准备项目私有的 Python 和 PowerShell。缺少 WebView2 时，由微软官方安装器为当前 Windows 用户补齐。不要求你先手动配置 Python 或 Node.js，也不修改全局 Python / PATH。下载可能需要数分钟或更久，安装进度与失败原因会保留在本机日志中。
 
 ### 2. 在“模型管理”准备创作
 
@@ -79,14 +79,29 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-desktop-laun
 | 网络 | 首次依赖和模型安装需访问 GitHub、Hugging Face 等配置来源；已准备的本地路线在本机计算。 |
 | 账号 | 部分模型需要先在官方页面接受条款，再在设置中提供 Hugging Face 只读令牌。令牌按 Windows 用户加密存储，不属于源码。 |
 
-**0.9.1a 的公开范围有一项明确差异：** Hunyuan、TripoSG、PartCrafter 等既有路线依赖的第三方打包源码未随仓库分发，其对应候选被标记为不能一键安装。默认 Qwen → TRELLIS.2 / Pixal3D 配方保留。具体原因、保留组件及许可见 [第三方说明](THIRD_PARTY_NOTICES.md)。
+**0.9.1b 延续现有公开范围：** Hunyuan、TripoSG、PartCrafter 等既有路线依赖的第三方打包源码未随仓库分发，其对应候选被标记为不能一键安装。默认 Qwen → TRELLIS.2 / Pixal3D 配方保留。具体原因、保留组件及许可见 [第三方说明](THIRD_PARTY_NOTICES.md)。
 
 模型上色仍是待验收的可选实验路线；本公开包没有提供它依赖的源码包。生成质量会受模型、输入、显存与参数影响，本仓库不承诺任意照片都能获得可直接用于生产的拓扑、材质或几何。
+
+## 开发者：从源码运行
+
+日常使用只需双击根目录 `启动造点啥.vbs`。需要修改代码或手动构建启动器时，在 **Windows PowerShell** 中运行：
+
+```powershell
+git clone https://github.com/wwtlitee/buidl-2d3d.git
+cd buidl-2d3d
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\build-desktop-launcher.ps1
+```
+
+也可以通过 **Code → Download ZIP** 获取源码，完整解压后在项目目录运行最后一行命令。源码仓库不存放预编译 EXE；构建脚本使用 Windows 的 .NET Framework 4 C# 编译器，在项目目录生成 `造点啥.exe`。把它留在完整项目目录内，再双击启动。若系统缺少 .NET Framework 4，请通过 Windows 官方组件安装方式补齐。
+
+本机生成的 EXE 不进入源码仓库或发布包。无论通过 Releases、Code ZIP 还是 Git 获取完整源码，都通过同一启动入口和“模型管理”准备依赖与模型，遵循相同的许可和硬件检查。
 
 ## 在代码里找到它
 
 ```text
 VERSION.json                 产品版本与公开发行来源
+启动造点啥.vbs               双击入口，后台自动编译或复用本机启动器
 visual/                      工作台页面、交互、预览组件与 UI 资产
 scripts/
   desktop_launcher.cs        Windows 窗口启动器
@@ -105,7 +120,7 @@ PUBLICATION.json             本次公开发行范围与验证说明
 
 ## 检查与已知边界
 
-本次公开版基于本地 `0.9.0a` 整理为 `0.9.1a`，主要变更是发布范围、许可、干净配置和文档，原工作区及旧交付包保持原样。见 [CHANGELOG](CHANGELOG.md)。
+公开版基于本地 `0.9.0a` 整理；`0.9.1b` 补齐纯源码双击启动脚本、完整源码发布包与下载指引，延续原有发布范围、许可、干净配置和功能边界。原工作区及旧交付包保持原样。见 [CHANGELOG](CHANGELOG.md)。
 
 用 Python 3.11+ 可运行公开分发和配方的静态检查：
 

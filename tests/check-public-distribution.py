@@ -1,4 +1,4 @@
-"""Public 0.9.1a distribution contracts. No model download, credentials or GPU use."""
+"""Public 0.9.1b distribution contracts. No model download, credentials or GPU use."""
 from __future__ import annotations
 
 import hashlib
@@ -48,13 +48,13 @@ class PublicDistributionTests(unittest.TestCase):
 
     def test_public_version_and_ui_are_aligned(self):
         version=read('VERSION.json')
-        self.assertEqual(version['version'],'0.9.1a')
+        self.assertEqual(version['version'],'0.9.1b')
         self.assertEqual(version['basedOn'],'0.9.0a')
         self.assertEqual(self.publication['version'],version['version'])
         for name in self.publication['versionedConfigs']:
             self.assertEqual(read(name)['productVersion'],version['version'],name)
         html=(ROOT/'visual/index.html').read_text(encoding='utf-8')
-        self.assertGreaterEqual(html.count('0.9.1a'),3)
+        self.assertGreaterEqual(html.count('0.9.1b'),3)
         self.assertNotIn('0.9.0a',html)
 
     def test_only_license_reviewed_source_bundle_is_shipped(self):

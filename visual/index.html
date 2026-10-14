@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101112">
   <meta name="description" content="build something · 造点啥：用文字和图片制作 3D 模型，从本机检测、模型安装到创作，一步步开始。">
-  <title>build something · 造点啥 · v0.9.1a</title>
+  <title>build something · 造点啥 · v0.9.1b</title>
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/texture.css">
   <link rel="stylesheet" href="/setup.css">
@@ -34,7 +34,7 @@
     <div class="sidebar-bottom">
       <a class="sidebar-help" href="#help" data-page="help"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.7a2.5 2.5 0 0 1 5 .3c0 1.8-2.5 2-2.5 4M12 16.5h.01"/></svg>使用指南</a>
       <div class="machine"><span class="machine-dot" aria-hidden="true"></span><span id="machine-info">正在读取本机状态</span></div>
-      <div class="sidebar-meta"><span id="product-version">v0.9.1a</span><span>Unclecow</span></div>
+      <div class="sidebar-meta"><span id="product-version">v0.9.1b</span><span>Unclecow</span></div>
     </div>
   </aside>
   <div class="app-shell">
@@ -144,7 +144,7 @@
         <section class="panel help-faq" aria-labelledby="faq-title"><h2 id="faq-title">第一次使用常见问题</h2><details open><summary>这台电脑还没安装模型，怎么办？</summary><p>去“模型管理”选一个推荐工具，确认下载大小及许可后点击“下载并安装”。工具会补齐运行环境、下载模型并校验文件。环境不达要求时按检测提醒处理；需要账号授权的模型先去官方页面申请。安装好一个对应工具就可以开始，不必全部安装。</p></details><details><summary>照片应该怎么拍？辅助图是什么？</summary><p>让一个完整物体清楚出现在画面中，尽量保持简单背景，别被其他物体遮挡。主图是最能看清物体的一张；辅助图是同一物体的左、背、右侧照片，可选。只有支持多图的工具会读取辅助图。</p></details><details><summary>模型安装和创作需要联网吗？</summary><p>首次安装需要联网下载开源运行环境和模型文件。安装完成后，生成在本机运行，不需要外部生图付费接口。下载体积较大，先查看磁盘空间；网络中断可查看安装记录并重试。</p></details><details><summary>点不动“开始生产”或“生成图片”？</summary><p>先看页面提示：图片建模需要主图和一个可用工具；文字生图需要描述、可用工具及已校验权重。缺模型时去“模型管理”安装。若连接中断，点击刷新或重新打开应用。</p></details><details><summary>生成很慢，或者失败了？</summary><p>本机一次运行一个生成任务，避免显卡内存冲突。排队时等当前任务结束；失败后在队列查看错误和日志，再重试。显存不足可减少图片尺寸或选择较轻的模型。提交超时先检查队列，避免重复提交。</p></details><details><summary>作品在哪？关闭窗口会丢吗？</summary><p>作品在“我的作品”，支持单文件、单任务或整批下载。源文件保存在项目的 outputs 目录，输入在 inputs 目录。关闭应用会停止正在运行的任务；已完成作品保留。重新打开后，未完成任务标为中断，当前支持的图片、3D 与上色任务可在队列重试。</p></details><details><summary>“已安装”和“已就绪”有什么区别？</summary><p>“已安装”表示本机已检测到运行环境与模型，可尝试生成；“已就绪”表示有本机成功生成记录。两者都不代表每个作品的效果已合格，仍需要你检查形状、背面和上色。</p></details><details><summary>想换一个生图版本，在哪里安装？</summary><p>默认版本就能开始。要比较其他版本，在生图页展开“高级设置”，点击所需版本的安装链接。下载并校验完成后，回到高级设置手动选择该版本；工具不会自动替你更换已选版本。</p></details></section>
       </section>
     </main>
-    <footer class="app-footer"><span>从一个想法开始，在自己的电脑里完成。</span><span>build something · 造点啥 <span id="footer-version">v0.9.1a</span></span></footer>
+    <footer class="app-footer"><span>从一个想法开始，在自己的电脑里完成。</span><span>build something · 造点啥 <span id="footer-version">v0.9.1b</span></span></footer>
   </div>
   <div id="notification" class="notification" role="status" aria-live="polite" hidden></div>
   <div id="live-announcement" class="sr-only" role="status" aria-live="polite"></div>
